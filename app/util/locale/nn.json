@@ -1,0 +1,288 @@
+{
+  "menu": {
+    "language": "Språk",
+    "norwegian": "Bokmål",
+    "norwegianNN": "Nynorsk",
+    "english": "English"
+  },
+  "menuItems": {
+    "dashboard": "Dashbord",
+    "integration": "Ny",
+    "integrations": "Integrasjonar",
+    "instances": "Instansar",
+    "version": "Versjon",
+    "support": "Hjelp og support",
+    "valueConverting": "Verdikonvertering"
+  },
+  "pages": {
+    "dashboard": {
+      "header": "Dashboard og oversikt",
+      "integrations": "integrasjonar",
+      "oneIntegration": "integrasjon",
+      "activeIntegrations": "aktive integrasjonar",
+      "oneActiveIntegration": "aktiv integrasjon",
+      "instances": "arkiverte instansar",
+      "oneInstance": "arkivert instans",
+      "empty": "Ingen",
+      "oneError": "noverande feilmelding",
+      "errors": " noverande feilmeldinger",
+      "links": {
+        "integrations": "Sjå integrasjonar",
+        "integration": "Ny integrasjon",
+        "log": "Sjå logg",
+        "instances": "Sjå instansoversikt",
+        "support": "Kontakt support"
+      }
+    },
+    "configuration": {
+      "header": "Konfigurasjon",
+      "integration": "Integrasjon",
+      "formHeader": "Utgåande data",
+      "saved": "Konfigurasjon lagra",
+      "saveError": "Feila under lagring, feilmelding: ",
+      "genericError": "Det har oppstått ein feil",
+      "version": "Versjon ",
+      "comment": "Kommentar",
+      "reqFieldMsg": "Kommentar er påkravd ved ferdigstilling",
+      "valueConverting": {
+        "custom": "Eigendefinerte",
+        "application": "Flyt",
+        "destination": "Destinasjon"
+      },
+      "label": {
+        "valueConverting": "Verdikonvertering",
+        "customValue": "Eigendefinert verdi",
+        "checkLabel": "Ferdigstilt",
+        "activeLabel": "Aktiv",
+        "placeholder": "Skriv eller trekk inn frå metadata",
+        "formatError": "Feltet oppfyller ikkje påkrevd format"
+      },
+      "button": {
+        "submit": "Lagra",
+        "cancel": "Avbryt",
+        "complete": "Fullfør",
+        "append": "+",
+        "remove": "-"
+      },
+      "collectionMapping": {
+        "defaultElements": "Faste element",
+        "generatedElements": "Generert frå samlingar"
+      },
+      "fromCollectionMapping": {
+        "collections": "Samlingar",
+        "convertCollectionElements": "Konvertering av samlingselement"
+      },
+      "metadataPanel": {
+        "header": "Metadata",
+        "valueConverting": "Verdikonvertering",
+        "version": "Versjon",
+        "metadataWarning": "Det finst nyare versjon av metadata",
+        "help": {
+          "metadata": "Metadata er data fra innsendt skjema du kan bruke i konfigurasjon av utgående data"
+        }
+      },
+      "toolsPanel": {
+        "header": "Verktøy",
+        "description": "Tekst og tall",
+        "string": "Tekst",
+        "integer": "Heiltall"
+      },
+      "help": {
+        "formHeader": "Utgåande data"
+      }
+    },
+    "integrationForm": {
+      "header": "Ny integrasjon",
+      "incoming": "Innkommande",
+      "outgoing": "Utgåande",
+      "errorHeading": "Du må retta desse feila, det manglar:",
+      "button": {
+        "confirm": "Opprett",
+        "cancel": "Avbryt"
+      },
+      "alert": {
+        "missingMetadata": "Finner ikkje metadata for integrasjon"
+      },
+      "labels": {
+        "placeholder": "Velg kjeldeapplikasjon først",
+        "sourceApplicationId": "Kjeldeapplikasjon",
+        "sourceApplicationIntegrationId": "Integrasjon",
+        "destination": "Destinasjon/Base"
+      },
+      "help": {
+        "sourceApplicationId": "Ein kjeldeapplikasjon er fagsystemet data som skal behandlast i Flyt kjem frå",
+        "sourceApplicationIntegrationId": "Referanse/navn/id til data som skal behandlast i flyt",
+        "destination": "Kvar data skal sendast etter omforming i Flyt"
+      }
+    },
+    "integrations": {
+      "header": "Integrasjonar",
+      "version": "Versjon ",
+      "noActiveConfig": "ingen aktiv konfigurasjon",
+      "activeConfigurationId": "Aktiv konfigurasjon: ",
+      "missingDataError": "Manglar tilstrekkeleg data for å kunna oppretta ny konfigurasjon",
+      "errorMessage": "Det oppstod ein feil under henting av data, prøv igjen seinare.",
+      "numberPerPage": "Antall per side",
+      "help": {
+        "header": "Oversikt over integrasjonar. Her kan du sjå alle integrasjonane og tilhøyrande konfigurasjonar, laga nye konfigurasjonar for ein integrasjon eller aktivera ein konfigurasjon"
+      },
+      "button": {
+        "newIntegration": "Ny integrasjon",
+        "newConfiguration": "Ny konfigurasjon"
+      },
+      "dialog": {
+        "body": "Er du sikker på at du vil aktivera denne konfigurasjonen?",
+        "yes": "Ja",
+        "cancel": "Avbryt"
+      },
+      "table": {
+        "completed": "Ferdigstilt",
+        "drafts": "Utkast",
+        "noElements": "Ingen element",
+        "show": "Vis",
+        "edit": "Rediger",
+        "basedOn": "Lag ny basert på denne",
+        "activate": "Aktiver",
+        "column": {
+          "id": "Id",
+          "configurationId": "Konfig. Id",
+          "destination": "Destinasjon/base",
+          "sourceApplicationIntegrationId": "Kildeapp. integr.Id",
+          "sourceApplicationIntegrationIdDisplayName": "Integrasjonsnavn",
+          "sourceApplicationId": "Kjeldeapplikasjon",
+          "name": "Navn",
+          "state": "Tilstand",
+          "comment": "Kommentar",
+          "actions": "Handlingar",
+          "finished": "Ferdigstilt",
+          "version": "Versjon",
+          "dispatched": "# godteke",
+          "errors": "# feila"
+        }
+      }
+    },
+    "instances": {
+      "header": "Instansar",
+      "showError": "vis feilmelding",
+      "errors": "Feilmeldingar:",
+      "oneError": "Feilelding:",
+      "errorMessage": "Det oppstod ein feil under henting av data, prøv igjen seinare.",
+      "numberPerPage": "Antall per side",
+      "button": {
+        "close": "Lukk",
+        "retry": "Prøv igjen",
+        "refresh": "Oppdater side"
+      },
+      "table": {
+        "column": {
+          "sourceApplicationIntegrationId": "Kjeldeapplikasjon integrasjon-id",
+          "sourceApplicationIntegrationIdDisplayName": "Integrasjonsnavn",
+          "sourceApplicationId": "Kjeldeapplikasjon",
+          "status": "Status",
+          "actions": "Handlingar",
+          "sourceApplicationInstanceId": "Kjeldeapplikasjons instans ID",
+          "configurationId": "Konfigurasjon ID",
+          "correlationId": "Korrelasjon ID",
+          "archiveInstanceId": "Destinasjon ID",
+          "timestamp": "Tidspunkt"
+        }
+      },
+      "help": {
+        "header": "Oversikt over instansar som har komme inn til Flyt, der kvar innsending av data for éin integrasjon er ein instans. Innhaldet i innstansen blir forma om og vidaresendt til destinasjon sett i integrasjon"
+      },
+      "FINT_FLYT_INSTANCE_GATEWAY_INSTANCE_VALIDATION_ERROR": "Valideringsfeil i mottak av instans, '#fieldPath# #errorMessage#'",
+      "FINT_FLYT_INSTANCE_GATEWAY_INTEGRATION_DEACTIVATED_ERROR": "Integrasjonen er deaktivert",
+      "FINT_FLYT_INSTANCE_GATEWAY_INSTANCE_REJECTED_ERROR": "Instans avvist med følgjande feilmelding, '#message#'",
+      "FINT_FLYT_INSTANCE_GATEWAY_NO_INTEGRATION_FOUND_ERROR": "Ingen integrasjon funne",
+      "FINT_FLYT_INSTANCE_GATEWAY_GENERAL_SYSTEM_ERROR": "Systemfeil. Ta kontakt med FINT",
+      "FINT_FLYT_INSTANCE_SERVICE_GENERAL_SYSTEM_ERROR": "Systemfeil. Ta kontakt med FINT",
+      "FINT_FLYT_MAPPING_SERVICE_GENERAL_SYSTEM_ERROR": "Systemfeil - Ta kontakt med FINT",
+      "FINT_FLYT_MAPPING_SERVICE_CONFIGURATION_NOT_FOUND": "Fann ikkje aktiv konfigurasjon for integrasjonen",
+      "FINT_FLYT_MAPPING_SERVICE_INSTANCE_FIELD_NOT_FOUND": "Instansen manglar felt med nøkkel='#instanceFieldKey#', som krevst av konfigurasjonen",
+      "FINT_FLYT_DISPATCH_SERVICE_GENERAL_SYSTEM_ERROR": "Systemfeil - Ta kontakt med FINT",
+      "FINT_FLYT_DISPATCH_GATEWAY_GENERAL_SYSTEM_ERROR": "Systemfeil med følgjande feilmelding: '#errorMessage#' - Ta kontakt med FINT",
+      "FINT_FLYT_DISPATCH_GATEWAY_INSTANCE_DISPATCH_DECLINED_ERROR": "Instansen ble avvist av destinasjon med følgjande feilmelding: '#errorMessage#'",
+      "FINT_FLYT_DISPATCH_SERVICE_INSTANCE_DISPATCH_DECLINED_ERROR": "Instansen ble avvist av destinasjon med følgjande feilmelding: '#errorMessage#'",
+      "FINT_FLYT_INSTANCE_GATEWAY_FILE_UPLOAD_ERROR": "Feil under opplasting av fil, filnavn: '#name#' med mediatype: '#mediatype#'",
+      "FINT_FLYT_MAPPING_SERVICE_VALUE_CONVERTING_KEY_NOT_FOUND": "Feil under verdikonvertering, finn ikkje nøkkel: '#valueConvertingKey#', i verdikonvertering med ID: #valueConvertingId#",
+      "FINT_FLYT_MAPPING_SERVICE_VALUE_CONVERTER_NOT_FOUND": "Feil under verdikonvertering, verdikonvertering ikkje funnet",
+      "REQUESTED": "Spurt",
+      "SENT": "Sendt",
+      "FAILED": "Feila",
+      "ACCEPTED": "Akseptert",
+      "DECLINED": "Avvist",
+      "instance-received": "Instans motteke",
+      "instance-registered": "Instans registrert",
+      "instance-requested-for-retry": "Instans spurt for nytt forsøk",
+      "instance-mapped": "Instans konvertert",
+      "instance-ready-for-dispatch": "Instans klar for sending til destinasjon",
+      "instance-dispatched": "Instans godteke av destinasjon",
+      "instance-receival-error": "Feila under mottak av instans",
+      "instance-registration-error": "Feila under registrering av instans",
+      "instance-retry-request-error": "Feila under førespurnad for nytt forsøk",
+      "instance-mapping-error": "Feila under konvertering av instans",
+      "instance-dispatching-error": "Feila under sending til destinasjon",
+      "instance-file-upload-error": "Feila under opplasting av fil"
+    },
+    "support": {
+      "header": "Hjelp og support",
+      "description": "Kva er FINT Flyt?",
+      "descriptionBody": "Du kan sjå ein brukerveiledning til korleis du brukar Fint Flyt ",
+      "link": "her",
+      "userGuide": "Korleis bruke Fint Flyt",
+      "wordList": "Ordbok",
+      "FAQ": "Ofte stilte spørsmål",
+      "back": "Tilbake"
+    },
+    "valueConverting": {
+      "button": {
+        "newConverting": "Ny verdikonvertering",
+        "basedOn": "Lag ny basert på denne",
+        "create": "Opprett",
+        "cancel": "Avbryt",
+        "back": "Tilbake"
+      },
+      "header": "Verdikonvertering",
+      "custom": "Eigendefinerte",
+      "application": "Flyt",
+      "destination": "Destinasjon",
+      "panelHeader": "Verdikonverteringer",
+      "newHeader": "Ny verdikonvertering",
+      "fromApplicationId": "Applikasjon",
+      "displayName": "Namn",
+      "valueConvertingName": "Namn på verdikonvertering",
+      "fromTypeId": "Type",
+      "toApplicationId": "Applikasjon",
+      "toTypeId": "Type",
+      "convertingMap": "Konvertering(ar)",
+      "to": "Til",
+      "from": "Frå",
+      "saved": "Verdikonvertering lagra",
+      "saveError": "Feila under lagring, feilmelding: ",
+      "genericError": "Det har oppstått ein feil",
+      "requiredField": "Påkrevd felt",
+      "column": {
+        "show": "Vis",
+        "id": "ID",
+        "displayName": "Namn",
+        "toType": "Til type",
+        "fromType": "Frå type",
+        "toApplication": "Til",
+        "fromApplication": "Frå",
+        "actions": "Handlingar"
+      },
+      "help": {
+        "toggle": "Det blir jobba med fleire moglegheiter for å bruka verdikonverteringar i Flyt. For no er det som før og det er berre eigendefinerte verdikonverteringar som blir nytta",
+        "valueConverting": "Verdikonvertering er eit felt som lèt deg bruka ein definert regel for å konvertera kvar førekomst av ein verdi. Verdikonverteringar blir brukte i konfigurasjonar på same måte som metadata og vil gjelda for det aktuelle feltet. Det er ikkje mogleg å redigera ei eksisterande verdikonvertering då dette kan påverka eksisterande konfigurasjonar, men det er mogleg å oppretta ein ny basert på ei eksisterande verdikonvertering",
+        "valueConvertingName": "Namn på verdikonverteringa som skal opprettast. Merk at namn ikkje er påkravd å vera unikt, men det er lurt å gi eit beskrivande namn",
+        "from": "Velg applikasjonen hvor verdien som skal konverteres kommer fra, og hvilken type data det er som skal konverteres fra",
+        "to": "Vel applikasjonen kvar verdien som skal konverterast kjem frå, og kva type data det er som skal konverterast frå.",
+        "convertingMap": "Her legger du til konverteringer, trykk + for å leggja til fleire og - for å fjerna",
+        "new": "Her kan du oppretta ei ny verdikonvertering. Ønskjer du å laga ny basert på ein tidlegare versjon finn du det under handlingar i tabellen"
+      }
+    }
+  },
+  "version": {
+    "header": "Versjonering av FLYT"
+  }
+}
