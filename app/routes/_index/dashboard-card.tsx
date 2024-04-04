@@ -14,7 +14,7 @@ type Props = {
 const DashboardCard: React.FunctionComponent<Props> = (props: Props) => {
 	return (
 		<Box
-			id={"support-information"}
+			// id={"support-information"}
 			background={"surface-default"}
 			className="flex flex-col items-center justify-center"
 			padding="6"

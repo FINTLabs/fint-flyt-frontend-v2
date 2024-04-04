@@ -1,4 +1,4 @@
-import {Box, Button, Heading, HelpText, HStack} from "@navikt/ds-react";
+import {Box, Heading, HelpText, HStack} from "@navikt/ds-react";
 import {useTranslation} from "react-i18next";
 import {Outlet} from "@remix-run/react";
 
