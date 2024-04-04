@@ -1,4 +1,4 @@
-import IRoute from "../types/route";
+
 // import Dashboard from "../components/pages/Dashboard";
 // import IntegrationForm from "../features/integrations/IntegrationForm";
 // import Configuration from "../components/pages/Configuration";
@@ -7,6 +7,8 @@ import IRoute from "../types/route";
 // import ValueConverting from "../components/pages/ValueConverting";
 // import Instances from "../components/pages/Instances";
 // import Integrations from "../components/pages/Integrations";
+
+import IRoute from "~/routes/_index/types/route";
 
 const routes: IRoute[] = [
 	{
@@ -17,13 +19,13 @@ const routes: IRoute[] = [
 		inNavigationMenu: true,
 	},
 	{
-		path: "/integrations/new",
+		path: "/integrations/integrations/new",
 		name: "integration",
 		// component: IntegrationForm,
 		exact: true,
 	},
 	{
-		path: "/integrations/configuration/new-configuration",
+		path: "/integrations/configuration/integrations/new",
 		name: "integration",
 		// component: Configuration,
 		exact: true,
@@ -35,14 +37,14 @@ const routes: IRoute[] = [
 		exact: true,
 	},
 	{
-		path: "configuration/new-configuration",
+		path: "configuration/integrations_.new-configuration",
 		name: "editIntegration",
 		// component: Configuration,
 		exact: true,
 	},
 	{
 		// path: "/integrations/list",
-		path: "/integrations",
+		path: "/integrations/",
 		name: "integrations",
 		// component: Integrations,
 		exact: true,

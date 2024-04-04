@@ -27,8 +27,7 @@ export default function Index() {
                 borderWidth="2"
                 borderColor={"border-subtle"}
             >
-                <Heading size={"medium"}>integration table</Heading>
-                <Outlet />
+                <Heading size={"medium"}>integration new</Heading>
             </Box>
         </Box>
     );

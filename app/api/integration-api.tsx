@@ -1,9 +1,10 @@
+const API_URL = process.env.API_URL || '';
 import allIntegration from './mock-allIntegrations.json';
 
 class IntegrationApi {
 
     static fetchAllIntegrations() {
-        console.log("fetch mock data all intergrations");
+        console.log("fetch mock data all integration");
         return allIntegration;
     }
 

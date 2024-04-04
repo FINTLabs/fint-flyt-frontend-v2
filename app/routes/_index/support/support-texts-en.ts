@@ -8,7 +8,7 @@ export const USER_GUIDE_EN = [
     "When you press 'Create', the integrations will be created in Flyt, and you'll have the option to add a configuration now or later by finding the integrations you just created under 'integrations' in the menu",
     "Fill out the configuration setup according to the integrations's needs. Here, you can use metadata and perform value conversions. If you're ready to finalize and activate, select that in the checkboxes at the bottom of the page. It's not possible to activate until you've chosen to complete. Activating a configuration upon completion is not mandatory, but Flyt will not receive and process instances for an integrations until it has an active configuration.",
     "If you want to add, modify, or view configurations for an integrations, go to 'Integrations' in the menu, select the integrations you want to view, and press 'Show'. You'll then have an overview of drafts, completed configurations, and which configuration might be active." +
-    "Select 'Edit' if you want to continue working on a started configuration or choose 'New' if you want to create an entirely new one. You'll be able to start with a blank configuration or base it on a previous version. Note that you cannot edit a completed configuration.",
+    "Select 'Edit' if you want to continue working on a started configuration or choose 'New' if you want to create an entirely integrations_.new one. You'll be able to start with a blank configuration or base it on a previous version. Note that you cannot edit a completed configuration.",
 ];
 
 export const WORD_LIST_EN = [

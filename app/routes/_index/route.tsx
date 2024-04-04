@@ -26,16 +26,6 @@ export default function Dashboard() {
         keyPrefix: "pages.dashboard",
     });
 
-    // const { allAvailableIntegrations } = useGetAllIntegrations();
-    // const allAvailableIntegrations = require('../../data-for-testing/allIntegrations.json');
-    // const allIntegrations = allAvailableIntegrations?.data;
-
-    // const allIntegrations = allAvailableIntegrations?.data;
-    // const allActiveIntegrations =
-    //     allIntegrations?.filter(
-    //         (integrasjoner: IIntegration | undefined) =>
-    //             integrasjoner?.state === "ACTIVE"
-    //     ) || [];
     const allActiveIntegrations =
         allIntegrations.filter(integration => integration.state === "ACTIVE");
 
@@ -43,7 +33,7 @@ export default function Dashboard() {
     // const { statistics, resetIntegrations, getAllIntegrations } =
     //     useContext(IntegrationContext);
 
-    let currentErrors = 0;
+    const currentErrors = 0;
     let totalDispatched = 0;
 
     // statistics?.map((stat: IIntegrationStatistics) => {
@@ -88,7 +78,7 @@ export default function Dashboard() {
             ],
         },
         {
-            value: currentErrors === 0 ? t("empty") : currentErrors.toString(),
+            value: currentErrors === 0 ? t("empty") : currentErrors,
             content: currentErrors === 1 ? t("oneError") : t("errors"),
             links: [
                 { name: t("links.instances"), href: "/integrations/types/list" },
