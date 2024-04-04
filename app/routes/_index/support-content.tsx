@@ -10,7 +10,7 @@ import {
 } from "@navikt/ds-react";
 
 import { useTranslation } from "react-i18next";
-import {getAboutFlytByLanguage, getFAQByLanguage} from "~/routes/_index/support/support-util";
+import {getAboutFlytByLanguage, getFAQByLanguage} from "~/routes/support/support-util";
 // import {
 // 	getAboutFlytByLanguage,
 // 	getFAQByLanguage,
