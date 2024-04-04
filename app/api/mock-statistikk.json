@@ -1,0 +1,22 @@
+[
+  {
+    "sourceApplicationIntegrationId": "3",
+    "dispatchedInstances": 0,
+    "currentErrors": 2
+  },
+  {
+    "sourceApplicationIntegrationId": "FARTØY",
+    "dispatchedInstances": 0,
+    "currentErrors": 1
+  },
+  {
+    "sourceApplicationIntegrationId": "journalpost",
+    "dispatchedInstances": 7,
+    "currentErrors": 0
+  },
+  {
+    "sourceApplicationIntegrationId": "sak",
+    "dispatchedInstances": 11,
+    "currentErrors": 0
+  }
+]
