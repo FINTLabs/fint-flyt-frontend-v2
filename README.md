@@ -1,4 +1,4 @@
-# FINT Flyt Integration Frontend
+# FINT Flyt Integration Frontend v2
 
 ## Development
 
