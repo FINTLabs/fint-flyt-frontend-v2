@@ -1,11 +1,17 @@
 const API_URL = process.env.API_URL || '';
 import allIntegration from './mock-allIntegrations.json';
+import getAllStatistics from './mock-statistikk.json';
 
 class IntegrationApi {
 
     static fetchAllIntegrations() {
         console.log("fetch mock data all integration");
         return allIntegration;
+    }
+
+    static getAllStatistics() {
+        console.log("fetch mock data  getAllStatistics");
+        return getAllStatistics;
     }
 
     static async fetch() {

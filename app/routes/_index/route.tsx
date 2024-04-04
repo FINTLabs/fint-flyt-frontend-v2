@@ -7,12 +7,14 @@ import {ICard} from "~/routes/_index/types/card";
 import IntegrationApi from "~/api/integration-api";
 import {json} from "@remix-run/node";
 import {useLoaderData} from "@remix-run/react";
+import {IIntegrationStatistics} from "~/routes/integrations/types/integration";
 
 export const loader = async () => {
     try {
-        const data = IntegrationApi.fetchAllIntegrations();
-        console.log("data in route:",data)
-        return json({ data });
+        const allIntegrations = IntegrationApi.fetchAllIntegrations();
+        const statistics = IntegrationApi.getAllStatistics();
+        console.log("data in route:", allIntegrations, statistics)
+        return json({ allIntegrations, statistics });
     } catch (error) {
         throw new Error("Error fetching data");
     }
@@ -20,7 +22,10 @@ export const loader = async () => {
 
 export default function Dashboard() {
     const loaderData = useLoaderData<typeof loader>();
-    const allIntegrations = loaderData.data;
+    const { allIntegrations, statistics } = loaderData;
+
+    let currentErrors = 0;
+    let totalDispatched = 0;
 
     const { t } = useTranslation("translations", {
         keyPrefix: "pages.dashboard",
@@ -33,19 +38,10 @@ export default function Dashboard() {
     // const { statistics, resetIntegrations, getAllIntegrations } =
     //     useContext(IntegrationContext);
 
-    const currentErrors = 0;
-    let totalDispatched = 0;
-
-    // statistics?.map((stat: IIntegrationStatistics) => {
-    //     currentErrors += stat.currentErrors;
-    //     totalDispatched += stat.dispatchedInstances;
-    // });
-
-    // useEffect(() => {
-    //     getAllIntegrations();
-    //     resetIntegrations();
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, []);
+    statistics?.map((stat: IIntegrationStatistics) => {
+        currentErrors += stat.currentErrors;
+        totalDispatched += stat.dispatchedInstances;
+    });
 
     const cards: ICard[] = [
         {
@@ -78,7 +74,7 @@ export default function Dashboard() {
             ],
         },
         {
-            value: currentErrors === 0 ? t("empty") : currentErrors,
+            value: currentErrors === 0 ? t("empty") : currentErrors.toString(),
             content: currentErrors === 1 ? t("oneError") : t("errors"),
             links: [
                 { name: t("links.instances"), href: "/integrations/types/list" },
@@ -120,4 +116,4 @@ export default function Dashboard() {
 
         </>
     );
-};
+}

@@ -11,14 +11,15 @@ import '../app/util/locale/i18n';
 import {Box, Page, VStack} from "@navikt/ds-react";
 import {AppBar} from "~/components/appbar";
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export function Layout() {
     return (
         <html lang="en">
         <head>
-            <meta charSet="utf-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <Meta />
-            <Links />
+            <meta charSet="utf-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <title>FINT Flyt v2</title>
+            <Meta/>
+            <Links/>
         </head>
         <body>
         <Page
