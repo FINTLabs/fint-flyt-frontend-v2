@@ -1,29 +1,27 @@
-// import React, { useContext, useEffect } from "react";
-import {ICard} from "~/types/dashboard/card";
-// import {IIntegration} from "~/types/integrations/integrations";
-// import { IntegrationContext } from "../../context/IntegrationContext";
-// import DashboardCard from "../organisms/DashboardCard";
-// import { ICard } from "../../features/dashboard/Card";
-// import { useTranslation } from "react-i18next";
-// import {
-//     IIntegration,
-//     IIntegrationStatistics,locale
-// } from "../../features/integrations/types/Integration";
-// import PageTemplate from "../templates/PageTemplate";
-// import { RouteComponent } from "../../routes/Route";
-// import { Box, HStack } from "@navikt/ds-react";
-// import { Contact } from "../atoms/Contact";
-// import SupportContent from "../molecules/SupportContent";
-// import { useGetAllIntegrations } from "../../hooks/integrations/useGetIntegrations";
 import { useTranslation } from 'react-i18next';
 import {Box, HStack} from "@navikt/ds-react";
 import DashboardCard from "~/routes/_index/dashboard-card";
-import allIntegrations from "./mock-allIntegrations.json"
 import SupportContent from "~/routes/_index/support-content";
 import {Contact} from "~/routes/_index/contact";
+import {ICard} from "~/routes/_index/types/card";
+import IntegrationApi from "~/api/integration-api";
+import {json} from "@remix-run/node";
+import {useLoaderData} from "@remix-run/react";
 
-// const Dashboard: RouteComponent = () => {
-const Dashboard = () => {
+export const loader = async () => {
+    try {
+        const data = IntegrationApi.fetchAllIntegrations();
+        console.log("data in route:",data)
+        return json({ data });
+    } catch (error) {
+        throw new Error("Error fetching data");
+    }
+};
+
+export default function Dashboard() {
+    const loaderData = useLoaderData<typeof loader>();
+    const allIntegrations = loaderData.data;
+
     const { t } = useTranslation("translations", {
         keyPrefix: "pages.dashboard",
     });
@@ -62,14 +60,14 @@ const Dashboard = () => {
     const cards: ICard[] = [
         {
             value:
-                allIntegrations === undefined || allIntegrations.length === 0
+                allIntegrations.length === 0
                     ? t("empty")
                     : allIntegrations.length.toString(),
             content:
-                allIntegrations !== undefined && allIntegrations.length === 1
+                allIntegrations.length === 1
                     ? t("oneIntegration")
                     : t("integrations"),
-            links: [{ name: t("links.integrations"), href: "/integrations/new" }],
+            links: [{ name: t("links.integration"), href: "/integrations/new" }],
         },
         {
             value:
@@ -80,13 +78,13 @@ const Dashboard = () => {
                 allActiveIntegrationsLength === 1
                     ? t("oneActiveIntegration")
                     : t("activeIntegrations"),
-            links: [{ name: t("links.integrations"), href: "/integrations/list" }],
+            links: [{ name: t("links.integrations"), href: "/integrations" }],
         },
         {
             value: totalDispatched === 0 ? t("empty") : totalDispatched.toString(),
             content: totalDispatched === 1 ? t("oneInstance") : t("instances"),
             links: [
-                { name: t("links.instances"), href: "/integrations/types/list" },
+                { name: t("links.instances"), href: "/integrations" },
             ],
         },
         {
@@ -133,4 +131,3 @@ const Dashboard = () => {
         </>
     );
 };
-export default Dashboard;

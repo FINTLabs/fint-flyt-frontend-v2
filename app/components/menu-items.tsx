@@ -21,6 +21,7 @@ const MenuItems = () => {
 						key={route.name}
 						as={Link}
 						href={route.path}
+						className="underline-none!important"
 					>
 						{t(route.name)}
 					</Button>

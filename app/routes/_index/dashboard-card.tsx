@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Box, Heading, BodyLong, Link } from "@navikt/ds-react";
 import { Link as RouterLink } from "react-router-dom";
-import {ILink} from "~/types/dashboard/link";
+import {ILink} from "~/routes/_index/types/link";
 
 type Props = {
 	content: string;
@@ -16,7 +16,7 @@ const DashboardCard: React.FunctionComponent<Props> = (props: Props) => {
 		<Box
 			id={"support-information"}
 			background={"surface-default"}
-			// align={"center"}
+			className="flex flex-col items-center justify-center"
 			padding="6"
 			borderRadius={"large"}
 			borderWidth="2"

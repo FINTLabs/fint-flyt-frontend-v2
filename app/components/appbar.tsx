@@ -1,4 +1,3 @@
-// import MenuItems from "../molecules/MenuItems";
 import {InternalHeader, Button, Dropdown, Spacer, Label, Link} from "@navikt/ds-react";
 // import { useHistory } from "react-router-dom";
 import { LanguageIcon } from '@navikt/aksel-icons';
