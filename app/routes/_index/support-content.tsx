@@ -37,7 +37,7 @@ const SupportContent = () => {
 						<Link
 							as={RouterLink}
 							id={"support-guide-link"}
-							to={"/support/guide"}
+							to={"/support"}
 						>
 							{t("link")}
 						</Link>
