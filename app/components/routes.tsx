@@ -85,7 +85,7 @@ const routes: IRoute[] = [
 		inNavigationMenu: true,
 	},
 	{
-		path: "/support/guide",
+		path: "/support",
 		name: "guide",
 		// component: UserGuide,
 		exact: true,
