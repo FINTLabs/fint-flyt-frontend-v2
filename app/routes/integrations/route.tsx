@@ -5,12 +5,15 @@ import IntegrationTable from "~/routes/integrations/integration-table";
 import SourceApplicationApi from "~/api/source-application-api";
 import {json} from "@remix-run/node";
 import {useLoaderData} from "@remix-run/react";
+import IntegrationApi from "~/api/integration-api";
 
 export const loader = async () => {
     try {
-        const data = SourceApplicationApi.getAllMetadata();
-        console.log("data in route:",data)
-        return json({ data });
+        const metadata = SourceApplicationApi.getAllMetadata();
+        const integrationPage = IntegrationApi.fetchIntegrationPage();
+        const applications = SourceApplicationApi.fetchAllApplications();
+        console.log("data in route:",metadata)
+        return json({ metadata, integrationPage, applications });
     } catch (error) {
         throw new Error("Error fetching data");
     }
@@ -19,7 +22,10 @@ export const loader = async () => {
 export default function Index() {
     const {t} = useTranslation('translations', {keyPrefix: 'pages.integrations'})
     const loaderData = useLoaderData<typeof loader>();
-    const allMetadata = loaderData.data;
+    const allMetadata = loaderData.metadata;
+    const integrationPage = loaderData.integrationPage;
+    const applications = loaderData.applications;
+
     return (
         <Box
             padding="8"
@@ -50,6 +56,10 @@ export default function Index() {
                         //     setError(error)
                         // }}
                         // id={"integration-table"}
+
+                        data={integrationPage}
+                        applications={applications}
+                        allMetadata={allMetadata}
                     />
                     :
                     <>

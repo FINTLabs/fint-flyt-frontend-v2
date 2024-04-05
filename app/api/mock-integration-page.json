@@ -1,0 +1,37 @@
+{
+  "content": [
+    {
+      "id": 1,
+      "sourceApplicationId": 3,
+      "sourceApplicationIntegrationId": "FARTØY",
+      "destination": "fylkesrad",
+      "state": "ACTIVE",
+      "activeConfigurationId": 3
+    }
+  ],
+  "pageable": {
+    "sort": {
+      "empty": false,
+      "sorted": true,
+      "unsorted": false
+    },
+    "offset": 0,
+    "pageNumber": 0,
+    "pageSize": 1000,
+    "paged": true,
+    "unpaged": false
+  },
+  "totalPages": 1,
+  "totalElements": 1,
+  "last": true,
+  "size": 1000,
+  "number": 0,
+  "sort": {
+    "empty": false,
+    "sorted": true,
+    "unsorted": false
+  },
+  "numberOfElements": 1,
+  "first": true,
+  "empty": false
+}

@@ -1,15 +1,41 @@
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {Button, Link} from "@navikt/ds-react";
-import routes from "./routes";
+// import routes from "./routes";
 const MenuItems = () => {
 	const { t } = useTranslation("translations", { keyPrefix: "menuItems" });
 	const navigate = useNavigate();
+
+	const menuItems = [
+		{
+			path: "/",
+			name: "dashboard",
+		},
+		{
+			path: "/integrations",
+			name: "integrations",
+		},
+		{
+			path: "/valueconverting",
+			name: "valueConverting",
+		},
+		{
+			path: "/instance",
+			name: "instances",
+			exact: true,
+		},
+		{
+			path: "/version",
+			name: "version",
+			// component: Version,
+			exact: true,
+			inNavigationMenu: true,
+		},
+	];
+
 	return (
 		<>
-			{routes
-				.filter((route) => route.inNavigationMenu)
-				.map((route) => (
+			{menuItems.map((route) => (
 
 					<Button
 						size={"medium"}
