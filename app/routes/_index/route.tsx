@@ -7,7 +7,7 @@ import {ICard} from "~/routes/_index/types/card";
 import IntegrationApi from "~/api/integration-api";
 import {json} from "@remix-run/node";
 import {useLoaderData} from "@remix-run/react";
-import {IIntegrationStatistics} from "~/routes/integrations/types/integration";
+import {IIntegrationStatistics} from "~/api/types/integration";
 
 export const loader = async () => {
     try {
