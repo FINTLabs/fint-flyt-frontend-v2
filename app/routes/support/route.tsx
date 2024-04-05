@@ -4,7 +4,7 @@ import { getUserGuideByLanguage, getWordListByLanguage } from "./support-util";
 import { useTranslation } from "react-i18next";
 import { RouteComponent } from "@remix-run/react/dist/routeModules";
 
-const UserGuide: RouteComponent = () => {
+const Guide: RouteComponent = () => {
 	const { t } = useTranslation("translations", { keyPrefix: "pages.support" });
 	const { i18n } = useTranslation();
 
@@ -38,4 +38,4 @@ const UserGuide: RouteComponent = () => {
 	);
 };
 
-export default UserGuide;
+export default Guide;
