@@ -3,14 +3,7 @@ import { RouteComponent } from "@remix-run/react/dist/routeModules";
 import { useTranslation } from "react-i18next";
 import { getAboutByLanguage, getVersionDataByLanguage } from "./VersionTexts";
 // import React, {useContext, useEffect} from 'react';
-// import PageTemplate from "../templates/PageTemplate";
-// import {
-//     getAboutByLanguage, getVersionDataByLanguage,
-// } from "../utils/version/VersionTexts";
-// import {RouteComponent} from "../../routes/Route";
-// import {useTranslation} from "react-i18next";
 // import {AuthorizationContext} from "../../context/AuthorizationContext";
-// import {useHistory} from "react-router-dom";
 
 const Version: RouteComponent = () => {
     const {i18n} = useTranslation();
