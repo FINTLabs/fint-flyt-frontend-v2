@@ -3,28 +3,40 @@ import {useTranslation} from "react-i18next";
 import {PlusIcon} from "@navikt/aksel-icons";
 import IntegrationTable from "~/routes/integrations/integration-table";
 import SourceApplicationApi from "~/api/source-application-api";
-import {json} from "@remix-run/node";
+import {json, LoaderFunction, LoaderFunctionArgs} from "@remix-run/node";
 import {useLoaderData} from "@remix-run/react";
 import IntegrationApi from "~/api/integration-api";
+import ConfigurationApi from "~/api/configuration-api";
+// import ConfigurationApi from "~/api/configuration-api";
 
-export const loader = async () => {
+export async function loader({params, request}: LoaderFunctionArgs) {
+    const url = new URL(request.url);
+    const selectedId = url.searchParams.get("id");
+
     try {
         const metadata = SourceApplicationApi.getAllMetadata();
-        const integrationPage = IntegrationApi.fetchIntegrationPage();
-        const applications = SourceApplicationApi.fetchAllApplications();
-        console.log("data in route:",metadata)
-        return json({ metadata, integrationPage, applications });
+        const integrationPage = await IntegrationApi.fetchIntegrationPage();
+        const sourceApplications = await SourceApplicationApi.fetchAllApplications();
+
+        let configResponse, completedConfigResponse;
+        if (selectedId) {
+            console.log("loading selectedId", selectedId);
+            configResponse = await ConfigurationApi.getConfigurations(0, 10, "id", "DESC", false, selectedId, true);
+            completedConfigResponse = await ConfigurationApi.getConfigurations(0, 10, "version", "DESC", true, selectedId ?? '', true)
+        }
+
+        return json({ metadata, integrationPage, sourceApplications, selectedId, configResponse, completedConfigResponse });
     } catch (error) {
         throw new Error("Error fetching data");
     }
-};
+}
 
 export default function Index() {
     const {t} = useTranslation('translations', {keyPrefix: 'pages.integrations'})
     const loaderData = useLoaderData<typeof loader>();
     const allMetadata = loaderData.metadata;
-    const integrationPage = loaderData.integrationPage;
-    const applications = loaderData.applications;
+
+    // const integrationPage = loaderData.integrationPage;
 
     return (
         <Box
@@ -50,6 +62,7 @@ export default function Index() {
             {/*{error && <Alert style={{maxWidth: '100%'}} variant="error">{error.message}</Alert>}*/}
             <Box id={"integration-table-container"} background={"surface-default"} padding="6" borderRadius={"large"}
                  borderWidth="2" borderColor={"border-subtle"}>
+
                 {allMetadata ?
                     <IntegrationTable
                         // onError={(error) => {
@@ -57,9 +70,8 @@ export default function Index() {
                         // }}
                         // id={"integration-table"}
 
-                        data={integrationPage}
-                        applications={applications}
-                        allMetadata={allMetadata}
+                        // integrationPage={integrationPage}
+                        // allMetadata={allMetadata}
                     />
                     :
                     <>

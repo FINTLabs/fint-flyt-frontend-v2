@@ -1,32 +1,71 @@
-import {Box, Heading, HStack, Loader, Pagination, Table} from "@navikt/ds-react";
+import {Box, HStack, Loader, Pagination, SortState, Table} from "@navikt/ds-react";
 import {useTranslation} from "react-i18next";
-import {IIntegration} from "~/api/types/integration";
-import React from "react";
-import {sort} from "semver";
+import React, {useState} from "react";
 import IntegrationPanel from "~/routes/integrations/integrations-panel";
 import {getDestinationDisplayName, getSourceApplicationDisplayNameById, getStateDisplayName} from "~/util/table-util";
-import {ISourceApplication} from "~/api/types/source-application";
-import {IPage} from "~/api/types/table-types";
 
-interface IntegrationTableProps {
-    data: IPage<IIntegration>[];
-    applications: ISourceApplication[];
-    allMetadata: any; //TODO: Add type
-}
+import {useLoaderData, useNavigate} from "@remix-run/react";
 
-const IntegrationTable: React.FunctionComponent<IntegrationTableProps> = (props) => {
+
+const IntegrationTable: React.FunctionComponent = () => {
     const {t} = useTranslation('translations', {keyPrefix: 'pages.integrations'})
-    const integrations = props.data;
-    const sourceApplications = props.applications;
-    const allMetadata = props.allMetadata;
+    const loaderData = useLoaderData();
+    const navigate = useNavigate();
+
+    const sourceApplications = loaderData.sourceApplications;
+    const integrations = loaderData.integrationPage;
+    const selectedId = loaderData.selectedId;
+    const [sort, setSort] = useState<SortState | undefined>({orderBy: 'state', direction: "ascending"});
+
+    const handleRowClick = (selecteId: string) => {
+        //todo: hide by storing in state
+        navigate(`?id=${selecteId}`);
+    };
+
+    const handleSort = (sortKey) => {
+        setSort(
+            sort && sortKey === sort.orderBy && sort.direction === "descending"
+                ? undefined
+                : {
+                    orderBy: sortKey,
+                    direction:
+                        sort && sortKey === sort.orderBy && sort.direction === "ascending"
+                            ? "descending"
+                            : "ascending",
+                },
+        );
+    };
+
+    const comparator = (a: { [x: string]: number; }, b: { [x: string]: number; }, orderBy: string) => {
+        if (b[orderBy] < a[orderBy] || b[orderBy] === undefined) {
+            return -1;
+        }
+        if (b[orderBy] > a[orderBy]) {
+            return 1;
+        }
+        return 0;
+    };
+
+    const sortedData = integrations?.content?.slice().sort((a, b) => {
+        if (sort) {
+            return sort.direction === "ascending"
+                ? comparator(b, a, sort.orderBy)
+                : comparator(a, b, sort.orderBy);
+        }
+        return 1;
+    });
+
+    function setPage() {
+        //todo
+    }
 
     return integrations ? (
         <Box>
             <Box background={'surface-default'} style={{height: '70vh', overflowY: "scroll"}}>
                 <Table
-                    // sort={sort}
-                    // onSortChange={(sortKey) => handleSort(sortKey ? sortKey : 'id')}
-                    // id={props.id}
+                    sort={sort}
+                    onSortChange={(sortKey) => handleSort(sortKey ? sortKey : 'id')}
+                    id={"integration-table"}
                 >
                     <Table.Header>
                         <Table.Row>
@@ -44,17 +83,22 @@ const IntegrationTable: React.FunctionComponent<IntegrationTableProps> = (props)
                         </Table.Row>
                     </Table.Header>
                     <Table.Body>
-                        {integrations?.content?.map((value, i) => {
+                        {sortedData?.map((value, i) => {
                             return (
-                                <Table.ExpandableRow expandOnRowClick key={i} content={
-                                    <IntegrationPanel
-                                        // id={'panel-' + i}
-                                        // onError={(error) => {
-                                        //     props.onError(error)
-                                        // }}
-                                        data={value}
-                                        allMetadata={allMetadata}
-                                    />}
+                                <Table.ExpandableRow
+                                    onOpenChange={() => handleRowClick(value.id)}
+                                    open={value.id.toString() === selectedId}
+                                    expandOnRowClick
+                                    key={i}
+                                    content={
+                                        <IntegrationPanel
+                                            id={'panel-' + i}
+                                            //todo: ADD ERROR CHECKING?!
+                                            // onError={(error) => {
+                                            //     // props.onError(error)
+                                            // }}
+                                            integration={value}
+                                         />}
                                 >
                                     <Table.DataCell>{value.id}</Table.DataCell>
                                     <Table.DataCell
@@ -82,14 +126,14 @@ const IntegrationTable: React.FunctionComponent<IntegrationTableProps> = (props)
                 {/*        hideLabel={true}*/}
                 {/*        default={rowCount}*/}
                 {/*    />}*/}
-                {/*{integrations?.totalElements && integrations?.totalElements > Number(rowCount) &&*/}
-                {/*    <Pagination*/}
-                {/*        page={page}*/}
-                {/*        onPageChange={setPage}*/}
-                {/*        count={integrations?.totalPages ?? 1}*/}
-                {/*        size="small"*/}
-                {/*    />*/}
-                {/*}*/}
+                {integrations?.totalElements && integrations?.totalElements > Number(1) &&
+                    <Pagination
+                        page={1} //todo
+                        onPageChange={setPage}
+                        count={integrations?.totalPages ?? 1}
+                        size="small"
+                    />
+                }
             </HStack>
         </Box>
     ) : <Loader size={"xlarge"}/>;
