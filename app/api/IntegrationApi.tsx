@@ -1,7 +1,9 @@
-const API_URL = process.env.API_URL || '';
+import {IIntegrationPage} from "~/types/Integration";
 import allIntegration from './mock-allIntegrations.json';
 import getAllStatistics from './mock-statistikk.json';
 import integrationPageData from "./mock-integration-page.json";
+
+const API_URL = process.env.API_URL || '';
 
 class IntegrationApi {
 
@@ -12,7 +14,8 @@ class IntegrationApi {
 
     static fetchIntegrationPage() {
         console.log("fetch mock data integrationPageData");
-        return integrationPageData;
+        const data: IIntegrationPage = integrationPageData;
+        return data;
     }
 
     static getAllStatistics() {

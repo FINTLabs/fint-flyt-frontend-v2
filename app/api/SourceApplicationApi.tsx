@@ -1,5 +1,5 @@
 import allMetaData from './mock-allmetadata.json';
-import {ISourceApplication} from "~/api/types/source-application";
+import {ISourceApplication} from "~/types/SourceApplication";
 
 class SourceApplicationApi {
 

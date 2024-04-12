@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import {Box, HStack} from "@navikt/ds-react";
-import DashboardCard from "~/routes/_index/dashboard-card";
-import SupportContent from "~/routes/_index/support-content";
-import {Contact} from "~/routes/_index/contact";
+import DashboardCard from "~/routes/_index/DashboardCard";
+import SupportContent from "~/routes/_index/SupportContent";
+import {Contact} from "~/routes/_index/Contact";
 import {ICard} from "~/routes/_index/types/card";
-import IntegrationApi from "~/api/integration-api";
+import IntegrationApi from "~/api/IntegrationApi";
 import {json} from "@remix-run/node";
 import {useLoaderData} from "@remix-run/react";
-import {IIntegrationStatistics} from "~/api/types/integration";
+import {IIntegrationStatistics} from "~/types/Integration";
 
 export const loader = async () => {
     try {

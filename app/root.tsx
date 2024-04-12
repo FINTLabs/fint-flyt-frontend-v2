@@ -9,7 +9,7 @@ import 'tailwindcss/tailwind.css';
 import "@navikt/ds-css/dist/index.css";
 import '../app/util/locale/i18n';
 import {Box, Page, VStack} from "@navikt/ds-react";
-import {AppBar} from "~/components/appbar";
+import {Appbar} from "~/components/Appbar";
 
 export function Layout() {
     return (
@@ -34,7 +34,7 @@ export function Layout() {
         >
             <Box style={{ backgroundColor: "#1F4F59" }}  as="header">
                 <Page.Block >
-                    <AppBar />
+                    <Appbar />
                 </Page.Block>
             </Box>
 

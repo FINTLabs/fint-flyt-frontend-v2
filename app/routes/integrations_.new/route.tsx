@@ -1,6 +1,6 @@
-import {Box, Button, Heading, HelpText, HStack} from "@navikt/ds-react";
+import {Box, Heading, HelpText, HStack} from "@navikt/ds-react";
 import {useTranslation} from "react-i18next";
-import {Outlet} from "@remix-run/react";
+import Configuration from "~/routes/integrations_.new/Configuration";
 
 export default function Index() {
     const {t} = useTranslation('translations', {keyPrefix: 'pages.integrations'})
@@ -27,7 +27,12 @@ export default function Index() {
                 borderWidth="2"
                 borderColor={"border-subtle"}
             >
-                <Heading size={"medium"}>integration new</Heading>
+                <Configuration
+                    id={1}
+                    integration={1}
+                    // onError={}
+                />
+
             </Box>
         </Box>
     );

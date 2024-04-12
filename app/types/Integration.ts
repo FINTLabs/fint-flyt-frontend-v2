@@ -1,3 +1,7 @@
+import {IPage} from "~/types/TableTypes";
+
+export interface IIntegrationPage extends IPage<IIntegration> {}
+
 export interface IIntegration {
     id?: string;
     sourceApplicationId?: string;

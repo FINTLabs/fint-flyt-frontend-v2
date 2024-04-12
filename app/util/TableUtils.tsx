@@ -3,8 +3,8 @@
 // import {IIntegration} from "../features/integrations/types/Integration";
 // // import {MOCK_INTEGRATION} from "../__tests__/mock/integrations";
 // import {ISourceApplication} from "../features/configuration/types/SourceApplication";
-import {ISourceApplication} from "~/routes/instance/types/source-application";
 import {IEvent} from "~/routes/instance/types/event";
+import {ISourceApplication} from "~/types/SourceApplication";
 
 export function getSourceApplicationDisplayNameById(id: number, sourceApplications: ISourceApplication[] | undefined): string {
     if (!sourceApplications) {
