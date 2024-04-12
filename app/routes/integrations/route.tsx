@@ -1,12 +1,13 @@
 import {Box, Button, Heading, HelpText, HStack, Loader} from "@navikt/ds-react";
 import {useTranslation} from "react-i18next";
 import {PlusIcon} from "@navikt/aksel-icons";
-import IntegrationTable from "~/routes/integrations/integration-table";
-import SourceApplicationApi from "~/api/source-application-api";
-import {json, LoaderFunction, LoaderFunctionArgs} from "@remix-run/node";
+import IntegrationTable from "~/routes/integrations/IntegrationTable";
+import SourceApplicationApi from "~/api/SourceApplicationApi";
+import {json, LoaderFunctionArgs} from "@remix-run/node";
 import {useLoaderData} from "@remix-run/react";
-import IntegrationApi from "~/api/integration-api";
-import ConfigurationApi from "~/api/configuration-api";
+import IntegrationApi from "~/api/IntegrationApi";
+import ConfigurationApi from "~/api/ConfigurationApi";
+
 // import ConfigurationApi from "~/api/configuration-api";
 
 export async function loader({params, request}: LoaderFunctionArgs) {

@@ -25,10 +25,10 @@ import {MenuElipsisVerticalCircleIcon, PencilWritingIcon} from '@navikt/aksel-ic
 // import IntegrationRepository from "../../../api/IntegrationRepository";
 // import ConfigurationRepository from "../../../api/ConfigurationRepository";
 // import {IAlertMessage, Page} from "../../../components/types/TableTypes";
-import {IIntegration, IIntegrationPatch} from "~/api/types/integration";
-import {IPage} from "~/api/types/table-types";
-import {IConfiguration} from "~/api/types/configuration";
-import ConfigurationApi from "~/api/configuration-api";
+import {IIntegration, IIntegrationPatch} from "~/types/Integration";
+import {IPage} from "~/types/TableTypes";
+import {IConfiguration} from "~/types/Configuration";
+import ConfigurationApi from "~/api/ConfigurationApi";
 import {useLoaderData} from "@remix-run/react";
 
 type Props = {

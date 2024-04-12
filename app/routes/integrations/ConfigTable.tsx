@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Box, HStack, Pagination, Table} from "@navikt/ds-react";
-import {IConfiguration} from "~/api/types/configuration";
-import {IPage} from "~/api/types/table-types";
+import {IConfiguration} from "~/types/Configuration";
+import {IPage} from "~/types/TableTypes";
 import {useTranslation} from "react-i18next";
 
 

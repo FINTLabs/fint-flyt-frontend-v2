@@ -1,8 +1,8 @@
 import mockConfigs from './mock-configuration-page.json';
 import mockConfig from './mock-configuration.json';
 import mockDraftConfig from './mock-configuration-drafts.json';
-import {IConfiguration} from "~/api/types/configuration";
-import {IPage} from "~/api/types/table-types";
+import {IConfiguration} from "~/types/Configuration";
+import {IPage} from "~/types/TableTypes";
 
 export interface IConfigurationPage extends IPage<IConfiguration> {}
 class ConfigurationApi {

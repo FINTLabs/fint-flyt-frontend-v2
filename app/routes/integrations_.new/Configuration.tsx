@@ -1,7 +1,7 @@
 import React from 'react';
 // import {useHistory} from 'react-router-dom';
-import {IIntegration} from "~/api/types/integration";
-import {IAlertMessage} from "~/api/types/table-types";
+import {IIntegration} from "~/types/Integration";
+import {IAlertMessage} from "~/types/TableTypes";
 // import {SourceApplicationContext} from "../../context/SourceApplicationContext";
 // import OutgoingDataComponent from "../../features/configuration/components/OutgoingDataComponent";
 // import {Controller, FormProvider, useForm} from "react-hook-form";

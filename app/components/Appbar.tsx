@@ -3,10 +3,10 @@ import {InternalHeader, Button, Dropdown, Spacer, Label, Link} from "@navikt/ds-
 import { LanguageIcon } from '@navikt/aksel-icons';
 import {useTranslation} from "react-i18next";
 import {changeLanguage} from "i18next";
-import MenuItems from "~/components/menu-items";
+import MenuItems from "~/components/MenuItems";
 import logo from "/images/fint-by-novari.svg";
 
-export const AppBar = () => {
+export const Appbar = () => {
     // const history = useHistory();
     const {t} = useTranslation('translations', {keyPrefix: 'menu'});
 

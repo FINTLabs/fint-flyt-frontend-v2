@@ -1,11 +1,9 @@
-import {IIntegrationPage} from "~/api/types/integration";
-
-const API_URL = process.env.API_URL || '';
-
-
+import {IIntegrationPage} from "~/types/Integration";
 import allIntegration from './mock-allIntegrations.json';
 import getAllStatistics from './mock-statistikk.json';
 import integrationPageData from "./mock-integration-page.json";
+
+const API_URL = process.env.API_URL || '';
 
 class IntegrationApi {
 

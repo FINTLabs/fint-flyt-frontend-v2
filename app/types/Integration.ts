@@ -1,4 +1,4 @@
-import {IPage} from "~/api/types/table-types";
+import {IPage} from "~/types/TableTypes";
 
 export interface IIntegrationPage extends IPage<IIntegration> {}
 

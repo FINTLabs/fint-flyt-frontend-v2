@@ -1,6 +1,6 @@
 import {Box, Heading, HelpText, HStack} from "@navikt/ds-react";
 import {useTranslation} from "react-i18next";
-import Configuration from "~/routes/integrations_.new/configuration";
+import Configuration from "~/routes/integrations_.new/Configuration";
 
 export default function Index() {
     const {t} = useTranslation('translations', {keyPrefix: 'pages.integrations'})

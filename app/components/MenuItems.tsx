@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import {Button, Link} from "@navikt/ds-react";
+import {useNavigate} from "react-router-dom";
+import {useTranslation} from "react-i18next";
+import {Button} from "@navikt/ds-react";
 // import routes from "./routes";
 const MenuItems = () => {
 	const { t } = useTranslation("translations", { keyPrefix: "menuItems" });

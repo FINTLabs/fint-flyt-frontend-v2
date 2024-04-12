@@ -1,8 +1,8 @@
 import {Box, HStack, Loader, Pagination, SortState, Table} from "@navikt/ds-react";
 import {useTranslation} from "react-i18next";
 import React, {useState} from "react";
-import IntegrationPanel from "~/routes/integrations/integrations-panel";
-import {getDestinationDisplayName, getSourceApplicationDisplayNameById, getStateDisplayName} from "~/util/table-util";
+import IntegrationPanel from "~/routes/integrations/IntegrationPanel";
+import {getDestinationDisplayName, getSourceApplicationDisplayNameById, getStateDisplayName} from "~/util/TableUtils";
 
 import {useLoaderData, useNavigate} from "@remix-run/react";
 
