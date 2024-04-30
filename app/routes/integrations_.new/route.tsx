@@ -27,11 +27,11 @@ export default function Index() {
                 borderWidth="2"
                 borderColor={"border-subtle"}
             >
-                <Configuration
-                    id={1}
-                    integration={1}
-                    // onError={}
-                />
+                {/*<Configuration*/}
+                {/*    id={1}*/}
+                {/*    integration={1}*/}
+                {/*    // onError={}*/}
+                {/*/>*/}
 
             </Box>
         </Box>

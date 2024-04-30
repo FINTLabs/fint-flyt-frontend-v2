@@ -1,0 +1,85 @@
+{
+  "content": [
+    {
+      "id": 36,
+      "displayName": "dfgsrthsrht",
+      "fromApplicationId": 1,
+      "fromTypeId": "mediatype",
+      "toApplicationId": "fylkesrad",
+      "toTypeId": "text",
+      "convertingMap": {
+        "test": "test"
+      }
+    },
+    {
+      "id": 3,
+      "displayName": "test kommunenavn",
+      "fromApplicationId": 2,
+      "fromTypeId": "text",
+      "toApplicationId": "fylkesrad",
+      "toTypeId": "text",
+      "convertingMap": {
+        "ALVER": "Alver"
+      }
+    },
+    {
+      "id": 2,
+      "displayName": "Hoveddok mediatype til filformat v1",
+      "fromApplicationId": 2,
+      "fromTypeId": "mediatype",
+      "toApplicationId": "fylkesrad",
+      "toTypeId": "filformat",
+      "convertingMap": {
+        "application/msword": "https://beta.felleskomponent.no/arkiv/kodeverk/format/systemid/DOC",
+        "application/pdf": "https://beta.felleskomponent.no/arkiv/kodeverk/format/systemid/PDF",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "https://beta.felleskomponent.no/arkiv/kodeverk/format/systemid/DOCX"
+      }
+    },
+    {
+      "id": 1,
+      "displayName": "Mediatype til filformat",
+      "fromApplicationId": 2,
+      "fromTypeId": "mediatype",
+      "toApplicationId": "fylkesrad",
+      "toTypeId": "filformat",
+      "convertingMap": {
+        "image/png": "https://beta.felleskomponent.no/arkiv/kodeverk/format/systemid/PNG",
+        "application/json": "https://beta.felleskomponent.no/arkiv/kodeverk/format/systemid/JSON",
+        "application/msword": "https://beta.felleskomponent.no/arkiv/kodeverk/format/systemid/DOC",
+        "application/pdf": "https://beta.felleskomponent.no/arkiv/kodeverk/format/systemid/PDF",
+        "image/jpeg": "https://beta.felleskomponent.no/arkiv/kodeverk/format/systemid/JPEG",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": "https://beta.felleskomponent.no/arkiv/kodeverk/format/systemid/XLSX",
+        "application/vnd.ms-excel": "https://beta.felleskomponent.no/arkiv/kodeverk/format/systemid/XLS",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document": "https://beta.felleskomponent.no/arkiv/kodeverk/format/systemid/DOCX",
+        "audio/mpeg": "https://beta.felleskomponent.no/arkiv/kodeverk/format/systemid/MP3",
+        "text/plain": "https://beta.felleskomponent.no/arkiv/kodeverk/format/systemid/TXT",
+        "video/mp4": "https://beta.felleskomponent.no/arkiv/kodeverk/format/systemid/MP4"
+      }
+    }
+  ],
+  "pageable": {
+    "sort": {
+      "empty": false,
+      "sorted": true,
+      "unsorted": false
+    },
+    "offset": 0,
+    "pageNumber": 0,
+    "pageSize": 100,
+    "paged": true,
+    "unpaged": false
+  },
+  "totalPages": 1,
+  "totalElements": 4,
+  "last": true,
+  "size": 100,
+  "number": 0,
+  "sort": {
+    "empty": false,
+    "sorted": true,
+    "unsorted": false
+  },
+  "numberOfElements": 4,
+  "first": true,
+  "empty": false
+}
