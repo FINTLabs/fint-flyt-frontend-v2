@@ -11,8 +11,6 @@ export default () => {
     };
 
     return (
-<div>
-            <div>Channel</div>
             <HStack gap="2" align="start">
 
                     <Tag
@@ -35,7 +33,6 @@ export default () => {
             </HStack>
 
 
-</div>
 
     );
 };

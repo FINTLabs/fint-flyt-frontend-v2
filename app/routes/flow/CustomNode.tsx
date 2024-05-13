@@ -2,8 +2,10 @@ import React, { memo } from 'react';
 import { Handle, Position } from 'reactflow';
 import { DatabaseIcon } from '@navikt/aksel-icons';
 import { GlassesIcon } from '@navikt/aksel-icons';
+import {Heading, Label} from "@navikt/ds-react";
 
 function CustomNode({ data }) {
+
     return (
         // <div className="relative px-4 py-2 shadow-md rounded-md bg-white border-2 border-stone-400">
         //     <div className="flex">
@@ -18,32 +20,32 @@ function CustomNode({ data }) {
         //
         // </div>
 
-        <div className={"flex"}>
-            <div className="relative shadow-md rounded-md bg-white border-2 border-stone-400 flex items-center justify-center m-2">
-                <GlassesIcon title="a11y-title" fontSize="1.5rem"/>
+        // <div className={"flex"}>
+        <div className="bg-gray-200 rounded-xl border border-black flex justify-end p-5">
+            {/*<div className="relative">*/}
+            <div className="flex flex-col">
+
+                {data.connections.map((c, index) => (
+                    <div
+                        key={c.id}
+                        className="relative  shadow-md rounded-md bg-white border-2 border-stone-400 mt-3"
+                        // style={{display: 'inline-block'}}
+                    >
+                        <Heading size="xsmall">{c.name}</Heading>
+                        <Handle
+                            key={c.id}
+                            type="source"
+                            position={Position.Right}
+                            className="w-12 !bg-teal-500"
+                            id={c.id}
+                        />
+                    </div>
+                ))}
+
             </div>
-            <div className="relative shadow-md rounded-md bg-white  ">
-                <div className="relative px-4 py-2 shadow-md rounded-md bg-white border-2 border-stone-400">
-                    <Handle type="source" position={Position.Right} className="w-16 !bg-teal-500" id={'handle-0'}/>
-                </div>
 
-                <div className="relative px-4 py-2 shadow-md rounded-md bg-white ">
-                    <Handle type="source" position={Position.Right} className="w-16 !bg-teal-500" id={'handle-1'}/>
-                </div>
-
-                <div className="relative px-4 py-2 shadow-md rounded-md bg-white ">
-                    <Handle type="source" position={Position.Right} className="w-16 !bg-teal-500" id={'handle-2'}/>
-                </div>
-
-                <div className="relative px-4 py-2 shadow-md rounded-md bg-white ">
-                    <Handle type="source" position={Position.Right} className="w-16 !bg-teal-500" id={'handle-3'}/>
-                </div>
-
-                <div className="relative px-4 py-2 shadow-md rounded-md bg-white ">
-                    <Handle type="source" position={Position.Right} className="w-16 !bg-teal-500" id={'handle-4'}/>
-                </div>
             </div>
-        </div>
+        // </div>
 
     );
 }

@@ -18,55 +18,80 @@ import CustomInputNode from "~/routes/flow/CustomInputNode";
 import ChannelNodeList from "~/routes/flow/ChannelNodeList";
 import AnotherCustomNode    from "~/routes/flow/AnotherCustomNode";
 import anotherCustomNode from "~/routes/flow/AnotherCustomNode";
+import SidebarMenu  from "~/routes/flow/SidebarMenu";
+import {MiniMap} from "@reactflow/minimap";
+import CustomBlueNode from "~/routes/flow/CustomBlueNode";
+import CustomYellowNode from "~/routes/flow/CustomYellowNode";
 
 const nodeTypes = {
     custom: CustomNode,
     customInput: CustomInputNode,
-    anotherCustomNode: AnotherCustomNode
+    anotherCustomNode: AnotherCustomNode,
+    customBlue: CustomBlueNode,
+    customYellow: CustomYellowNode,
 };
+
+const inputData = [
+    { id: '1', name: 'Node 1' },
+    { id: '2', name: 'Node 2' },
+    { id: '3', name: 'Node 2' },
+    { id: '4', name: 'Node 2' },
+    { id: '5', name: 'Node 2' },
+    // add more data here
+];
 
 const initialNodes = [
     {
         id: '1',
-        data: { name: 'Database Node', job: 'Developer'},
+        data: { name: 'Database Node', job: 'Developer', connections: inputData, input:true},
         position: { x: 0, y: 0 },
         type: 'custom',
 
     },
     {
         id: '2',
-        data: { label: 'Hello World' },
-        position: { x: 100, y: 100 },
-        type: 'anotherCustomNode'
+        data: { label: 'test input node', connections: inputData },
+        position: { x: 300, y: 100 },
+        type: 'anotherCustomNode',
+        isConnectable: true,
     },
     {
         id: '3',
         data: { label: 'Hello World' },
-        position: { x: 100, y: 100 },
-        type: 'CustomInputNode',
+        position: { x: 200, y: 200 },
+        type: 'customBlue',
+    },
+    {
+        id: '4',
+        data: { label: 'Hello World' },
+        position: { x: 300, y: 200 },
+        type: 'customYellow',
     },
 ];
 
 const initialEdges = [
     {
-    id: '1->2',
-        type: 'step',
-    source: '1',
-    target: '2',
-    markerEnd: {
-        type: MarkerType.ArrowClosed,
-    },
-    label: 'edge with an arrow',
-}
+        id: '2->3',
+        type: 'bezier',
+        source: '2',
+        target: '3',
+        markerEnd: {
+            type: MarkerType.ArrowClosed,
+        },
+        label: 'edge with an arrow',
+    }
 ];
 
 let id = 0;
 const getId = () => `dndnode_${id++}`;
 
+
+
 export default function Index() {
     const {t} = useTranslation('translations', {keyPrefix: 'pages.integrations'})
 
     const proOptions = { hideAttribution: true };
+    const defaultViewport = { x: 0, y: 0, zoom: 1 };
 
     // const reactFlowWrapper = useRef(null);
     const [reactFlowInstance, setReactFlowInstance] = useState(null);
@@ -147,20 +172,11 @@ export default function Index() {
                         borderWidth="2"
                         borderColor={"border-subtle"}
                     >
-                        <ChannelNodeList />
+
+                        <SidebarMenu />
                     </Box>
 
-                    <Box
-                        id={"flow-buttons"}
-                        background={"surface-default"}
-                        padding="6"
-                        borderRadius={"large"}
-                        borderWidth="2"
-                        borderColor={"border-subtle"}
-                    >
-                        <Button onClick={() => console.log(nodes)}>Print nodes</Button>
-                        <Button onClick={() => console.log(edges)}>Print edges</Button>
-                    </Box>
+
                 </VStack>
 
                     <Box id={"integration-table-container"} background={"surface-default"} padding="6" borderRadius={"large"}
@@ -172,22 +188,34 @@ export default function Index() {
                         edges={edges}
                         onEdgesChange={onEdgesChange}
                         onConnect={onConnect}
-                        fitView
+                        // fitView
                         onDrop={onDrop}
                         onDragOver={onDragOver}
                         onInit={setReactFlowInstance}
                         proOptions={proOptions}
                         nodeTypes={nodeTypes}
+                        defaultViewport={defaultViewport}
                     >
                         <Background/>
                         <Controls/>
+                        <MiniMap />
 
                     </ReactFlow>
                     </Box>
 
                 </ReactFlowProvider>
             </HGrid>
-
+            <Box
+                id={"flow-buttons"}
+                background={"surface-default"}
+                padding="6"
+                borderRadius={"large"}
+                borderWidth="2"
+                borderColor={"border-subtle"}
+            >
+                <Button onClick={() => console.log(nodes)}>Print nodes</Button>
+                <Button onClick={() => console.log(edges)}>Print edges</Button>
+            </Box>
         </Box>
     );
 }

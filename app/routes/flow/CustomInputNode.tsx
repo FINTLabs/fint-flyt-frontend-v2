@@ -4,7 +4,7 @@ import {CheckmarkCircleFillIcon, ExclamationmarkTriangleFillIcon} from '@navikt/
 import {Heading} from "@navikt/ds-react";
 import CustomHandle from "~/routes/flow/CustomHandle";
 
-function CustomNode({ data }) {
+function CustomInputNode({ data }) {
 
     return (
         <div className="px-4 py-2 shadow-md rounded-md bg-amber-50 border-2 border-stone-400 ">
@@ -52,4 +52,4 @@ function CustomNode({ data }) {
     );
 }
 
-export default memo(CustomNode);
+export default memo(CustomInputNode);
