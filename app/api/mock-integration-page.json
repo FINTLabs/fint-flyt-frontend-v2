@@ -7,6 +7,14 @@
       "destination": "fylkesrad",
       "state": "ACTIVE",
       "activeConfigurationId": 3
+    },
+    {
+      "id": 2,
+      "sourceApplicationId": 3,
+      "sourceApplicationIntegrationId": "JENNIFER-TEST",
+      "destination": "fylkesrad",
+      "state": "ACTIVE",
+      "activeConfigurationId": 3
     }
   ],
   "pageable": {
@@ -22,7 +30,7 @@
     "unpaged": false
   },
   "totalPages": 1,
-  "totalElements": 1,
+  "totalElements": 2,
   "last": true,
   "size": 1000,
   "number": 0,

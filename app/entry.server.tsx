@@ -16,6 +16,7 @@ const ABORT_DELAY = 5_000;
 if(process.env.CYPRESS_TESTS === "true") {
   server.listen();
 }
+//todo: Find a way to run tests on deployment also
 
 export default function handleRequest(
   request: Request,
