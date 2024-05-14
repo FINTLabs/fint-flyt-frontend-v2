@@ -43,7 +43,7 @@ export default () => {
                          draggable>
                         Input Node
                     </div>
-                    <div className={`${styles.dndnode}`} onDragStart={(event) => onDragStart(event, 'custom')}
+                    <div className={`${styles.dndnode}`} onDragStart={(event) => onDragStart(event, 'customNodeNew')}
                          draggable>
                         Default Node
                     </div>

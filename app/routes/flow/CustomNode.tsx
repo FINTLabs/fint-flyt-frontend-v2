@@ -33,6 +33,7 @@ function CustomNode({ data }) {
                     >
                         <Heading size="xsmall">{c.name}</Heading>
                         <Handle
+                            isConnectable={true}
                             key={c.id}
                             type="source"
                             position={Position.Right}

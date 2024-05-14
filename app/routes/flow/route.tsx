@@ -22,6 +22,7 @@ import SidebarMenu  from "~/routes/flow/SidebarMenu";
 import {MiniMap} from "@reactflow/minimap";
 import CustomBlueNode from "~/routes/flow/CustomBlueNode";
 import CustomYellowNode from "~/routes/flow/CustomYellowNode";
+import CustomNodeNew from './CustomNodeNew';
 
 const nodeTypes = {
     custom: CustomNode,
@@ -29,16 +30,19 @@ const nodeTypes = {
     anotherCustomNode: AnotherCustomNode,
     customBlue: CustomBlueNode,
     customYellow: CustomYellowNode,
+    customNew: CustomNodeNew,
 };
 
 const inputData = [
     { id: '1', name: 'Node 1' },
     { id: '2', name: 'Node 2' },
-    { id: '3', name: 'Node 2' },
-    { id: '4', name: 'Node 2' },
-    { id: '5', name: 'Node 2' },
+    { id: '3', name: 'Node 3' },
+    { id: '4', name: 'Node 4' },
+    { id: '5', name: 'Node 5' },
     // add more data here
 ];
+
+
 
 const initialNodes = [
     {
@@ -52,7 +56,7 @@ const initialNodes = [
         id: '2',
         data: { label: 'test input node', connections: inputData },
         position: { x: 300, y: 100 },
-        type: 'anotherCustomNode',
+        // type: 'anotherCustomNode',
         isConnectable: true,
     },
     {
@@ -67,14 +71,20 @@ const initialNodes = [
         position: { x: 300, y: 200 },
         type: 'customYellow',
     },
+    {
+        id: '5',
+        data: { label: 'the new one'},
+        position: { x: 100, y: 100 },
+        type: 'customNew'
+    }
 ];
 
 const initialEdges = [
     {
         id: '2->3',
-        type: 'bezier',
-        source: '2',
-        target: '3',
+        type: 'smoothstep',
+        source: '1',
+        target: '2',
         markerEnd: {
             type: MarkerType.ArrowClosed,
         },
