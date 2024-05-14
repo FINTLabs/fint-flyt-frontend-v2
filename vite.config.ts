@@ -10,6 +10,9 @@ installGlobals();
 
 export default defineConfig({
   plugins: [remix(), tsconfigPaths()],
+  server: {
+    port: 3000 // Set the port here
+  },
   css: {
     postcss: {
       plugins: [

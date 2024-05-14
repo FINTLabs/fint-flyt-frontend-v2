@@ -18,7 +18,7 @@ function CustomBlueNode({ data }) {
                 type="source"
             position={Position.Right}
             className="w-12 !bg-teal-500"
-            // id={c.id}
+            id={'3'}
         />
         </div>
 

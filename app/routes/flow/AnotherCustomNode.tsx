@@ -17,7 +17,7 @@ export default memo(({ data, isConnectable }) => {
                 key={c.id}
                 type="source"
                 position={Position.Bottom}
-                id={c.id}
+                id={'3'}
                 style={{...DEFAULT_HANDLE_STYLE, left: `${(index + 1) * 15}%`}}
                 isConnectable={isConnectable}
             />

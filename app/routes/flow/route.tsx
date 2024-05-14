@@ -22,7 +22,6 @@ import SidebarMenu  from "~/routes/flow/SidebarMenu";
 import {MiniMap} from "@reactflow/minimap";
 import CustomBlueNode from "~/routes/flow/CustomBlueNode";
 import CustomYellowNode from "~/routes/flow/CustomYellowNode";
-import CustomNodeNew from './CustomNodeNew';
 
 const nodeTypes = {
     custom: CustomNode,
@@ -30,7 +29,6 @@ const nodeTypes = {
     anotherCustomNode: AnotherCustomNode,
     customBlue: CustomBlueNode,
     customYellow: CustomYellowNode,
-    customNew: CustomNodeNew,
 };
 
 const inputData = [
@@ -41,8 +39,6 @@ const inputData = [
     { id: '5', name: 'Node 5' },
     // add more data here
 ];
-
-
 
 const initialNodes = [
     {
@@ -56,7 +52,7 @@ const initialNodes = [
         id: '2',
         data: { label: 'test input node', connections: inputData },
         position: { x: 300, y: 100 },
-        // type: 'anotherCustomNode',
+        type: 'anotherCustomNode',
         isConnectable: true,
     },
     {
@@ -82,9 +78,9 @@ const initialNodes = [
 const initialEdges = [
     {
         id: '2->3',
-        type: 'smoothstep',
-        source: '1',
-        target: '2',
+        type: 'bezier',
+        source: '2',
+        target: '3',
         markerEnd: {
             type: MarkerType.ArrowClosed,
         },

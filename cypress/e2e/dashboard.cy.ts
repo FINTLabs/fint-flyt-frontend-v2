@@ -18,12 +18,12 @@ describe('Components Page Tests', () => {
     });
 
     beforeEach(() => {
-        cy.visit('http://localhost:5174/');
+        cy.visit('http://localhost:3000/');
         cy.viewport(1920, 1080);
     });
 
     it('passes', () => {
-        cy.visit('http://localhost:5174/')
+        cy.visit('http://localhost:3000/')
     })
 
     it('Check page layout', () => {
