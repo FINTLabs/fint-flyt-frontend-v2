@@ -21,7 +21,7 @@ const initialNodes = [
   {
     id: "1",
     position: { x: 100, y: 100 },
-    data: { label: "1" },
+    data: { label: "My custom node with a long title" },
     type: "inputNode",
   },
   {
