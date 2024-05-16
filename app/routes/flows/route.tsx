@@ -38,7 +38,8 @@ const initialNodes = [
     data: {
       label: "3",
       sources: [
-        { id: "1", name: "test" },
+        { id: "0", name: "test" },
+        { id: "1", name: "test1" },
         { id: "2", name: "test2" },
         { id: "3", name: "test3" },
         { id: "4", name: "test4" },
@@ -56,7 +57,21 @@ const initialNodes = [
     data: {
       label: "4",
       sources: [
-        { id: "1", name: "test" },
+        { id: "0", name: "test" },
+        { id: "1", name: "test1" },
+        { id: "2", name: "test2" },
+      ],
+    },
+    type: "openObject",
+  },
+  {
+    id: "5",
+    position: { x: 470, y: 300 },
+    data: {
+      label: "5",
+      sources: [
+        { id: "0", name: "test" },
+        { id: "1", name: "test1" },
         { id: "2", name: "test2" },
       ],
     },
@@ -80,6 +95,20 @@ const initialEdges = [
     type: "smoothstep",
     startLabel: "{ } Skjema",
   },
+{
+  id: "open_4-3",
+  source: "4",
+  sourceHandle: "source-2",
+  target: "3",
+  type: "smoothstep",
+},
+{
+  id: "open_4-5",
+  source: "4",
+  sourceHandle: "source-1",
+  target: "5",
+  type: "smoothstep",
+}
 ];
 
 export default function index() {
@@ -104,6 +133,7 @@ export default function index() {
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
+          fitView
         />
         <Controls />
       </ReactFlowProvider>
