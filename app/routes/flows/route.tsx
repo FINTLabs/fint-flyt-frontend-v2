@@ -52,7 +52,7 @@ const initialNodes = [
   },
   {
     id: "4",
-    position: { x: 300, y: 250 },
+    position: { x: 300, y: 280 },
     data: {
       label: "4",
       sources: [
@@ -71,14 +71,14 @@ const initialEdges = [
     source: "1",
     target: "2",
     type: "smoothstep",
-    label: "{ } Skjema",
+    startLabel: "{ } Skjema",
   },
   {
     id: "skjema_1-2",
     source: "1",
     target: "4",
     type: "smoothstep",
-    label: "{ } Skjema",
+    startLabel: "{ } Skjema",
   },
 ];
 
@@ -104,7 +104,6 @@ export default function index() {
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
-          fitView
         />
         <Controls />
       </ReactFlowProvider>

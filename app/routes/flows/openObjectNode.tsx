@@ -14,7 +14,9 @@ function openObjectNode({ data }) {
 //     }
 // );
 return (
-  <div>
+  <div className="flex justify-center">
+  <div className="absolute z-10 bottom-full mb-2 text-center w-[200px]">Åpne Objekt</div>
+  <div className="flex flex-row">
       <Handle type="target" position={Position.Left} />
       <div className="w-16 flex flex-col items-center justify-center bg-slate-300 rounded-xl border border-black" style={{ height: `${componentHeight}px` }}>
           <img
@@ -24,12 +26,16 @@ return (
           />
           <p className="text-sm">modular</p>
       </div>
-      {data.sources.map((x, i) => (
-          <Handle key={i} type="source" position={Position.Right} style={{ top: `${(i + 1) * sourceHeight}%` }} />
+      <div className="flex flex-col h-[90%] justify-between">
+      {data.sources.map(( x, i ) => (
+          <Handle key={i} type="source" id={`sources-{i}`} position={Position.Right} style={{ top: `${(i + 1) * 16}%` }} />
       ))}
+      </div>
+  </div>
   </div>
 );
-
 }
 
 export default openObjectNode;
+
+// style={{ top: `${(i + 1) * sourceHeight}%` }}
