@@ -12,11 +12,14 @@ import "reactflow/dist/style.css";
 import inputNode from "./inputNode";
 import openObjectNode from "./openObjectNode";
 import openObjectNodeOld from "./openObjectOld";
+import GenericNode from "./genericNode";
 
 const nodeTypes = {
+  generic: GenericNode,
   inputNode: inputNode,
   openObject: openObjectNode,
   openObjectOld: openObjectNodeOld,
+
 };
 
 const initialNodes = [
@@ -26,15 +29,15 @@ const initialNodes = [
     data: { label: "1" },
     type: "inputNode",
   },
-  // {
-  //   id: "2",
-  //   position: { x: 300, y: 75 },
-  //   data: { label: "2" },
-  //   type: "openObjectOld",
-  // },
+  {
+    id: "2",
+    position: { x: 270, y: 75 },
+    data: { label: "2" },
+    type: "generic",
+  },
   {
     id: "3",
-    position: { x: 450, y: 75 },
+    position: { x: 500, y: 75 },
     data: {
       label: "3",
       sources: [
