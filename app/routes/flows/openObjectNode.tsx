@@ -2,7 +2,7 @@ import { Handle, Position } from "reactflow";
 
 function openObjectNode({ data }) {
   const baseHeight = 70;
-  const extraHeightPerHandle = 12;
+  const extraHeightPerHandle = 15;
 
   const componentHeight =
     data.sources.length < 4
@@ -29,7 +29,8 @@ function openObjectNode({ data }) {
             className="h-[50px]"
           />
         </div>
-        <div className="flex flex-col h-[90%] justify-between style={{ position: 'relative', height: `${componentHeight}px` }}>">
+        <div className="flex flex-col h-[90%] justify-between" 
+        style={{ position: 'relative', height: `${componentHeight}px` }}>
           {data.sources.map((x, i) => (
             <Handle
               key={i}

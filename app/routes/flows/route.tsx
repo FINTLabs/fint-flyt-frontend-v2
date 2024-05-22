@@ -26,12 +26,12 @@ const initialNodes = [
     data: { label: "1" },
     type: "inputNode",
   },
-  {
-    id: "2",
-    position: { x: 300, y: 75 },
-    data: { label: "2" },
-    type: "openObjectOld",
-  },
+  // {
+  //   id: "2",
+  //   position: { x: 300, y: 75 },
+  //   data: { label: "2" },
+  //   type: "openObjectOld",
+  // },
   {
     id: "3",
     position: { x: 450, y: 75 },
@@ -60,13 +60,14 @@ const initialNodes = [
         { id: "0", name: "test" },
         { id: "1", name: "test1" },
         { id: "2", name: "test2" },
+        { id: "4", name: "test4" },
       ],
     },
     type: "openObject",
   },
   {
     id: "5",
-    position: { x: 470, y: 300 },
+    position: { x: 460, y: 330 },
     data: {
       label: "5",
       sources: [
@@ -133,7 +134,6 @@ export default function index() {
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
-          fitView
         />
         <Controls />
       </ReactFlowProvider>
