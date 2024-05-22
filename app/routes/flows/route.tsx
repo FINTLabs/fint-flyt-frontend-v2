@@ -37,7 +37,7 @@ const initialNodes = [
   },
   {
     id: "3",
-    position: { x: 500, y: 75 },
+    position: { x: 550, y: 75 },
     data: {
       label: "3",
       sources: [
@@ -70,7 +70,7 @@ const initialNodes = [
   },
   {
     id: "5",
-    position: { x: 460, y: 330 },
+    position: { x: 500, y: 350 },
     data: {
       label: "5",
       sources: [
@@ -90,16 +90,20 @@ const initialEdges = [
     source: "1",
     target: "2",
     type: "smoothstep",
-    startLabel: "{ } Skjema",
   },
   {
-    id: "skjema_1-2",
+    id: "skjema_2-3",
+    source: "2",
+    target: "3",
+    type: "smoothstep",
+  },
+  {
+    id: "skjema_1-4",
     source: "1",
     target: "4",
     type: "smoothstep",
-    startLabel: "{ } Skjema",
   },
-{
+  {
   id: "open_4-3",
   source: "4",
   sourceHandle: "source-2",
@@ -137,6 +141,7 @@ export default function index() {
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
+          fitView
         />
         <Controls />
       </ReactFlowProvider>
