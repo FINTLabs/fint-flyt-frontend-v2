@@ -14,7 +14,7 @@ function openObjectNode({ data }) {
 
   return (
     <div className="flex justify-center">
-      <div className="absolute z-10 bottom-full mb-2 text-center w-[200px]">
+      <div className="absolute z-10 bottom-full mb-2 text-center w-[100px]">
         Åpne Objekt
       </div>
       <div className="flex flex-row items-center">

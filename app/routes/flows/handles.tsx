@@ -6,10 +6,17 @@ export function CustomHandle({
   position,
   id = null,
   labeltype,
-  labeltext = ''
+  labeltext = '',
+  className = ''
 }) {
-  const renderLabel = (labeltype, labeltext) => {
-    console.log('Rendering label:', labeltype, labeltext); // Debugging log
+
+    console.log("CustomHandle is rendering");
+
+
+  const renderLabel = (labeltype: string, labeltext: string) => {
+
+    console.log('Rendering label:', labeltype, labeltext);
+
     switch (labeltype) {
       case "success":
         return (
@@ -45,12 +52,13 @@ export function CustomHandle({
   };
 
   return (
-    <div className="flex flex-row items-center relative">
+    <div className={`flex flex-row items-center absolute ${className}`}>
       <Handle
         type="source"
         position={position}
         className="absolute z-10"
         id={id}
+        key="customHandle"
       />
       <div className="bg-white text-nowrap justify-center flex flex-row text-xs ml-2 border rounded-2xl px-4 p-1">
         {renderLabel(labeltype, labeltext)}
@@ -58,10 +66,12 @@ export function CustomHandle({
     </div>
   );
 }
-
 CustomHandle.propTypes = {
   position: PropTypes.oneOf(['top', 'bottom', 'left', 'right']).isRequired,
   id: PropTypes.string,
   labeltype: PropTypes.oneOf(['success', 'fail', 'object', 'name']).isRequired,
   labeltext: PropTypes.string
 };
+
+
+export default CustomHandle;
