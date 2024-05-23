@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Handle, Position } from "reactflow";
+
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ErrorIcon from '@mui/icons-material/Error';
+import DataObjectIcon from '@mui/icons-material/DataObject';
 
 export function CustomHandle({
   position,
@@ -33,10 +35,10 @@ export function CustomHandle({
         );
       case "object":
         return (
-          <>
-            <img src="images/object.svg" alt="objekt:" className="pr-1" />
+          <div className="flex items-center">
+            <DataObjectIcon className="pr-1 text-black" fontSize="small"/>
             <p>{labeltext}</p>
-          </>
+          </div>
         );
       case "name":
         return (
@@ -59,7 +61,7 @@ export function CustomHandle({
         id={id}
         key="customHandle"
       />
-      <div className="bg-white text-nowrap justify-center flex flex-row text-xs ml-2 border rounded-2xl px-1 absolute">
+      <div className="bg-white text-nowrap justify-center flex flex-row text-xs ml-2 border rounded-2xl pl-1 pr-2 absolute 2-1">
         {renderLabel(labeltype, labeltext)}
       </div>
     </div>
