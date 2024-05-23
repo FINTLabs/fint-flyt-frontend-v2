@@ -12,6 +12,10 @@
     "cypress:open": "cypress open"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/icons-material": "^5.15.18",
+    "@mui/material": "^5.15.18",
     "@navikt/ds-css": "^6.3.3",
     "@navikt/ds-react": "^6.3.3",
     "@remix-run/node": "^2.8.1",

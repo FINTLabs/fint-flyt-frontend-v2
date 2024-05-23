@@ -1,36 +1,35 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Handle, Position } from 'reactflow';
+import React from "react";
+import PropTypes from "prop-types";
+import { Handle, Position } from "reactflow";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import ErrorIcon from '@mui/icons-material/Error';
 
 export function CustomHandle({
   position,
   id = null,
   labeltype,
-  labeltext = '',
-  className = ''
+  labeltext = "",
+  className = "",
 }) {
-
-    console.log("CustomHandle is rendering");
-
+  console.log("CustomHandle is rendering");
 
   const renderLabel = (labeltype: string, labeltext: string) => {
-
-    console.log('Rendering label:', labeltype, labeltext);
+    console.log("Rendering label:", labeltype, labeltext);
 
     switch (labeltype) {
       case "success":
         return (
-          <>
-            <img src="images/success.svg" alt="success" className="pr-1" />
+          <div className="flex items-center">
+            <CheckCircleIcon className="pr-1 text-green-600" fontSize="small" />
             <p>Suksess</p>
-          </>
+          </div>
         );
       case "fail":
         return (
-          <>
-            <img src="images/fail.svg" alt="fail" className="pr-1" />
+          <div className="flex items-center">
+            <ErrorIcon className="pr-1 text-red-600" fontSize="small"/>
             <p>Feil</p>
-          </>
+          </div>
         );
       case "object":
         return (
@@ -52,7 +51,7 @@ export function CustomHandle({
   };
 
   return (
-    <div className={`flex flex-row items-center absolute ${className}`}>
+    <div className={`flex flex-row items-center relative ${className}`}>
       <Handle
         type="source"
         position={position}
@@ -60,18 +59,17 @@ export function CustomHandle({
         id={id}
         key="customHandle"
       />
-      <div className="bg-white text-nowrap justify-center flex flex-row text-xs ml-2 border rounded-2xl px-4 p-1">
+      <div className="bg-white text-nowrap justify-center flex flex-row text-xs ml-2 border rounded-2xl px-1 absolute">
         {renderLabel(labeltype, labeltext)}
       </div>
     </div>
   );
 }
 CustomHandle.propTypes = {
-  position: PropTypes.oneOf(['top', 'bottom', 'left', 'right']).isRequired,
+  position: PropTypes.oneOf(["top", "bottom", "left", "right"]).isRequired,
   id: PropTypes.string,
-  labeltype: PropTypes.oneOf(['success', 'fail', 'object', 'name']).isRequired,
-  labeltext: PropTypes.string
+  labeltype: PropTypes.oneOf(["success", "fail", "object", "name"]).isRequired,
+  labeltext: PropTypes.string,
 };
-
 
 export default CustomHandle;
