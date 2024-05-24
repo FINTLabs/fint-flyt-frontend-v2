@@ -1,5 +1,5 @@
 import { Handle, Position } from "reactflow";
-import CustomHandle from "./handles";
+import { CustomHandle } from "./customHandles";
 
 function inputNode({ data }) {
   return (

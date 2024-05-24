@@ -12,6 +12,7 @@ import "reactflow/dist/style.css";
 import inputNode from "./inputNode";
 import openObjectNode from "./openObjectNode";
 import GenericNode from "./genericNode";
+import { CustomHandle } from "./customHandles";
 
 const nodeTypes = {
   generic: GenericNode,
@@ -39,12 +40,13 @@ const initialNodes = [
     data: {
       label: "3",
       sources: [
-        { id: "0", name: "test" },
+        { id: "0", name: "test", },
         { id: "1", name: "test1" },
         { id: "2", name: "test2" },
         { id: "3", name: "test3" },
         { id: "4", name: "test4" },
         { id: "5", name: "test5" },
+        { id: "6", name: "test6" }
       ],
     },
     type: "openObject",

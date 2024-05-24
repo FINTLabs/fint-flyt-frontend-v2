@@ -1,4 +1,5 @@
 import { Handle, Position } from "reactflow";
+import { CustomHandle } from "./customHandles";
 
 function openObjectNode({ data }) {
   const baseHeight = 70;
@@ -18,11 +19,10 @@ function openObjectNode({ data }) {
         Åpne Objekt
       </div>
       <div className="flex flex-row items-center">
-        <Handle type="target" position={Position.Left} />
+      <CustomHandle position={Position.Left} id="1" labeltype="object" labeltext="Objekt"/>
         <div
           className="w-16 flex flex-col items-center justify-center bg-slate-300 rounded-xl border border-black"
-          style={{ height: `${componentHeight}px` }}
-        >
+          style={{ height: `${componentHeight}px` }}>
           <img
             src="../images/openObject.svg"
             alt="åpne Objekt"

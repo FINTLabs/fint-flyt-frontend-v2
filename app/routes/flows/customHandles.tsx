@@ -52,16 +52,24 @@ export function CustomHandle({
     }
   };
 
+  function labelPlacement() {
+    if (position == Position.Right) {
+     return ("flex-row"); 
+    } if (position == Position.Left) {
+     return ("flex-row-reverse");
+    }
+  }
+console.log(labelPlacement())
   return (
-    <div className={`flex flex-row items-center relative ${className}`}>
+    <div className={`flex  items-center relative ${labelPlacement()} ${className}`}>
       <Handle
-        type="source"
+        type={ position == Position.Right ? "source" : position == Position.Left ? "target" : undefined }
         position={position}
         className="absolute z-10"
         id={id}
         key="customHandle"
       />
-      <div className="bg-white text-nowrap justify-center flex flex-row text-xs ml-2 border rounded-2xl pl-1 pr-2 absolute 2-1">
+      <div className={`bg-white text-nowrap z-20 justify-center flex flex-row text-xs mx-2 h-6 border rounded-2xl pl-1 px-2 absolute`}>
         {renderLabel(labeltype, labeltext)}
       </div>
     </div>
@@ -73,5 +81,3 @@ CustomHandle.propTypes = {
   labeltype: PropTypes.oneOf(["success", "fail", "object", "name"]).isRequired,
   labeltext: PropTypes.string,
 };
-
-export default CustomHandle;
