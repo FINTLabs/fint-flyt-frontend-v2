@@ -8,14 +8,17 @@ interface NodeData {
 interface NodeProps {
     data: NodeData;
 }
-
 function SubFlowNode({ data }: NodeProps)  {
 
     return (
-        <HStack className="rounded-lg border border-black overflow-hidden" style={{width: '50rem'}}>
-            {data.label}
-            <div className="aspect-square h-60 w-12" style={{ backgroundColor: '#FFE6C1' }}/>
-            <Handle type="source" position={Position.Left}  />
+        <HStack className="rounded-lg border border-black overflow-hidden relative" style={{width: '50rem'}}>
+            <div className="absolute top-0 left-0 m-2">
+                {data.label}
+            </div>
+            <div className="aspect-square h-60 w-12 bg-gray-200" />
+            <div className="aspect-square h-60 flex-grow" style={{backgroundColor: '#ffffff'}}/>
+            <div className="aspect-square h-60 w-12 bg-gray-200 " />
+            <Handle type="target" position={Position.Left}/>
         </HStack>
     );
 }

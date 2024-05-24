@@ -8,7 +8,7 @@ import ReactFlow, {
     Node, OnConnect, OnEdgesChange,
     OnNodesChange,
     ReactFlowInstance,
-    ReactFlowProvider,
+    ReactFlowProvider, useReactFlow, XYPosition,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import useStore from './store';
@@ -18,6 +18,7 @@ import SidebarMenu from "~/routes/integrations/menu/SidebarMenu";
 import StaticValueNode from "~/routes/integrations/customNodes/StaticValueNode";
 import SubFlowNode from "~/routes/integrations/customNodes/SubFlowNode";
 import {useShallow} from "zustand/react/shallow";
+import {getNodePositionInsideParent, getId} from "~/routes/integrations/utils";
 
 const nodeTypes = {
     channel: ChannelNode,
@@ -33,6 +34,7 @@ type StoreState = {
     setNodes: (nodes: Node[]) => void;
     setEdges: (edges: Edge[]) => void;
     addNewNodeDrop: (newNode: Node) => void;
+    addSubNodes: (newNode: Node[]) => void;
 };
 
 const selector = (state: StoreState) => ({
@@ -41,12 +43,13 @@ const selector = (state: StoreState) => ({
     onNodesChange: state.onNodesChange,
     onEdgesChange: state.onEdgesChange,
     onConnect: state.onConnect,
-    addNewNodeDrop: state.addNewNodeDrop
+    addNewNodeDrop: state.addNewNodeDrop,
+    addSubNodes: state.addSubNodes,
 });
 
 
-let id = 0;
-const getId = () => `dndnode_${id++}`;
+// let id = 0;
+// const getId = () => `dndnode_${id++}`;
 
 
 export default function Index() {
@@ -56,9 +59,15 @@ export default function Index() {
     const defaultViewport = { x: 0, y: 0, zoom: 1 };
     const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
 
-    const { nodes, edges, onNodesChange, onEdgesChange, onConnect, addNewNodeDrop } = useStore(
-        useShallow(selector),
-    );
+    const {
+        nodes,
+        edges,
+        onNodesChange,
+        onEdgesChange,
+        onConnect,
+        addNewNodeDrop,
+        addSubNodes,
+    } = useStore(useShallow(selector));
 
     const onDragOver = useCallback((event: React.DragEvent<HTMLDivElement>) => {
         event.preventDefault();
@@ -86,41 +95,93 @@ export default function Index() {
                     y: event.clientY,
                 });
 
+                const intersections = reactFlowInstance.getIntersectingNodes({
+                    x: position.x,
+                    y: position.y,
+                    width: 40,
+                    height: 40,
+                }).filter((n) => n.type === 'subflow');
+                const groupNode = intersections[0];
+                console.log('Group node:', groupNode);
+
                 const newNode: Node = {
                     id: getId(),
                     type,
                     position,
-                    data: { inputType: `${inputType}`},
+                    data: { inputType: `${inputType}`, label: `${inputType} node`},
                     className: 'light',
                 };
-                console.log("adding  node", position)
+
+
+                if (groupNode) {
+                    // if we drop a node on a group node, we want to position the node inside the group
+                    newNode.position = getNodePositionInsideParent(
+                        {
+                            position,
+                            width: 40,
+                            height: 40,
+                        },
+                        groupNode
+                    ) ?? { x: 0, y: 0 };
+                    newNode.parentId = groupNode?.id;
+                    newNode.expandParent = true;
+                }
 
                 addNewNodeDrop(newNode);
 
-                if(type === 'subflow') {
+                //todo: Make this a function in a library
+                if(inputType === 'subflow-if-else') {
+                    // addParentNode(newNode);
                     const parentId = newNode.id;
-                    console.log("adding subflow child", position)
-                    const subNode: Node = {
+                    const subNode: Node[] = [
+                        {
                         id: getId(),
                         position: { x: 50, y: 100 },
                         className: 'light',
                         parentId: parentId,
                         extent: "parent",
                         data: { inputType: `subflow child`, label: "child node"},
-                    };
-                    addNewNodeDrop(subNode);
+                    }
+                    ];
+                    addSubNodes(subNode);
                 }
+
+                if(inputType === 'subflow-map') {
+                    // addParentNode(newNode);
+                    const parentId = newNode.id;
+                    console.log("adding subflow-map child", position)
+                    const subNode: Node[] = [
+                        {
+                            id: getId(),
+                            position: { x: 50, y: 100 },
+                            className: 'light',
+                            parentId: parentId,
+                            extent: "parent",
+                            data: { inputType: `subflow child`, label: "child node"},
+                        },
+                        {
+                            id: getId(),
+                            position: { x: 600, y: 100 },
+                            className: 'light',
+                            parentId: parentId,
+                            extent: "parent",
+                            data: { inputType: `subflow child`, label: "child node 2"},
+                        }
+                    ];
+                    addSubNodes(subNode);
+                }
+
                 // console.log("adding new node:", newNode);
             }
         },
         [reactFlowInstance],
     );
 
+    //todo: Make this a function in a library
+
+
     return (
-        <Box
-            padding="8"
-            paddingBlock="16"
-        >
+        <VStack>
             <HStack id={'instances-custom-header'} align={"center"} justify={"space-between"} gap={"2"} wrap={false}>
                 <HStack align={"center"} gap={"2"}>
                     <Heading size={"medium"}>{t('header')}</Heading>
@@ -186,6 +247,6 @@ export default function Index() {
                 <Button onClick={() => console.log(nodes)}>Print nodes</Button>
                 <Button onClick={() => console.log(edges)}>Print edges</Button>
             </Box>
-        </Box>
+        </VStack>
     );
 }

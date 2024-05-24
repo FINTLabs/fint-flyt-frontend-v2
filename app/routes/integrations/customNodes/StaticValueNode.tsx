@@ -1,43 +1,12 @@
-import { Handle, Position } from "reactflow";
-import { FileTextIcon, NumberListIcon, EnvelopeOpenIcon, ClockIcon } from '@navikt/aksel-icons';
-import { TextField } from "@navikt/ds-react";
-import React, { useState } from "react";
+import React, {useState} from "react";
+import {Handle, NodeProps, NodeToolbar, Position, useStore} from "reactflow";
+import {Button, TextField} from "@navikt/ds-react";
+import RemoveIcon from "~/components/imageUtils/RemoveIcon";
 
-interface NodeData {
-    inputType: "number" | "email" | "password" | "tel" | "text" | "decimal" | "time";
-}
 
-interface StaticValueNodeProps {
-    data: NodeData;
-}
-
-const getIcon = (inputType: NodeData['inputType']): JSX.Element => {
-    const iconProps = { title: "a11y-title", fontSize: "1.5rem" };
-    switch (inputType) {
-        case 'number':
-        case 'decimal':
-            return <NumberListIcon {...iconProps} />;
-        case 'email':
-            return <EnvelopeOpenIcon {...iconProps} />;
-        case 'time':
-            return <ClockIcon {...iconProps} />;
-        default:
-            return <FileTextIcon {...iconProps} />;
-    }
-};
-
-const StaticValueNode: React.FC<StaticValueNodeProps> = ({ data }) => {
+function StaticValueNode({ id, data }: NodeProps) {
     const [errorMsg, setErrorMsg] = useState<string | undefined>(undefined);
-
-    const getInputType = (inputType: NodeData['inputType']): "number" | "email" | "password" | "tel" | "text" | "time" | "url" => {
-        if (inputType === 'decimal') {
-            return "number";
-        }
-        if (["number", "email", "password", "tel", "text", "time", "url"].includes(inputType)) {
-            return inputType as "number" | "email" | "password" | "tel" | "text" | "time" | "url";
-        }
-        throw new Error(`Invalid inputType: ${inputType}`);
-    };
+    const hasParent = useStore((store) => !!store.nodeInternals.get(id)?.parentId);
 
     const validateInput = (value: string): void => {
         if (data.inputType === 'decimal') {
@@ -46,11 +15,45 @@ const StaticValueNode: React.FC<StaticValueNodeProps> = ({ data }) => {
         }
     };
 
+    function onDelete() {
+        console.log("Delete");
+    }
+
+    function onDetach() {
+        console.log("Detach");
+    }
+
+    function getIcon(inputType: string) {
+        switch (inputType) {
+        case 'text':
+            return 'text_fields';
+        case 'number':
+            return 'numbers';
+        case 'decimal':
+            return 'decimal_increase';
+        case 'time':
+            return 'schedule';
+        case 'date':
+            return 'calendar_today';
+        case 'datetime':
+            return 'calendar_clock';
+        default:
+            return 'text_fields';
+    }
+    }
+
     return (
         <div className="relative bg-gray-100 p-1 rounded-2xl flex items-center border border-black">
-            {getIcon(data.inputType)}
+            <span className="material-symbols-outlined mr-1">{getIcon(data.inputType)}</span>
+
+            <NodeToolbar className="nodrag" position={Position.Bottom} >
+                {/*<button onClick={onDelete}>Delete</button>*/}
+                {hasParent && <Button onClick={onDetach} icon={<RemoveIcon />} size="xsmall" variant="secondary"/>}
+            </NodeToolbar>
+
             <TextField
-                type={getInputType(data.inputType)}
+                // type={getInputType(data.inputType)}
+                type={data.inputType}
                 className="mr-2"
                 label={''}
                 hideLabel
@@ -59,7 +62,10 @@ const StaticValueNode: React.FC<StaticValueNodeProps> = ({ data }) => {
                 error={errorMsg}
                 onChange={(e) => validateInput(e.target.value)}
             />
-            <Handle type="source" position={Position.Right} className="absolute right-0 m-auto" />
+
+            <Handle type="source" position={Position.Right}/>
+            <Handle type="target" position={Position.Left}/>
+
         </div>
     );
 };

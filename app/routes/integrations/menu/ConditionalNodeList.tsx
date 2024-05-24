@@ -1,6 +1,6 @@
 import React from 'react';
 import {Box, HStack, Tag} from "@navikt/ds-react";
-import {ExpandIcon} from "@navikt/aksel-icons";
+import {ArrowsSquarepathIcon, ExpandIcon} from "@navikt/aksel-icons";
 
 const SubFlowNodesList: React.FunctionComponent = () => {
 
@@ -13,7 +13,7 @@ const SubFlowNodesList: React.FunctionComponent = () => {
     return (
         <HStack gap="2" align="start">
             <Box
-                onDragStart={(event) => onDragStart(event, "subflow", "subflow")}
+                onDragStart={(event) => onDragStart(event, "subflow", "subflow-if-else")}
                 draggable
                 className={"w-40 flex items-center rounded-lg bg-gray-200"}
                 as={"div"}
@@ -24,6 +24,20 @@ const SubFlowNodesList: React.FunctionComponent = () => {
                 <span className="w-1/4"><ExpandIcon title="a11y-title" fontSize="1.5rem" /></span>
                 <span className="ml-1">If / Else </span>
             </Box>
+
+            <Box
+                onDragStart={(event) => onDragStart(event, "subflow", "subflow-map")}
+                draggable
+                className={"w-40 flex items-center rounded-lg bg-gray-200"}
+                as={"div"}
+                background="surface-subtle"
+                padding="1"
+                borderRadius="large"
+            >
+                <span className="w-1/4"><ArrowsSquarepathIcon title="a11y-title" fontSize="1.5rem" /></span>
+                <span className="ml-1">Map </span>
+            </Box>
+
         </HStack>
 
 

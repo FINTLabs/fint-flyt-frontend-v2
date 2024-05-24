@@ -1,16 +1,17 @@
-import { create } from 'zustand';
+import {create} from 'zustand';
 import {
+    addEdge,
+    applyEdgeChanges,
+    applyNodeChanges,
     Connection,
     Edge,
     EdgeChange,
     Node,
     NodeChange,
-    addEdge,
-    OnNodesChange,
-    OnEdgesChange,
     OnConnect,
-    applyNodeChanges,
-    applyEdgeChanges,
+    OnEdgesChange,
+    OnNodesChange,
+    XYPosition,
 } from 'reactflow';
 
 import initialNodes from './nodes';
@@ -25,6 +26,7 @@ type RFState = {
     setNodes: (nodes: Node[]) => void;
     setEdges: (edges: Edge[]) => void;
     addNewNodeDrop: (newNode: Node) => void;
+    addSubNodes: (newNode: Node[]) => void;
 };
 
 // this is our useStore hook that we can use in our components to get parts of the store and call actions
@@ -58,6 +60,12 @@ const useStore = create<RFState>((set, get) => ({
             nodes: state.nodes.concat(newNode),
         }));
     },
+    addSubNodes: (newNode: Node[]) => {
+        set((state) => ({
+            nodes: state.nodes.concat(newNode),
+        }));
+    }
+
 }));
 
 export default useStore;

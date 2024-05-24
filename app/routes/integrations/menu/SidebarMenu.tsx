@@ -1,9 +1,9 @@
 
-import {ExpansionCard} from "@navikt/ds-react";
+import {BodyLong, ExpansionCard} from "@navikt/ds-react";
 import React from "react";
-import ChannelNodeList from "~/routes/integrations/menu/ChannelNodeList";
+import ActionsNodeList from "~/routes/integrations/menu/ActionsNodeList";
 import StaticValuesNodeList from "~/routes/integrations/menu/StaticValuesNodeList";
-import SubFlowNodesList from "~/routes/integrations/menu/SubFlowNodeList";
+import SubFlowNodesList from "~/routes/integrations/menu/ConditionalNodeList";
 
 const SidebarMenu: React.FunctionComponent = () => {
     // const onDragStart = (event, nodeType) => {
@@ -13,20 +13,21 @@ const SidebarMenu: React.FunctionComponent = () => {
 
     return (
         <div className="grid gap-6">
-            <ExpansionCard aria-label="Heading-size large demo">
+            <ExpansionCard size="small" aria-label="Small-variant">
                 <ExpansionCard.Header>
                     <ExpansionCard.Title as="h4" size="small">
-                        Kanaler
+                        Actions
                     </ExpansionCard.Title>
                 </ExpansionCard.Header>
                 <ExpansionCard.Content>
-                    <ChannelNodeList />
+                    <ActionsNodeList />
                 </ExpansionCard.Content>
             </ExpansionCard>
-            <ExpansionCard aria-label="Heading-size medium demo">
+
+            <ExpansionCard size="small" aria-label="Small-variant">
                 <ExpansionCard.Header>
                     <ExpansionCard.Title as="h4" size="small">
-                        Statiske
+                        Constants
                     </ExpansionCard.Title>
                 </ExpansionCard.Header>
                 <ExpansionCard.Content>
@@ -34,14 +35,14 @@ const SidebarMenu: React.FunctionComponent = () => {
                 </ExpansionCard.Content>
             </ExpansionCard>
 
-            <ExpansionCard aria-label="Heading-size medium demo">
+            <ExpansionCard size="small" aria-label="Small-variant">
                 <ExpansionCard.Header>
                     <ExpansionCard.Title as="h4" size="small">
-                        Subflow
+                        Conditional
                     </ExpansionCard.Title>
                 </ExpansionCard.Header>
                 <ExpansionCard.Content>
-                    <SubFlowNodesList />
+                    <SubFlowNodesList/>
                 </ExpansionCard.Content>
             </ExpansionCard>
 
