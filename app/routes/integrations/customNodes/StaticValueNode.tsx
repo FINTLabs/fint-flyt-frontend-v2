@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import {Handle, NodeProps, NodeToolbar, Position, useStore} from "reactflow";
 import {Button, TextField} from "@navikt/ds-react";
 import RemoveIcon from "~/components/imageUtils/RemoveIcon";
@@ -15,9 +15,9 @@ function StaticValueNode({ id, data }: NodeProps) {
         }
     };
 
-    function onDelete() {
-        console.log("Delete");
-    }
+    // function onDelete() {
+    //     console.log("Delete");
+    // }
 
     function onDetach() {
         console.log("Detach");
@@ -68,6 +68,6 @@ function StaticValueNode({ id, data }: NodeProps) {
 
         </div>
     );
-};
+}
 
 export default StaticValueNode;
