@@ -1,9 +1,10 @@
 import React from 'react';
-import {Box, HStack, Tag} from "@navikt/ds-react";
+import {Box, HStack} from "@navikt/ds-react";
 const ActionsNodeList: React.FunctionComponent = () => {
     const onDragStart = (event: React.DragEvent<HTMLSpanElement>, nodeType: string, inputType: string) => {
-        event.dataTransfer.setData('application/reactflow', nodeType);
-        event.dataTransfer.setData('application/input-type', inputType);
+        event.dataTransfer.setData('application/node-type', nodeType);
+        const data = { inputType };
+        event.dataTransfer.setData('application/reactflow', JSON.stringify(data));
         event.dataTransfer.effectAllowed = 'move';
     };
 

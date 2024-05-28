@@ -1,45 +1,21 @@
 import React from 'react';
 import { Box, HStack } from "@navikt/ds-react";
-import { FileTextIcon, NumberListIcon, EnvelopeOpenIcon, ClockIcon } from '@navikt/aksel-icons';
-import { CalendarIcon } from '@navikt/aksel-icons';
-
-interface NodeData {
-    inputType: "number" | "email" | "password" | "tel" | "text" | "decimal" | "time" | "date";
-}
-
-interface StaticValueNodeProps {
-    data: NodeData;
-}
-
-const getIcon = (inputType: string): JSX.Element => {
-    const iconProps = { title: "a11y-title", fontSize: "1.5rem" };
-    switch (inputType) {
-        case 'number':
-            return <NumberListIcon {...iconProps}/>;
-        case 'decimal':
-            return <NumberListIcon {...iconProps}/>;
-        case 'time':
-            return <ClockIcon {...iconProps}/>;
-        case 'date':
-            return <CalendarIcon {...iconProps}/>;
-        default:
-            return <FileTextIcon {...iconProps}/>;
-    }
-};
 
 const StaticValueNodelist: React.FC = () => {
     const tags = [
         { nodeType: 'static', inputType: 'text', label: 'String', icon:'text_fields' },
         { nodeType: 'static', inputType: 'number', label: 'Number', icon:'numbers' },
         { nodeType: 'static', inputType: 'decimal', label: 'Decimal', icon:'decimal_increase' },
+        { nodeType: 'static', inputType: 'boolean', label: 'Boolean', icon:'toggle_on' },
         { nodeType: 'static', inputType: 'time', label: 'Time', icon:'schedule' },
         { nodeType: 'static', inputType: 'date', label: 'Date', icon:'calendar_today' },
         { nodeType: 'static', inputType: 'datetime', label: 'Date+Time', icon:'calendar_clock' },
     ];
 
     const onDragStart = (event: React.DragEvent<HTMLSpanElement>, nodeType: string, inputType: string) => {
-        event.dataTransfer.setData('application/reactflow', nodeType);
-        event.dataTransfer.setData('application/input-type', inputType);
+        event.dataTransfer.setData('application/node-type', nodeType);
+        const data = { inputType };
+        event.dataTransfer.setData('application/reactflow', JSON.stringify(data));
         event.dataTransfer.effectAllowed = 'move';
     };
 

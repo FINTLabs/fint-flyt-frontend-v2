@@ -1,9 +1,9 @@
 
-import {BodyLong, ExpansionCard} from "@navikt/ds-react";
+import {ExpansionCard} from "@navikt/ds-react";
 import React from "react";
 import ActionsNodeList from "~/routes/integrations/menu/ActionsNodeList";
 import StaticValuesNodeList from "~/routes/integrations/menu/StaticValuesNodeList";
-import SubFlowNodesList from "~/routes/integrations/menu/ConditionalNodeList";
+import SubFlowNodesList from "~/routes/integrations/menu/CollectionNodeList";
 
 const SidebarMenu: React.FunctionComponent = () => {
     // const onDragStart = (event, nodeType) => {
@@ -38,7 +38,7 @@ const SidebarMenu: React.FunctionComponent = () => {
             <ExpansionCard size="small" aria-label="Small-variant">
                 <ExpansionCard.Header>
                     <ExpansionCard.Title as="h4" size="small">
-                        Conditional
+                        Collections
                     </ExpansionCard.Title>
                 </ExpansionCard.Header>
                 <ExpansionCard.Content>
