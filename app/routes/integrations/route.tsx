@@ -22,7 +22,7 @@ import openObjectNode from './customNodes/openObjectNode';
 import inputNode from './customNodes/inputNode';
 
 const nodeTypes = {
-    input: inputNode,
+    inputNode: inputNode,
     static: StaticValueNode,
     subflow: CollectionNode,
     openObject: openObjectNode,

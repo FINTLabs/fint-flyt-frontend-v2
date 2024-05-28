@@ -13,7 +13,7 @@ const ActionsNodeList: React.FunctionComponent = () => {
         <HStack gap="2" align="start">
 
             <Box
-                onDragStart={(event) => onDragStart(event, "input", "input")}
+                onDragStart={(event) => onDragStart(event, "inputNode", "inputNode")}
                 draggable
                 className={"w-40 flex items-center rounded-lg bg-gray-200"}
                 as={"div"}
