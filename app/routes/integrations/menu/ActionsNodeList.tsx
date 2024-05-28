@@ -46,7 +46,7 @@ const ActionsNodeList: React.FunctionComponent = () => {
                 padding="1"
                 borderRadius="large"
             >
-                <span className="w-1/4">{<img src="../images/input.svg" className="h-[20px]" alt="input"/>}</span>
+                <span className="w-1/4">{<img src="../images/openObject.svg" className="h-[20px]" alt="input"/>}</span>
                 <span className="ml-1">Open Object</span>
             </Box>
         </HStack>
