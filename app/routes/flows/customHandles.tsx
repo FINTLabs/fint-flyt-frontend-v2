@@ -2,10 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Handle, Position } from "reactflow";
 
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import ErrorIcon from '@mui/icons-material/Error';
-import DataObjectIcon from '@mui/icons-material/DataObject';
-
 export function CustomHandle({
   position,
   id = null,
@@ -13,43 +9,39 @@ export function CustomHandle({
   labeltext = "",
   className = "",
 }) {
-  console.log("CustomHandle is rendering");
 
-  const renderLabel = (labeltype: string, labeltext: string) => {
-    console.log("Rendering label:", labeltype, labeltext);
+  const renderLabel = (labeltype, labeltext) => {
+    const labels = {
+      success: {
+        icon: "check_circle",
+        color: "text-green-600",
+        text: "Suksess"
+      },
+      fail: {
+        icon: "error",
+        color: "text-red-600",
+        text: "Feil"
+      },
+      object: {
+        icon: "data_object",
+        color: "",
+        text: labeltext
+      },
+      name: {
+        icon: "text_fields",
+        color: "",
+        text: labeltext
+      }
+    };
 
-    switch (labeltype) {
-      case "success":
-        return (
-          <div className="flex items-center">
-            <CheckCircleIcon className="pr-1 text-green-600" fontSize="small" />
-            <p>Suksess</p>
-          </div>
-        );
-      case "fail":
-        return (
-          <div className="flex items-center">
-            <ErrorIcon className="pr-1 text-red-600" fontSize="small"/>
-            <p>Feil</p>
-          </div>
-        );
-      case "object":
-        return (
-          <div className="flex items-center">
-            <DataObjectIcon className="pr-1 text-black" fontSize="small"/>
-            <p>{labeltext}</p>
-          </div>
-        );
-      case "name":
-        return (
-          <>
-            <img src="images/text.svg" alt="name:" className="pr-1" />
-            <p>{labeltext}</p>
-          </>
-        );
-      default:
-        return null;
-    }
+    const { icon, color, text } = labels[labeltype] || {};
+
+    return icon ? (
+      <div className="flex items-center">
+        <span className={`material-symbols-rounded mx-1 ${color}`}>{icon}</span>
+        <p className="text-sm">{text}</p>
+      </div>
+    ) : null;
   };
 
   function labelPlacement() {
@@ -59,17 +51,17 @@ export function CustomHandle({
      return ("flex-row-reverse");
     }
   }
-console.log(labelPlacement())
+
   return (
-    <div className={`flex  items-center relative ${labelPlacement()} ${className}`}>
+    <div className={`flex items-center relative ${labelPlacement()} ${className}`}>
       <Handle
         type={ position == Position.Right ? "source" : position == Position.Left ? "target" : undefined }
         position={position}
         className="absolute z-10"
         id={id}
-        key="customHandle"
+        key={id}
       />
-      <div className={`bg-white text-nowrap z-20 justify-center flex flex-row text-xs mx-2 h-6 border rounded-2xl pl-1 px-2 absolute`}>
+      <div className={`bg-white text-nowrap z-20 justify-center flex flex-row text-xs mx-2 h-7 border rounded-2xl pl-1 px-2 absolute`}>
         {renderLabel(labeltype, labeltext)}
       </div>
     </div>
