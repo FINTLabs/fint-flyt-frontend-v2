@@ -44,7 +44,7 @@ const componentHeight = 70;
         >
           {testdata.sources.map((source, index) => (
             <Handle
-              key={source}
+              key={source.id}
               type="source"
               id={`source-${index}`}
               position={Position.Right}
