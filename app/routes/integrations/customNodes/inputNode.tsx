@@ -1,14 +1,14 @@
 import { Handle, Position } from "reactflow";
 import { CustomHandle } from "./customHandle";
 
-// interface NodeData {
-//     inputType: string;
-// }
+interface NodeData {
+    inputType: string;
+}
 
-// interface CustomNodeProps {
-//     data: NodeData;
-// }
-function inputNode({ data }) {
+interface CustomNodeProps {
+    data: NodeData;
+}
+function inputNode({ data }: CustomNodeProps ) {
   return (
     <div className="flex justify-center">
       <div className="absolute z-10 bottom-full mb-2 w-[100px] text-center">
