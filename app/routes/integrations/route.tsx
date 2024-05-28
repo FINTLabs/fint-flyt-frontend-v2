@@ -19,11 +19,13 @@ import StaticValueNode from "~/routes/integrations/customNodes/StaticValueNode";
 import CollectionNode from "~/routes/integrations/customNodes/CollectionNode";
 import {useShallow} from "zustand/react/shallow";
 import {getNodePositionInsideParent, getId} from "~/routes/integrations/utils/utils";
+import openObjectNode from './customNodes/openObjectNode';
 
 const nodeTypes = {
     channel: ChannelNode,
     static: StaticValueNode,
-    subflow: CollectionNode
+    subflow: CollectionNode,
+    openObject: openObjectNode,
 };
 type StoreState = {
     nodes: Node[];
