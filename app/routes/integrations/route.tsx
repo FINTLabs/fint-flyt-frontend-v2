@@ -49,11 +49,6 @@ const selector = (state: StoreState) => ({
     addSubNodes: state.addSubNodes,
 });
 
-
-// let id = 0;
-// const getId = () => `dndnode_${id++}`;
-
-
 export default function Index() {
     const {t} = useTranslation('translations', {keyPrefix: 'pages.integrations'})
 
@@ -80,9 +75,7 @@ export default function Index() {
         (event: React.DragEvent<HTMLDivElement>) => {
             event.preventDefault();
 
-            // // DIVIDE UP ON DROPS BY TYPE ??
             const type = event.dataTransfer.getData('application/node-type');
-            // const inputType = event.dataTransfer.getData('application/input-type');
             const dataString = event.dataTransfer.getData('application/reactflow');
             const data = JSON.parse(dataString);
 
@@ -107,18 +100,19 @@ export default function Index() {
                 }).filter((n) => n.type === 'subflow');
 
                 const groupNode = intersections[0];
-
                 console.log('Group node add:', groupNode);
+
 
                 const newNode: Node = {
                     id: getId(),
                     type,
                     position,
-                    // data: { inputType: `${data.inputType}`, label: `${data.inputType} node`, leftInput: data.leftInput},
                     data,
-                    className: 'light',
                 };
 
+                if(type === 'subflow') {
+                    newNode.style = { width: 450, height: 200 } ;
+                }
 
                 if (groupNode) {
                     // if we drop a node on a group node, we want to position the node inside the group
@@ -135,50 +129,6 @@ export default function Index() {
                 }
 
                 addNewNodeDrop(newNode);
-
-                //todo: Make this a function in a library ?? Not sure we need child nodes at this point actually
-                // if(inputType === 'subflow-if-else') {
-                //     // addParentNode(newNode);
-                //     const parentId = newNode.id;
-                //     const subNode: Node[] = [
-                //         {
-                //         id: getId(),
-                //         position: { x: 50, y: 100 },
-                //         className: 'light',
-                //         parentId: parentId,
-                //         extent: "parent",
-                //         data: { inputType: `subflow child`, label: "child node"},
-                //     }
-                //     ];
-                //     addSubNodes(subNode);
-                // }
-
-                // if(inputType === 'subflow-map') {
-                //     // addParentNode(newNode);
-                //     const parentId = newNode.id;
-                //     console.log("adding subflow-map child", position)
-                //     const subNode: Node[] = [
-                //         {
-                //             id: getId(),
-                //             position: { x: 50, y: 100 },
-                //             className: 'light',
-                //             parentId: parentId,
-                //             extent: "parent",
-                //             data: { inputType: `subflow child`, label: "child node"},
-                //         },
-                //         {
-                //             id: getId(),
-                //             position: { x: 600, y: 100 },
-                //             className: 'light',
-                //             parentId: parentId,
-                //             extent: "parent",
-                //             data: { inputType: `subflow child`, label: "child node 2"},
-                //         }
-                //     ];
-                //     addSubNodes(subNode);
-                // }
-
-                // console.log("adding new node:", newNode);
             }
         },
         [reactFlowInstance],
