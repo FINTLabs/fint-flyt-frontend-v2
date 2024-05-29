@@ -96,8 +96,8 @@ function StaticValueNode({ id, data }: NodeProps) {
             </div>
         </div>
         {renderInput()}
-        <Handle type={"source"} position={Position.Right} className="absolute z-10"/>
-        <Handle type={"target"} position={Position.Left}    className="absolute z-10"/>
+        <Handle type={"source"} position={Position.Right} className="absolute z-10" id={"123"}/>
+        <Handle type={"target"} position={Position.Left}  className="absolute z-10" id={"456"}/>
     </div>
 );
 }

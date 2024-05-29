@@ -1,6 +1,7 @@
 import {NodeResizer, Position, useStore} from "reactflow";
 import {getRelativeNodesBounds} from "~/routes/integrations/utils/utils";
 import {HStack} from "@navikt/ds-react";
+import CustomHandleCollection from "~/routes/integrations/customNodes/customHandleCollection";
 import {CustomHandle} from "~/routes/integrations/customNodes/customHandle";
 
 interface NodeProps {
@@ -14,6 +15,7 @@ interface NodeProps {
 
 function CollectionNode({ id, data, selected }: NodeProps)  {
 
+    //TODO: handles not working inside a parent.... whyyyyyy
     const { minWidth, minHeight, hasChildNodes, parentHeight, parentWidth } = useStore((store) => {
         const childNodes = Array.from(store.nodeInternals.values()).filter(
             (n) => n.parentId === id
@@ -32,6 +34,7 @@ function CollectionNode({ id, data, selected }: NodeProps)  {
             };
         }
 
+        // TODO set default with children to no less than width and height to 500 and 200
         return {
             minWidth: rect.x + rect.width,
             minHeight: rect.y + rect.height,
@@ -57,14 +60,52 @@ function CollectionNode({ id, data, selected }: NodeProps)  {
                     isVisible={selected}
                 />
 
-                <CustomHandle position={Position.Left} labeltype="name" labeltext="Samling" id={"4"}/>
+
+                //TODO: make an array or something, this is crap
                 {data.inputType === "subflow-reduce" ? (
                       <>
-                        <CustomHandle position={Position.Right} labeltype="name" labeltext="reduce1" className="left-10 pb-10" id="400"/>
-                        <CustomHandle position={Position.Right} labeltype="name" labeltext="reduce2"  className="left-10 pt-10" id="500"/>
+                          <CustomHandleCollection
+                              position={Position.Left}
+                              labelText="Samling"
+                              id={"4"}
+                              icon="tag"
+                              isArray={true}
+
+                          />
+                        <CustomHandleCollection
+                            position={Position.Right}
+                            labelText="Element A"
+                            className="left-10 pb-10"
+                            id="400"
+                            icon = "tag"
+
+                        />
+                        <CustomHandleCollection
+                            position={Position.Right}
+                            labelText="Element B"
+                            className="left-10 pt-10"
+                            id="500"
+                            icon = "tag"
+                        />
                       </>
                     ) : (
-                      <CustomHandle position={Position.Right} labeltype="object" labeltext="Element" className="left-10" id="3"/>
+                        <>
+                            <CustomHandleCollection
+                                position={Position.Left}
+                                labelText="Samling"
+                                id={"4"}
+                                icon="text_fields"
+                                isArray={true}
+
+                            />
+                              <CustomHandleCollection
+                                  position={Position.Right}
+                                  labelText="Element"
+                                  className="left-10"
+                                  id="3"
+                                  icon = "text_fields"
+                              />
+                        </>
                     )}
 
                 <div
@@ -83,16 +124,32 @@ function CollectionNode({ id, data, selected }: NodeProps)  {
                     }}
                 >
 
-                        {data.inputType} ({hasChildNodes ? 'has children' : 'no children'}) (h: {parentHeight}, w: {parentWidth})
+                    {data.inputType} ({hasChildNodes ? 'has children' : 'no children'}) (h: {parentHeight},
+                    w: {parentWidth})
+
+
+
                 </div>
 
 
                 {["subflow-map", "subflow-reduce"].includes(data.inputType) ? (
-                      <>
-                        <CustomHandle position={Position.Right} labeltype="name" labeltext="thing" className="left-10" id="100"/>
-                        <CustomHandle position={Position.Left} labeltype="name" labeltext="thing" id="200"/>
-                      </>
-                    ) : null}
+                    <>
+                        <CustomHandleCollection
+                            position={Position.Right}
+                            labelText="thing"
+                            className="left-10"
+                            id="100"
+                            icon="data_object"
+                            isArray={true}
+                        />
+                        <CustomHandleCollection
+                            position={Position.Left}
+                            labelText="thing"
+                            id="200"
+                            icon="data_object"
+                        />
+                    </>
+                ) : null}
 
                 <div
                     className="flex-none rounded-r-3xl bg-zinc-100"

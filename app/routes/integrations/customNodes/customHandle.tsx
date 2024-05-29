@@ -70,6 +70,6 @@ export function CustomHandle({
 CustomHandle.propTypes = {
   position: PropTypes.oneOf(["top", "bottom", "left", "right"]).isRequired,
   id: PropTypes.string,
-  labeltype: PropTypes.oneOf(["success", "fail", "object", "name"]).isRequired,
-  labeltext: PropTypes.string,
+  labelType: PropTypes.oneOf(["success", "fail", "object", "name"]).isRequired,
+  labelText: PropTypes.string,
 };
