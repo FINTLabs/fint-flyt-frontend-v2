@@ -16,6 +16,8 @@ interface NodeProps {
 function CollectionNode({ id, data, selected }: NodeProps)  {
 
     //TODO: handles not working inside a parent.... whyyyyyy
+    // create a array of handle types or something.. this is a mess
+
     const { minWidth, minHeight, hasChildNodes, parentHeight, parentWidth } = useStore((store) => {
         const childNodes = Array.from(store.nodeInternals.values()).filter(
             (n) => n.parentId === id
@@ -61,7 +63,7 @@ function CollectionNode({ id, data, selected }: NodeProps)  {
                 />
 
 
-                //TODO: make an array or something, this is crap
+
                 {data.inputType === "subflow-reduce" ? (
                       <>
                           <CustomHandleCollection
