@@ -2,7 +2,7 @@ import React from "react";
 import { Handle, Position } from "reactflow";
 import { CustomHandle } from "./customHandle";
 
-function openObjectNode({ data }) {
+function OpenObjectNode({ data }) {
   const baseHeight = 70;
   const extraHeightPerHandle = 15;
   const padding = 14;
@@ -59,4 +59,4 @@ const componentHeight = 70;
   );
 }
 
-export default openObjectNode;
+export default OpenObjectNode;

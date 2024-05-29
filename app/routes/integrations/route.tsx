@@ -18,16 +18,16 @@ import StaticValueNode from "~/routes/integrations/customNodes/StaticValueNode";
 import CollectionNode from "~/routes/integrations/customNodes/CollectionNode";
 import {useShallow} from "zustand/react/shallow";
 import {getNodePositionInsideParent, getId} from "~/routes/integrations/utils/utils";
-import openObjectNode from './customNodes/openObjectNode';
-import inputNode from './customNodes/inputNode';
+import OpenObjectNode from './customNodes/OpenObjectNode';
+import InputNode from './customNodes/InputNode';
 import OutputNode from './customNodes/OutputNode';
 
 const nodeTypes = {
-    inputNode: inputNode,
+    inputNode: InputNode,
     outputNode: OutputNode,
     static: StaticValueNode,
     subflow: CollectionNode,
-    openObject: openObjectNode,
+    openObject: OpenObjectNode,
 
 };
 type StoreState = {

@@ -8,7 +8,7 @@ interface NodeData {
 interface CustomNodeProps {
     data: NodeData;
 }
-function inputNode({ data }: CustomNodeProps ) {
+function InputNode({ data }: CustomNodeProps ) {
   return (
     <div className="flex justify-center">
       <div className="absolute z-10 bottom-full mb-2 w-[100px] text-center">
@@ -26,4 +26,4 @@ function inputNode({ data }: CustomNodeProps ) {
   );
 }
 
-export default inputNode;
+export default InputNode;
