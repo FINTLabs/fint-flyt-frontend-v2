@@ -20,12 +20,15 @@ import {useShallow} from "zustand/react/shallow";
 import {getNodePositionInsideParent, getId} from "~/routes/integrations/utils/utils";
 import openObjectNode from './customNodes/openObjectNode';
 import inputNode from './customNodes/inputNode';
+import OutputNode from './customNodes/OutputNode';
 
 const nodeTypes = {
     inputNode: inputNode,
+    outputNode: OutputNode,
     static: StaticValueNode,
     subflow: CollectionNode,
     openObject: openObjectNode,
+
 };
 type StoreState = {
     nodes: Node[];

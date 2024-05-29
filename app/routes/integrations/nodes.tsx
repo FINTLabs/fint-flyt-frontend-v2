@@ -13,4 +13,9 @@ export default [
         position: { x: 350, y: 125 },
         type: "openObject"
     },
+    {
+        id: "3",
+        position: { x: 500, y: 170 },
+        type: "outputNode"
+    }
 ] as Node[];
