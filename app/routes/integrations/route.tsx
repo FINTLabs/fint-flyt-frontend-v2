@@ -110,21 +110,21 @@ export default function Index() {
                     data,
                 };
 
-                if(type === 'subflow') {
-                    newNode.style = {
-                        // width: 450,
-                        // height: 200,
-                        // background: 'lightgray',
-                        // border: '1px solid black',
-                        // borderRadius: 15,
-                        // paddingRight: 50,
-                        // paddingLeft: 50,
-                        // borderRight: '25px solid lightgray',
-                        // borderLeft: '25px solid lightgray'
-
-                    } ;
-                    // newNode.className = 'border-r border-l border-gray-300 border-[10px] bg-amber-500';
-                }
+                // if(type === 'subflow') {
+                //     newNode.style = {
+                //         // width: 450,
+                //         // height: 200,
+                //         // background: 'lightgray',
+                //         // border: '1px solid black',
+                //         // borderRadius: 15,
+                //         // paddingRight: 50,
+                //         // paddingLeft: 50,
+                //         // borderRight: '25px solid lightgray',
+                //         // borderLeft: '25px solid lightgray'
+                //
+                //     } ;
+                //     // newNode.className = 'border-r border-l border-gray-300 border-[10px] bg-amber-500';
+                // }
 
                 if (groupNode) {
                     // if we drop a node on a group node, we want to position the node inside the group
