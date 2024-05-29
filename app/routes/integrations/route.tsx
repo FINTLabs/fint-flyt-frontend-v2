@@ -101,7 +101,7 @@ export default function Index() {
 
                 const groupNode = intersections[0];
                 console.log('Group node add:', groupNode);
-
+                console.log('Position:', position);
 
                 const newNode: Node = {
                     id: getId(),
@@ -111,7 +111,19 @@ export default function Index() {
                 };
 
                 if(type === 'subflow') {
-                    newNode.style = { width: 450, height: 200 } ;
+                    newNode.style = {
+                        // width: 450,
+                        // height: 200,
+                        // background: 'lightgray',
+                        // border: '1px solid black',
+                        // borderRadius: 15,
+                        // paddingRight: 50,
+                        // paddingLeft: 50,
+                        // borderRight: '25px solid lightgray',
+                        // borderLeft: '25px solid lightgray'
+
+                    } ;
+                    // newNode.className = 'border-r border-l border-gray-300 border-[10px] bg-amber-500';
                 }
 
                 if (groupNode) {
