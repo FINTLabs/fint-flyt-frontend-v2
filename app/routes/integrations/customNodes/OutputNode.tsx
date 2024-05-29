@@ -1,4 +1,4 @@
-import { Handle, Position } from "reactflow";
+import { Position } from "reactflow";
 import { CustomHandle } from "./customHandle";
 import { ChevronRightDoubleCircleFillIcon } from '@navikt/aksel-icons';
 
@@ -21,7 +21,7 @@ function OutputNode({ data }: CustomNodeProps ) {
         Output Node
       </div>
       <div className="relative h-[100px] w-[100px] bg-[#FFE6C1] rounded-2xl flex items-center justify-center border border-black">
-      <ChevronRightDoubleCircleFillIcon title="a11y-title" fontSize="1.5rem" width="50px" height="50px" />
+      <ChevronRightDoubleCircleFillIcon title="a11y-title" fontSize="60px" />
       </div>
       <CustomHandle
         position={Position.Right}
