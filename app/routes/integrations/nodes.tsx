@@ -11,22 +11,13 @@ export default [
     {
         id: '2',
         // type: 'colorChooser',
-        data: { inputType: 'text' },
-        position: { x
-                :
-                214.95088154139262,
-            y
-                :
-                70.51984453315458},
-        type: 'static',
-        // parentId: '3',
-        expandParent: true,
+        data: { color: '#F6E05E' },
+        position: { x: 100, y: 125 },
     },
     {
         id: '3',
         // type: 'colorChooser',
-        data: { inputType: 'subflow-if-else' },
+        data: { color: '#B794F4' },
         position: { x: 250, y: 250 },
-        type: 'subflow',
     },
 ] as Node[];
