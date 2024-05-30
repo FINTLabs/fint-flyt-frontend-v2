@@ -13,19 +13,22 @@ import ReactFlow, {
 import 'reactflow/dist/style.css';
 import useStore from './store';
 import {MiniMap} from "@reactflow/minimap";
-import ChannelNode from "~/routes/integrations/customNodes/ChannelNode";
 import SidebarMenu from "~/routes/integrations/menu/SidebarMenu";
 import StaticValueNode from "~/routes/integrations/customNodes/StaticValueNode";
 import CollectionNode from "~/routes/integrations/customNodes/CollectionNode";
 import {useShallow} from "zustand/react/shallow";
 import {getNodePositionInsideParent, getId} from "~/routes/integrations/utils/utils";
-import openObjectNode from './customNodes/openObjectNode';
+import OpenObjectNode from './customNodes/OpenObjectNode';
+import InputNode from './customNodes/InputNode';
+import OutputNode from './customNodes/OutputNode';
 
 const nodeTypes = {
-    channel: ChannelNode,
+    inputNode: InputNode,
+    outputNode: OutputNode,
     static: StaticValueNode,
     subflow: CollectionNode,
-    openObject: openObjectNode,
+    openObject: OpenObjectNode,
+
 };
 type StoreState = {
     nodes: Node[];

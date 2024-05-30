@@ -1,16 +1,24 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Handle, Position } from "reactflow";
+
+interface HandleProps {
+  position: Position;
+  id?: string;
+  labeltype: string;
+  labeltext?: string;
+  className?: string;
+}
 
 export function CustomHandle({
   position,
-  id = null,
+  id = "",
   labeltype,
   labeltext = "",
   className = "",
-}) {
+}: HandleProps) 
+{
 
-  const renderLabel = (labeltype, labeltext) => {
+  const renderLabel = (labeltype: string, labeltext: string ) => {
     const labels = {
       success: {
         icon: "check_circle",
@@ -55,7 +63,7 @@ export function CustomHandle({
   return (
     <div className={`flex items-center relative ${labelPlacement()} ${className}`}>
       <Handle
-        type={ position == Position.Right ? "source" : position == Position.Left ? "target" : undefined }
+        type={ position == Position.Left ? "target" : "source" }
         position={position}
         className="absolute z-10"
         id={id}
@@ -67,9 +75,3 @@ export function CustomHandle({
     </div>
   );
 }
-CustomHandle.propTypes = {
-  position: PropTypes.oneOf(["top", "bottom", "left", "right"]).isRequired,
-  id: PropTypes.string,
-  labelType: PropTypes.oneOf(["success", "fail", "object", "name"]).isRequired,
-  labelText: PropTypes.string,
-};
