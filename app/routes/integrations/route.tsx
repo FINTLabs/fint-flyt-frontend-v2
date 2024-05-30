@@ -4,7 +4,7 @@ import {useTranslation} from "react-i18next";
 import ReactFlow, {
     Background,
     Controls,
-    Edge,
+    Edge, MarkerType,
     Node, OnConnect, OnEdgesChange,
     OnNodesChange,
     ReactFlowInstance,
@@ -65,10 +65,21 @@ export default function Index() {
         addNewNodeDrop,
     } = useStore(useShallow(selector));
 
+    const defaultEdgeOptions = {
+        type: 'smoothstep',
+        style: {
+            strokeWidth: 2,
+        },
+        markerEnd: {
+            type: MarkerType.ArrowClosed,
+        },
+    };
+
     const onDragOver = useCallback((event: React.DragEvent<HTMLDivElement>) => {
         event.preventDefault();
         event.dataTransfer.dropEffect = 'move';
     }, []);
+
 
 
     const onDrop = useCallback(
@@ -192,6 +203,7 @@ export default function Index() {
                             proOptions={proOptions}
                             nodeTypes={nodeTypes}
                             defaultViewport={defaultViewport}
+                            defaultEdgeOptions={defaultEdgeOptions}
                         >
                             <Background/>
                             <Controls/>

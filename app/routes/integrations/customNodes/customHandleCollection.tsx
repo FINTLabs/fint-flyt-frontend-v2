@@ -1,4 +1,3 @@
-import React from "react";
 import { Handle, Position } from "reactflow";
 
 interface HandleProps {
@@ -8,14 +7,17 @@ interface HandleProps {
   className?: string;
   icon?: string;
   isArray?: boolean;
+  isOptional?: boolean; // new prop
 }
 
 export default function CustomHandleCollection({
                                           position = Position.Right,
-                                          id = "", labelText = "",
+                                          id = "",
+                                          labelText = "",
                                           className = "",
                                           icon = "",
                                           isArray,
+                                            isOptional
                                         }: HandleProps) {
 
 
@@ -32,11 +34,12 @@ export default function CustomHandleCollection({
         <Handle
             type={ position == Position.Right ? "source" : "target" }
             position={position}
-            className="absolute z-10"
+            className={position == Position.Left ? "absolute z-10 w-16 !bg-teal-500" : "absolute z-10 w-16 "}
             id={id}
             key={id}
         />
-        <div className={`bg-white text-nowrap z-20 justify-center flex flex-row text-xs mx-2 h-7 border rounded-2xl pl-1 px-2 absolute`}>
+
+          <div className={`bg-white text-nowrap z-20 justify-center flex flex-row text-xs mx-2 h-7 border rounded-2xl pl-2 px-2 mr-5 absolute ${isOptional? 'border-dashed border border-black':null}`}>
           {icon && <div className="flex items-center">
             {isArray && <span className="material-symbols-outlined">data_array</span>}
             <span className={`material-symbols-rounded mx-1 }`}>{icon}</span>

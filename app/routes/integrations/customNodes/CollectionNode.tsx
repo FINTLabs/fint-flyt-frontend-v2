@@ -1,8 +1,8 @@
-import {NodeResizer, Position, useStore} from "reactflow";
+import {NodeResizer, useStore} from "reactflow";
 import {getRelativeNodesBounds} from "~/routes/integrations/utils/utils";
 import {HStack} from "@navikt/ds-react";
 import CustomHandleCollection from "~/routes/integrations/customNodes/customHandleCollection";
-import {CustomHandle} from "~/routes/integrations/customNodes/customHandle";
+import handleConfigs, {HandleConfig, handleConfigsRight} from "~/routes/integrations/utils/handleConfigs";
 
 interface NodeProps {
     id: string;
@@ -15,8 +15,8 @@ interface NodeProps {
 
 function CollectionNode({ id, data, selected }: NodeProps)  {
 
-    //TODO: handles not working inside a parent.... whyyyyyy
-    // create a array of handle types or something.. this is a mess
+    const handles: HandleConfig[] = handleConfigs[data.inputType] || handleConfigs.default;
+    const handlesRight: HandleConfig[] = handleConfigsRight[data.inputType] || null;
 
     const { minWidth, minHeight, hasChildNodes, parentHeight, parentWidth } = useStore((store) => {
         const childNodes = Array.from(store.nodeInternals.values()).filter(
@@ -38,8 +38,8 @@ function CollectionNode({ id, data, selected }: NodeProps)  {
 
         // TODO set default with children to no less than width and height to 500 and 200
         return {
-            minWidth: rect.x + rect.width,
-            minHeight: rect.y + rect.height,
+           minWidth: Math.max(rect.x + rect.width, 500),
+            minHeight: Math.max(rect.y + rect.height, 200),
             hasChildNodes: childNodes.length > 0,
             parentHeight: parentNode?.height,
             parentWidth: parentNode?.width,
@@ -48,7 +48,7 @@ function CollectionNode({ id, data, selected }: NodeProps)  {
 
     return (
             <HStack
-                className="flex border-black rounded-3xl border"
+                className="flex border-black rounded-3xl border -z-50"
                 style={{
                     width: parentWidth? parentWidth : 500,
                     height: parentHeight? parentHeight : 200,
@@ -64,51 +64,17 @@ function CollectionNode({ id, data, selected }: NodeProps)  {
 
 
 
-                {data.inputType === "subflow-reduce" ? (
-                      <>
-                          <CustomHandleCollection
-                              position={Position.Left}
-                              labelText="Samling"
-                              id={"4"}
-                              icon="tag"
-                              isArray={true}
-
-                          />
-                        <CustomHandleCollection
-                            position={Position.Right}
-                            labelText="Element A"
-                            className="left-10 pb-10"
-                            id="400"
-                            icon = "tag"
-
-                        />
-                        <CustomHandleCollection
-                            position={Position.Right}
-                            labelText="Element B"
-                            className="left-10 pt-10"
-                            id="500"
-                            icon = "tag"
-                        />
-                      </>
-                    ) : (
-                        <>
-                            <CustomHandleCollection
-                                position={Position.Left}
-                                labelText="Samling"
-                                id={"4"}
-                                icon="text_fields"
-                                isArray={true}
-
-                            />
-                              <CustomHandleCollection
-                                  position={Position.Right}
-                                  labelText="Element"
-                                  className="left-10"
-                                  id="3"
-                                  icon = "text_fields"
-                              />
-                        </>
-                    )}
+                {handles.map((handle: HandleConfig, index: number) => (
+                    <CustomHandleCollection
+                        key={index}
+                        position={handle.position}
+                        labelText={handle.labelText}
+                        id={handle.id}
+                        icon={handle.icon}
+                        className={handle.className}
+                        isArray={handle.isArray}
+                    />
+                ))}
 
                 <div
                     className="flex-none rounded-l-3xl bg-zinc-100"
@@ -121,37 +87,31 @@ function CollectionNode({ id, data, selected }: NodeProps)  {
 
                 <div
                     className="flex-1"
-                    style={{
-                        backgroundColor: 'white',
-                    }}
+                    // style={{
+                    //     backgroundColor: 'white',
+                    // }}
                 >
 
-                    {data.inputType} ({hasChildNodes ? 'has children' : 'no children'}) (h: {parentHeight},
-                    w: {parentWidth})
-
+                    {data.inputType}
+                    ({hasChildNodes ? 'has children' : 'no children'})
+                    (h: {parentHeight},  w: {parentWidth})
 
 
                 </div>
 
 
-                {["subflow-map", "subflow-reduce"].includes(data.inputType) ? (
-                    <>
-                        <CustomHandleCollection
-                            position={Position.Right}
-                            labelText="thing"
-                            className="left-10"
-                            id="100"
-                            icon="data_object"
-                            isArray={true}
-                        />
-                        <CustomHandleCollection
-                            position={Position.Left}
-                            labelText="thing"
-                            id="200"
-                            icon="data_object"
-                        />
-                    </>
-                ) : null}
+                {handlesRight?.map((handle: HandleConfig, index: number) => (
+                    <CustomHandleCollection
+                        key={index}
+                        position={handle.position}
+                        labelText={handle.labelText}
+                        id={handle.id}
+                        icon={handle.icon}
+                        className={handle.className}
+                        isArray={handle.isArray}
+                        isOptional={handle.isOptional}
+                    />
+                ))}
 
                 <div
                     className="flex-none rounded-r-3xl bg-zinc-100"
