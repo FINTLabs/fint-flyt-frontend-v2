@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {NodeProps, NodeToolbar, Position, useStore} from "reactflow";
+import {Handle, NodeProps, NodeToolbar, Position, useStore} from "reactflow";
 import {Button, DatePicker, Switch, TextField, useDatepicker} from "@navikt/ds-react";
 import RemoveIcon from "~/components/imageUtils/RemoveIcon";
 import useDetachNodes from "~/routes/integrations/utils/useDetachNodes"
@@ -96,6 +96,8 @@ function StaticValueNode({ id, data }: NodeProps) {
             </div>
         </div>
         {renderInput()}
+        <Handle type={"source"} position={Position.Right} className="absolute z-10 w-16" id={"123"}/>
+        <Handle type={"target"} position={Position.Left}  className="absolute z-10 w-16 !bg-teal-500" id={"456"}/>
     </div>
 );
 }

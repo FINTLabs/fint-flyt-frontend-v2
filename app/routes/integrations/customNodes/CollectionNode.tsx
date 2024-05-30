@@ -1,95 +1,126 @@
-import {Handle, Position, useStore} from "reactflow";
-import {HStack} from "@navikt/ds-react";
+import {NodeResizer, useStore} from "reactflow";
 import {getRelativeNodesBounds} from "~/routes/integrations/utils/utils";
+import {HStack} from "@navikt/ds-react";
+import CustomHandleCollection from "~/routes/integrations/customNodes/customHandleCollection";
+import handleConfigs, {HandleConfig, handleConfigsRight} from "~/routes/integrations/utils/handleConfigs";
 
 interface NodeProps {
     id: string;
+    selected: boolean;
     data: {
         label: string,
-        inputType: string,
-        leftInput: number,
-        rightInput: number,
+        inputType: string
     }
 }
-function CollectionNode({ id, data }: NodeProps)  {
 
-    const { minWidth, minHeight, hasChildNodes } = useStore((store) => {
+function CollectionNode({ id, data, selected }: NodeProps)  {
+
+    const handles: HandleConfig[] = handleConfigs[data.inputType] || handleConfigs.default;
+    const handlesRight: HandleConfig[] = handleConfigsRight[data.inputType] || null;
+
+    const { minWidth, minHeight, hasChildNodes, parentHeight, parentWidth } = useStore((store) => {
         const childNodes = Array.from(store.nodeInternals.values()).filter(
             (n) => n.parentId === id
         );
 
+        const parentNode = store.nodeInternals.get(id);
         const rect = getRelativeNodesBounds(childNodes);
 
+        if(childNodes.length === 0) {
+            return {
+                minWidth: 500,
+                minHeight: 200,
+                hasChildNodes: false,
+                parentHeight: parentNode?.height,
+                parentWidth: parentNode?.width,
+            };
+        }
+
+        // TODO set default with children to no less than width and height to 500 and 200
         return {
-            minWidth: rect.x + rect.width,
-            minHeight: rect.y + rect.height,
+           minWidth: Math.max(rect.x + rect.width, 500),
+            minHeight: Math.max(rect.y + rect.height, 200),
             hasChildNodes: childNodes.length > 0,
+            parentHeight: parentNode?.height,
+            parentWidth: parentNode?.width,
         };
     });
 
     return (
-        <HStack
-            className="rounded-lg border border-black overflow-hidden relative"
-            style={{width: '50rem', minWidth: minWidth, minHeight: minHeight}}
-        >
-            <div className="aspect-square h-60 w-12 bg-gray-200" style={{minHeight: minHeight}}/>
+            <HStack
+                className="flex border-black rounded-3xl border -z-50"
+                style={{
+                    width: parentWidth? parentWidth : 500,
+                    height: parentHeight? parentHeight : 200,
+                }}
+            >
+                <NodeResizer
+                    minHeight={minHeight + 20}
+                    minWidth={minWidth + 20}
+                    // onResize={onResize}
+                    lineStyle={{borderColor: 'black'}}
+                    isVisible={selected}
+                />
 
-            <div className="absolute top-0 left-0 m-2">
-                {data.inputType} ({hasChildNodes ? 'has children' : 'no children'})
-            </div>
 
 
-            {/*<div className="aspect-square h-60 flex-grow" style={{backgroundColor: '#ffffff'}}>*/}
-
-            {/*    {data.leftInput === 1 && (*/}
-            {/*        <div*/}
-            {/*            className="w-40 h-12 flex-col justify-start items-start gap-2.5 inline-flex"*/}
-            {/*            style={{transform: 'translateY(100px)'}}*/}
-            {/*        >*/}
-            {/*            <div*/}
-            {/*                className="px-2.5 py-0.5 bg-zinc-100 rounded-xl shadow border border-black justify-start items-center gap-1 flex">*/}
-            {/*                <span className="material-symbols-outlined left-0 top-0">text_fields</span>*/}
-            {/*                <div>In Element</div>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    )}*/}
-            {/*</div>*/}
-
-            <div className="aspect-square h-60 flex-grow" style={{backgroundColor: '#ffffff'}}>
-                {data.leftInput !== 0 && Array.from({length: data.leftInput}).map((_, index) => (
-                    <div
+                {handles.map((handle: HandleConfig, index: number) => (
+                    <CustomHandleCollection
                         key={index}
-                        className="w-40 h-12 flex-col justify-start items-start gap-2.5 inline-flex"
-                        style={{transform: `translateY(${index + 10 * 10}px)`}}
-                    >
-                        <div
-                            className="px-2.5 py-0.5 bg-zinc-100 rounded-xl shadow border border-black justify-start items-center gap-1 flex">
-                            <span className="material-symbols-outlined left-0 top-0">text_fields</span>
-                            <div>In Element</div>
-                        </div>
-                    </div>
+                        position={handle.position}
+                        labelText={handle.labelText}
+                        id={handle.id}
+                        icon={handle.icon}
+                        className={handle.className}
+                        isArray={handle.isArray}
+                    />
                 ))}
 
-
-            {data.rightInput === 1 && (
                 <div
-                    className="w-40 h-12 flex-col justify-start items-start gap-2.5 inline-flex"
-                    style={{transform: ' translateY(100px)'}}
+                    className="flex-none rounded-l-3xl bg-zinc-100"
+                    style={{
+                        flexBasis: '40px',
+                        // backgroundColor: 'lightgray',
+                    }}
                 >
-                    <div
-                        className="px-2.5 py-0.5 bg-zinc-100 rounded-xl shadow border border-black justify-start items-center gap-1 flex">
-                        <span className="material-symbols-outlined left-0 top-0">text_fields</span>
-                        <div>Out Element</div>
-                    </div>
                 </div>
-            )}
-            </div>
-            <div className="aspect-square h-60 w-12 bg-gray-200" style={{minHeight: minHeight}}/>
 
-            <Handle type="target" position={Position.Left}/>
-            <Handle type="source" position={Position.Right}/>
+                <div
+                    className="flex-1"
+                    // style={{
+                    //     backgroundColor: 'white',
+                    // }}
+                >
 
+                    {data.inputType}
+                    ({hasChildNodes ? 'has children' : 'no children'})
+                    (h: {parentHeight},  w: {parentWidth})
+
+
+                </div>
+
+
+                {handlesRight?.map((handle: HandleConfig, index: number) => (
+                    <CustomHandleCollection
+                        key={index}
+                        position={handle.position}
+                        labelText={handle.labelText}
+                        id={handle.id}
+                        icon={handle.icon}
+                        className={handle.className}
+                        isArray={handle.isArray}
+                        isOptional={handle.isOptional}
+                    />
+                ))}
+
+                <div
+                    className="flex-none rounded-r-3xl bg-zinc-100"
+                    style={{
+                        flexBasis: '40px',
+                    }}
+                ></div>
         </HStack>
+
     );
 }
 
