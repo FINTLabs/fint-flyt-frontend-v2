@@ -19,10 +19,9 @@ import StaticValueNode from "~/routes/integrations/customNodes/StaticValueNode";
 import CollectionNode from "~/routes/integrations/customNodes/CollectionNode";
 import {useShallow} from "zustand/react/shallow";
 import {getNodePositionInsideParent, getId} from "~/routes/integrations/utils/utils";
-import OpenObjectNode from './customNodes/OpenObjectNode';
-import InputNode from './customNodes/InputNode';
+import OpenObjectNode from "~/routes/integrations/customNodes/openObjectNode";
+import InputNode from './customNodes/inputNode';
 import OutputNode from './customNodes/OutputNode';
-import openObjectNode from './customNodes/openObjectNode';
 import MathNode from "~/routes/integrations/customNodes/MathNode";
 
 const nodeTypes = {
