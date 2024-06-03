@@ -10,7 +10,7 @@ export interface HandleConfig {
     isOptional?: boolean;
 }
 
-const handleConfigs: { [key: string]: HandleConfig[] } = {
+const config: { [key: string]: HandleConfig[] } = {
     default: [
         {
             position: Position.Left,
@@ -31,7 +31,7 @@ const handleConfigs: { [key: string]: HandleConfig[] } = {
         {
             position: Position.Left,
             labelText: "Samling",
-            id: "4",
+            id: "1",
             icon: "tag",
             isArray: true,
         },
@@ -39,14 +39,14 @@ const handleConfigs: { [key: string]: HandleConfig[] } = {
             position: Position.Right,
             labelText: "Element A",
             className: "left-10 pb-10",
-            id: "400",
+            id: "2",
             icon: "tag",
         },
         {
             position: Position.Right,
             labelText: "Element B",
             className: "left-10 pt-10",
-            id: "500",
+            id: "3",
             icon: "tag",
         },
     ]
@@ -58,7 +58,7 @@ export const handleConfigsRight: { [key: string]: HandleConfig[] } = {
         {
             position: Position.Left,
             labelText: "Nytt element",
-            id: "4",
+            id: "40",
             icon: "data_object",
         },
         {
@@ -74,7 +74,7 @@ export const handleConfigsRight: { [key: string]: HandleConfig[] } = {
         {
             position: Position.Left,
             labelText: "Skal være med",
-            id: "4",
+            id: "50",
             icon: "toggle_on",
         },
         {
@@ -90,14 +90,14 @@ export const handleConfigsRight: { [key: string]: HandleConfig[] } = {
         {
             position: Position.Left,
             labelText: "Sammenslått verdi",
-            id: "4",
+            id: "60",
             icon: "text_fields",
         },
         {
             position: Position.Right,
             labelText: "Sammenslått verdi",
             className: "left-10",
-            id: "400",
+            id: "70",
             icon: "text_fields",
         }
     ],
@@ -105,18 +105,18 @@ export const handleConfigsRight: { [key: string]: HandleConfig[] } = {
         {
             position: Position.Left,
             labelText: "Betingelse",
-            id: "4",
+            id: "80",
             icon: "toggle_on",
         },
         {
             position: Position.Right,
             labelText: "Funnet element",
             className: "left-10 ",
-            id: "400",
+            id: "90",
             icon: "text_fields",
             isOptional: true,
         }
     ]
 };
 
-export default handleConfigs;
+export default config;

@@ -1,21 +1,24 @@
+import React from "react";
 import {NodeResizer, useStore} from "reactflow";
 import {getRelativeNodesBounds} from "~/routes/integrations/utils/utils";
 import {HStack} from "@navikt/ds-react";
-import CustomHandleCollection from "~/routes/integrations/customNodes/customHandleCollection";
-import handleConfigs, {HandleConfig, handleConfigsRight} from "~/routes/integrations/utils/handleConfigs";
+import CustomHandleCollection from "~/routes/integrations/customHandles/customHandleCollection";
+import config, {HandleConfig, handleConfigsRight} from "~/routes/integrations/customHandles/config";
+
 
 interface NodeProps {
     id: string;
     selected: boolean;
     data: {
         label: string,
-        inputType: string
+        inputType: string,
+        icon: string
     }
 }
 
 function CollectionNode({ id, data, selected }: NodeProps)  {
 
-    const handles: HandleConfig[] = handleConfigs[data.inputType] || handleConfigs.default;
+    const handles: HandleConfig[] = config[data.inputType] || config.default;
     const handlesRight: HandleConfig[] = handleConfigsRight[data.inputType] || null;
 
     const { minWidth, minHeight, hasChildNodes, parentHeight, parentWidth } = useStore((store) => {
@@ -83,18 +86,21 @@ function CollectionNode({ id, data, selected }: NodeProps)  {
                         // backgroundColor: 'lightgray',
                     }}
                 >
+                    <span className="material-symbols-outlined p-2">{data.icon}</span>
                 </div>
 
                 <div
-                    className="flex-1"
+                    className="flex-1 p-2"
                     // style={{
                     //     backgroundColor: 'white',
                     // }}
                 >
 
-                    {data.inputType}
-                    ({hasChildNodes ? 'has children' : 'no children'})
-                    (h: {parentHeight},  w: {parentWidth})
+
+
+                    {data.label}
+                    {/*({hasChildNodes ? 'has children' : 'no children'})*/}
+                    {/*(h: {parentHeight},  w: {parentWidth})*/}
 
 
                 </div>

@@ -1,9 +1,7 @@
 
 import {ExpansionCard} from "@navikt/ds-react";
 import React from "react";
-import ActionsNodeList from "~/routes/integrations/menu/ActionsNodeList";
-import StaticValuesNodeList from "~/routes/integrations/menu/StaticValuesNodeList";
-import SubFlowNodesList from "~/routes/integrations/menu/CollectionNodeList";
+import SidebarMenuList from "~/routes/integrations/menu/SidebarMenuList";
 
 const SidebarMenu: React.FunctionComponent = () => {
     // const onDragStart = (event, nodeType) => {
@@ -20,7 +18,8 @@ const SidebarMenu: React.FunctionComponent = () => {
                     </ExpansionCard.Title>
                 </ExpansionCard.Header>
                 <ExpansionCard.Content>
-                    <ActionsNodeList />
+                    <SidebarMenuList configKey={"channelNodes"}/>
+
                 </ExpansionCard.Content>
             </ExpansionCard>
 
@@ -31,7 +30,7 @@ const SidebarMenu: React.FunctionComponent = () => {
                     </ExpansionCard.Title>
                 </ExpansionCard.Header>
                 <ExpansionCard.Content>
-                    <StaticValuesNodeList />
+                    <SidebarMenuList configKey={"staticValueNodes"}/>
                 </ExpansionCard.Content>
             </ExpansionCard>
 
@@ -42,7 +41,18 @@ const SidebarMenu: React.FunctionComponent = () => {
                     </ExpansionCard.Title>
                 </ExpansionCard.Header>
                 <ExpansionCard.Content>
-                    <SubFlowNodesList/>
+                    <SidebarMenuList configKey={"subFlowNodes"}/>
+                </ExpansionCard.Content>
+            </ExpansionCard>
+
+            <ExpansionCard size="small" aria-label="Small-variant">
+                <ExpansionCard.Header>
+                    <ExpansionCard.Title as="h4" size="small">
+                        Conversions
+                    </ExpansionCard.Title>
+                </ExpansionCard.Header>
+                <ExpansionCard.Content>
+                    <SidebarMenuList configKey={"mathNodes"}/>
                 </ExpansionCard.Content>
             </ExpansionCard>
 
