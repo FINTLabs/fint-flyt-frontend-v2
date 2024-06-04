@@ -2,8 +2,8 @@
 import {NodeResizer, useStore} from "reactflow";
 import {getRelativeNodesBounds} from "~/routes/integrations/utils/utils";
 import {HStack} from "@navikt/ds-react";
-import CustomHandleCollection from "~/routes/integrations/customHandles/customHandleCollection";
-import config, {HandleConfig, handleConfigsRight} from "~/routes/integrations/customHandles/config";
+import CustomHandle from "~/routes/integrations/Handles/customHandle";
+import config, {HandleConfig, handleConfigsRight} from "~/routes/integrations/Handles/config";
 import {memo} from "react";
 
 
