@@ -3,6 +3,7 @@ export interface MenuConfig {
     inputType: string;
     label: string;
     icon: string;
+    hasToolbar?: boolean;
 }
 
 export const menuConfigs: { [key: string]: MenuConfig[] } = {
@@ -10,10 +11,15 @@ export const menuConfigs: { [key: string]: MenuConfig[] } = {
         { nodeType: 'error', inputType: 'error', label: 'Error', icon:'error' },
     ],
     "mathNodes": [
-        { nodeType: 'mathNode', inputType: 'add', label: 'Addition', icon:'add_circle' },
-        { nodeType: 'mathNode', inputType: 'subtract', label: 'Subtraction', icon:'do_not_disturb_on' },
-        { nodeType: 'mathNode', inputType: 'multiply', label: 'Multiplication', icon:'cancel' },
-        { nodeType: 'mathNode', inputType: 'divide', label: 'Divide', icon:'percent' },
+        { nodeType: 'mathNode', inputType: 'add', label: 'Addition', icon:'add_circle', hasToolbar: true },
+        { nodeType: 'mathNode', inputType: 'subtract', label: 'Subtraction', icon:'do_not_disturb_on', hasToolbar: true },
+        { nodeType: 'mathNode', inputType: 'multiply', label: 'Multiplication', icon:'cancel', hasToolbar: true },
+        { nodeType: 'mathNode', inputType: 'divide', label: 'Divide', icon:'percent', hasToolbar: true },
+        { nodeType: 'mathNode', inputType: 'larger', label: 'LargerThan', icon:'chevron_right', hasToolbar: true },
+        { nodeType: 'mathNode', inputType: 'smaller', label: 'SmallerThan', icon:'chevron_left' },
+        { nodeType: 'mathNode', inputType: 'equal', label: 'Equal', icon:'equal'},
+        { nodeType: 'mathNode', inputType: 'roundUp', label: 'Round Up', icon:'rotate_right' },
+        { nodeType: 'mathNode', inputType: 'roundDown', label: 'Round Down', icon:'rotate_left'},
 
     ],
     "subFlowNodes": [

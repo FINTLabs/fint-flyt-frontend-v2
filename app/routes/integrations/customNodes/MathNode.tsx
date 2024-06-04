@@ -2,7 +2,6 @@ import {NodeToolbar, Position} from "reactflow";
 import React, {useState} from "react";
 import CustomHandleCollection from "~/routes/integrations/customHandles/customHandleCollection";
 import {Button} from "@navikt/ds-react";
-import {handle} from "mdast-util-to-markdown/lib/handle";
 
 interface CustomNodeProps {
     id: string;
@@ -11,6 +10,7 @@ interface CustomNodeProps {
         label: string,
         inputType: string,
         icon: string
+        hasToolbar?: boolean;
     }
 }
 
@@ -20,13 +20,14 @@ function MathNode({ data, selected }: CustomNodeProps) {
     return (
         <div className={`flex justify-center  ${selected ? 'border-black border' : ''}`}>
 
-            <NodeToolbar
-                //isVisible={data.forceToolbarVisible || undefined}
-                position={Position.Top}
-            >
-                <Button variant="tertiary" size="xsmall" onClick={() => setHandleIcon('decimal_increase')}>decimal</Button>
-                <Button variant="tertiary" size="xsmall" onClick={() => setHandleIcon('tag')}>whole</Button>
-            </NodeToolbar>
+            {data.hasToolbar && (
+                <NodeToolbar
+                    position={Position.Top}
+                >
+                    <Button variant="tertiary" size="xsmall" onClick={() => setHandleIcon('decimal_increase')}>decimal</Button>
+                    <Button variant="tertiary" size="xsmall" onClick={() => setHandleIcon('tag')}>whole</Button>
+                </NodeToolbar>
+            )}
 
             <div className="flex flex-row items-center">
                 <div
