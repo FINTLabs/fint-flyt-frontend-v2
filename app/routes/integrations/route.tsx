@@ -96,6 +96,8 @@ export default function Index() {
             const dataString = event.dataTransfer.getData('application/reactflow');
             const data = JSON.parse(dataString);
 
+            console.log('Dropped:', type, data);
+
             // check if the dropped element is valid
             if (typeof type === 'undefined' || !type) {
                 return;
@@ -117,8 +119,8 @@ export default function Index() {
                 }).filter((n) => n.type === 'subflow');
 
                 const groupNode = intersections[0];
-                console.log('Group node add:', groupNode);
-                console.log('Position:', position);
+                // console.log('Group node add:', groupNode);
+                // console.log('Position:', position);
 
                 const newNode: Node = {
                     id: getId(),

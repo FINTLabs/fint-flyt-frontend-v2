@@ -1,27 +1,28 @@
 import React from 'react';
 import { Box, HStack } from "@navikt/ds-react";
-import { menuConfigs } from './config';
+import {MenuConfig, menuConfigs} from './config';
 
 interface MathNodeListProps {
   configKey: string;
 }
 
 const MathNodelist: React.FC<MathNodeListProps> = ({ configKey }) => {
-    const nodesConfig = menuConfigs[configKey];
+    const menuConfig = menuConfigs[configKey];
 
-    const onDragStart = (event: React.DragEvent<HTMLSpanElement>, nodeType: string, inputType: string, label:string, icon:string) => {
-        event.dataTransfer.setData('application/node-type', nodeType);
-        const data = { inputType,label,icon };
+    const onDragStart = (event: React.DragEvent<HTMLSpanElement>, menuItem:MenuConfig) => {
+        event.dataTransfer.setData('application/node-type', menuItem.nodeType);
+        // const data = { inputType,label,icon };
+        const data = { ...menuItem };
         event.dataTransfer.setData('application/reactflow', JSON.stringify(data));
         event.dataTransfer.effectAllowed = 'move';
     };
 
     return (
         <HStack gap="2" align="start">
-            {nodesConfig.map((tag, index) => (
+            {menuConfig.map((menuItem, index) => (
                 <Box
                     key={index}
-                    onDragStart={(event) => onDragStart(event, tag.nodeType, tag.inputType, tag.label, tag.icon)}
+                    onDragStart={(event) => onDragStart(event, menuItem)}
                     draggable
                     className={"w-40 flex items-center rounded-lg bg-gray-200"}
                     as={"div"}
@@ -31,10 +32,10 @@ const MathNodelist: React.FC<MathNodeListProps> = ({ configKey }) => {
                 >
                     <span className="w-1/4">
                         <span className="material-symbols-outlined">
-                            {tag.icon}
+                            {menuItem.icon}
                         </span>
                     </span>
-                    <span className="ml-1">{tag.label}</span>
+                    <span className="ml-1">{menuItem.label}</span>
                 </Box>
             ))}
         </HStack>
