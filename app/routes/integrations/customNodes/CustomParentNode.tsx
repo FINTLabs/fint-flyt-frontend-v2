@@ -1,9 +1,10 @@
-import React from "react";
+// import React from "react";
 import {NodeResizer, useStore} from "reactflow";
 import {getRelativeNodesBounds} from "~/routes/integrations/utils/utils";
 import {HStack} from "@navikt/ds-react";
 import CustomHandleCollection from "~/routes/integrations/customHandles/customHandleCollection";
 import config, {HandleConfig, handleConfigsRight} from "~/routes/integrations/customHandles/config";
+import {memo} from "react";
 
 
 interface NodeProps {
@@ -16,12 +17,12 @@ interface NodeProps {
     }
 }
 
-function CollectionNode({ id, data, selected }: NodeProps)  {
+function CustomParentNode({ id, data, selected }: NodeProps)  {
 
     const handles: HandleConfig[] = config[data.inputType] || config.default;
     const handlesRight: HandleConfig[] = handleConfigsRight[data.inputType] || null;
 
-    const { minWidth, minHeight, hasChildNodes, parentHeight, parentWidth } = useStore((store) => {
+    const { minWidth, minHeight, parentHeight, parentWidth } = useStore((store) => {
         const childNodes = Array.from(store.nodeInternals.values()).filter(
             (n) => n.parentId === id
         );
@@ -39,7 +40,6 @@ function CollectionNode({ id, data, selected }: NodeProps)  {
             };
         }
 
-        // TODO set default with children to no less than width and height to 500 and 200
         return {
            minWidth: Math.max(rect.x + rect.width, 500),
             minHeight: Math.max(rect.y + rect.height, 200),
@@ -130,4 +130,5 @@ function CollectionNode({ id, data, selected }: NodeProps)  {
     );
 }
 
-export default CollectionNode;
+export default memo(CustomParentNode);
+// export default CustomParentNode;
