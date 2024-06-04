@@ -1,5 +1,5 @@
 import { Position } from "reactflow";
-import { CustomHandle } from "./customHandle";
+import { CustomHandle } from "./CustomHandle";
 import { ChevronRightDoubleCircleFillIcon } from '@navikt/aksel-icons';
 
 interface NodeData {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Handle, Position } from "reactflow";
-import { CustomHandle } from "./customHandle";
+import { CustomHandle } from "./CustomHandle";
 
 function OpenObjectNode({ data }) {
   const baseHeight = 70;
