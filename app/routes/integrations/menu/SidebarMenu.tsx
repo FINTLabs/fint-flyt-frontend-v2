@@ -1,4 +1,3 @@
-
 import {ExpansionCard} from "@navikt/ds-react";
 import React from "react";
 import SidebarMenuList from "~/routes/integrations/menu/SidebarMenuList";
@@ -19,7 +18,6 @@ const SidebarMenu: React.FunctionComponent = () => {
                 </ExpansionCard.Header>
                 <ExpansionCard.Content>
                     <SidebarMenuList configKey={"channelNodes"}/>
-
                 </ExpansionCard.Content>
             </ExpansionCard>
 

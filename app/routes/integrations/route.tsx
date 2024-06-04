@@ -16,7 +16,7 @@ import {MiniMap} from "@reactflow/minimap";
 import ChannelNode from "~/routes/integrations/customNodes/ChannelNode";
 import SidebarMenu from "~/routes/integrations/menu/SidebarMenu";
 import StaticValueNode from "~/routes/integrations/customNodes/StaticValueNode";
-import CollectionNode from "~/routes/integrations/customNodes/CollectionNode";
+import CustomParentNode from "~/routes/integrations/customNodes/CustomParentNode";
 import {useShallow} from "zustand/react/shallow";
 import {getNodePositionInsideParent, getId} from "~/routes/integrations/utils/utils";
 import OpenObjectNode from "~/routes/integrations/customNodes/openObjectNode";
@@ -28,7 +28,7 @@ const nodeTypes = {
     inputNode: InputNode,
     outputNode: OutputNode,
     static: StaticValueNode,
-    subflow: CollectionNode,
+    subflow: CustomParentNode,
     openObject: OpenObjectNode,
     mathNode: MathNode,
     channel: ChannelNode
