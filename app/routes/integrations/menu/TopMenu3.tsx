@@ -3,6 +3,7 @@ import {ExpansionCard, HStack, Box, Dropdown, Button, Link} from "@navikt/ds-rea
 import SidebarMenuList from "~/routes/integrations/menu/SidebarMenuList";
 import TopMenuList
  from "./TopMenuList";
+import { ChevronDownIcon } from "@navikt/aksel-icons";
 const TopMenu3: React.FunctionComponent = () => {
 
     return (
@@ -17,7 +18,9 @@ const TopMenu3: React.FunctionComponent = () => {
             >
                 <HStack gap="2">
                     <Dropdown>
-                        <Link as={Dropdown.Toggle}>Actions</Link>
+                        <Link as={Dropdown.Toggle}>Actions
+                            <ChevronDownIcon title="chevron down" fontSize="1.5rem" />
+                        </Link>
 
                         <Dropdown.Menu placement="bottom-start">
                             <Dropdown.Menu.GroupedList>
