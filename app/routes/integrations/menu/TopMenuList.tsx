@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, HStack, VStack } from "@navikt/ds-react";
+import { Box, HStack, VStack, Dropdown } from "@navikt/ds-react";
 import {MenuConfig, menuConfigs} from './config';
 
 interface MathNodeListProps {
@@ -7,7 +7,7 @@ interface MathNodeListProps {
   isVerticalStack?: boolean;
 }
 
-const MathNodelist: React.FC<MathNodeListProps> = ({ configKey, isVerticalStack = false }) => {
+const TopMenuList: React.FC<MathNodeListProps> = ({ configKey, isVerticalStack = false }) => {
     const menuConfig = menuConfigs[configKey];
 
     const onDragStart = (event: React.DragEvent<HTMLSpanElement>, menuItem:MenuConfig) => {
@@ -25,14 +25,14 @@ const MathNodelist: React.FC<MathNodeListProps> = ({ configKey, isVerticalStack 
 
         <CustomimzableStack>
             {menuConfig.map((menuItem, index) => (
+               <Dropdown.Menu.GroupedList.Item as="div">
+
                 <Box
                     key={index}
                     onDragStart={(event) => onDragStart(event, menuItem)}
                     draggable
                     className={"w-40 flex items-center rounded-lg bg-gray-200"}
                     as={"div"}
-                    background="surface-subtle"
-                    padding="1"
                     borderRadius="large"
                 >
                     <span className="w-1/4">
@@ -40,11 +40,12 @@ const MathNodelist: React.FC<MathNodeListProps> = ({ configKey, isVerticalStack 
                             {menuItem.icon}
                         </span>
                     </span>
-                    <span className="ml-1">{menuItem.label}</span>
+                    <span>{menuItem.label}</span>
                 </Box>
+                </Dropdown.Menu.GroupedList.Item>
             ))}
         </CustomimzableStack>
     );
 };
 
-export default MathNodelist;
+export default TopMenuList;

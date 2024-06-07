@@ -23,6 +23,9 @@ import OpenObjectNode from "~/routes/integrations/customNodes/openObjectNode";
 import InputNode from './customNodes/inputNode';
 import OutputNode from './customNodes/OutputNode';
 import MathNode from "~/routes/integrations/customNodes/MathNode";
+import TopMenu1 from './menu/TopMenu1';
+import TopMenu2 from './menu/TopMenu2';
+import TopMenu3 from './menu/TopMenu3';
 
 const nodeTypes = {
     inputNode: InputNode,
@@ -175,6 +178,11 @@ export default function Index() {
                     </HelpText>
                 </HStack>
             </HStack>
+
+
+            <TopMenu1 />
+            <TopMenu2 />
+            <TopMenu3 />
 
             <HGrid columns="250px auto" style={{height:800}} gap={"5"}>
                 <ReactFlowProvider>
