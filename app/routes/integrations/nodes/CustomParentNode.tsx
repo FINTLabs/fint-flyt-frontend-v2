@@ -4,10 +4,10 @@ import {getRelativeNodesBounds} from "~/routes/integrations/utils/utils";
 import {HStack} from "@navikt/ds-react";
 import CustomHandleCollection from "~/routes/integrations/customHandles/customHandleCollection";
 import config, {HandleConfig, handleConfigsRight} from "~/routes/integrations/customHandles/config";
-import {memo} from "react";
+import React, {memo} from "react";
 
 
-interface NodeProps {
+interface CustomNodeProps {
     id: string;
     selected: boolean;
     data: {
@@ -17,7 +17,8 @@ interface NodeProps {
     }
 }
 
-function CustomParentNode({ id, data, selected }: NodeProps)  {
+// const CustomParentNode({ id, data, selected }: NodeProps)  {
+    const CustomParentNode: React.FC<CustomNodeProps> = ({ id, data, selected }) => {
 
     const handles: HandleConfig[] = config[data.inputType] || config.default;
     const handlesRight: HandleConfig[] = handleConfigsRight[data.inputType] || null;
@@ -130,5 +131,5 @@ function CustomParentNode({ id, data, selected }: NodeProps)  {
     );
 }
 
-export default memo(CustomParentNode);
-// export default CustomParentNode;
+// export default memo(CustomParentNode);
+export default CustomParentNode;

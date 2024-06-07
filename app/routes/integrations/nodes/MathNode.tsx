@@ -18,7 +18,7 @@ function MathNode({ data, selected }: CustomNodeProps) {
     const [handleIcon, setHandleIcon] = useState('tag'); // default icon is 'tag'
 
     return (
-        <div className={`flex justify-center  ${selected ? 'border-black border' : ''}`}>
+        <div className={`bg-amber-300 flex justify-center  ${selected ? 'border-black border' : ''}`}>
 
             {data.hasToolbar && (
                 <NodeToolbar
@@ -35,7 +35,12 @@ function MathNode({ data, selected }: CustomNodeProps) {
                     // style={{ position: 'relative', height: `${componentHeight}px` }}
                 >
 
-                    <CustomHandleCollection position={Position.Left} id="1" icon={handleIcon} labelText="Added"/>
+                    <CustomHandleCollection
+                        position={Position.Left}
+                        id="1"
+                        icon={handleIcon}
+                        labelText="Added"
+                    />
                     <CustomHandleCollection position={Position.Left} id="2" icon={handleIcon} labelText="Added"/>
                 </div>
             </div>

@@ -10,9 +10,23 @@ export const menuConfigs: { [key: string]: MenuConfig[] } = {
     default: [
         { nodeType: 'error', inputType: 'error', label: 'Error', icon:'error' },
     ],
+    "channelNodes": [
+        { nodeType: "channel", inputType: "channel", icon: "arrow_circle_right", label: "Input" },
+        { nodeType: "outputNode", inputType: "outputNode", icon: "arrow_circle_left", label: "Output" },
+        { nodeType: "openObject", inputType: "object", icon: "data_object", label: "openObject" },
+        { nodeType: 'customNode', inputType: 'inChannel', label: 'TEST Channel', icon:'arrow_circle_right' },
+    ],
+    "textConversionNodes": [
+        { nodeType: 'customNode', inputType: 'uppercase', label: 'To Uppercase', icon:'uppercase' },
+        { nodeType: 'customNode', inputType: 'lowercase', label: 'To Lowercase', icon:'lowercase' },
+        { nodeType: 'customNode', inputType: 'upperFirst', label: 'Proper case', icon:'match_case' },
+        { nodeType: 'customNode', inputType: 'splitText', label: 'Split Text', icon:'arrow_split' },
+        { nodeType: 'customNode', inputType: 'combineText', label: 'Combine Text', icon:'merge' },
+    ],
     "mathNodes": [
-        { nodeType: 'mathNode', inputType: 'add', label: 'Addition', icon:'add_circle', hasToolbar: true },
-        { nodeType: 'mathNode', inputType: 'subtract', label: 'Subtraction', icon:'do_not_disturb_on', hasToolbar: true },
+        { nodeType: 'customNode', inputType: 'add-whole', label: 'Addition Whole', icon:'add_circle'},
+        { nodeType: 'customNode', inputType: 'add-float', label: 'Addition Float', icon:'add_circle'},
+        { nodeType: 'customNode', inputType: 'subtract', label: 'Subtraction', icon:'do_not_disturb_on', hasToolbar: true },
         { nodeType: 'mathNode', inputType: 'multiply', label: 'Multiplication', icon:'cancel', hasToolbar: true },
         { nodeType: 'mathNode', inputType: 'divide', label: 'Divide', icon:'percent', hasToolbar: true },
         { nodeType: 'mathNode', inputType: 'larger', label: 'LargerThan', icon:'chevron_right', hasToolbar: true },
@@ -20,7 +34,6 @@ export const menuConfigs: { [key: string]: MenuConfig[] } = {
         { nodeType: 'mathNode', inputType: 'equal', label: 'Equal', icon:'equal'},
         { nodeType: 'mathNode', inputType: 'roundUp', label: 'Round Up', icon:'rotate_right' },
         { nodeType: 'mathNode', inputType: 'roundDown', label: 'Round Down', icon:'rotate_left'},
-
     ],
     "subFlowNodes": [
         { nodeType: "subflow", inputType: "subflow-if-else", icon: "fact_check", label: "Foreach" },
@@ -37,10 +50,5 @@ export const menuConfigs: { [key: string]: MenuConfig[] } = {
         { nodeType: 'static', inputType: 'time', label: 'Time', icon:'schedule' },
         { nodeType: 'static', inputType: 'date', label: 'Date', icon:'calendar_today' },
         { nodeType: 'static', inputType: 'datetime', label: 'Date+Time', icon:'calendar_clock' },
-    ],
-    "channelNodes": [
-        { nodeType: "channel", inputType: "channel", icon: "arrow_circle_right", label: "Input" },
-        { nodeType: "channel", inputType: "channel", icon: "arrow_circle_left", label: "Output" },
-        { nodeType: "openObject", inputType: "object", icon: "data_object", label: "openObject" },
     ]
 }
