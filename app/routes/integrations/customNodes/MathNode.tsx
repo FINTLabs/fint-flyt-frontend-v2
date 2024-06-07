@@ -1,8 +1,7 @@
 import {NodeToolbar, Position} from "reactflow";
 import React, {useState} from "react";
-import CustomHandleCollection from "~/routes/integrations/customHandles/customHandleCollection";
+import CustomHandle from "../Handles/customHandle";
 import {Button} from "@navikt/ds-react";
-import {handle} from "mdast-util-to-markdown/lib/handle";
 
 interface CustomNodeProps {
     id: string;
@@ -34,8 +33,8 @@ function MathNode({ data, selected }: CustomNodeProps) {
                     // style={{ position: 'relative', height: `${componentHeight}px` }}
                 >
 
-                    <CustomHandleCollection position={Position.Left} id="1" icon={handleIcon} labelText="Added"/>
-                    <CustomHandleCollection position={Position.Left} id="2" icon={handleIcon} labelText="Added"/>
+                    <CustomHandle position={Position.Left} id="1" icon={handleIcon} labelText="Added"/>
+                    <CustomHandle position={Position.Left} id="2" icon={handleIcon} labelText="Added"/>
                 </div>
             </div>
 
@@ -54,7 +53,7 @@ function MathNode({ data, selected }: CustomNodeProps) {
                 {/*    // style={{ position: 'relative', height: `${componentHeight}px` }}*/}
                 {/*>*/}
 
-                    <CustomHandleCollection position={Position.Right} id="3" icon={handleIcon} labelText="Sum"/>
+                    <CustomHandle position={Position.Right} id="3" icon={handleIcon} labelText="Sum"/>
                 {/*</div>*/}
             </div>
         </div>

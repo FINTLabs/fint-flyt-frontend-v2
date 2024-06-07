@@ -1,5 +1,5 @@
 import { Position } from "reactflow";
-import { CustomHandle } from "../Handles/customProcessHandle";
+import { CustomProcessHandle } from "../Handles/customProcessHandle";
 import { ChevronRightDoubleCircleFillIcon } from '@navikt/aksel-icons';
 
 interface NodeData {
@@ -12,7 +12,7 @@ interface CustomNodeProps {
 function OutputNode({ data }: CustomNodeProps ) {
   return (
     <div className="flex justify-center">
-      <CustomHandle
+      <CustomProcessHandle
         position={Position.Left}
         labeltype="object"
         labeltext="Objekt"
@@ -23,7 +23,7 @@ function OutputNode({ data }: CustomNodeProps ) {
       <div className="relative h-[100px] w-[100px] bg-[#FFE6C1] rounded-2xl flex items-center justify-center border border-black">
       <ChevronRightDoubleCircleFillIcon title="a11y-title" fontSize="60px" />
       </div>
-      <CustomHandle
+      <CustomProcessHandle
         position={Position.Right}
         labeltype="object"
         labeltext="Objekt (Optional)"

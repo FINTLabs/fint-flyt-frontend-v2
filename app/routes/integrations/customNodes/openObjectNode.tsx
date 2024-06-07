@@ -1,6 +1,6 @@
 import React from "react";
 import { Handle, Position } from "reactflow";
-import { CustomHandle } from "../customHandles/customHandle";
+import { CustomProcessHandle } from "../Handles/customProcessHandle";
 
 function OpenObjectNode({ data }) {
   const baseHeight = 70;
@@ -27,7 +27,7 @@ const componentHeight = 70;
         Åpne Objekt
       </div>
       <div className="flex flex-row items-center">
-        <CustomHandle position={Position.Left} id="1" labelType="object" labelText="Objekt" />
+        <CustomProcessHandle position={Position.Left} id="1" labeltype="object" labeltext="Objekt" />
         <div
           className="w-16 flex flex-col items-center justify-center bg-slate-300 rounded-xl border border-black"
           style={{ height: `${componentHeight}px` }}

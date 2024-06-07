@@ -1,5 +1,5 @@
 import { Handle, Position } from "reactflow";
-import { CustomHandle } from "../Handles/customProcessHandle";
+import { CustomProcessHandle } from "../Handles/customProcessHandle";
 
 interface NodeData {
     inputType: string;
@@ -17,7 +17,7 @@ function InputNode({ data }: CustomNodeProps ) {
       <div className="relative h-[100px] w-[100px] bg-[#FFE6C1] rounded-2xl flex items-center justify-center border border-black">
         <img src="../images/input.svg" className="h-[50px]" alt="input" />
       </div>
-      <CustomHandle
+      <CustomProcessHandle
         position={Position.Right}
         labeltype="object"
         labeltext="Objekt"

@@ -9,7 +9,9 @@ interface HandleProps {
   className?: string;
 }
 
-export function CustomHandle({
+//! THIS IS THE OLD CUSTOM HANDLES. THEY WILL BE IMPLEMENTED INTO CUSTOMHANDLE
+
+export function CustomProcessHandle({
   position,
   id = "",
   labeltype,

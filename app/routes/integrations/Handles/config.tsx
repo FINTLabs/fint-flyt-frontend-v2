@@ -1,6 +1,6 @@
 import { Position } from "reactflow";
 
-export interface HandleConfig {
+export default interface HandleConfig {
     position: Position;
     labelText: string;
     id: string;
@@ -10,7 +10,7 @@ export interface HandleConfig {
     isOptional?: boolean;
 }
 
-const config: { [key: string]: HandleConfig[] } = {
+export const handleConfigLeft: { [key: string]: HandleConfig[] } = {
     default: [
         {
             position: Position.Left,
@@ -38,17 +38,17 @@ const config: { [key: string]: HandleConfig[] } = {
         {
             position: Position.Right,
             labelText: "Element A",
-            className: "left-10 pb-10",
+            className: "absolute left-10",
             id: "2",
             icon: "tag",
         },
-        {
-            position: Position.Right,
-            labelText: "Element B",
-            className: "left-10 pt-10",
-            id: "3",
-            icon: "tag",
-        },
+        // {
+        //     position: Position.Right,
+        //     labelText: "Element B",
+        //     className: "absolute left-10",
+        //     id: "3",
+        //     icon: "tag",
+        // },
     ]
 };
 
@@ -118,5 +118,3 @@ export const handleConfigsRight: { [key: string]: HandleConfig[] } = {
         }
     ]
 };
-
-export default config;
