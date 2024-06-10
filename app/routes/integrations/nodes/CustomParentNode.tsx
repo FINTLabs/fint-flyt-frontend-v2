@@ -3,8 +3,8 @@ import {NodeResizer, useStore} from "reactflow";
 import {getRelativeNodesBounds} from "~/routes/integrations/utils/utils";
 import {HStack} from "@navikt/ds-react";
 import CustomHandleCollection from "~/routes/integrations/customHandles/customHandleCollection";
-import config, {HandleConfig, handleConfigsRight} from "~/routes/integrations/customHandles/config";
-import React, {memo} from "react";
+import React from "react";
+import nodeConfig from "~/routes/integrations/nodes/config";
 
 
 interface CustomNodeProps {
@@ -20,8 +20,9 @@ interface CustomNodeProps {
 // const CustomParentNode({ id, data, selected }: NodeProps)  {
     const CustomParentNode: React.FC<CustomNodeProps> = ({ id, data, selected }) => {
 
-    const handles: HandleConfig[] = config[data.inputType] || config.default;
-    const handlesRight: HandleConfig[] = handleConfigsRight[data.inputType] || null;
+    // const handles: HandleConfig[] = handlesConfig[data.inputType] || handlesConfig.default;
+    // const handlesRight: HandleConfig[] = handleConfigsRight[data.inputType] || null;
+        const config = nodeConfig[data.inputType] || {};
 
     const { minWidth, minHeight, parentHeight, parentWidth } = useStore((store) => {
         const childNodes = Array.from(store.nodeInternals.values()).filter(
@@ -67,8 +68,7 @@ interface CustomNodeProps {
                 />
 
 
-
-                {handles.map((handle: HandleConfig, index: number) => (
+                {config.customHandles?.left.map((handle,index) => (
                     <CustomHandleCollection
                         key={index}
                         position={handle.position}
@@ -107,7 +107,7 @@ interface CustomNodeProps {
                 </div>
 
 
-                {handlesRight?.map((handle: HandleConfig, index: number) => (
+                {config.customHandles?.right.map((handle,index) => (
                     <CustomHandleCollection
                         key={index}
                         position={handle.position}

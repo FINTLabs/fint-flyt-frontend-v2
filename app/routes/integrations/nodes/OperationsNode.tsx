@@ -18,7 +18,7 @@ interface CustomNodeProps {
 //TODO: NodeToolbar - will this really work in the long run ??
 //TODO: use SVG and icons ??
 
-const CustomOperationsNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
+const OperationsNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
     const config = nodeConfig[data.inputType] || {};
 
     return (
@@ -59,4 +59,4 @@ const CustomOperationsNode: React.FC<CustomNodeProps> = ({ data, selected }) => 
     );
 };
 
-export default CustomOperationsNode;
+export default OperationsNode;

@@ -15,25 +15,19 @@ import useStore from './store';
 import {MiniMap} from "@reactflow/minimap";
 import ChannelNode from "~/routes/integrations/nodes/ChannelNode";
 import SidebarMenu from "~/routes/integrations/menu/SidebarMenu";
-import StaticValueNode from "~/routes/integrations/nodes/StaticValueNode";
 import CustomParentNode from "~/routes/integrations/nodes/CustomParentNode";
 import {useShallow} from "zustand/react/shallow";
 import {getNodePositionInsideParent, getId} from "~/routes/integrations/utils/utils";
-import OpenObjectNode from "~/routes/integrations/nodes/openObjectNode";
-import InputNode from '~/routes/integrations/nodes/inputNode';
-import OutputNode from '~/routes/integrations/nodes/OutputNode';
-import MathNode from "~/routes/integrations/nodes/MathNode";
-import CustomOperationsNode from "~/routes/integrations/nodes/CustomOperationsNode";
+import CustomObjectNode from "~/routes/integrations/nodes/CustomObjectNode";
+import OperationsNode from "~/routes/integrations/nodes/OperationsNode";
+import StaticValueNode from "~/routes/integrations/nodes/StaticValueNode";
 
 const nodeTypes = {
-    inputNode: InputNode,
-    outputNode: OutputNode,
-    static: StaticValueNode,
     subflow: CustomParentNode,
-    openObject: OpenObjectNode,
-    mathNode: MathNode,
+    openObject: CustomObjectNode,
     channel: ChannelNode,
-    customNode: CustomOperationsNode
+    customNode: OperationsNode,
+    static: StaticValueNode
 };
 type StoreState = {
     nodes: Node[];
