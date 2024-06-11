@@ -13,8 +13,11 @@ export const menuConfigs: { [key: string]: MenuConfig[] } = {
     "channelNodes": [
         { nodeType: "channel", inputType: "input", icon: "ChevronRightDoubleCircleFillIcon", label: "Input" },
         { nodeType: "channel", inputType: "output", icon: "arrow_circle_right", label: "Output" },
+        { nodeType: "channel", inputType: "blueprint", icon: "account_tree", label: "Blueprint" },
         { nodeType: "openObject", inputType: "open-object", icon: "data_object", label: "Open Object 3" },
         { nodeType: "openObject", inputType: "open-object-10", icon: "data_object", label: "Open object 6" },
+        { nodeType: "openObject", inputType: "output-object-10", icon: "data_object", label: "Output object" },
+        { nodeType: "select", inputType: "select", icon: "database", label: "Datakildeverdi" },
     ],
     "textConversionNodes": [
         { nodeType: 'customNode', inputType: 'uppercase', label: 'To Uppercase', icon:'uppercase' },

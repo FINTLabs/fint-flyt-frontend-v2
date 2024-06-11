@@ -1,6 +1,6 @@
 import {Position} from "reactflow";
 import React from "react";
-import CustomHandleCollection from "~/routes/integrations/customHandles/customHandleCollection";
+import CustomHandle from "~/routes/integrations/customHandle";
 import nodeConfig from "./config";
 
 interface CustomNodeProps {
@@ -15,8 +15,7 @@ interface CustomNodeProps {
     };
 }
 
-//TODO: NodeToolbar - will this really work in the long run ??
-//TODO: use SVG and icons ??
+//TODO: use SVG and icons needs to be updated
 
 const OperationsNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
     const config = nodeConfig[data.inputType] || {};
@@ -26,9 +25,9 @@ const OperationsNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
 
             <div className="flex flex-row items-center">
                 <div className="flex flex-col h-[50%] justify-between">
-                    {config.customHandles?.left.map(handle => (
-                        <CustomHandleCollection
-                            key={handle.id}
+                    {config.customHandles?.left.map((handle, index) => (
+                        <CustomHandle
+                            key={index}
                             position={Position.Left}
                             id={handle.id}
                             icon={handle.icon}
@@ -45,13 +44,15 @@ const OperationsNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
                     <span className="material-symbols-outlined text-left">{config.mainIcon}</span>
                     <span className="material-symbols-outlined text-3xl text-center">{data.icon}</span>
                 </div>
-                {config.customHandles?.right.map(handle => (
-                    <CustomHandleCollection
-                        key={handle.id}
+                {config.customHandles?.right.map((handle,index) => (
+                    <CustomHandle
+                        key={index}
                         position={Position.Right}
                         id={handle.id}
                         icon={handle.icon}
                         labelText={handle.labelText}
+                        isArray={handle.isArray}
+                        isOptional={handle.isOptional}
                     />
                 ))}
             </div>

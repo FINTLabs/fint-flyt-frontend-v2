@@ -2,7 +2,7 @@
 import {NodeResizer, useStore} from "reactflow";
 import {getRelativeNodesBounds} from "~/routes/integrations/utils/utils";
 import {HStack} from "@navikt/ds-react";
-import CustomHandleCollection from "~/routes/integrations/customHandles/customHandleCollection";
+import CustomHandle from "~/routes/integrations/customHandle";
 import React from "react";
 import nodeConfig from "~/routes/integrations/nodes/config";
 
@@ -69,7 +69,7 @@ interface CustomNodeProps {
 
 
                 {config.customHandles?.left.map((handle,index) => (
-                    <CustomHandleCollection
+                    <CustomHandle
                         key={index}
                         position={handle.position}
                         labelText={handle.labelText}
@@ -108,7 +108,7 @@ interface CustomNodeProps {
 
 
                 {config.customHandles?.right.map((handle,index) => (
-                    <CustomHandleCollection
+                    <CustomHandle
                         key={index}
                         position={handle.position}
                         labelText={handle.labelText}

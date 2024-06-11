@@ -21,13 +21,15 @@ import {getNodePositionInsideParent, getId} from "~/routes/integrations/utils/ut
 import CustomObjectNode from "~/routes/integrations/nodes/CustomObjectNode";
 import OperationsNode from "~/routes/integrations/nodes/OperationsNode";
 import StaticValueNode from "~/routes/integrations/nodes/StaticValueNode";
+import SelectValueNode from "~/routes/integrations/nodes/SelectValueNode";
 
 const nodeTypes = {
     subflow: CustomParentNode,
     openObject: CustomObjectNode,
     channel: ChannelNode,
     customNode: OperationsNode,
-    static: StaticValueNode
+    static: StaticValueNode,
+    select: SelectValueNode
 };
 type StoreState = {
     nodes: Node[];

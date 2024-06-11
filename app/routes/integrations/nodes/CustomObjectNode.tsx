@@ -1,8 +1,6 @@
 import React from "react";
-import { Handle, Position } from "reactflow";
-import { CustomHandle } from "../customHandles/customHandle";
 import nodeConfig from "~/routes/integrations/nodes/config";
-import CustomHandleCollection from "~/routes/integrations/customHandles/customHandleCollection";
+import CustomHandle from "~/routes/integrations/customHandle";
 
 interface CustomNodeProps {
     id: string;
@@ -18,31 +16,39 @@ interface CustomNodeProps {
 
 const CustomObjectNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
     const config = nodeConfig[data.inputType] || {};
-    const componentHeight = 70 + (config.customHandles.right.length * 20) ;
+    // const componentHeight = 70 + (config.customHandles.right.length * 20) ;
+    // const componentHeight = (config.customHandles.right.length * 30) + 5;
+
+    const rightHandlesLength = config.customHandles?.right?.length || 0;
+    const leftHandlesLength = config.customHandles?.left?.length || 0;
+    const maxHandlesLength = Math.max(rightHandlesLength, leftHandlesLength);
+    const componentHeight = (maxHandlesLength * 30) + 5;
 
 
   return (
       <div className={`flex justify-center ${selected ? 'border-black border' : ''}`}>
-          {/*<div className="absolute z-10 bottom-full mb-2 text-center w-[100px]">*/}
-          {/*    Åpne Objekt*/}
-          {/*</div>*/}
-          <div className="flex flex-row items-center">
-              {/*<CustomHandle */}
-              {/*    position={Position.Left} */}
-              {/*    id="1"*/}
-              {/*    labelText="Objekt"*/}
-              {/*/>*/}
-              {config.customHandles?.left.map(handle => (
-                  <CustomHandleCollection
-                      key={handle.id}
-                      position={Position.Left}
-                      id={handle.id}
-                      icon={handle.icon}
-                      labelText={handle.labelText}
-                      isArray={handle.isArray}
-                      isOptional={handle.isOptional}
-                  />
-              ))}
+
+          <div className="flex">
+
+              <div >
+                  <div className="flex pt-5">
+                      {config.customHandles?.left.map((handle,index) => (
+                          <CustomHandle
+                              key={handle.id}
+                              position={handle.position}
+                              id={handle.id}
+                              icon={handle.icon}
+                              labelText={handle.labelText}
+                              className={` top-[${index * 30}px] `}
+                              isArray={handle.isArray}
+                              isOptional={handle.isOptional}
+                              // className={handle.className}
+                          />
+                      ))}
+                  </div>
+              </div>
+
+
               <div
                   className="w-16 flex flex-col items-center justify-center bg-slate-300 rounded-xl border border-black"
                   style={{height: `${componentHeight}px`}}
@@ -53,21 +59,27 @@ const CustomObjectNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
                       className="h-[50px]"
                   />
               </div>
-              <div
-                  // className="flex flex-col h-[90%] justify-between"
-                  // style={{position: 'relative', height: `${componentHeight}px`}}
-              >
-                  {config.customHandles?.right.map(handle => (
-                      <CustomHandleCollection
+
+              <div>
+                  <div className="flex pt-5">
+                  {config.customHandles?.right.map((handle,index) => (
+                      <CustomHandle
                           key={handle.id}
-                          position={Position.Right}
+                          position={handle.position}
                           id={handle.id}
                           icon={handle.icon}
                           labelText={handle.labelText}
-                          className={handle.className}
+                          className={` top-[${index * 30}px] `}
+                          isArray={handle.isArray}
+                            isOptional={handle.isOptional}
+                          // className={handle.className}
                       />
                   ))}
+                  </div>
               </div>
+
+
+
           </div>
       </div>
   );

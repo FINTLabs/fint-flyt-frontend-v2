@@ -1,8 +1,8 @@
 import { ChevronRightDoubleCircleFillIcon } from '@navikt/aksel-icons';
 import React from "react";
-import handlesConfig, {HandleConfig, handleConfigsRight} from "~/routes/integrations/customHandles/handlesConfig";
-import CustomHandleCollection from "~/routes/integrations/customHandles/customHandleCollection";
+import CustomHandle from "~/routes/integrations/customHandle";
 import nodeConfig from "~/routes/integrations/nodes/config";
+import {Position} from "reactflow";
 
 interface CustomNodeProps {
     id: string;
@@ -16,7 +16,7 @@ interface CustomNodeProps {
     };
 }
 
-const OutputNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
+const ChannelNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
     // const handles: HandleConfig[] = handlesConfig[data.inputType] || null;
     // const handlesRight: HandleConfig[] = handleConfigsRight[data.inputType] || null;
     const config = nodeConfig[data.inputType] || {};
@@ -33,37 +33,36 @@ const OutputNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
         }
     };
 
-    console.log('custom channel node', data.inputType)
+    const backgroundColor = data.inputType === 'blueprint' ? 'bg-sky-200' : 'bg-[#FFE6C1]';
 
     return (
         <div className={`flex justify-center ${selected ? 'border-black border' : ''}`}>
-            {config.customHandles?.left.map((handle: HandleConfig, index: number) => (
-                <CustomHandleCollection
+            {config.customHandles?.left.map((handle, index) => (
+                <CustomHandle
                     key={index}
-                    position={handle.position}
-                    labelText={handle.labelText}
+                    position={Position.Left}
                     id={handle.id}
                     icon={handle.icon}
-                    className={handle.className}
+                    labelText={handle.labelText}
                     isArray={handle.isArray}
+                    isOptional={handle.isOptional}
                 />
             ))}
             {/*<div className="absolute z-10 bottom-full mb-2 w-[100px] text-center">*/}
             {/*    Output Node*/}
             {/*</div>*/}
 
-            <div className="relative bg-[#FFE6C1] rounded-2xl flex items-center justify-center border border-black p-4">
+            <div className={`relative ${backgroundColor} rounded-2xl flex items-center justify-center border border-black p-4`}>
                 {renderIcon()}
             </div>
 
-            {config.customHandles.right?.map((handle: HandleConfig, index: number) => (
-                <CustomHandleCollection
+            {config.customHandles?.right.map((handle, index) => (
+                <CustomHandle
                     key={index}
-                    position={handle.position}
-                    labelText={handle.labelText}
+                    position={Position.Right}
                     id={handle.id}
                     icon={handle.icon}
-                    className={handle.className}
+                    labelText={handle.labelText}
                     isArray={handle.isArray}
                     isOptional={handle.isOptional}
                 />
@@ -72,4 +71,4 @@ const OutputNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
     );
 }
 
-export default OutputNode;
+export default ChannelNode;

@@ -1,6 +1,8 @@
 // config.ts
 import {Position} from "reactflow";
 
+const getId = (prefix = 'node') => `${prefix}_${Math.random() * 10000}`;
+
 interface CustomHandleConfig {
     position: Position;
     labelText: string;
@@ -90,7 +92,7 @@ const nodeConfig: NodeConfig = {
                 }
             ],
             right: [{
-                position: Position.Left,
+                position: Position.Right,
                 labelText: "FirstName",
                 id: "1",
                 icon: "data_object",
@@ -98,7 +100,7 @@ const nodeConfig: NodeConfig = {
                 className: "top-10",
             },
             {
-                position: Position.Left,
+                position: Position.Right,
                 labelText: "LastName",
                 id: "1",
                 icon: "data_object",
@@ -106,7 +108,7 @@ const nodeConfig: NodeConfig = {
                 className: "top-20",
             },
             {
-                position: Position.Left,
+                position: Position.Right,
                 labelText: "Title",
                 id: "1",
                 icon: "data_object",
@@ -124,57 +126,138 @@ const nodeConfig: NodeConfig = {
                 {
                     position: Position.Left,
                     labelText: "",
-                    id: "1",
+                    id: getId(),
                     icon: "data_object",
                     isArray: false,
                 }
             ],
             right: [
                 {
-                    position: Position.Left,
-                    labelText: "FirstName",
-                    id: "777",
+                    position: Position.Right,
+                    labelText: "First Name",
+                    id: getId(),
                     icon: "data_object",
                     isArray: false,
-                    className: "top-10",
+                    className: "top-[0px]"
                 },
                 {
-                    position: Position.Left,
+                    position: Position.Right,
                     labelText: "LastName",
-                    id: "779",
+                    id: getId(),
                     icon: "data_object",
                     isArray: false,
-                    className: "top-20",
+                    className: "top-[30px]"
                 },
                 {
-                    position: Position.Left,
+                    position: Position.Right,
                     labelText: "Title",
-                    id: "779",
+                    id: getId(),
                     icon: "data_object",
-                    className: "top-30",
+                    className: "top-[60px]"
                 },
                 {
-                    position: Position.Left,
-                    labelText: "FirstName",
-                    id: "780",
+                    position: Position.Right,
+                    labelText: "Abc",
+                    id: getId(),
                     icon: "data_object",
-                    className: "top-40",
+                    className: "top-[90px]",
                 },
                 {
-                    position: Position.Left,
-                    labelText: "LastName",
-                    id: "781",
+                    position: Position.Right,
+                    labelText: "Def",
+                    id: getId(),
                     icon: "data_object",
-                    className: "top-50",
+                    className: "top-[120px]",
                 },
                 {
-                    position: Position.Left,
-                    labelText: "Title",
-                    id: "782",
+                    position: Position.Right,
+                    labelText: "Ghi",
+                    id: getId(),
                     icon: "data_object",
-                    className: "top-60",
+                    className: "top-[150px]",
                 }
             ]
+        },
+    },
+    "output-object-10": {
+        hasToolbar: false,
+        mainIcon: "ChevronRightDoubleCircleFillIcon",
+        customHandles: {
+            right: [
+                {
+                    position: Position.Right,
+                    labelText: "",
+                    id: getId(),
+                    icon: "data_object",
+                    isArray: false,
+                }
+            ],
+            left: [
+                {
+                    position: Position.Left,
+                    labelText: "First Name",
+                    id: getId(),
+                    icon: "data_object",
+                    isArray: false,
+                    className: "top-[0px]"
+                },
+                {
+                    position: Position.Left,
+                    labelText: "LastName",
+                    id: getId(),
+                    icon: "data_object",
+                    isArray: false,
+                    className: "top-[30px]"
+                },
+                {
+                    position: Position.Left,
+                    labelText: "Title",
+                    id: getId(),
+                    icon: "data_object",
+                    className: "top-[60px]"
+                },
+                {
+                    position: Position.Left,
+                    labelText: "Abc",
+                    id: getId(),
+                    icon: "data_object",
+                    className: "top-[90px]",
+                },
+                {
+                    position: Position.Left,
+                    labelText: "Def",
+                    id: getId(),
+                    icon: "data_object",
+                    className: "top-[120px]",
+                },
+                {
+                    position: Position.Left,
+                    labelText: "Ghi",
+                    id: getId(),
+                    icon: "data_object",
+                    className: "top-[150px]",
+                }
+            ]
+        },
+    },
+    "blueprint": {
+        hasToolbar: false,
+        mainIcon: "ChevronRightDoubleCircleFillIcon",
+        customHandles: {
+            left: [{
+                position: Position.Left,
+                labelText: "Placeholder",
+                id: "1",
+                icon: "tab_unselected",
+                isArray: false,
+            }],
+            right: [{
+                position: Position.Right,
+                labelText: "Placeholder",
+                id: "1",
+                icon: "tab_unselected",
+                isArray: false,
+            }]
         },
     },
     "subflow-foreach": {
