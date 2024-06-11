@@ -1,10 +1,9 @@
 import React from "react";
 import {ExpansionCard, HStack, Box, Dropdown, Button, Link, Search} from "@navikt/ds-react";
-import SidebarMenuList from "~/routes/integrations/menu/SidebarMenuList";
 import TopMenuList from "./TopMenuList";
 import { ChevronDownIcon } from "@navikt/aksel-icons";
 
-const TopMenu2: React.FunctionComponent = () => {
+const TopMenu: React.FunctionComponent = () => {
 
     const ChevronDown = <ChevronDownIcon title="chevron down" fontSize="1.5rem" />
 
@@ -80,7 +79,7 @@ const TopMenu2: React.FunctionComponent = () => {
                                     </ExpansionCard.Header>
                                     <ExpansionCard.Content style={{ border: '0px'}}>
                                         <Dropdown.Menu.GroupedList>
-                                                <SidebarMenuList isVerticalStack configKey={"channelNodes"}/>
+                                            <TopMenuList isVerticalStack configKey={"mathNodes"}/>
                                         </Dropdown.Menu.GroupedList>
                                     </ExpansionCard.Content>
                                 </ExpansionCard>
@@ -99,4 +98,4 @@ const TopMenu2: React.FunctionComponent = () => {
     );
 };
 
-export default TopMenu2;
+export default TopMenu;

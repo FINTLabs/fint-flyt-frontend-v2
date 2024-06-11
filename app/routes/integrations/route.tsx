@@ -14,7 +14,6 @@ import 'reactflow/dist/style.css';
 import useStore from './store';
 import {MiniMap} from "@reactflow/minimap";
 import ChannelNode from "~/routes/integrations/customNodes/ChannelNode";
-import SidebarMenu from "~/routes/integrations/menu/SidebarMenu";
 import StaticValueNode from "~/routes/integrations/customNodes/StaticValueNode";
 import CustomParentNode from "~/routes/integrations/customNodes/CustomParentNode";
 import {useShallow} from "zustand/react/shallow";
@@ -23,9 +22,7 @@ import OpenObjectNode from "~/routes/integrations/customNodes/openObjectNode";
 import InputNode from './customNodes/inputNode';
 import OutputNode from './customNodes/OutputNode';
 import MathNode from "~/routes/integrations/customNodes/MathNode";
-import TopMenu1 from './menu/TopMenu1';
-import TopMenu2 from './menu/TopMenu2';
-import TopMenu3 from './menu/TopMenu3';
+import TopMenu from './menu/TopMenu';
 
 const nodeTypes = {
     inputNode: InputNode,
@@ -180,7 +177,7 @@ export default function Index() {
             </HStack>
 
 
-            <TopMenu2 />
+            <TopMenu />
 
            
 

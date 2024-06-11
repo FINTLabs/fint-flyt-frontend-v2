@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, HStack, VStack } from "@navikt/ds-react";
-import {MenuConfig, menuConfigs} from './config';
+import {MenuConfig, menuConfigs} from '../config';
 
 interface MathNodeListProps {
   configKey: string;
