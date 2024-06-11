@@ -62,6 +62,14 @@ const TopMenu: React.FunctionComponent = () => {
                         </Dropdown.Menu>
                     </Dropdown>
                     <Dropdown>
+                        <Button icon={ChevronDown} iconPosition="right" variant="tertiary" as={Dropdown.Toggle}> Text Converstions</Button>
+                        <Dropdown.Menu placement="bottom-start">
+                            <Dropdown.Menu.List>
+                                <TopMenuList configKey={"textConversionNodes"}/>
+                            </Dropdown.Menu.List>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    <Dropdown>
                         <Button icon={ChevronDown} iconPosition="right" variant="tertiary" as={Dropdown.Toggle}>Example</Button>
                         <Dropdown.Menu placement="bottom-start">
                                 <Dropdown.Menu.GroupedList>

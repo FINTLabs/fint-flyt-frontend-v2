@@ -1,6 +1,8 @@
 import React from 'react';
 import { Box, HStack, VStack, Dropdown } from "@navikt/ds-react";
 import {MenuConfig, menuConfigs} from './config';
+import { ChevronRightDoubleCircleFillIcon } from '@navikt/aksel-icons';
+
 
 interface MathNodeListProps {
   configKey: string;
@@ -18,6 +20,14 @@ const TopMenuList: React.FC<MathNodeListProps> = ({ configKey, isVerticalStack =
         event.dataTransfer.effectAllowed = 'move';
     };
 
+    const renderIcon = (icon:string) => {
+        if (icon === 'ChevronRightDoubleCircleFillIcon') {
+            return <ChevronRightDoubleCircleFillIcon title="a11y-title" fontSize="25px" />;
+        } else {
+            return <span className="material-symbols-outlined text-left">{icon}</span>
+        }
+    };
+
     return (
 
         <VStack gap="2" align="start">
@@ -33,9 +43,7 @@ const TopMenuList: React.FC<MathNodeListProps> = ({ configKey, isVerticalStack =
                 >
                   
                     <span className="flex items-center pr-2">
-                        <span className="material-symbols-outlined">
-                            {menuItem.icon}
-                        </span>
+                        {renderIcon(menuItem.icon)}
                     </span>
                     <span className="">{menuItem.label}</span>
                 </Box>
