@@ -180,29 +180,12 @@ export default function Index() {
             </HStack>
 
 
-            <TopMenu1 />
             <TopMenu2 />
-            <TopMenu3 />
 
-            <HGrid columns="250px auto" style={{height:800}} gap={"5"}>
+           
+
+            <HGrid columns="w-100" style={{height:800}}>
                 <ReactFlowProvider>
-                    <VStack>
-
-                        <Box
-                            id={"flow-buttons"}
-                            background={"surface-default"}
-                            padding="6"
-                            borderRadius={"large"}
-                            borderWidth="2"
-                            borderColor={"border-subtle"}
-                        >
-
-                            <SidebarMenu />
-                        </Box>
-
-
-                    </VStack>
-
                     <Box id={"integration-table-container"} background={"surface-default"} padding="6" borderRadius={"large"}
                          borderWidth="2" borderColor={"border-subtle"}>
                         <ReactFlow

@@ -1,5 +1,5 @@
 import React from "react";
-import {ExpansionCard, HStack, Box, Dropdown, Button, Link} from "@navikt/ds-react";
+import {ExpansionCard, HStack, Box, Dropdown, Button, Link, Search} from "@navikt/ds-react";
 import SidebarMenuList from "~/routes/integrations/menu/SidebarMenuList";
 import TopMenuList from "./TopMenuList";
 import { ChevronDownIcon } from "@navikt/aksel-icons";
@@ -23,58 +23,74 @@ const TopMenu2: React.FunctionComponent = () => {
                         <Button icon={ChevronDown} iconPosition="right" variant="tertiary" as={Dropdown.Toggle}>Actions</Button>
 
                         <Dropdown.Menu placement="bottom-start">
-                            <Dropdown.Menu.GroupedList>
+                            <Dropdown.Menu.List>
                                 <TopMenuList isVerticalStack configKey={"channelNodes"}/>
-                            </Dropdown.Menu.GroupedList>
+                            </Dropdown.Menu.List>
                         </Dropdown.Menu>
                     </Dropdown>
-
                     <Dropdown>
-                        <Button icon={ChevronDown} iconPosition="right" variant="tertiary" as={Dropdown.Toggle}>DataKilde</Button>
+                        <Button icon={ChevronDown} iconPosition="right" variant="tertiary" as={Dropdown.Toggle}>Constants</Button>
 
                         <Dropdown.Menu placement="bottom-start">
-                            <Dropdown.Menu.GroupedList>
-                                <TopMenuList isVerticalStack configKey={"channelNodes"}/>
-                            </Dropdown.Menu.GroupedList>
-                            <Dropdown>
-                                <Button icon={ChevronDown} iconPosition="right" variant="tertiary" as={Dropdown.Toggle}>Dropdown within dropdown</Button>
-                                <Dropdown.Menu placement="bottom">
-                                    <Dropdown.Menu.GroupedList>
-                                        <TopMenuList isVerticalStack configKey={"channelNodes"}/>
-                                    </Dropdown.Menu.GroupedList>
-                                </Dropdown.Menu>
-                            </Dropdown>
+                            <Dropdown.Menu.List>
+                                <TopMenuList isVerticalStack configKey={"staticValueNodes"}/>
+                            </Dropdown.Menu.List>
                         </Dropdown.Menu>
                     </Dropdown>
-
                     <Dropdown>
-                        <Button icon={ChevronDown} iconPosition="right" variant="tertiary" as={Dropdown.Toggle}>Statisk</Button>
+                        <Button icon={ChevronDown} iconPosition="right" variant="tertiary" as={Dropdown.Toggle}>Constants</Button>
 
                         <Dropdown.Menu placement="bottom-start">
-                            <Dropdown.Menu.GroupedList>
-                                <TopMenuList isVerticalStack configKey={"channelNodes"}/>
-                            </Dropdown.Menu.GroupedList>
+                            <Dropdown.Menu.List>
+                                <TopMenuList isVerticalStack configKey={"staticValueNodes"}/>
+                            </Dropdown.Menu.List>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    <Dropdown>
+                        <Button icon={ChevronDown} iconPosition="right" variant="tertiary" as={Dropdown.Toggle}>Collections</Button>
 
-                            <ExpansionCard className="pt-2 border-0" size="small" aria-label="Small-variant">
-                                <ExpansionCard.Header>
-                                    <ExpansionCard.Title as="h4" size="small">
-                                        Kodeverk Fylkesråd
-                                    </ExpansionCard.Title>
-                                </ExpansionCard.Header>
-                                <ExpansionCard.Content>
-                                    <SidebarMenuList isVerticalStack configKey={"channelNodes"}/>
-                                </ExpansionCard.Content>
-                            </ExpansionCard>
-                            <ExpansionCard className="pt-2 border-0" size="small" aria-label="Small-variant">
-                                <ExpansionCard.Header style={{ border: '0px'}}>
-                                    <ExpansionCard.Title as="h4" size="small">
-                                        Without Border
-                                    </ExpansionCard.Title>
-                                </ExpansionCard.Header>
-                                <ExpansionCard.Content style={{ border: '0px'}}>
-                                    <SidebarMenuList isVerticalStack configKey={"channelNodes"}/>
-                                </ExpansionCard.Content>
-                            </ExpansionCard>
+                        <Dropdown.Menu placement="bottom-start">
+                            <Dropdown.Menu.List>
+                                <TopMenuList isVerticalStack configKey={"subFlowNodes"}/>
+                            </Dropdown.Menu.List>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    <Dropdown>
+                        <Button icon={ChevronDown} iconPosition="right" variant="tertiary" as={Dropdown.Toggle}>Conversions</Button>
+
+                        <Dropdown.Menu placement="bottom-start">
+                            <Dropdown.Menu.List>
+                                <TopMenuList isVerticalStack configKey={"mathNodes"}/>
+                            </Dropdown.Menu.List>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    <Dropdown>
+                        <Button icon={ChevronDown} iconPosition="right" variant="tertiary" as={Dropdown.Toggle}>Example</Button>
+
+                        <Dropdown.Menu placement="bottom-start">
+                                <Dropdown.Menu.GroupedList>
+                                    <TopMenuList isVerticalStack configKey={"channelNodes"}/>
+                                </Dropdown.Menu.GroupedList>
+                                
+                                <ExpansionCard className="pt-2 border-0" size="small" aria-label="Small-variant">
+                                    <ExpansionCard.Header style={{ border: '0px'}}>
+                                        <ExpansionCard.Title as="h4" size="small">
+                                            Without Border
+                                        </ExpansionCard.Title>
+                                    </ExpansionCard.Header>
+                                    <ExpansionCard.Content style={{ border: '0px'}}>
+                                        <Dropdown.Menu.GroupedList>
+                                                <SidebarMenuList isVerticalStack configKey={"channelNodes"}/>
+                                        </Dropdown.Menu.GroupedList>
+                                    </ExpansionCard.Content>
+                                </ExpansionCard>
+                                <Dropdown.Menu.Divider />
+
+                                <Dropdown.Menu.List>
+                                    <Dropdown.Menu.List.Item>
+                                        <Search label="Søk alle NAV sine sider" variant="secondary" />
+                                    </Dropdown.Menu.List.Item>
+                                </Dropdown.Menu.List>
                         </Dropdown.Menu>
                     </Dropdown>
                 </HStack>

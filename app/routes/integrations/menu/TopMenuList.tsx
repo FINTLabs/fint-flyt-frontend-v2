@@ -25,24 +25,28 @@ const TopMenuList: React.FC<MathNodeListProps> = ({ configKey, isVerticalStack =
 
         <CustomimzableStack>
             {menuConfig.map((menuItem, index) => (
-               <Dropdown.Menu.GroupedList.Item as="div">
-
+                  <div className={"flex items-center rounded-lg hover:rounded-lg"}>
+               <Dropdown.Menu.List.Item as="div">
                 <Box
                     key={index}
                     onDragStart={(event) => onDragStart(event, menuItem)}
                     draggable
-                    className={"w-40 flex items-center rounded-lg bg-gray-200"}
                     as={"div"}
                     borderRadius="large"
+                    className={"w-60 flex items-center my-0.5"}
                 >
-                    <span className="w-1/4">
+                  
+                    <span className="flex items-center pr-2">
                         <span className="material-symbols-outlined">
                             {menuItem.icon}
                         </span>
                     </span>
-                    <span>{menuItem.label}</span>
+                    <span className="">{menuItem.label}</span>
                 </Box>
-                </Dropdown.Menu.GroupedList.Item>
+
+                </Dropdown.Menu.List.Item>
+                </div>
+
             ))}
         </CustomimzableStack>
     );
