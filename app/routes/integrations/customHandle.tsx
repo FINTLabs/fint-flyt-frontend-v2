@@ -10,7 +10,7 @@ interface HandleProps {
   isOptional?: boolean; // new prop
 }
 
-export default function CustomHandleCollection({
+export default function CustomHandle({
                                           position = Position.Right,
                                           id = "",
                                           labelText = "",
