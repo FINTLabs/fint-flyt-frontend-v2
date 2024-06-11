@@ -13,25 +13,23 @@ import ReactFlow, {
 import 'reactflow/dist/style.css';
 import useStore from './store';
 import {MiniMap} from "@reactflow/minimap";
-import ChannelNode from "~/routes/integrations/customNodes/ChannelNode";
+import ChannelNode from "~/routes/integrations/nodes/ChannelNode";
 import SidebarMenu from "~/routes/integrations/menu/SidebarMenu";
-import StaticValueNode from "~/routes/integrations/customNodes/StaticValueNode";
-import CustomParentNode from "~/routes/integrations/customNodes/CustomParentNode";
+import CustomParentNode from "~/routes/integrations/nodes/CustomParentNode";
 import {useShallow} from "zustand/react/shallow";
 import {getNodePositionInsideParent, getId} from "~/routes/integrations/utils/utils";
-import OpenObjectNode from "~/routes/integrations/customNodes/openObjectNode";
-import InputNode from './customNodes/inputNode';
-import OutputNode from './customNodes/OutputNode';
-import MathNode from "~/routes/integrations/customNodes/MathNode";
+import CustomObjectNode from "~/routes/integrations/nodes/CustomObjectNode";
+import OperationsNode from "~/routes/integrations/nodes/OperationsNode";
+import StaticValueNode from "~/routes/integrations/nodes/StaticValueNode";
+import SelectValueNode from "~/routes/integrations/nodes/SelectValueNode";
 
 const nodeTypes = {
-    inputNode: InputNode,
-    outputNode: OutputNode,
-    static: StaticValueNode,
     subflow: CustomParentNode,
-    openObject: OpenObjectNode,
-    mathNode: MathNode,
-    channel: ChannelNode
+    openObject: CustomObjectNode,
+    channel: ChannelNode,
+    customNode: OperationsNode,
+    static: StaticValueNode,
+    select: SelectValueNode
 };
 type StoreState = {
     nodes: Node[];

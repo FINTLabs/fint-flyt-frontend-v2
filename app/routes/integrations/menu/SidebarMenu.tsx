@@ -54,6 +54,17 @@ const SidebarMenu: React.FunctionComponent = () => {
                 </ExpansionCard.Content>
             </ExpansionCard>
 
+            <ExpansionCard size="small" aria-label="Small-variant">
+                <ExpansionCard.Header>
+                    <ExpansionCard.Title as="h4" size="small">
+                        Text Converstions
+                    </ExpansionCard.Title>
+                </ExpansionCard.Header>
+                <ExpansionCard.Content>
+                    <SidebarMenuList configKey={"textConversionNodes"}/>
+                </ExpansionCard.Content>
+            </ExpansionCard>
+
         </div>
     );
 };
