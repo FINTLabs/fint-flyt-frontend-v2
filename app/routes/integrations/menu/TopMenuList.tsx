@@ -18,14 +18,10 @@ const TopMenuList: React.FC<MathNodeListProps> = ({ configKey, isVerticalStack =
         event.dataTransfer.effectAllowed = 'move';
     };
 
-    const CustomimzableStack = ({children}: {children: React.ReactNode }) => {
-        return isVerticalStack ? <VStack gap="2" align="start">{children}</VStack> : <HStack gap="2" align="start">{children}</HStack>
-    }
     return (
 
-        <CustomimzableStack>
+        <VStack gap="2" align="start">
             {menuConfig.map((menuItem, index) => (
-                  <div className={"flex items-center rounded-lg hover:rounded-lg"}>
                <Dropdown.Menu.List.Item as="div">
                 <Box
                     key={index}
@@ -45,10 +41,9 @@ const TopMenuList: React.FC<MathNodeListProps> = ({ configKey, isVerticalStack =
                 </Box>
 
                 </Dropdown.Menu.List.Item>
-                </div>
 
             ))}
-        </CustomimzableStack>
+        </VStack>
     );
 };
 

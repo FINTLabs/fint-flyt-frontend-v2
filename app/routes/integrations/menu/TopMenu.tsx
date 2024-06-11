@@ -23,7 +23,7 @@ const TopMenu: React.FunctionComponent = () => {
 
                         <Dropdown.Menu placement="bottom-start">
                             <Dropdown.Menu.List>
-                                <TopMenuList isVerticalStack configKey={"channelNodes"}/>
+                                <TopMenuList configKey={"channelNodes"}/>
                             </Dropdown.Menu.List>
                         </Dropdown.Menu>
                     </Dropdown>
@@ -32,7 +32,7 @@ const TopMenu: React.FunctionComponent = () => {
 
                         <Dropdown.Menu placement="bottom-start">
                             <Dropdown.Menu.List>
-                                <TopMenuList isVerticalStack configKey={"staticValueNodes"}/>
+                                <TopMenuList configKey={"staticValueNodes"}/>
                             </Dropdown.Menu.List>
                         </Dropdown.Menu>
                     </Dropdown>
@@ -41,34 +41,31 @@ const TopMenu: React.FunctionComponent = () => {
 
                         <Dropdown.Menu placement="bottom-start">
                             <Dropdown.Menu.List>
-                                <TopMenuList isVerticalStack configKey={"staticValueNodes"}/>
+                                <TopMenuList configKey={"staticValueNodes"}/>
                             </Dropdown.Menu.List>
                         </Dropdown.Menu>
                     </Dropdown>
                     <Dropdown>
                         <Button icon={ChevronDown} iconPosition="right" variant="tertiary" as={Dropdown.Toggle}>Collections</Button>
-
                         <Dropdown.Menu placement="bottom-start">
                             <Dropdown.Menu.List>
-                                <TopMenuList isVerticalStack configKey={"subFlowNodes"}/>
+                                <TopMenuList configKey={"subFlowNodes"}/>
                             </Dropdown.Menu.List>
                         </Dropdown.Menu>
                     </Dropdown>
                     <Dropdown>
                         <Button icon={ChevronDown} iconPosition="right" variant="tertiary" as={Dropdown.Toggle}>Conversions</Button>
-
                         <Dropdown.Menu placement="bottom-start">
                             <Dropdown.Menu.List>
-                                <TopMenuList isVerticalStack configKey={"mathNodes"}/>
+                                <TopMenuList configKey={"mathNodes"}/>
                             </Dropdown.Menu.List>
                         </Dropdown.Menu>
                     </Dropdown>
                     <Dropdown>
                         <Button icon={ChevronDown} iconPosition="right" variant="tertiary" as={Dropdown.Toggle}>Example</Button>
-
                         <Dropdown.Menu placement="bottom-start">
                                 <Dropdown.Menu.GroupedList>
-                                    <TopMenuList isVerticalStack configKey={"channelNodes"}/>
+                                    <TopMenuList configKey={"channelNodes"}/>
                                 </Dropdown.Menu.GroupedList>
                                 
                                 <ExpansionCard className="pt-2 border-0" size="small" aria-label="Small-variant">
@@ -79,7 +76,7 @@ const TopMenu: React.FunctionComponent = () => {
                                     </ExpansionCard.Header>
                                     <ExpansionCard.Content style={{ border: '0px'}}>
                                         <Dropdown.Menu.GroupedList>
-                                            <TopMenuList isVerticalStack configKey={"mathNodes"}/>
+                                            <TopMenuList configKey={"mathNodes"}/>
                                         </Dropdown.Menu.GroupedList>
                                     </ExpansionCard.Content>
                                 </ExpansionCard>
