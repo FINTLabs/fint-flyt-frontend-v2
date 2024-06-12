@@ -99,23 +99,23 @@ const nodeConfig: NodeConfig = {
                 isArray: false,
                 className: "top-10",
             },
-            {
-                position: Position.Right,
-                labelText: "LastName",
-                id: "1",
-                icon: "data_object",
-                isArray: false,
-                className: "top-20",
-            },
-            {
-                position: Position.Right,
-                labelText: "Title",
-                id: "1",
-                icon: "data_object",
-                isArray: false,
-                className: "top-30",
-            }
-                ]
+                {
+                    position: Position.Right,
+                    labelText: "LastName",
+                    id: "1",
+                    icon: "data_object",
+                    isArray: false,
+                    className: "top-20",
+                },
+                {
+                    position: Position.Right,
+                    labelText: "Title",
+                    id: "1",
+                    icon: "data_object",
+                    isArray: false,
+                    className: "top-30",
+                }
+            ]
         },
     },
     "open-object-10": {
@@ -340,14 +340,14 @@ const nodeConfig: NodeConfig = {
                 icon: "toggle_on",
                 isArray: false,
             },
-            {
-                position: Position.Right,
-                labelText: "Filtrert samling",
-                id: "40",
-                icon: "toggle_on",
-                isArray: true,
-                className: "left-10",
-            }
+                {
+                    position: Position.Right,
+                    labelText: "Filtrert samling",
+                    id: "40",
+                    icon: "toggle_on",
+                    isArray: true,
+                    className: "left-10",
+                }
             ]
         },
     },
@@ -369,14 +369,14 @@ const nodeConfig: NodeConfig = {
                 isArray: false,
                 className: "left-10",
             },
-            {
-                position: Position.Right,
-                labelText: "Element B",
-                id: "200",
-                icon: "tag",
-                isArray: false,
-                className: "left-10 top-10",
-            }],
+                {
+                    position: Position.Right,
+                    labelText: "Element B",
+                    id: "200",
+                    icon: "tag",
+                    isArray: false,
+                    className: "left-10 top-10",
+                }],
             right: [
                 {
                     position: Position.Right,
@@ -393,7 +393,7 @@ const nodeConfig: NodeConfig = {
                     isArray: false,
 
                 }
-                ]
+            ]
         },
     },
     "subflow-find-first": {
@@ -595,20 +595,20 @@ const nodeConfig: NodeConfig = {
                     position: Position.Left,
                     labelText: "Minuend",
                     id: "4",
-                    icon: "decimal_increase",
+                    icon: "tag",
                 },
                 {
                     position: Position.Left,
                     labelText: "Subtrahend",
                     id: "5",
-                    icon: "x",
+                    icon: "tag",
                 }
             ],
             right: [
                 { position: Position.Right,
                     labelText: "Differanse",
                     id: "4",
-                    icon: "decimal_increase",}
+                    icon: "tag",}
             ]
         },
     },
@@ -619,22 +619,22 @@ const nodeConfig: NodeConfig = {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "Minuend",
+                    labelText: "Faktor",
                     id: "4",
-                    icon: "decimal_increase",
+                    icon: "tag",
                 },
                 {
                     position: Position.Left,
-                    labelText: "Subtrahend",
+                    labelText: "Factor",
                     id: "5",
-                    icon: "x",
+                    icon: "tag",
                 }
             ],
             right: [
                 { position: Position.Right,
-                    labelText: "Differanse",
+                    labelText: "Produkt",
                     id: "4",
-                    icon: "decimal_increase",}
+                    icon: "tag",}
             ]
         },
     },
@@ -645,20 +645,20 @@ const nodeConfig: NodeConfig = {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "Minuend",
+                    labelText: "Dividend",
                     id: "4",
                     icon: "decimal_increase",
                 },
                 {
                     position: Position.Left,
-                    labelText: "Subtrahend",
+                    labelText: "Divisor",
                     id: "5",
-                    icon: "x",
+                    icon: "decimal_increase",
                 }
             ],
             right: [
                 { position: Position.Right,
-                    labelText: "Differanse",
+                    labelText: "Kvotient",
                     id: "4",
                     icon: "decimal_increase",}
             ]
@@ -671,22 +671,22 @@ const nodeConfig: NodeConfig = {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "Minuend",
+                    labelText: "Tall A",
                     id: "4",
                     icon: "decimal_increase",
                 },
                 {
                     position: Position.Left,
-                    labelText: "Subtrahend",
+                    labelText: "Tall B",
                     id: "5",
-                    icon: "x",
+                    icon: "decimal_increase",
                 }
             ],
             right: [
                 { position: Position.Right,
-                    labelText: "Differanse",
+                    labelText: "Er større",
                     id: "4",
-                    icon: "decimal_increase",}
+                    icon: "toggle_on",}
             ]
         },
     },
@@ -697,22 +697,22 @@ const nodeConfig: NodeConfig = {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "Minuend",
+                    labelText: "Tall A",
                     id: "4",
                     icon: "decimal_increase",
                 },
                 {
                     position: Position.Left,
-                    labelText: "Subtrahend",
+                    labelText: "Tall B",
                     id: "5",
                     icon: "decimal_increase",
                 }
             ],
             right: [
                 { position: Position.Right,
-                    labelText: "Differanse",
+                    labelText: "Er mindre",
                     id: "4",
-                    icon: "decimal_increase",}
+                    icon: "toggle_on",}
             ]
         },
     },
@@ -731,7 +731,7 @@ const nodeConfig: NodeConfig = {
                     position: Position.Left,
                     labelText: "Tall B",
                     id: "5",
-                    icon: "x",
+                    icon: "decimal_increase",
                 }
             ],
             right: [
@@ -749,22 +749,16 @@ const nodeConfig: NodeConfig = {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "Minuend",
+                    labelText: "Tall",
                     id: "4",
                     icon: "decimal_increase",
-                },
-                {
-                    position: Position.Left,
-                    labelText: "Subtrahend",
-                    id: "5",
-                    icon: "x",
                 }
             ],
             right: [
                 { position: Position.Right,
                     labelText: "Differanse",
                     id: "4",
-                    icon: "decimal_increase",}
+                    icon: "tag",}
             ]
         },
     },
@@ -775,22 +769,16 @@ const nodeConfig: NodeConfig = {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "Minuend",
+                    labelText: "Tall",
                     id: "4",
                     icon: "decimal_increase",
-                },
-                {
-                    position: Position.Left,
-                    labelText: "Subtrahend",
-                    id: "5",
-                    icon: "xxx",
                 }
             ],
             right: [
                 { position: Position.Right,
-                    labelText: "Differanse",
+                    labelText: "Heltall",
                     id: "4",
-                    icon: "decimal_increase",}
+                    icon: "tag",}
             ]
         },
     },

@@ -1,7 +1,7 @@
 import {Position} from "reactflow";
 import React from "react";
-import CustomHandle from "~/routes/integrations/customHandle";
-import nodeConfig from "./config";
+import CustomHandle from "./customHandle";
+import nodeConfig from "~/routes/integrations/nodes/config";
 
 interface CustomNodeProps {
     id: string;
