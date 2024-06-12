@@ -1,13 +1,15 @@
 import React from 'react';
-import { Box, HStack } from "@navikt/ds-react";
+import { Box, HStack, VStack, Dropdown } from "@navikt/ds-react";
 import {MenuConfig, menuConfigs} from './config';
 import { ChevronRightDoubleCircleFillIcon } from '@navikt/aksel-icons';
 
+
 interface MathNodeListProps {
   configKey: string;
+  isVerticalStack?: boolean;
 }
 
-const MathNodelist: React.FC<MathNodeListProps> = ({ configKey }) => {
+const TopMenuList: React.FC<MathNodeListProps> = ({ configKey, isVerticalStack = false }) => {
     const menuConfig = menuConfigs[configKey];
 
     const onDragStart = (event: React.DragEvent<HTMLSpanElement>, menuItem:MenuConfig) => {
@@ -22,35 +24,35 @@ const MathNodelist: React.FC<MathNodeListProps> = ({ configKey }) => {
         if (icon === 'ChevronRightDoubleCircleFillIcon') {
             return <ChevronRightDoubleCircleFillIcon title="a11y-title" fontSize="25px" />;
         } else {
-            return (
-                <span className="material-symbols-outlined text-left ">
-          {icon}
-        </span>
-            );
+            return <span className="material-symbols-outlined text-left">{icon}</span>
         }
     };
 
     return (
-        <HStack gap="2" align="start">
+
+        <VStack gap="2" align="start">
             {menuConfig.map((menuItem, index) => (
+               <Dropdown.Menu.List.Item as="div">
                 <Box
                     key={index}
                     onDragStart={(event) => onDragStart(event, menuItem)}
                     draggable
-                    className={"w-40 flex items-center rounded-lg bg-gray-200"}
                     as={"div"}
-                    background="surface-subtle"
-                    padding="1"
                     borderRadius="large"
+                    className={"w-60 flex items-center my-0.5"}
                 >
-                    <span className="w-1/4">
+                  
+                    <span className="flex items-center pr-2">
                         {renderIcon(menuItem.icon)}
                     </span>
-                    <span className="ml-1">{menuItem.label}</span>
+                    <span className="">{menuItem.label}</span>
                 </Box>
+
+                </Dropdown.Menu.List.Item>
+
             ))}
-        </HStack>
+        </VStack>
     );
 };
 
-export default MathNodelist;
+export default TopMenuList;

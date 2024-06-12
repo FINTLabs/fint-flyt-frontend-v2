@@ -1,6 +1,6 @@
 import {ExpansionCard} from "@navikt/ds-react";
 import React from "react";
-import SidebarMenuList from "~/routes/integrations/menu/SidebarMenuList";
+import SidebarMenuList from "./SidebarMenuList";
 
 const SidebarMenu: React.FunctionComponent = () => {
     // const onDragStart = (event, nodeType) => {

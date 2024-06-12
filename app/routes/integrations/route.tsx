@@ -14,7 +14,6 @@ import 'reactflow/dist/style.css';
 import useStore from './store';
 import {MiniMap} from "@reactflow/minimap";
 import ChannelNode from "~/routes/integrations/nodes/ChannelNode";
-import SidebarMenu from "~/routes/integrations/menu/SidebarMenu";
 import CustomParentNode from "~/routes/integrations/nodes/CustomParentNode";
 import {useShallow} from "zustand/react/shallow";
 import {getNodePositionInsideParent, getId} from "~/routes/integrations/utils/utils";
@@ -22,6 +21,7 @@ import CustomObjectNode from "~/routes/integrations/nodes/CustomObjectNode";
 import OperationsNode from "~/routes/integrations/nodes/OperationsNode";
 import StaticValueNode from "~/routes/integrations/nodes/StaticValueNode";
 import SelectValueNode from "~/routes/integrations/nodes/SelectValueNode";
+import TopMenu from './menu/TopMenu';
 
 const nodeTypes = {
     subflow: CustomParentNode,
@@ -174,25 +174,13 @@ export default function Index() {
                 </HStack>
             </HStack>
 
-            <HGrid columns="250px auto" style={{height:800}} gap={"5"}>
+
+            <TopMenu />
+
+           
+
+            <HGrid columns="w-100" style={{height:800}}>
                 <ReactFlowProvider>
-                    <VStack>
-
-                        <Box
-                            id={"flow-buttons"}
-                            background={"surface-default"}
-                            padding="6"
-                            borderRadius={"large"}
-                            borderWidth="2"
-                            borderColor={"border-subtle"}
-                        >
-
-                            <SidebarMenu />
-                        </Box>
-
-
-                    </VStack>
-
                     <Box id={"integration-table-container"} background={"surface-default"} padding="6" borderRadius={"large"}
                          borderWidth="2" borderColor={"border-subtle"}>
                         <ReactFlow
