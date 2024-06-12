@@ -11,12 +11,17 @@ installGlobals();
 export default defineConfig({
   plugins: [remix(), tsconfigPaths()],
   server: {
-    port: 3000 // Set the port here
+    port: 3000,
+    hmr: {
+      protocol: 'ws',
+      host: 'localhost',
+      port: 3000
+    }
   },
   css: {
     postcss: {
       plugins: [
-        tailwindcss,
+        tailwindcss
       ],
     },
   },
