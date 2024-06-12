@@ -37,15 +37,6 @@ const TopMenu: React.FunctionComponent = () => {
                         </Dropdown.Menu>
                     </Dropdown>
                     <Dropdown>
-                        <Button icon={ChevronDown} iconPosition="right" variant="tertiary" as={Dropdown.Toggle}>Constants</Button>
-
-                        <Dropdown.Menu placement="bottom-start">
-                            <Dropdown.Menu.List>
-                                <TopMenuList configKey={"staticValueNodes"}/>
-                            </Dropdown.Menu.List>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                    <Dropdown>
                         <Button icon={ChevronDown} iconPosition="right" variant="tertiary" as={Dropdown.Toggle}>Collections</Button>
                         <Dropdown.Menu placement="bottom-start">
                             <Dropdown.Menu.List>
