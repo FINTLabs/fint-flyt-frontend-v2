@@ -1,8 +1,8 @@
 import { ChevronRightDoubleCircleFillIcon } from '@navikt/aksel-icons';
 import React from "react";
 import {Position} from "reactflow";
-import nodeConfig from '../handles/config';
-import CustomHandle from '../handles/customHandle';
+import nodeConfig from "~/routes/integrations/nodes/config";
+import CustomHandle from './customHandle';
 
 interface CustomNodeProps {
     id: string;

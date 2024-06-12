@@ -1,6 +1,6 @@
 import React from "react";
-import nodeConfig from "../handles/config";
-import CustomHandle from "../handles/customHandle";
+import nodeConfig from "~/routes/integrations/nodes/config";
+import CustomHandle from "./customHandle";
 
 
 interface CustomNodeProps {
