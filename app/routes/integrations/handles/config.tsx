@@ -367,7 +367,7 @@ const nodeConfig: NodeConfig = {
                 id: "100",
                 icon: "tag",
                 isArray: false,
-                className: "left-10",
+                className: "left-10 -top-5",
             },
             {
                 position: Position.Right,
@@ -375,19 +375,19 @@ const nodeConfig: NodeConfig = {
                 id: "200",
                 icon: "tag",
                 isArray: false,
-                className: "left-10 top-10",
+                className: "left-10 top-5",
             }],
             right: [
                 {
                     position: Position.Right,
-                    labelText: "Sannebskått verdi",
+                    labelText: "Sammenslått verdi",
                     id: "4000",
                     icon: "text_fields",
                     className: "left-10",
                 },
                 {
                     position: Position.Left,
-                    labelText: "Sannebskått verdi",
+                    labelText: "Sammenslått verdi",
                     id: "4300",
                     icon: "text_fields",
                     isArray: false,

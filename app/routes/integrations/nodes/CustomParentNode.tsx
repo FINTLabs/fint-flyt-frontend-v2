@@ -2,9 +2,10 @@
 import {NodeResizer, useStore} from "reactflow";
 import {getRelativeNodesBounds} from "~/routes/integrations/utils/utils";
 import {HStack} from "@navikt/ds-react";
-import CustomHandle from "~/routes/integrations/customHandle";
+import nodeConfig from "../handles/config";
+import CustomHandle from "../handles/customHandle";
 import React from "react";
-import nodeConfig from "~/routes/integrations/nodes/config";
+
 
 
 interface CustomNodeProps {
