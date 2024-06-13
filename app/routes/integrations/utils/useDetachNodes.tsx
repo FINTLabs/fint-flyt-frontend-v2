@@ -1,5 +1,5 @@
-import {useCallback} from 'react';
-import {useReactFlow, useStoreApi} from 'reactflow';
+import { useCallback } from 'react';
+import { useReactFlow, useStoreApi } from 'reactflow';
 
 function useDetachNodes() {
     const { setNodes } = useReactFlow();
@@ -7,7 +7,7 @@ function useDetachNodes() {
 
     return useCallback(
         (ids: string[], removeParentId?: string) => {
-            const {nodeInternals} = store.getState();
+            const { nodeInternals } = store.getState();
             const nextNodes = Array.from(nodeInternals.values()).map((n) => {
                 if (ids.includes(n.id) && n.parentId) {
                     const parentNode = nodeInternals.get(n.parentId);
@@ -23,9 +23,7 @@ function useDetachNodes() {
                 }
                 return n;
             });
-            setNodes(
-                nextNodes.filter((n) => !removeParentId || n.id !== removeParentId)
-            );
+            setNodes(nextNodes.filter((n) => !removeParentId || n.id !== removeParentId));
         },
         [setNodes, store]
     );

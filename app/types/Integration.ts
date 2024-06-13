@@ -1,4 +1,4 @@
-import {IPage} from "~/types/TableTypes";
+import { IPage } from '~/types/TableTypes';
 
 export interface IIntegrationPage extends IPage<IIntegration> {}
 
@@ -22,9 +22,9 @@ export interface IIntegrationFormData {
 }
 
 export const IntegrationState = {
-    ACTIVE: "ACTIVE",
-    DEACTIVATED: "DEACTIVATED"
-}
+    ACTIVE: 'ACTIVE',
+    DEACTIVATED: 'DEACTIVATED',
+};
 
 export interface IIntegrationPatch {
     destination?: string;

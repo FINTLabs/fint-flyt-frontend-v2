@@ -1,97 +1,97 @@
 [
-  {
-    "id": 2,
-    "sourceApplicationId": 3,
-    "sourceApplicationIntegrationId": "FARTØY",
-    "sourceApplicationIntegrationUri": null,
-    "integrationDisplayName": "Fartøyvern",
-    "version": 2,
-    "instanceMetadata": {
-      "instanceValueMetadata": [
-        {
-          "displayName": "Fartøynavn",
-          "type": "STRING",
-          "key": "fartoy"
-        },
-        {
-          "displayName": "Kallesignal",
-          "type": "STRING",
-          "key": "kallesignal"
-        },
-        {
-          "displayName": "Fartøyets ID i Askeladden",
-          "type": "STRING",
-          "key": "kulturminneId"
-        },
-        {
-          "displayName": "Søknadsnummer i Askeladden",
-          "type": "STRING",
-          "key": "soknadsnummer"
-        }
-      ],
-      "instanceObjectCollectionMetadata": [
-        {
-          "displayName": "Vedlegg",
-          "objectMetadata": {
+    {
+        "id": 2,
+        "sourceApplicationId": 3,
+        "sourceApplicationIntegrationId": "FARTØY",
+        "sourceApplicationIntegrationUri": null,
+        "integrationDisplayName": "Fartøyvern",
+        "version": 2,
+        "instanceMetadata": {
             "instanceValueMetadata": [
-              {
-                "displayName": "Tittel",
-                "type": "STRING",
-                "key": "vedleggTittel"
-              },
-              {
-                "displayName": "Filnavn",
-                "type": "STRING",
-                "key": "vedleggFilnavn"
-              },
-              {
-                "displayName": "Fil",
-                "type": "STRING",
-                "key": "vedleggFil"
-              },
-              {
-                "displayName": "MediaType",
-                "type": "STRING",
-                "key": "vedleggMediatype"
-              }
+                {
+                    "displayName": "Fartøynavn",
+                    "type": "STRING",
+                    "key": "fartoy"
+                },
+                {
+                    "displayName": "Kallesignal",
+                    "type": "STRING",
+                    "key": "kallesignal"
+                },
+                {
+                    "displayName": "Fartøyets ID i Askeladden",
+                    "type": "STRING",
+                    "key": "kulturminneId"
+                },
+                {
+                    "displayName": "Søknadsnummer i Askeladden",
+                    "type": "STRING",
+                    "key": "soknadsnummer"
+                }
             ],
-            "instanceObjectCollectionMetadata": [],
-            "categories": []
-          },
-          "key": "vedlegg"
-        }
-      ],
-      "categories": [
-        {
-          "displayName": "Hoveddokument",
-          "content": {
-            "instanceValueMetadata": [
-              {
-                "displayName": "Tittel",
-                "type": "STRING",
-                "key": "hoveddokumentTittel"
-              },
-              {
-                "displayName": "Filnavn",
-                "type": "STRING",
-                "key": "hoveddokumentFilnavn"
-              },
-              {
-                "displayName": "Fil",
-                "type": "STRING",
-                "key": "hoveddokumentFil"
-              },
-              {
-                "displayName": "MediaType",
-                "type": "STRING",
-                "key": "hoveddokumentMediatype"
-              }
+            "instanceObjectCollectionMetadata": [
+                {
+                    "displayName": "Vedlegg",
+                    "objectMetadata": {
+                        "instanceValueMetadata": [
+                            {
+                                "displayName": "Tittel",
+                                "type": "STRING",
+                                "key": "vedleggTittel"
+                            },
+                            {
+                                "displayName": "Filnavn",
+                                "type": "STRING",
+                                "key": "vedleggFilnavn"
+                            },
+                            {
+                                "displayName": "Fil",
+                                "type": "STRING",
+                                "key": "vedleggFil"
+                            },
+                            {
+                                "displayName": "MediaType",
+                                "type": "STRING",
+                                "key": "vedleggMediatype"
+                            }
+                        ],
+                        "instanceObjectCollectionMetadata": [],
+                        "categories": []
+                    },
+                    "key": "vedlegg"
+                }
             ],
-            "instanceObjectCollectionMetadata": [],
-            "categories": []
-          }
+            "categories": [
+                {
+                    "displayName": "Hoveddokument",
+                    "content": {
+                        "instanceValueMetadata": [
+                            {
+                                "displayName": "Tittel",
+                                "type": "STRING",
+                                "key": "hoveddokumentTittel"
+                            },
+                            {
+                                "displayName": "Filnavn",
+                                "type": "STRING",
+                                "key": "hoveddokumentFilnavn"
+                            },
+                            {
+                                "displayName": "Fil",
+                                "type": "STRING",
+                                "key": "hoveddokumentFil"
+                            },
+                            {
+                                "displayName": "MediaType",
+                                "type": "STRING",
+                                "key": "hoveddokumentMediatype"
+                            }
+                        ],
+                        "instanceObjectCollectionMetadata": [],
+                        "categories": []
+                    }
+                }
+            ]
         }
-      ]
     }
-  }
 ]

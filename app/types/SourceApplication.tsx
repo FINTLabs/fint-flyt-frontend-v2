@@ -1,5 +1,5 @@
 export interface ISourceApplication {
-    id: number,
-    displayName: string,
-    available: boolean
+    id: number;
+    displayName: string;
+    available: boolean;
 }

@@ -1,7 +1,7 @@
-import {Position} from "reactflow";
-import React from "react";
-import CustomHandle from "./customHandle";
-import nodeConfig from "~/routes/integrations/nodes/config";
+import { Position } from 'reactflow';
+import React from 'react';
+import CustomHandle from './customHandle';
+import nodeConfig from '~/routes/integrations/nodes/config';
 
 interface CustomNodeProps {
     id: string;
@@ -22,19 +22,10 @@ const OperationsNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
 
     return (
         <div className={`flex justify-center ${selected ? 'border-black border' : ''}`}>
-
             <div className="flex flex-row items-center">
                 <div className="flex flex-col h-[50%] justify-between">
                     {config.customHandles?.left.map((handle, index) => (
-                        <CustomHandle
-                            key={index}
-                            position={Position.Left}
-                            id={handle.id}
-                            icon={handle.icon}
-                            labelText={handle.labelText}
-                            isArray={handle.isArray}
-                            isOptional={handle.isOptional}
-                        />
+                        <CustomHandle key={index} position={Position.Left} id={handle.id} icon={handle.icon} labelText={handle.labelText} isArray={handle.isArray} isOptional={handle.isOptional} />
                     ))}
                 </div>
             </div>
@@ -44,16 +35,8 @@ const OperationsNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
                     <span className="material-symbols-outlined text-left">{config.mainIcon}</span>
                     <span className="material-symbols-outlined text-3xl text-center">{data.icon}</span>
                 </div>
-                {config.customHandles?.right.map((handle,index) => (
-                    <CustomHandle
-                        key={index}
-                        position={Position.Right}
-                        id={handle.id}
-                        icon={handle.icon}
-                        labelText={handle.labelText}
-                        isArray={handle.isArray}
-                        isOptional={handle.isOptional}
-                    />
+                {config.customHandles?.right.map((handle, index) => (
+                    <CustomHandle key={index} position={Position.Right} id={handle.id} icon={handle.icon} labelText={handle.labelText} isArray={handle.isArray} isOptional={handle.isOptional} />
                 ))}
             </div>
         </div>

@@ -1,18 +1,5 @@
-import {create} from 'zustand';
-import {
-    addEdge,
-    applyEdgeChanges,
-    applyNodeChanges,
-    Connection,
-    Edge,
-    EdgeChange,
-    Node,
-    NodeChange,
-    OnConnect,
-    OnEdgesChange,
-    OnNodesChange,
-    XYPosition,
-} from 'reactflow';
+import { create } from 'zustand';
+import { addEdge, applyEdgeChanges, applyNodeChanges, Connection, Edge, EdgeChange, Node, NodeChange, OnConnect, OnEdgesChange, OnNodesChange, XYPosition } from 'reactflow';
 
 import initialNodes from './nodes';
 import initialEdges from './edges';
@@ -64,8 +51,7 @@ const useStore = create<RFState>((set, get) => ({
         set((state) => ({
             nodes: state.nodes.concat(newNode),
         }));
-    }
-
+    },
 }));
 
 export default useStore;

@@ -1,25 +1,24 @@
-import {IIntegrationPage} from "~/types/Integration";
+import { IIntegrationPage } from '~/types/Integration';
 import allIntegration from './mock-allIntegrations.json';
 import getAllStatistics from './mock-statistikk.json';
-import integrationPageData from "./mock-integration-page.json";
+import integrationPageData from './mock-integration-page.json';
 
 const API_URL = process.env.API_URL || '';
 
 class IntegrationApi {
-
     static fetchAllIntegrations() {
-        console.log("fetch mock data all integration");
+        console.log('fetch mock data all integration');
         return allIntegration;
     }
 
     static fetchIntegrationPage() {
-        console.log("fetch mock data integrationPageData");
+        console.log('fetch mock data integrationPageData');
         const data: IIntegrationPage = integrationPageData;
         return data;
     }
 
     static getAllStatistics() {
-        console.log("fetch mock data  getAllStatistics");
+        console.log('fetch mock data  getAllStatistics');
         return getAllStatistics;
     }
 
@@ -30,17 +29,15 @@ class IntegrationApi {
                 return await response.json();
             } else {
                 // Handle error response
-                console.error("Error fetching components");
+                console.error('Error fetching components');
                 return null;
             }
         } catch (error) {
             // Handle fetch error
-            console.error("Error fetching components:", error);
+            console.error('Error fetching components:', error);
             return null;
         }
     }
-
-
 }
 
 export default IntegrationApi;

@@ -1,7 +1,7 @@
-import {ILink} from "~/routes/_index/types/link";
+import { ILink } from '~/routes/_index/types/link';
 
 export interface ICard {
-	value: string;
-	content: string;
-	links?: ILink[];
+    value: string;
+    content: string;
+    links?: ILink[];
 }

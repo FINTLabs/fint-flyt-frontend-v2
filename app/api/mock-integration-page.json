@@ -1,45 +1,45 @@
 {
-  "content": [
-    {
-      "id": 1,
-      "sourceApplicationId": 3,
-      "sourceApplicationIntegrationId": "FARTØY",
-      "destination": "fylkesrad",
-      "state": "ACTIVE",
-      "activeConfigurationId": 3
+    "content": [
+        {
+            "id": 1,
+            "sourceApplicationId": 3,
+            "sourceApplicationIntegrationId": "FARTØY",
+            "destination": "fylkesrad",
+            "state": "ACTIVE",
+            "activeConfigurationId": 3
+        },
+        {
+            "id": 2,
+            "sourceApplicationId": 3,
+            "sourceApplicationIntegrationId": "JENNIFER-TEST",
+            "destination": "fylkesrad",
+            "state": "ACTIVE",
+            "activeConfigurationId": 3
+        }
+    ],
+    "pageable": {
+        "sort": {
+            "empty": false,
+            "sorted": true,
+            "unsorted": false
+        },
+        "offset": 0,
+        "pageNumber": 0,
+        "pageSize": 1000,
+        "paged": true,
+        "unpaged": false
     },
-    {
-      "id": 2,
-      "sourceApplicationId": 3,
-      "sourceApplicationIntegrationId": "JENNIFER-TEST",
-      "destination": "fylkesrad",
-      "state": "ACTIVE",
-      "activeConfigurationId": 3
-    }
-  ],
-  "pageable": {
+    "totalPages": 1,
+    "totalElements": 2,
+    "last": true,
+    "size": 1000,
+    "number": 0,
     "sort": {
-      "empty": false,
-      "sorted": true,
-      "unsorted": false
+        "empty": false,
+        "sorted": true,
+        "unsorted": false
     },
-    "offset": 0,
-    "pageNumber": 0,
-    "pageSize": 1000,
-    "paged": true,
-    "unpaged": false
-  },
-  "totalPages": 1,
-  "totalElements": 2,
-  "last": true,
-  "size": 1000,
-  "number": 0,
-  "sort": {
-    "empty": false,
-    "sorted": true,
-    "unsorted": false
-  },
-  "numberOfElements": 1,
-  "first": true,
-  "empty": false
+    "numberOfElements": 1,
+    "first": true,
+    "empty": false
 }
