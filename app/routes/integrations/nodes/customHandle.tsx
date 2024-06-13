@@ -10,7 +10,15 @@ interface HandleProps {
     isOptional?: boolean; // new prop
 }
 
-export default function CustomHandle({ position = Position.Right, id = '', labelText = '', className = '', icon = '', isArray, isOptional }: HandleProps) {
+export default function CustomHandle({
+    position = Position.Right,
+    id = '',
+    labelText = '',
+    className = '',
+    icon = '',
+    isArray,
+    isOptional,
+}: HandleProps) {
     function labelPlacement() {
         if (position == Position.Right) {
             return 'flex-row';
@@ -25,7 +33,11 @@ export default function CustomHandle({ position = Position.Right, id = '', label
             <Handle
                 type={position == Position.Right ? 'source' : 'target'}
                 position={position}
-                className={position == Position.Left ? 'absolute z-10 w-16 !bg-teal-500' : 'absolute z-10 w-16 '}
+                className={
+                    position == Position.Left
+                        ? 'absolute z-10 w-16 !bg-teal-500'
+                        : 'absolute z-10 w-16 '
+                }
                 id={id}
                 key={id}
             />

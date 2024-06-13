@@ -60,7 +60,12 @@ function StaticValueNode({ id, data }: NodeProps) {
         if (data.inputType === 'date') {
             return (
                 <DatePicker {...datepickerProps}>
-                    <DatePicker.Input {...inputProps} label="Velg dato" hideLabel={true} size="small" />
+                    <DatePicker.Input
+                        {...inputProps}
+                        label="Velg dato"
+                        hideLabel={true}
+                        size="small"
+                    />
                 </DatePicker>
             );
         } else if (data.inputType === 'boolean') {
@@ -73,7 +78,12 @@ function StaticValueNode({ id, data }: NodeProps) {
             return (
                 <>
                     <DatePicker {...datepickerProps}>
-                        <DatePicker.Input {...inputProps} label="Velg dato" hideLabel={true} size="small" />
+                        <DatePicker.Input
+                            {...inputProps}
+                            label="Velg dato"
+                            hideLabel={true}
+                            size="small"
+                        />
                     </DatePicker>
                     <TextField type="time" className="mr-2" label={''} hideLabel size="small" />
                 </>
@@ -97,16 +107,35 @@ function StaticValueNode({ id, data }: NodeProps) {
     return (
         <div className="flex min-w-36 h-9 pl-1.5 pr-2.5 py-1.5 bg-gray-200 rounded border border-black justify-end items-center gap-1.5">
             <NodeToolbar className="nodrag" position={Position.Bottom}>
-                {hasParent && <Button onClick={onDetach} icon={<RemoveIcon />} size="xsmall" variant="secondary" />}
+                {hasParent && (
+                    <Button
+                        onClick={onDetach}
+                        icon={<RemoveIcon />}
+                        size="xsmall"
+                        variant="secondary"
+                    />
+                )}
             </NodeToolbar>
             <div className="w-5 h-4 p-2.5 justify-center items-center gap-2.5 flex">
                 <div className="w-5 h-5 relative">
-                    <span className="material-symbols-outlined mr-1">{getIcon(data.inputType)}</span>
+                    <span className="material-symbols-outlined mr-1">
+                        {getIcon(data.inputType)}
+                    </span>
                 </div>
             </div>
             {renderInput()}
-            <Handle type={'source'} position={Position.Right} className="absolute z-10 w-16" id={'123'} />
-            <Handle type={'target'} position={Position.Left} className="absolute z-10 w-16 !bg-teal-500" id={'456'} />
+            <Handle
+                type={'source'}
+                position={Position.Right}
+                className="absolute z-10 w-16"
+                id={'123'}
+            />
+            <Handle
+                type={'target'}
+                position={Position.Left}
+                className="absolute z-10 w-16 !bg-teal-500"
+                id={'456'}
+            />
         </div>
     );
 }

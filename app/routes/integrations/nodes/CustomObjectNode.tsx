@@ -45,7 +45,9 @@ const CustomObjectNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
                     </div>
                 </div>
 
-                <div className="w-16 flex flex-col items-center justify-center bg-slate-300 rounded-xl border border-black" style={{ height: `${componentHeight}px` }}>
+                <div
+                    className="w-16 flex flex-col items-center justify-center bg-slate-300 rounded-xl border border-black"
+                    style={{ height: `${componentHeight}px` }}>
                     <img src="../images/openObject.svg" alt="åpne Objekt" className="h-[50px]" />
                 </div>
 

@@ -11,7 +11,12 @@ export default function Index() {
                 // background="surface-alt-4-moderate"
                 padding="8"
                 paddingBlock="16">
-                <HStack id={'instances-custom-header'} align={'center'} justify={'space-between'} gap={'2'} wrap={false}>
+                <HStack
+                    id={'instances-custom-header'}
+                    align={'center'}
+                    justify={'space-between'}
+                    gap={'2'}
+                    wrap={false}>
                     <HStack align={'center'} gap={'2'}>
                         <Heading size={'medium'}>{t('header')}</Heading>
                         <HelpText title={'Hva er dette'} placement="bottom">
@@ -20,7 +25,13 @@ export default function Index() {
                     </HStack>
                 </HStack>
 
-                <Box id={'integration-table-container'} background={'surface-default'} padding="6" borderRadius={'large'} borderWidth="2" borderColor={'border-subtle'}>
+                <Box
+                    id={'integration-table-container'}
+                    background={'surface-default'}
+                    padding="6"
+                    borderRadius={'large'}
+                    borderWidth="2"
+                    borderColor={'border-subtle'}>
                     <Heading size={'medium'}>hello world!</Heading>
                 </Box>
             </Box>

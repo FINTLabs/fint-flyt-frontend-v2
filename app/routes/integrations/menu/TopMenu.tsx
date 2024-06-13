@@ -9,7 +9,11 @@ const TopMenu: React.FunctionComponent = () => {
     const CustomDropDown = ({ title, configKey }: { title: string; configKey: string }) => {
         return (
             <Dropdown>
-                <Button icon={ChevronDown} iconPosition="right" variant="tertiary" as={Dropdown.Toggle}>
+                <Button
+                    icon={ChevronDown}
+                    iconPosition="right"
+                    variant="tertiary"
+                    as={Dropdown.Toggle}>
                     {title}
                 </Button>
                 <Dropdown.Menu placement="bottom-start">
@@ -23,7 +27,13 @@ const TopMenu: React.FunctionComponent = () => {
 
     return (
         <div className="grid gap-6 pb-2 pt-2">
-            <Box id={'flow-buttons'} background={'surface-default'} padding="4" borderRadius={'small'} borderWidth="2" borderColor={'border-subtle'}>
+            <Box
+                id={'flow-buttons'}
+                background={'surface-default'}
+                padding="4"
+                borderRadius={'small'}
+                borderWidth="2"
+                borderColor={'border-subtle'}>
                 <HStack gap="2">
                     <CustomDropDown title="Actions" configKey="channelNodes" />
                     <CustomDropDown title="Constants" configKey="staticValueNodes" />

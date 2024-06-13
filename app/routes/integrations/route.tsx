@@ -1,7 +1,18 @@
 import React, { useCallback, useState } from 'react';
 import { Box, Button, Heading, HelpText, HGrid, HStack, VStack } from '@navikt/ds-react';
 import { useTranslation } from 'react-i18next';
-import ReactFlow, { Background, Controls, Edge, MarkerType, Node, OnConnect, OnEdgesChange, OnNodesChange, ReactFlowInstance, ReactFlowProvider } from 'reactflow';
+import ReactFlow, {
+    Background,
+    Controls,
+    Edge,
+    MarkerType,
+    Node,
+    OnConnect,
+    OnEdgesChange,
+    OnNodesChange,
+    ReactFlowInstance,
+    ReactFlowProvider,
+} from 'reactflow';
 import 'reactflow/dist/style.css';
 import useStore from './store';
 import { MiniMap } from '@reactflow/minimap';
@@ -53,7 +64,9 @@ export default function Index() {
     const defaultViewport = { x: 0, y: 0, zoom: 1 };
     const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
 
-    const { nodes, edges, onNodesChange, onEdgesChange, onConnect, addNewNodeDrop } = useStore(useShallow(selector));
+    const { nodes, edges, onNodesChange, onEdgesChange, onConnect, addNewNodeDrop } = useStore(
+        useShallow(selector)
+    );
 
     const defaultEdgeOptions = {
         type: 'smoothstep',
@@ -150,7 +163,12 @@ export default function Index() {
 
     return (
         <VStack>
-            <HStack id={'instances-custom-header'} align={'center'} justify={'space-between'} gap={'2'} wrap={false}>
+            <HStack
+                id={'instances-custom-header'}
+                align={'center'}
+                justify={'space-between'}
+                gap={'2'}
+                wrap={false}>
                 <HStack align={'center'} gap={'2'}>
                     <Heading size={'medium'}>{t('header')}</Heading>
                     <HelpText title={'Hva er dette'} placement="bottom">
@@ -163,7 +181,13 @@ export default function Index() {
 
             <HGrid columns="w-100" style={{ height: 800 }}>
                 <ReactFlowProvider>
-                    <Box id={'integration-table-container'} background={'surface-default'} padding="6" borderRadius={'large'} borderWidth="2" borderColor={'border-subtle'}>
+                    <Box
+                        id={'integration-table-container'}
+                        background={'surface-default'}
+                        padding="6"
+                        borderRadius={'large'}
+                        borderWidth="2"
+                        borderColor={'border-subtle'}>
                         <ReactFlow
                             nodes={nodes}
                             onNodesChange={onNodesChange}
@@ -185,7 +209,13 @@ export default function Index() {
                     </Box>
                 </ReactFlowProvider>
             </HGrid>
-            <Box id={'flow-buttons'} background={'surface-default'} padding="6" borderRadius={'large'} borderWidth="2" borderColor={'border-subtle'}>
+            <Box
+                id={'flow-buttons'}
+                background={'surface-default'}
+                padding="6"
+                borderRadius={'large'}
+                borderWidth="2"
+                borderColor={'border-subtle'}>
                 <Button onClick={() => console.log(nodes)}>Print nodes</Button>
                 <Button onClick={() => console.log(edges)}>Print edges</Button>
             </Box>

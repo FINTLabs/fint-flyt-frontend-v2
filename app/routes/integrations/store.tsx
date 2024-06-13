@@ -1,5 +1,18 @@
 import { create } from 'zustand';
-import { addEdge, applyEdgeChanges, applyNodeChanges, Connection, Edge, EdgeChange, Node, NodeChange, OnConnect, OnEdgesChange, OnNodesChange, XYPosition } from 'reactflow';
+import {
+    addEdge,
+    applyEdgeChanges,
+    applyNodeChanges,
+    Connection,
+    Edge,
+    EdgeChange,
+    Node,
+    NodeChange,
+    OnConnect,
+    OnEdgesChange,
+    OnNodesChange,
+    XYPosition,
+} from 'reactflow';
 
 import initialNodes from './nodes';
 import initialEdges from './edges';

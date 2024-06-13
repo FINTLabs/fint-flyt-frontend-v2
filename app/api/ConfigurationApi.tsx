@@ -6,7 +6,15 @@ import { IPage } from '~/types/TableTypes';
 
 export interface IConfigurationPage extends IPage<IConfiguration> {}
 class ConfigurationApi {
-    static async getConfigurations(page: number, size: number, sortProperty: string, sortDirection: string, complete: boolean, integrationId: string, excludeElements?: boolean) {
+    static async getConfigurations(
+        page: number,
+        size: number,
+        sortProperty: string,
+        sortDirection: string,
+        complete: boolean,
+        integrationId: string,
+        excludeElements?: boolean
+    ) {
         console.log('fetch mock data configuration');
         console.log('page', page);
         console.log('size', size);

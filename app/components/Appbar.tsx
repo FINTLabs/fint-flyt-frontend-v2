@@ -20,7 +20,11 @@ export const Appbar = () => {
                 // }}
                 as={Link}
                 href="/">
-                <img src={logo} style={{ width: 80, height: 60, marginRight: '8px' }} alt={'logo'} />
+                <img
+                    src={logo}
+                    style={{ width: 80, height: 60, marginRight: '8px' }}
+                    alt={'logo'}
+                />
             </Button>
             <MenuItems />
             <Spacer />
@@ -31,13 +35,19 @@ export const Appbar = () => {
                 </InternalHeader.Button>
                 <Dropdown.Menu>
                     <Dropdown.Menu.GroupedList>
-                        <Dropdown.Menu.GroupedList.Item id="language-no" onClick={() => changeLanguage('no')}>
+                        <Dropdown.Menu.GroupedList.Item
+                            id="language-no"
+                            onClick={() => changeLanguage('no')}>
                             {t('norwegian')}
                         </Dropdown.Menu.GroupedList.Item>
-                        <Dropdown.Menu.GroupedList.Item id="language-nn" onClick={() => changeLanguage('nn')}>
+                        <Dropdown.Menu.GroupedList.Item
+                            id="language-nn"
+                            onClick={() => changeLanguage('nn')}>
                             {t('norwegianNN')}
                         </Dropdown.Menu.GroupedList.Item>
-                        <Dropdown.Menu.GroupedList.Item id="language-en" onClick={() => changeLanguage('en')}>
+                        <Dropdown.Menu.GroupedList.Item
+                            id="language-en"
+                            onClick={() => changeLanguage('en')}>
                             {t('english')}
                         </Dropdown.Menu.GroupedList.Item>
                     </Dropdown.Menu.GroupedList>

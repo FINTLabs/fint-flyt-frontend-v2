@@ -23,7 +23,9 @@ const CustomParentNode: React.FC<CustomNodeProps> = ({ id, data, selected }) => 
     const config = nodeConfig[data.inputType] || {};
 
     const { minWidth, minHeight, parentHeight, parentWidth } = useStore((store) => {
-        const childNodes = Array.from(store.nodeInternals.values()).filter((n) => n.parentId === id);
+        const childNodes = Array.from(store.nodeInternals.values()).filter(
+            (n) => n.parentId === id
+        );
 
         const parentNode = store.nodeInternals.get(id);
         const rect = getRelativeNodesBounds(childNodes);
@@ -63,7 +65,15 @@ const CustomParentNode: React.FC<CustomNodeProps> = ({ id, data, selected }) => 
             />
 
             {config.customHandles?.left.map((handle, index) => (
-                <CustomHandle key={index} position={handle.position} labelText={handle.labelText} id={handle.id} icon={handle.icon} className={handle.className} isArray={handle.isArray} />
+                <CustomHandle
+                    key={index}
+                    position={handle.position}
+                    labelText={handle.labelText}
+                    id={handle.id}
+                    icon={handle.icon}
+                    className={handle.className}
+                    isArray={handle.isArray}
+                />
             ))}
 
             <div

@@ -14,7 +14,11 @@ const ValueConvertingTable: React.FunctionComponent = () => {
     function actionMenu(value: IValueConverting): ReactElement {
         return (
             <Dropdown>
-                <Button as={Dropdown.Toggle} variant="tertiary-neutral" icon={<MenuElipsisVerticalCircleIcon aria-hidden />} />
+                <Button
+                    as={Dropdown.Toggle}
+                    variant="tertiary-neutral"
+                    icon={<MenuElipsisVerticalCircleIcon aria-hidden />}
+                />
                 <Dropdown.Menu>
                     <Dropdown.Menu.GroupedList>
                         <Dropdown.Menu.GroupedList.Item
@@ -30,7 +34,12 @@ const ValueConvertingTable: React.FunctionComponent = () => {
     }
 
     return (
-        <Box background={'surface-default'} padding="6" borderRadius={'large'} borderWidth="2" borderColor={'border-subtle'}>
+        <Box
+            background={'surface-default'}
+            padding="6"
+            borderRadius={'large'}
+            borderWidth="2"
+            borderColor={'border-subtle'}>
             <VStack gap={'6'}>
                 {/*{showToggle && <HStack style={{alignSelf: "center"}} gap={"3"} align={"center"} wrap={false}>*/}
                 {/*    <ToggleGroup defaultValue="custom" onChange={(value) => {*/}
@@ -46,20 +55,34 @@ const ValueConvertingTable: React.FunctionComponent = () => {
                 {/*        {t('help.toggle')}*/}
                 {/*    </HelpText>*/}
                 {/*</HStack>}*/}
-                <Box background={'surface-default'} style={{ height: '490px', overflowY: 'scroll' }}>
+                <Box
+                    background={'surface-default'}
+                    style={{ height: '490px', overflowY: 'scroll' }}>
                     <Table id={'value-convertings-table'} size={'small'}>
                         <Table.Header>
                             <Table.Row>
-                                <Table.HeaderCell scope="col">{toggleValue === 'custom' ? t('column.show') : ''}</Table.HeaderCell>
+                                <Table.HeaderCell scope="col">
+                                    {toggleValue === 'custom' ? t('column.show') : ''}
+                                </Table.HeaderCell>
                                 <Table.HeaderCell scope="col">{t('column.id')}</Table.HeaderCell>
-                                <Table.HeaderCell scope="col">{t('column.displayName')}</Table.HeaderCell>
-                                <Table.HeaderCell scope="col">{t('column.fromType')}</Table.HeaderCell>
-                                <Table.HeaderCell scope="col">{t('column.toType')}</Table.HeaderCell>
+                                <Table.HeaderCell scope="col">
+                                    {t('column.displayName')}
+                                </Table.HeaderCell>
+                                <Table.HeaderCell scope="col">
+                                    {t('column.fromType')}
+                                </Table.HeaderCell>
+                                <Table.HeaderCell scope="col">
+                                    {t('column.toType')}
+                                </Table.HeaderCell>
                                 {/*{toggleValue === 'custom' &&*/}
                                 {/*    <Table.HeaderCell scope="col">{t('column.fromApplication')}</Table.HeaderCell>}*/}
                                 {/*{toggleValue === 'custom' &&*/}
                                 {/*    <Table.HeaderCell scope="col">{t('column.toApplication')}</Table.HeaderCell>}*/}
-                                {toggleValue === 'custom' && <Table.HeaderCell scope="col">{t('column.actions')}</Table.HeaderCell>}
+                                {toggleValue === 'custom' && (
+                                    <Table.HeaderCell scope="col">
+                                        {t('column.actions')}
+                                    </Table.HeaderCell>
+                                )}
                             </Table.Row>
                         </Table.Header>
                         <Table.Body>
@@ -73,14 +96,24 @@ const ValueConvertingTable: React.FunctionComponent = () => {
                                     <Table.Row>
                                         <Table.DataCell />
                                         <Table.DataCell scope="row">{value.id}</Table.DataCell>
-                                        <Table.DataCell scope="row">{value.displayName}</Table.DataCell>
-                                        <Table.DataCell scope="row">{value.fromTypeId}</Table.DataCell>
-                                        <Table.DataCell scope="row">{value.toTypeId}</Table.DataCell>
+                                        <Table.DataCell scope="row">
+                                            {value.displayName}
+                                        </Table.DataCell>
+                                        <Table.DataCell scope="row">
+                                            {value.fromTypeId}
+                                        </Table.DataCell>
+                                        <Table.DataCell scope="row">
+                                            {value.toTypeId}
+                                        </Table.DataCell>
                                         {/*{toggleValue === 'custom' && <Table.DataCell*/}
                                         {/*    scope="row">{getSourceApplicationDisplayNameById(value.fromApplicationId, sourceApplications)}</Table.DataCell>}*/}
                                         {/*{toggleValue === 'custom' && <Table.DataCell*/}
                                         {/*    scope="row">{getDestinationDisplayName(value.toApplicationId)}</Table.DataCell>}*/}
-                                        {toggleValue === 'custom' && <Table.DataCell scope="row">{actionMenu(value)}</Table.DataCell>}
+                                        {toggleValue === 'custom' && (
+                                            <Table.DataCell scope="row">
+                                                {actionMenu(value)}
+                                            </Table.DataCell>
+                                        )}
                                     </Table.Row>
                                 );
                             })}

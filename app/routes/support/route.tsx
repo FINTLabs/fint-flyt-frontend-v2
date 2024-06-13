@@ -10,7 +10,13 @@ const Guide: RouteComponent = () => {
 
     return (
         <VStack gap={'6'}>
-            <Box background={'surface-default'} padding="6" paddingBlock={'8 4'} borderRadius={'large'} borderWidth="2" borderColor={'border-subtle'}>
+            <Box
+                background={'surface-default'}
+                padding="6"
+                paddingBlock={'8 4'}
+                borderRadius={'large'}
+                borderWidth="2"
+                borderColor={'border-subtle'}>
                 <Label>{t('userGuide')}</Label>
                 <List as="ul" id={'guide-list'}>
                     {getUserGuideByLanguage(i18n.language).map((item, index) => {

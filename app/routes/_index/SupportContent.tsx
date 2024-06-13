@@ -13,7 +13,13 @@ const SupportContent = () => {
     const { i18n } = useTranslation();
     return (
         <>
-            <Box id={'support-information'} background={'surface-default'} padding="6" borderRadius={'large'} borderWidth="2" borderColor={'border-subtle'}>
+            <Box
+                id={'support-information'}
+                background={'surface-default'}
+                padding="6"
+                borderRadius={'large'}
+                borderWidth="2"
+                borderColor={'border-subtle'}>
                 <VStack gap={'6'}>
                     <Heading size={'small'}>{t('description')}</Heading>
                     <BodyLong>{getAboutFlytByLanguage(i18n.language)}</BodyLong>

@@ -31,7 +31,13 @@ const TopMenuList: React.FC<MathNodeListProps> = ({ configKey, isVerticalStack =
         <VStack gap="2" align="start">
             {menuConfig.map((menuItem, index) => (
                 <Dropdown.Menu.List.Item key={index} as="div">
-                    <Box key={index} onDragStart={(event) => onDragStart(event, menuItem)} draggable as={'div'} borderRadius="large" className={'w-60 flex items-center my-0.5'}>
+                    <Box
+                        key={index}
+                        onDragStart={(event) => onDragStart(event, menuItem)}
+                        draggable
+                        as={'div'}
+                        borderRadius="large"
+                        className={'w-60 flex items-center my-0.5'}>
                         <span className="flex items-center pr-2">{renderIcon(menuItem.icon)}</span>
                         <span className="">{menuItem.label}</span>
                     </Box>

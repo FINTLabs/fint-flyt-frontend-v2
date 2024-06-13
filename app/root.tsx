@@ -14,8 +14,14 @@ export function Layout() {
                 <title>FINT Flyt v2</title>
                 <Meta />
                 <Links />
-                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+                    rel="stylesheet"
+                />
+                <link
+                    rel="stylesheet"
+                    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+                />
             </head>
             <body>
                 <Page
@@ -33,7 +39,12 @@ export function Layout() {
                         </Page.Block>
                     </Box>
 
-                    <Box paddingInline={'32'} paddingBlock="8" id={'-content'} style={{ backgroundColor: '#EBF4F5', minWidth: 'fit-content' }} as="main">
+                    <Box
+                        paddingInline={'32'}
+                        paddingBlock="8"
+                        id={'-content'}
+                        style={{ backgroundColor: '#EBF4F5', minWidth: 'fit-content' }}
+                        as="main">
                         <Page.Block>
                             <VStack id={'content-stack'} gap={'6'}>
                                 <Outlet />

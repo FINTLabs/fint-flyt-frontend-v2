@@ -31,7 +31,9 @@ export default function Dashboard() {
         keyPrefix: 'pages.dashboard',
     });
 
-    const allActiveIntegrations = allIntegrations.filter((integration) => integration.state === 'ACTIVE');
+    const allActiveIntegrations = allIntegrations.filter(
+        (integration) => integration.state === 'ACTIVE'
+    );
 
     const allActiveIntegrationsLength = allActiveIntegrations.length;
     // const { statistics, resetIntegrations, getAllIntegrations } =
@@ -49,8 +51,14 @@ export default function Dashboard() {
             links: [{ name: t('links.integration'), href: '/integrations/new' }],
         },
         {
-            value: allActiveIntegrationsLength === 0 ? t('empty') : allActiveIntegrationsLength.toString(),
-            content: allActiveIntegrationsLength === 1 ? t('oneActiveIntegration') : t('activeIntegrations'),
+            value:
+                allActiveIntegrationsLength === 0
+                    ? t('empty')
+                    : allActiveIntegrationsLength.toString(),
+            content:
+                allActiveIntegrationsLength === 1
+                    ? t('oneActiveIntegration')
+                    : t('activeIntegrations'),
             links: [{ name: t('links.integrations'), href: '/integrations' }],
         },
         {
@@ -83,7 +91,13 @@ export default function Dashboard() {
                             // padding={"0"}
                             // links={card.links}
                         >
-                            <DashboardCard key={index} id={`dashboard-card-` + index} value={card.value} content={card.content} links={card.links} />
+                            <DashboardCard
+                                key={index}
+                                id={`dashboard-card-` + index}
+                                value={card.value}
+                                content={card.content}
+                                links={card.links}
+                            />
                         </Box>
                     );
                 })}

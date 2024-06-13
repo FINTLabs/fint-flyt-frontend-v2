@@ -1,4 +1,12 @@
-import { getNodePositionWithOrigin, rectToBox, type Node, type NodeOrigin, type Rect, boxToRect, Box } from 'reactflow';
+import {
+    getNodePositionWithOrigin,
+    rectToBox,
+    type Node,
+    type NodeOrigin,
+    type Rect,
+    boxToRect,
+    Box,
+} from 'reactflow';
 
 export const getId = (prefix = 'node') => `${prefix}_${Math.random() * 10000}`;
 

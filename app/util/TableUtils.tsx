@@ -6,7 +6,10 @@
 import { IEvent } from '~/routes/instance/types/event';
 import { ISourceApplication } from '~/types/SourceApplication';
 
-export function getSourceApplicationDisplayNameById(id: number, sourceApplications: ISourceApplication[] | undefined): string {
+export function getSourceApplicationDisplayNameById(
+    id: number,
+    sourceApplications: ISourceApplication[] | undefined
+): string {
     if (!sourceApplications) {
         return 'ukjent';
     }

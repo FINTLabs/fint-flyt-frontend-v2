@@ -574,7 +574,9 @@ const nodeConfig: NodeConfig = {
                     icon: 'decimal_increase',
                 },
             ],
-            right: [{ position: Position.Right, labelText: 'Sum', id: '4', icon: 'decimal_increase' }],
+            right: [
+                { position: Position.Right, labelText: 'Sum', id: '4', icon: 'decimal_increase' },
+            ],
         },
     },
     subtract: {
@@ -637,7 +639,14 @@ const nodeConfig: NodeConfig = {
                     icon: 'decimal_increase',
                 },
             ],
-            right: [{ position: Position.Right, labelText: 'Kvotient', id: '4', icon: 'decimal_increase' }],
+            right: [
+                {
+                    position: Position.Right,
+                    labelText: 'Kvotient',
+                    id: '4',
+                    icon: 'decimal_increase',
+                },
+            ],
         },
     },
     larger: {
@@ -658,7 +667,9 @@ const nodeConfig: NodeConfig = {
                     icon: 'decimal_increase',
                 },
             ],
-            right: [{ position: Position.Right, labelText: 'Er større', id: '4', icon: 'toggle_on' }],
+            right: [
+                { position: Position.Right, labelText: 'Er større', id: '4', icon: 'toggle_on' },
+            ],
         },
     },
     smaller: {
@@ -679,7 +690,9 @@ const nodeConfig: NodeConfig = {
                     icon: 'decimal_increase',
                 },
             ],
-            right: [{ position: Position.Right, labelText: 'Er mindre', id: '4', icon: 'toggle_on' }],
+            right: [
+                { position: Position.Right, labelText: 'Er mindre', id: '4', icon: 'toggle_on' },
+            ],
         },
     },
     equal: {

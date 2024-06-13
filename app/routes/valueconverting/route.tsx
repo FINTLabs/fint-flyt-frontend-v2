@@ -37,13 +37,22 @@ export default function Index() {
                 // background="surface-alt-4-moderate"
                 padding="8"
                 paddingBlock="16">
-                <HStack id={'instances-custom-header'} align={'center'} justify={'space-between'} gap={'2'} wrap={false}>
+                <HStack
+                    id={'instances-custom-header'}
+                    align={'center'}
+                    justify={'space-between'}
+                    gap={'2'}
+                    wrap={false}>
                     <HStack align={'center'} gap={'2'}>
                         <Heading size={'medium'}>{t('header')}</Heading>
                     </HStack>
                     {!existingValueConverting && !newValueConverting && (
                         <HStack gap={'2'} align="center">
-                            <Button id={'new-button'} onClick={() => setNewValueConverting(true)} size={'small'} icon={<PlusIcon aria-hidden />}>
+                            <Button
+                                id={'new-button'}
+                                onClick={() => setNewValueConverting(true)}
+                                size={'small'}
+                                icon={<PlusIcon aria-hidden />}>
                                 {t('button.newConverting')}
                             </Button>
                             <HelpText title="Knapp informasjon" placement="left">

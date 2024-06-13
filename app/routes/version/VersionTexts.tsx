@@ -5,7 +5,9 @@ export const ABOUT_VERSIONS =
 export const VERSION_DATA: { heading: string; updates: string[] }[] = [
     {
         heading: 'Versjon 3.2 - Februar 2024',
-        updates: ['3.2 Navneendring i konfigurasjonsoppsett, "dynamisk verdi" heter nå "egendefinert verdi"'],
+        updates: [
+            '3.2 Navneendring i konfigurasjonsoppsett, "dynamisk verdi" heter nå "egendefinert verdi"',
+        ],
     },
     {
         heading: 'Januar 2024',
@@ -42,7 +44,9 @@ export const ABOUT_VERSIONS_NN =
 export const VERSION_DATA_NN: { heading: string; updates: string[] }[] = [
     {
         heading: 'Versjon 3.2 - Februar 2024',
-        updates: ['3.2 Navneendring i konfigurasjonsoppsett, "dynamisk verdi" heiter nå "eigendefinert verdi"'],
+        updates: [
+            '3.2 Navneendring i konfigurasjonsoppsett, "dynamisk verdi" heiter nå "eigendefinert verdi"',
+        ],
     },
     {
         heading: 'Januar 2024',
@@ -79,7 +83,9 @@ export const ABOUT_VERSIONS_EN =
 export const VERSION_DATA_EN: { heading: string; updates: string[] }[] = [
     {
         heading: 'Version 3.2 - February 2024',
-        updates: ['3.2 Name change in configuration view, "dynamic value/field" changed to "custom value/field"'],
+        updates: [
+            '3.2 Name change in configuration view, "dynamic value/field" changed to "custom value/field"',
+        ],
     },
     {
         heading: 'Vanuary 2024',

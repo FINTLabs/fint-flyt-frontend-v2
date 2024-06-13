@@ -25,7 +25,9 @@ const ChannelNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
         if (data.icon === 'ChevronRightDoubleCircleFillIcon') {
             return <ChevronRightDoubleCircleFillIcon title="a11y-title" fontSize="40px" />;
         } else {
-            return <span className="material-symbols-outlined text-left text-[40px]">{data.icon}</span>;
+            return (
+                <span className="material-symbols-outlined text-left text-[40px]">{data.icon}</span>
+            );
         }
     };
 
@@ -34,16 +36,35 @@ const ChannelNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
     return (
         <div className={`flex justify-center ${selected ? 'border-black border' : ''}`}>
             {config.customHandles?.left.map((handle, index) => (
-                <CustomHandle key={index} position={Position.Left} id={handle.id} icon={handle.icon} labelText={handle.labelText} isArray={handle.isArray} isOptional={handle.isOptional} />
+                <CustomHandle
+                    key={index}
+                    position={Position.Left}
+                    id={handle.id}
+                    icon={handle.icon}
+                    labelText={handle.labelText}
+                    isArray={handle.isArray}
+                    isOptional={handle.isOptional}
+                />
             ))}
             {/*<div className="absolute z-10 bottom-full mb-2 w-[100px] text-center">*/}
             {/*    Output Node*/}
             {/*</div>*/}
 
-            <div className={`relative ${backgroundColor} rounded-2xl flex items-center justify-center border border-black p-4`}>{renderIcon()}</div>
+            <div
+                className={`relative ${backgroundColor} rounded-2xl flex items-center justify-center border border-black p-4`}>
+                {renderIcon()}
+            </div>
 
             {config.customHandles?.right.map((handle, index) => (
-                <CustomHandle key={index} position={Position.Right} id={handle.id} icon={handle.icon} labelText={handle.labelText} isArray={handle.isArray} isOptional={handle.isOptional} />
+                <CustomHandle
+                    key={index}
+                    position={Position.Right}
+                    id={handle.id}
+                    icon={handle.icon}
+                    labelText={handle.labelText}
+                    isArray={handle.isArray}
+                    isOptional={handle.isOptional}
+                />
             ))}
         </div>
     );

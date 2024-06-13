@@ -19,7 +19,13 @@ const Version: RouteComponent = () => {
 
     return (
         <Page.Block>
-            <Box id={'version-information'} background={'surface-default'} padding="6" borderRadius={'large'} borderWidth="2" borderColor={'border-subtle'}>
+            <Box
+                id={'version-information'}
+                background={'surface-default'}
+                padding="6"
+                borderRadius={'large'}
+                borderWidth="2"
+                borderColor={'border-subtle'}>
                 <VStack gap={'6'}>
                     <BodyLong>{getAboutByLanguage(i18n.language)}</BodyLong>
                     <BodyLong>
