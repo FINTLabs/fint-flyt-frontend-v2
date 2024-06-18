@@ -1,5 +1,5 @@
 // config.ts
-import {Position} from "reactflow";
+import { Position } from 'reactflow';
 
 const getId = (prefix = 'node') => `${prefix}_${Math.random() * 10000}`;
 
@@ -27,759 +27,723 @@ interface NodeConfig {
 }
 
 const nodeConfig: NodeConfig = {
-    "error": {
+    error: {
         hasToolbar: false,
-        mainIcon: "error",
+        mainIcon: 'error',
         customHandles: {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "Error",
-                    id: "4",
-                    icon: "text_fields",
+                    labelText: 'Error',
+                    id: '4',
+                    icon: 'text_fields',
                     isArray: true,
-                }
-            ],
-            right: []
-        },
-    },
-    "input": {
-        hasToolbar: false,
-        mainIcon: "ChevronRightDoubleCircleFillIcon",
-        customHandles: {
-            left: [
-            ],
-            right: [{
-                position: Position.Right,
-                labelText: "Placeholder",
-                id: "1",
-                icon: "tab_unselected",
-                isArray: false,
-            }]
-        },
-    },
-    "output": {
-        hasToolbar: false,
-        mainIcon: "ChevronRightDoubleCircleFillIcon",
-        customHandles: {
-            left: [{
-                position: Position.Left,
-                labelText: "Placeholder",
-                id: "1",
-                icon: "tab_unselected",
-                isArray: false,
-            }],
-            right: [{
-                position: Position.Right,
-                labelText: "Placeholder",
-                id: "1",
-                icon: "tab_unselected",
-                isArray: false,
-            }]
-        },
-    },
-    "open-object": {
-        hasToolbar: false,
-        mainIcon: "ChevronRightDoubleCircleFillIcon",
-        customHandles: {
-            left: [
-                {
-                    position: Position.Left,
-                    labelText: "",
-                    id: "1",
-                    icon: "data_object",
-                    isArray: false,
-                }
-            ],
-            right: [{
-                position: Position.Right,
-                labelText: "FirstName",
-                id: "1",
-                icon: "data_object",
-                isArray: false,
-                className: "top-10",
-            },
-                {
-                    position: Position.Right,
-                    labelText: "LastName",
-                    id: "1",
-                    icon: "data_object",
-                    isArray: false,
-                    className: "top-20",
                 },
-                {
-                    position: Position.Right,
-                    labelText: "Title",
-                    id: "1",
-                    icon: "data_object",
-                    isArray: false,
-                    className: "top-30",
-                }
-            ]
+            ],
+            right: [],
         },
     },
-    "open-object-10": {
+    input: {
         hasToolbar: false,
-        mainIcon: "ChevronRightDoubleCircleFillIcon",
+        mainIcon: 'ChevronRightDoubleCircleFillIcon',
+        customHandles: {
+            left: [],
+            right: [
+                {
+                    position: Position.Right,
+                    labelText: 'Placeholder',
+                    id: '1',
+                    icon: 'tab_unselected',
+                    isArray: false,
+                },
+            ],
+        },
+    },
+    output: {
+        hasToolbar: false,
+        mainIcon: 'ChevronRightDoubleCircleFillIcon',
         customHandles: {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "",
-                    id: getId(),
-                    icon: "data_object",
+                    labelText: 'Placeholder',
+                    id: '1',
+                    icon: 'tab_unselected',
                     isArray: false,
-                }
+                },
             ],
             right: [
                 {
                     position: Position.Right,
-                    labelText: "First Name",
-                    id: getId(),
-                    icon: "data_object",
+                    labelText: 'Placeholder',
+                    id: '1',
+                    icon: 'tab_unselected',
                     isArray: false,
-                    className: "top-[0px]"
                 },
-                {
-                    position: Position.Right,
-                    labelText: "LastName",
-                    id: getId(),
-                    icon: "data_object",
-                    isArray: false,
-                    className: "top-[30px]"
-                },
-                {
-                    position: Position.Right,
-                    labelText: "Title",
-                    id: getId(),
-                    icon: "data_object",
-                    className: "top-[60px]"
-                },
-                {
-                    position: Position.Right,
-                    labelText: "Abc",
-                    id: getId(),
-                    icon: "data_object",
-                    className: "top-[90px]",
-                },
-                {
-                    position: Position.Right,
-                    labelText: "Def",
-                    id: getId(),
-                    icon: "data_object",
-                    className: "top-[120px]",
-                },
-                {
-                    position: Position.Right,
-                    labelText: "Ghi",
-                    id: getId(),
-                    icon: "data_object",
-                    className: "top-[150px]",
-                }
-            ]
+            ],
         },
     },
-    "output-object-10": {
+    'open-object': {
         hasToolbar: false,
-        mainIcon: "ChevronRightDoubleCircleFillIcon",
+        mainIcon: 'ChevronRightDoubleCircleFillIcon',
+        customHandles: {
+            left: [
+                {
+                    position: Position.Left,
+                    labelText: '',
+                    id: '1',
+                    icon: 'data_object',
+                    isArray: false,
+                },
+            ],
+            right: [
+                {
+                    position: Position.Right,
+                    labelText: 'FirstName',
+                    id: '1',
+                    icon: 'data_object',
+                    isArray: false,
+                    className: 'top-10',
+                },
+                {
+                    position: Position.Right,
+                    labelText: 'LastName',
+                    id: '1',
+                    icon: 'data_object',
+                    isArray: false,
+                    className: 'top-20',
+                },
+                {
+                    position: Position.Right,
+                    labelText: 'Title',
+                    id: '1',
+                    icon: 'data_object',
+                    isArray: false,
+                    className: 'top-30',
+                },
+            ],
+        },
+    },
+    'open-object-10': {
+        hasToolbar: false,
+        mainIcon: 'ChevronRightDoubleCircleFillIcon',
+        customHandles: {
+            left: [
+                {
+                    position: Position.Left,
+                    labelText: '',
+                    id: getId(),
+                    icon: 'data_object',
+                    isArray: false,
+                },
+            ],
+            right: [
+                {
+                    position: Position.Right,
+                    labelText: 'First Name',
+                    id: getId(),
+                    icon: 'data_object',
+                    isArray: false,
+                    className: 'top-[0px]',
+                },
+                {
+                    position: Position.Right,
+                    labelText: 'LastName',
+                    id: getId(),
+                    icon: 'data_object',
+                    isArray: false,
+                    className: 'top-[30px]',
+                },
+                {
+                    position: Position.Right,
+                    labelText: 'Title',
+                    id: getId(),
+                    icon: 'data_object',
+                    className: 'top-[60px]',
+                },
+                {
+                    position: Position.Right,
+                    labelText: 'Abc',
+                    id: getId(),
+                    icon: 'data_object',
+                    className: 'top-[90px]',
+                },
+                {
+                    position: Position.Right,
+                    labelText: 'Def',
+                    id: getId(),
+                    icon: 'data_object',
+                    className: 'top-[120px]',
+                },
+                {
+                    position: Position.Right,
+                    labelText: 'Ghi',
+                    id: getId(),
+                    icon: 'data_object',
+                    className: 'top-[150px]',
+                },
+            ],
+        },
+    },
+    'output-object-10': {
+        hasToolbar: false,
+        mainIcon: 'ChevronRightDoubleCircleFillIcon',
         customHandles: {
             right: [
                 {
                     position: Position.Right,
-                    labelText: "",
+                    labelText: '',
                     id: getId(),
-                    icon: "data_object",
+                    icon: 'data_object',
                     isArray: false,
-                }
+                },
             ],
             left: [
                 {
                     position: Position.Left,
-                    labelText: "First Name",
+                    labelText: 'First Name',
                     id: getId(),
-                    icon: "data_object",
+                    icon: 'data_object',
                     isArray: false,
-                    className: "top-[0px]"
+                    className: 'top-[0px]',
                 },
                 {
                     position: Position.Left,
-                    labelText: "LastName",
+                    labelText: 'LastName',
                     id: getId(),
-                    icon: "data_object",
+                    icon: 'data_object',
                     isArray: false,
-                    className: "top-[30px]"
+                    className: 'top-[30px]',
                 },
                 {
                     position: Position.Left,
-                    labelText: "Title",
+                    labelText: 'Title',
                     id: getId(),
-                    icon: "data_object",
-                    className: "top-[60px]"
+                    icon: 'data_object',
+                    className: 'top-[60px]',
                 },
                 {
                     position: Position.Left,
-                    labelText: "Abc",
+                    labelText: 'Abc',
                     id: getId(),
-                    icon: "data_object",
-                    className: "top-[90px]",
+                    icon: 'data_object',
+                    className: 'top-[90px]',
                 },
                 {
                     position: Position.Left,
-                    labelText: "Def",
+                    labelText: 'Def',
                     id: getId(),
-                    icon: "data_object",
-                    className: "top-[120px]",
+                    icon: 'data_object',
+                    className: 'top-[120px]',
                 },
                 {
                     position: Position.Left,
-                    labelText: "Ghi",
+                    labelText: 'Ghi',
                     id: getId(),
-                    icon: "data_object",
-                    className: "top-[150px]",
-                }
-            ]
+                    icon: 'data_object',
+                    className: 'top-[150px]',
+                },
+            ],
         },
     },
-    "blueprint": {
+    blueprint: {
         hasToolbar: false,
-        mainIcon: "ChevronRightDoubleCircleFillIcon",
+        mainIcon: 'ChevronRightDoubleCircleFillIcon',
         customHandles: {
-            left: [{
-                position: Position.Left,
-                labelText: "Placeholder",
-                id: "1",
-                icon: "tab_unselected",
-                isArray: false,
-            }],
-            right: [{
-                position: Position.Right,
-                labelText: "Placeholder",
-                id: "1",
-                icon: "tab_unselected",
-                isArray: false,
-            }]
-        },
-    },
-    "subflow-foreach": {
-        hasToolbar: false,
-        mainIcon: "ChevronRightDoubleCircleFillIcon",
-        customHandles: {
-            left: [{
-                position: Position.Left,
-                labelText: "Samling",
-                id: "4",
-                icon: "text_fields",
-                isArray: true,
-            },{
-                position: Position.Right,
-                labelText: "Element",
-                id: "1",
-                icon: "text_fields",
-                isArray: false,
-                className: "left-10",
-            }],
-            right: []
-        },
-    },
-    "subflow-map": {
-        hasToolbar: false,
-        mainIcon: "ChevronRightDoubleCircleFillIcon",
-        customHandles: {
-            left: [{
-                position: Position.Left,
-                labelText: "Samling",
-                id: "4",
-                icon: "text_fields",
-                isArray: true,
-            },{
-                position: Position.Right,
-                labelText: "Element",
-                id: "1",
-                icon: "text_fields",
-                isArray: false,
-                className: "left-10",
-            }],
-            right: [{
-                position: Position.Left,
-                labelText: "Nytt element",
-                id: "40",
-                icon: "data_object",
-            },
+            left: [
                 {
-                    position: Position.Right,
-                    labelText: "Ny samling",
-                    className: "left-10",
-                    id: "400",
-                    icon: "data_object",
-                    isArray: true,
-                }]
-        },
-    },
-    "subflow-filter": {
-        hasToolbar: false,
-        mainIcon: "ChevronRightDoubleCircleFillIcon",
-        customHandles: {
-            left: [{
-                position: Position.Left,
-                labelText: "Samling",
-                id: "4",
-                icon: "text_fields",
-                isArray: true,
-            },{
-                position: Position.Right,
-                labelText: "Element",
-                id: "1",
-                icon: "text_fields",
-                isArray: false,
-                className: "left-10",
-            }],
-            right: [{
-                position: Position.Left,
-                labelText: "Skal være med",
-                id: "40",
-                icon: "toggle_on",
-                isArray: false,
-            },
-                {
-                    position: Position.Right,
-                    labelText: "Filtrert samling",
-                    id: "40",
-                    icon: "toggle_on",
-                    isArray: true,
-                    className: "left-10",
-                }
-            ]
-        },
-    },
-    "subflow-reduce": {
-        hasToolbar: false,
-        mainIcon: "ChevronRightDoubleCircleFillIcon",
-        customHandles: {
-            left: [{
-                position: Position.Left,
-                labelText: "",
-                id: "4",
-                icon: "tag",
-                isArray: true,
-            },{
-                position: Position.Right,
-                labelText: "Element A",
-                id: "100",
-                icon: "tag",
-                isArray: false,
-                className: "left-10",
-            },
-                {
-                    position: Position.Right,
-                    labelText: "Element B",
-                    id: "200",
-                    icon: "tag",
+                    position: Position.Left,
+                    labelText: 'Placeholder',
+                    id: '1',
+                    icon: 'tab_unselected',
                     isArray: false,
-                    className: "left-10 top-10",
-                }],
+                },
+            ],
             right: [
                 {
                     position: Position.Right,
-                    labelText: "Sannebskått verdi",
-                    id: "4000",
-                    icon: "text_fields",
-                    className: "left-10",
+                    labelText: 'Placeholder',
+                    id: '1',
+                    icon: 'tab_unselected',
+                    isArray: false,
+                },
+            ],
+        },
+    },
+    'subflow-foreach': {
+        hasToolbar: false,
+        mainIcon: 'ChevronRightDoubleCircleFillIcon',
+        customHandles: {
+            left: [
+                {
+                    position: Position.Left,
+                    labelText: 'Samling',
+                    id: '4',
+                    icon: 'text_fields',
+                    isArray: true,
+                },
+                {
+                    position: Position.Right,
+                    labelText: 'Element',
+                    id: '1',
+                    icon: 'text_fields',
+                    isArray: false,
+                    className: 'left-10',
+                },
+            ],
+            right: [],
+        },
+    },
+    'subflow-map': {
+        hasToolbar: false,
+        mainIcon: 'ChevronRightDoubleCircleFillIcon',
+        customHandles: {
+            left: [
+                {
+                    position: Position.Left,
+                    labelText: 'Samling',
+                    id: '4',
+                    icon: 'text_fields',
+                    isArray: true,
+                },
+                {
+                    position: Position.Right,
+                    labelText: 'Element',
+                    id: '1',
+                    icon: 'text_fields',
+                    isArray: false,
+                    className: 'left-10',
+                },
+            ],
+            right: [
+                {
+                    position: Position.Left,
+                    labelText: 'Nytt element',
+                    id: '40',
+                    icon: 'data_object',
+                },
+                {
+                    position: Position.Right,
+                    labelText: 'Ny samling',
+                    className: 'left-10',
+                    id: '400',
+                    icon: 'data_object',
+                    isArray: true,
+                },
+            ],
+        },
+    },
+    'subflow-filter': {
+        hasToolbar: false,
+        mainIcon: 'ChevronRightDoubleCircleFillIcon',
+        customHandles: {
+            left: [
+                {
+                    position: Position.Left,
+                    labelText: 'Samling',
+                    id: '4',
+                    icon: 'text_fields',
+                    isArray: true,
+                },
+                {
+                    position: Position.Right,
+                    labelText: 'Element',
+                    id: '1',
+                    icon: 'text_fields',
+                    isArray: false,
+                    className: 'left-10',
+                },
+            ],
+            right: [
+                {
+                    position: Position.Left,
+                    labelText: 'Skal være med',
+                    id: '40',
+                    icon: 'toggle_on',
+                    isArray: false,
+                },
+                {
+                    position: Position.Right,
+                    labelText: 'Filtrert samling',
+                    id: '40',
+                    icon: 'toggle_on',
+                    isArray: true,
+                    className: 'left-10',
+                },
+            ],
+        },
+    },
+    'subflow-reduce': {
+        hasToolbar: false,
+        mainIcon: 'ChevronRightDoubleCircleFillIcon',
+        customHandles: {
+            left: [
+                {
+                    position: Position.Left,
+                    labelText: '',
+                    id: '4',
+                    icon: 'tag',
+                    isArray: true,
+                },
+                {
+                    position: Position.Right,
+                    labelText: 'Element A',
+                    id: '100',
+                    icon: 'tag',
+                    isArray: false,
+                    className: 'left-10',
+                },
+                {
+                    position: Position.Right,
+                    labelText: 'Element B',
+                    id: '200',
+                    icon: 'tag',
+                    isArray: false,
+                    className: 'left-10 top-10',
+                },
+            ],
+            right: [
+                {
+                    position: Position.Right,
+                    labelText: 'Sannebskått verdi',
+                    id: '4000',
+                    icon: 'text_fields',
+                    className: 'left-10',
                 },
                 {
                     position: Position.Left,
-                    labelText: "Sannebskått verdi",
-                    id: "4300",
-                    icon: "text_fields",
+                    labelText: 'Sannebskått verdi',
+                    id: '4300',
+                    icon: 'text_fields',
                     isArray: false,
-
-                }
-            ]
+                },
+            ],
         },
     },
-    "subflow-find-first": {
+    'subflow-find-first': {
         hasToolbar: false,
-        mainIcon: "ChevronRightDoubleCircleFillIcon",
+        mainIcon: 'ChevronRightDoubleCircleFillIcon',
         customHandles: {
-            left: [{
-                position: Position.Left,
-                labelText: "Samling",
-                id: "4",
-                icon: "text_fields",
-                isArray: true,
-            },{
-                position: Position.Right,
-                labelText: "Element",
-                id: "1",
-                icon: "text_fields",
-                isArray: false,
-                className: "left-10",
-            }],
-            right: [{
-                position: Position.Left,
-                labelText: "Betingelse",
-                id: "40",
-                icon: "toggle_on",
-            },
+            left: [
+                {
+                    position: Position.Left,
+                    labelText: 'Samling',
+                    id: '4',
+                    icon: 'text_fields',
+                    isArray: true,
+                },
                 {
                     position: Position.Right,
-                    labelText: "Funnet element",
-                    id: "40",
-                    icon: "text_fields",
-                    className: "left-10",
+                    labelText: 'Element',
+                    id: '1',
+                    icon: 'text_fields',
+                    isArray: false,
+                    className: 'left-10',
+                },
+            ],
+            right: [
+                {
+                    position: Position.Left,
+                    labelText: 'Betingelse',
+                    id: '40',
+                    icon: 'toggle_on',
+                },
+                {
+                    position: Position.Right,
+                    labelText: 'Funnet element',
+                    id: '40',
+                    icon: 'text_fields',
+                    className: 'left-10',
                     isOptional: true,
-                }]
+                },
+            ],
         },
     },
-    "uppercase": {
+    uppercase: {
         hasToolbar: false,
-        mainIcon: "edit_note",
+        mainIcon: 'edit_note',
         customHandles: {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "",
-                    id: "4",
-                    icon: "text_fields",
-                }
+                    labelText: '',
+                    id: '4',
+                    icon: 'text_fields',
+                },
             ],
-            right: [
-                { position: Position.Right,
-                    labelText: "",
-                    id: "4",
-                    icon: "text_fields",}
-            ]
+            right: [{ position: Position.Right, labelText: '', id: '4', icon: 'text_fields' }],
         },
     },
-    "lowercase": {
+    lowercase: {
         hasToolbar: false,
-        mainIcon: "edit_note",
+        mainIcon: 'edit_note',
         customHandles: {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "",
-                    id: "4",
-                    icon: "text_fields",
-                }
+                    labelText: '',
+                    id: '4',
+                    icon: 'text_fields',
+                },
             ],
-            right: [
-                { position: Position.Right,
-                    labelText: "",
-                    id: "4",
-                    icon: "text_fields",}
-            ]
+            right: [{ position: Position.Right, labelText: '', id: '4', icon: 'text_fields' }],
         },
     },
-    "upperFirst": {
+    upperFirst: {
         hasToolbar: false,
-        mainIcon: "edit_note",
+        mainIcon: 'edit_note',
         customHandles: {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "",
-                    id: "4",
-                    icon: "text_fields",
-                }
+                    labelText: '',
+                    id: '4',
+                    icon: 'text_fields',
+                },
             ],
-            right: [
-                { position: Position.Right,
-                    labelText: "",
-                    id: "4",
-                    icon: "text_fields",}
-            ]
+            right: [{ position: Position.Right, labelText: '', id: '4', icon: 'text_fields' }],
         },
     },
-    "splitText": {
+    splitText: {
         hasToolbar: false,
-        mainIcon: "edit_note",
+        mainIcon: 'edit_note',
         customHandles: {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "",
-                    id: "4",
-                    icon: "text_fields",
-                }
+                    labelText: '',
+                    id: '4',
+                    icon: 'text_fields',
+                },
             ],
-            right: [
-                { position: Position.Right,
-                    labelText: "",
-                    id: "4",
-                    icon: "text_fields",}
-            ]
+            right: [{ position: Position.Right, labelText: '', id: '4', icon: 'text_fields' }],
         },
     },
-    "combineText": {
+    combineText: {
         hasToolbar: false,
-        mainIcon: "edit_note",
+        mainIcon: 'edit_note',
         customHandles: {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "",
-                    id: "4",
-                    icon: "text_fields",
+                    labelText: '',
+                    id: '4',
+                    icon: 'text_fields',
                 },
-                { position: Position.Right,
-                    labelText: "",
-                    id: "4",
-                    icon: "text_fields",}
+                { position: Position.Right, labelText: '', id: '4', icon: 'text_fields' },
             ],
-            right: [
-                { position: Position.Right,
-                    labelText: "",
-                    id: "4",
-                    icon: "text_fields",},
-            ]
+            right: [{ position: Position.Right, labelText: '', id: '4', icon: 'text_fields' }],
         },
     },
-    "add-whole": {
+    'add-whole': {
         hasToolbar: true,
-        mainIcon: "calculate",
+        mainIcon: 'calculate',
         customHandles: {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "Added",
-                    id: "4",
-                    icon: "tag",
+                    labelText: 'Added',
+                    id: '4',
+                    icon: 'tag',
                 },
                 {
                     position: Position.Left,
-                    labelText: "Added",
-                    id: "5",
-                    icon: "tag",
-                }
+                    labelText: 'Added',
+                    id: '5',
+                    icon: 'tag',
+                },
             ],
-            right: [
-                { position: Position.Right,
-                    labelText: "Sum",
-                    id: "4",
-                    icon: "tag",}
-            ]
+            right: [{ position: Position.Right, labelText: 'Sum', id: '4', icon: 'tag' }],
         },
     },
-    "add-float": {
+    'add-float': {
         hasToolbar: true,
-        mainIcon: "calculate",
+        mainIcon: 'calculate',
         customHandles: {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "Added",
-                    id: "4",
-                    icon: "decimal_increase",
+                    labelText: 'Added',
+                    id: '4',
+                    icon: 'decimal_increase',
                 },
                 {
                     position: Position.Left,
-                    labelText: "Added",
-                    id: "5",
-                    icon: "decimal_increase",
-                }
+                    labelText: 'Added',
+                    id: '5',
+                    icon: 'decimal_increase',
+                },
             ],
             right: [
-                { position: Position.Right,
-                    labelText: "Sum",
-                    id: "4",
-                    icon: "decimal_increase",}
-            ]
+                { position: Position.Right, labelText: 'Sum', id: '4', icon: 'decimal_increase' },
+            ],
         },
     },
-    "subtract": {
+    subtract: {
         hasToolbar: true,
-        mainIcon: "calculate",
+        mainIcon: 'calculate',
         customHandles: {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "Minuend",
-                    id: "4",
-                    icon: "tag",
+                    labelText: 'Minuend',
+                    id: '4',
+                    icon: 'tag',
                 },
                 {
                     position: Position.Left,
-                    labelText: "Subtrahend",
-                    id: "5",
-                    icon: "tag",
-                }
+                    labelText: 'Subtrahend',
+                    id: '5',
+                    icon: 'tag',
+                },
             ],
-            right: [
-                { position: Position.Right,
-                    labelText: "Differanse",
-                    id: "4",
-                    icon: "tag",}
-            ]
+            right: [{ position: Position.Right, labelText: 'Differanse', id: '4', icon: 'tag' }],
         },
     },
-    "multiply": {
+    multiply: {
         hasToolbar: true,
-        mainIcon: "calculate",
+        mainIcon: 'calculate',
         customHandles: {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "Faktor",
-                    id: "4",
-                    icon: "tag",
+                    labelText: 'Faktor',
+                    id: '4',
+                    icon: 'tag',
                 },
                 {
                     position: Position.Left,
-                    labelText: "Factor",
-                    id: "5",
-                    icon: "tag",
-                }
+                    labelText: 'Factor',
+                    id: '5',
+                    icon: 'tag',
+                },
             ],
-            right: [
-                { position: Position.Right,
-                    labelText: "Produkt",
-                    id: "4",
-                    icon: "tag",}
-            ]
+            right: [{ position: Position.Right, labelText: 'Produkt', id: '4', icon: 'tag' }],
         },
     },
-    "divide": {
+    divide: {
         hasToolbar: true,
-        mainIcon: "calculate",
+        mainIcon: 'calculate',
         customHandles: {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "Dividend",
-                    id: "4",
-                    icon: "decimal_increase",
+                    labelText: 'Dividend',
+                    id: '4',
+                    icon: 'decimal_increase',
                 },
                 {
                     position: Position.Left,
-                    labelText: "Divisor",
-                    id: "5",
-                    icon: "decimal_increase",
-                }
+                    labelText: 'Divisor',
+                    id: '5',
+                    icon: 'decimal_increase',
+                },
             ],
             right: [
-                { position: Position.Right,
-                    labelText: "Kvotient",
-                    id: "4",
-                    icon: "decimal_increase",}
-            ]
+                {
+                    position: Position.Right,
+                    labelText: 'Kvotient',
+                    id: '4',
+                    icon: 'decimal_increase',
+                },
+            ],
         },
     },
-    "larger": {
+    larger: {
         hasToolbar: true,
-        mainIcon: "calculate",
+        mainIcon: 'calculate',
         customHandles: {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "Tall A",
-                    id: "4",
-                    icon: "decimal_increase",
+                    labelText: 'Tall A',
+                    id: '4',
+                    icon: 'decimal_increase',
                 },
                 {
                     position: Position.Left,
-                    labelText: "Tall B",
-                    id: "5",
-                    icon: "decimal_increase",
-                }
+                    labelText: 'Tall B',
+                    id: '5',
+                    icon: 'decimal_increase',
+                },
             ],
             right: [
-                { position: Position.Right,
-                    labelText: "Er større",
-                    id: "4",
-                    icon: "toggle_on",}
-            ]
+                { position: Position.Right, labelText: 'Er større', id: '4', icon: 'toggle_on' },
+            ],
         },
     },
-    "smaller": {
+    smaller: {
         hasToolbar: true,
-        mainIcon: "calculate",
+        mainIcon: 'calculate',
         customHandles: {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "Tall A",
-                    id: "4",
-                    icon: "decimal_increase",
+                    labelText: 'Tall A',
+                    id: '4',
+                    icon: 'decimal_increase',
                 },
                 {
                     position: Position.Left,
-                    labelText: "Tall B",
-                    id: "5",
-                    icon: "decimal_increase",
-                }
+                    labelText: 'Tall B',
+                    id: '5',
+                    icon: 'decimal_increase',
+                },
             ],
             right: [
-                { position: Position.Right,
-                    labelText: "Er mindre",
-                    id: "4",
-                    icon: "toggle_on",}
-            ]
+                { position: Position.Right, labelText: 'Er mindre', id: '4', icon: 'toggle_on' },
+            ],
         },
     },
-    "equal": {
+    equal: {
         hasToolbar: true,
-        mainIcon: "calculate",
+        mainIcon: 'calculate',
         customHandles: {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "Tall A",
-                    id: "4",
-                    icon: "decimal_increase",
+                    labelText: 'Tall A',
+                    id: '4',
+                    icon: 'decimal_increase',
                 },
                 {
                     position: Position.Left,
-                    labelText: "Tall B",
-                    id: "5",
-                    icon: "decimal_increase",
-                }
+                    labelText: 'Tall B',
+                    id: '5',
+                    icon: 'decimal_increase',
+                },
             ],
-            right: [
-                { position: Position.Right,
-                    labelText: "Er like",
-                    id: "4",
-                    icon: "toggle_on",}
-            ]
+            right: [{ position: Position.Right, labelText: 'Er like', id: '4', icon: 'toggle_on' }],
         },
     },
-    "roundUp": {
+    roundUp: {
         hasToolbar: true,
-        mainIcon: "calculate",
+        mainIcon: 'calculate',
         customHandles: {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "Tall",
-                    id: "4",
-                    icon: "decimal_increase",
-                }
+                    labelText: 'Tall',
+                    id: '4',
+                    icon: 'decimal_increase',
+                },
             ],
-            right: [
-                { position: Position.Right,
-                    labelText: "Differanse",
-                    id: "4",
-                    icon: "tag",}
-            ]
+            right: [{ position: Position.Right, labelText: 'Differanse', id: '4', icon: 'tag' }],
         },
     },
-    "roundDown": {
+    roundDown: {
         hasToolbar: true,
-        mainIcon: "calculate",
+        mainIcon: 'calculate',
         customHandles: {
             left: [
                 {
                     position: Position.Left,
-                    labelText: "Tall",
-                    id: "4",
-                    icon: "decimal_increase",
-                }
+                    labelText: 'Tall',
+                    id: '4',
+                    icon: 'decimal_increase',
+                },
             ],
-            right: [
-                { position: Position.Right,
-                    labelText: "Heltall",
-                    id: "4",
-                    icon: "tag",}
-            ]
+            right: [{ position: Position.Right, labelText: 'Heltall', id: '4', icon: 'tag' }],
         },
     },
 };

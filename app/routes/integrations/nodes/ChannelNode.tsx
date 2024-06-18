@@ -1,7 +1,7 @@
 import { ChevronRightDoubleCircleFillIcon } from '@navikt/aksel-icons';
-import React from "react";
-import {Position} from "reactflow";
-import nodeConfig from "~/routes/integrations/nodes/config";
+import React from 'react';
+import { Position } from 'reactflow';
+import nodeConfig from '~/routes/integrations/nodes/config';
 import CustomHandle from './customHandle';
 
 interface CustomNodeProps {
@@ -26,9 +26,7 @@ const ChannelNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
             return <ChevronRightDoubleCircleFillIcon title="a11y-title" fontSize="40px" />;
         } else {
             return (
-                <span className="material-symbols-outlined text-left text-[40px]">
-          {data.icon}
-        </span>
+                <span className="material-symbols-outlined text-left text-[40px]">{data.icon}</span>
             );
         }
     };
@@ -52,7 +50,8 @@ const ChannelNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
             {/*    Output Node*/}
             {/*</div>*/}
 
-            <div className={`relative ${backgroundColor} rounded-2xl flex items-center justify-center border border-black p-4`}>
+            <div
+                className={`relative ${backgroundColor} rounded-2xl flex items-center justify-center border border-black p-4`}>
                 {renderIcon()}
             </div>
 
@@ -69,6 +68,6 @@ const ChannelNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
             ))}
         </div>
     );
-}
+};
 
 export default ChannelNode;

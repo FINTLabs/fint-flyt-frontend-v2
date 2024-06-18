@@ -1,8 +1,8 @@
 export interface ISelect {
-    label: string,
-    value: string,
-    description?: string,
-    disabled?: boolean
+    label: string;
+    value: string;
+    description?: string;
+    disabled?: boolean;
 }
 
 export interface IPage<T> {
@@ -30,9 +30,9 @@ export interface IPage<T> {
 }
 
 export interface IAlertMessage {
-    message: string
+    message: string;
 }
 
 export interface ITableSelect extends ISelect {
-    disabled?: boolean
+    disabled?: boolean;
 }

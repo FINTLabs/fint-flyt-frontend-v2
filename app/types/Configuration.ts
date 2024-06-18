@@ -21,7 +21,7 @@ export enum ValueType {
     BOOLEAN = 'BOOLEAN',
     DYNAMIC_STRING = 'DYNAMIC_STRING',
     FILE = 'FILE',
-    VALUE_CONVERTING = 'VALUE_CONVERTING'
+    VALUE_CONVERTING = 'VALUE_CONVERTING',
 }
 
 export interface IValueMapping {

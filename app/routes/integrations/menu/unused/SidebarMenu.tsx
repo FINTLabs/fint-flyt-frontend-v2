@@ -1,6 +1,6 @@
-import {ExpansionCard} from "@navikt/ds-react";
-import React from "react";
-import SidebarMenuList from "./SidebarMenuList";
+import { ExpansionCard } from '@navikt/ds-react';
+import React from 'react';
+import SidebarMenuList from './SidebarMenuList';
 
 const SidebarMenu: React.FunctionComponent = () => {
     // const onDragStart = (event, nodeType) => {
@@ -17,7 +17,7 @@ const SidebarMenu: React.FunctionComponent = () => {
                     </ExpansionCard.Title>
                 </ExpansionCard.Header>
                 <ExpansionCard.Content>
-                    <SidebarMenuList configKey={"channelNodes"}/>
+                    <SidebarMenuList configKey={'channelNodes'} />
                 </ExpansionCard.Content>
             </ExpansionCard>
 
@@ -28,7 +28,7 @@ const SidebarMenu: React.FunctionComponent = () => {
                     </ExpansionCard.Title>
                 </ExpansionCard.Header>
                 <ExpansionCard.Content>
-                    <SidebarMenuList configKey={"staticValueNodes"}/>
+                    <SidebarMenuList configKey={'staticValueNodes'} />
                 </ExpansionCard.Content>
             </ExpansionCard>
 
@@ -39,7 +39,7 @@ const SidebarMenu: React.FunctionComponent = () => {
                     </ExpansionCard.Title>
                 </ExpansionCard.Header>
                 <ExpansionCard.Content>
-                    <SidebarMenuList configKey={"subFlowNodes"}/>
+                    <SidebarMenuList configKey={'subFlowNodes'} />
                 </ExpansionCard.Content>
             </ExpansionCard>
 
@@ -50,7 +50,7 @@ const SidebarMenu: React.FunctionComponent = () => {
                     </ExpansionCard.Title>
                 </ExpansionCard.Header>
                 <ExpansionCard.Content>
-                    <SidebarMenuList configKey={"mathNodes"}/>
+                    <SidebarMenuList configKey={'mathNodes'} />
                 </ExpansionCard.Content>
             </ExpansionCard>
 
@@ -61,10 +61,9 @@ const SidebarMenu: React.FunctionComponent = () => {
                     </ExpansionCard.Title>
                 </ExpansionCard.Header>
                 <ExpansionCard.Content>
-                    <SidebarMenuList configKey={"textConversionNodes"}/>
+                    <SidebarMenuList configKey={'textConversionNodes'} />
                 </ExpansionCard.Content>
             </ExpansionCard>
-
         </div>
     );
 };

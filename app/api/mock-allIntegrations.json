@@ -1,26 +1,26 @@
 [
-  {
-    "id":3,
-    "sourceApplicationId":2,
-    "sourceApplicationIntegrationId":"TEST123",
-    "destination":"fylkesrad",
-    "state":"DEACTIVATED",
-    "activeConfigurationId":null
-  },
-  {
-    "id":4,
-    "sourceApplicationId":2,
-    "sourceApplicationIntegrationId":"TEST124",
-    "destination":"fylkesrad",
-    "state":"DEACTIVATED",
-    "activeConfigurationId":null
-  },
-  {
-    "id":5,
-    "sourceApplicationId":2,
-    "sourceApplicationIntegrationId":"TEST125",
-    "destination":"fylkesrad",
-    "state":"DEACTIVATED",
-    "activeConfigurationId":null
-  }
+    {
+        "id": 3,
+        "sourceApplicationId": 2,
+        "sourceApplicationIntegrationId": "TEST123",
+        "destination": "fylkesrad",
+        "state": "DEACTIVATED",
+        "activeConfigurationId": null
+    },
+    {
+        "id": 4,
+        "sourceApplicationId": 2,
+        "sourceApplicationIntegrationId": "TEST124",
+        "destination": "fylkesrad",
+        "state": "DEACTIVATED",
+        "activeConfigurationId": null
+    },
+    {
+        "id": 5,
+        "sourceApplicationId": 2,
+        "sourceApplicationIntegrationId": "TEST125",
+        "destination": "fylkesrad",
+        "state": "DEACTIVATED",
+        "activeConfigurationId": null
+    }
 ]

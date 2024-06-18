@@ -1,4 +1,4 @@
-import {create} from 'zustand';
+import { create } from 'zustand';
 import {
     addEdge,
     applyEdgeChanges,
@@ -64,8 +64,7 @@ const useStore = create<RFState>((set, get) => ({
         set((state) => ({
             nodes: state.nodes.concat(newNode),
         }));
-    }
-
+    },
 }));
 
 export default useStore;

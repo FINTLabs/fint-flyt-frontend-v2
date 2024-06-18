@@ -3,26 +3,29 @@
 // import {IIntegration} from "../features/integrations/types/Integration";
 // // import {MOCK_INTEGRATION} from "../__tests__/mock/integrations";
 // import {ISourceApplication} from "../features/configuration/types/SourceApplication";
-import {IEvent} from "~/routes/instance/types/event";
-import {ISourceApplication} from "~/types/SourceApplication";
+import { IEvent } from '~/routes/instance/types/event';
+import { ISourceApplication } from '~/types/SourceApplication';
 
-export function getSourceApplicationDisplayNameById(id: number, sourceApplications: ISourceApplication[] | undefined): string {
+export function getSourceApplicationDisplayNameById(
+    id: number,
+    sourceApplications: ISourceApplication[] | undefined
+): string {
     if (!sourceApplications) {
-        return 'ukjent'
+        return 'ukjent';
     }
     // return sourceApplications.find(sourceApplication => sourceApplication.id === id)?.displayName ?? 'ukjent'
-    return "ukjent";
+    return 'ukjent';
 }
 
 export function getDestinationDisplayName(id: string): string {
-    if (id === "fylkesrad") return "Arkivsystem";
-    else return "ukjent";
+    if (id === 'fylkesrad') return 'Arkivsystem';
+    else return 'ukjent';
 }
 
 export function getStateDisplayName(id: string): string {
-    if (id === "ACTIVE") return "Aktiv";
-    if (id === "DEACTIVATED") return "Deaktivert";
-    else return "ukjent";
+    if (id === 'ACTIVE') return 'Aktiv';
+    if (id === 'DEACTIVATED') return 'Deaktivert';
+    else return 'ukjent';
 }
 
 // export const isKeyOfIntegration = (key: string): key is keyof IIntegration => {
@@ -75,4 +78,3 @@ export function getStateDisplayName(id: string): string {
 //         return -1;
 //     }
 // };
-

@@ -1,4 +1,4 @@
-Cypress.on("uncaught:exception", (err) => {
+Cypress.on('uncaught:exception', (err) => {
     // Cypress and React Hydrating the document don't get along
     // for some unknown reason. Hopefully, we figure out why eventually
     // so we can remove this.
@@ -9,7 +9,7 @@ Cypress.on("uncaught:exception", (err) => {
         /Minified React error #418/.test(err.message) ||
         /Minified React error #423/.test(err.message)
     ) {
-        return false
+        return false;
     }
 });
 describe('Components Page Tests', () => {
@@ -23,8 +23,8 @@ describe('Components Page Tests', () => {
     });
 
     it('passes', () => {
-        cy.visit('http://localhost:5174/')
-    })
+        cy.visit('http://localhost:5174/');
+    });
 
     it('Check page layout', () => {
         cy.get('header').should('be.visible');
@@ -78,5 +78,4 @@ describe('Components Page Tests', () => {
         // Check if the language has been changed to English
         cy.get('#support-information').should('contain', 'What is FINT Flyt?');
     });
-
-})
+});

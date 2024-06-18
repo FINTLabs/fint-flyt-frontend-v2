@@ -10,11 +10,7 @@ import {
 
 export const getId = (prefix = 'node') => `${prefix}_${Math.random() * 10000}`;
 
-
-export const getNodePositionInsideParent = (
-    node: Partial<Node>,
-    groupNode: Node
-) => {
+export const getNodePositionInsideParent = (node: Partial<Node>, groupNode: Node) => {
     const position = node.position ?? { x: 0, y: 0 };
     const nodeWidth = node.width ?? 0;
     const nodeHeight = node.height ?? 0;
@@ -47,10 +43,7 @@ export const getBoundsOfBoxes = (box1: Box, box2: Box): Box => ({
     y2: Math.max(box1.y2, box2.y2),
 });
 
-export const getRelativeNodesBounds = (
-    nodes: Node[],
-    nodeOrigin: NodeOrigin = [0, 0]
-): Rect => {
+export const getRelativeNodesBounds = (nodes: Node[], nodeOrigin: NodeOrigin = [0, 0]): Rect => {
     if (nodes.length === 0) {
         return { x: 0, y: 0, width: 0, height: 0 };
     }
