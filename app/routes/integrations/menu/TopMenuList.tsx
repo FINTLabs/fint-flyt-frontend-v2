@@ -1,14 +1,19 @@
 import React from 'react';
-import { Box, HStack, VStack, Dropdown } from '@navikt/ds-react';
+import { Box, Dropdown, VStack } from '@navikt/ds-react';
 import { MenuConfig, menuConfigs } from './config';
 import { ChevronRightDoubleCircleFillIcon } from '@navikt/aksel-icons';
 
 interface MathNodeListProps {
     configKey: string;
     isVerticalStack?: boolean;
+    onClickHandler: (type: string, data: any) => void;
 }
 
-const TopMenuList: React.FC<MathNodeListProps> = ({ configKey, isVerticalStack = false }) => {
+const TopMenuList: React.FC<MathNodeListProps> = ({
+    configKey,
+    isVerticalStack = false,
+    onClickHandler,
+}) => {
     const menuConfig = menuConfigs[configKey];
 
     const onDragStart = (event: React.DragEvent<HTMLSpanElement>, menuItem: MenuConfig) => {
@@ -34,6 +39,7 @@ const TopMenuList: React.FC<MathNodeListProps> = ({ configKey, isVerticalStack =
                     <Box
                         key={index}
                         onDragStart={(event) => onDragStart(event, menuItem)}
+                        onClick={() => onClickHandler(menuItem.nodeType, menuItem)}
                         draggable
                         as={'div'}
                         borderRadius="large"

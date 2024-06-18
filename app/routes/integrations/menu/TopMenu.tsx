@@ -1,9 +1,13 @@
 import React from 'react';
-import { ExpansionCard, HStack, Box, Dropdown, Button, Link, Search } from '@navikt/ds-react';
+import { Box, Button, Dropdown, HStack } from '@navikt/ds-react';
 import TopMenuList from './TopMenuList';
 import { ChevronDownIcon } from '@navikt/aksel-icons';
 
-const TopMenu: React.FunctionComponent = () => {
+interface TopMenuProps {
+    onClickHandler: (type: string, data: any) => void;
+}
+
+const TopMenu: React.FunctionComponent<TopMenuProps> = ({ onClickHandler }) => {
     const ChevronDown = <ChevronDownIcon title="chevron down" fontSize="1.5rem" />;
 
     const CustomDropDown = ({ title, configKey }: { title: string; configKey: string }) => {
@@ -18,7 +22,7 @@ const TopMenu: React.FunctionComponent = () => {
                 </Button>
                 <Dropdown.Menu placement="bottom-start">
                     <Dropdown.Menu.List>
-                        <TopMenuList configKey={configKey} />
+                        <TopMenuList configKey={configKey} onClickHandler={onClickHandler} />
                     </Dropdown.Menu.List>
                 </Dropdown.Menu>
             </Dropdown>
