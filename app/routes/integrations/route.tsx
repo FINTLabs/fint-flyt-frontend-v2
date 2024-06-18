@@ -19,11 +19,7 @@ import { MiniMap } from '@reactflow/minimap';
 import ChannelNode from '~/routes/integrations/nodes/ChannelNode';
 import CustomParentNode from '~/routes/integrations/nodes/CustomParentNode';
 import { useShallow } from 'zustand/react/shallow';
-import {
-    getNodePositionInsideParent,
-    getId,
-    handleDropLogic,
-} from '~/routes/integrations/utils/utils';
+import { handleDropLogic } from '~/routes/integrations/utils/utils';
 import CustomObjectNode from '~/routes/integrations/nodes/CustomObjectNode';
 import OperationsNode from '~/routes/integrations/nodes/OperationsNode';
 import StaticValueNode from '~/routes/integrations/nodes/StaticValueNode';
@@ -104,7 +100,7 @@ export default function Index() {
         [reactFlowInstance, addNewNodeDrop]
     );
 
-    const onClickHandler = (type: string, data: any) => {
+    const onClickHandler = (type: string, data: never) => {
         const position = { x: 0, y: 0 }; // Example position
         handleDropLogic(reactFlowInstance, type, data, position, addNewNodeDrop);
     };
