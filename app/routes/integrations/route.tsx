@@ -19,7 +19,11 @@ import { MiniMap } from '@reactflow/minimap';
 import ChannelNode from '~/routes/integrations/nodes/ChannelNode';
 import CustomParentNode from '~/routes/integrations/nodes/CustomParentNode';
 import { useShallow } from 'zustand/react/shallow';
-import { getNodePositionInsideParent, getId } from '~/routes/integrations/utils/utils';
+import {
+    getNodePositionInsideParent,
+    getId,
+    handleDropLogic,
+} from '~/routes/integrations/utils/utils';
 import CustomObjectNode from '~/routes/integrations/nodes/CustomObjectNode';
 import OperationsNode from '~/routes/integrations/nodes/OperationsNode';
 import StaticValueNode from '~/routes/integrations/nodes/StaticValueNode';
@@ -86,80 +90,24 @@ export default function Index() {
     const onDrop = useCallback(
         (event: React.DragEvent<HTMLDivElement>) => {
             event.preventDefault();
-
             const type = event.dataTransfer.getData('application/node-type');
             const dataString = event.dataTransfer.getData('application/reactflow');
             const data = JSON.parse(dataString);
-
-            console.log('Dropped:', type, data);
-
-            // check if the dropped element is valid
-            if (typeof type === 'undefined' || !type) {
-                return;
-            }
-
-            console.log('Dropped:', type, data);
-            if (reactFlowInstance) {
-                const position = reactFlowInstance.screenToFlowPosition({
-                    x: event.clientX,
-                    y: event.clientY,
-                });
-
-                const intersections = reactFlowInstance
-                    .getIntersectingNodes({
-                        x: position.x,
-                        y: position.y,
-                        width: 40,
-                        height: 40,
-                    })
-                    .filter((n) => n.type === 'subflow');
-
-                const groupNode = intersections[0];
-                // console.log('Group node add:', groupNode);
-                // console.log('Position:', position);
-
-                const newNode: Node = {
-                    id: getId(),
-                    type,
-                    position,
-                    data,
-                };
-
-                // if(type === 'subflow') {
-                //     newNode.style = {
-                //         // width: 450,
-                //         // height: 200,
-                //         // background: 'lightgray',
-                //         // border: '1px solid black',
-                //         // borderRadius: 15,
-                //         // paddingRight: 50,
-                //         // paddingLeft: 50,
-                //         // borderRight: '25px solid lightgray',
-                //         // borderLeft: '25px solid lightgray'
-                //
-                //     } ;
-                //     // newNode.className = 'border-r border-l border-gray-300 border-[10px] bg-amber-500';
-                // }
-
-                if (groupNode) {
-                    // if we drop a node on a group node, we want to position the node inside the group
-                    newNode.position = getNodePositionInsideParent(
-                        {
-                            position,
-                            width: 40,
-                            height: 40,
-                        },
-                        groupNode
-                    ) ?? { x: 0, y: 0 };
-                    newNode.parentId = groupNode?.id;
-                    newNode.expandParent = true;
-                }
-
-                addNewNodeDrop(newNode);
+            const position = reactFlowInstance?.screenToFlowPosition({
+                x: event.clientX || 0,
+                y: event.clientY || 0,
+            });
+            if (position) {
+                handleDropLogic(reactFlowInstance, type, data, position, addNewNodeDrop);
             }
         },
-        [reactFlowInstance]
+        [reactFlowInstance, addNewNodeDrop]
     );
+
+    const onClickHandler = (type: string, data: any) => {
+        const position = { x: 0, y: 0 }; // Example position
+        handleDropLogic(reactFlowInstance, type, data, position, addNewNodeDrop);
+    };
 
     return (
         <VStack>
@@ -177,7 +125,7 @@ export default function Index() {
                 </HStack>
             </HStack>
 
-            <TopMenu />
+            <TopMenu onClickHandler={onClickHandler} />
 
             <HGrid columns="w-100" style={{ height: 800 }}>
                 <ReactFlowProvider>

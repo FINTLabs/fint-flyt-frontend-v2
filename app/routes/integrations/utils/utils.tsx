@@ -1,12 +1,4 @@
-import {
-    getNodePositionWithOrigin,
-    rectToBox,
-    type Node,
-    type NodeOrigin,
-    type Rect,
-    boxToRect,
-    Box,
-} from 'reactflow';
+import { getNodePositionWithOrigin, rectToBox, type Node, type NodeOrigin, type Rect, boxToRect, Box, ReactFlowInstance } from 'reactflow';
 
 export const getId = (prefix = 'node') => `${prefix}_${Math.random() * 10000}`;
 
@@ -65,4 +57,49 @@ export const getRelativeNodesBounds = (nodes: Node[], nodeOrigin: NodeOrigin = [
     );
 
     return boxToRect(box);
+};
+export const handleDropLogic = (
+    reactFlowInstance: ReactFlowInstance | null,
+    type: string,
+    data: any,
+    position: {
+        x: number;
+        y: number;
+    },
+    addNewNodeDrop: (newNode: Node) => void
+): void => {
+    if (!type || !reactFlowInstance) return;
+
+    const intersections = reactFlowInstance
+        .getIntersectingNodes({
+            x: position.x,
+            y: position.y,
+            width: 40,
+            height: 40,
+        })
+        .filter((n) => n.type === 'subflow');
+
+    const groupNode = intersections[0];
+
+    const newNode: Node = {
+        id: getId(),
+        type,
+        position,
+        data,
+    };
+
+    if (groupNode) {
+        newNode.position = getNodePositionInsideParent(
+            {
+                position,
+                width: 40,
+                height: 40,
+            },
+            groupNode
+        ) ?? { x: 0, y: 0 };
+        newNode.parentId = groupNode?.id;
+        newNode.expandParent = true;
+    }
+
+    addNewNodeDrop(newNode);
 };
