@@ -20,6 +20,8 @@ enum CategoryType {
     STREAM = 'STREAM',
     MAP = 'MAP',
     LIST = 'LIST',
+    REFERENCE = 'REFERENCE',
+    SYNCHRONOUS_REQUEST = 'SYNCHRONOUS_REQUEST',
 }
 
 enum PrimitiveType {
@@ -61,3 +63,25 @@ export interface ListType<E extends ConcreteListType> extends DataType {
     elementType: E; // double check type
     constraints: CollectionConstraints;
 }
+
+// SynchronousRequestType
+export interface SynchronousRequestType<
+    T extends ConcreteSynchronousRequestType,
+    R extends ConcreteSynchronousRequestType,
+> extends DataType {
+    category: CategoryType.SYNCHRONOUS_REQUEST;
+    dataType: T;
+    responseType: R;
+    timeout?: Date;
+}
+
+export interface ConcreteSynchronousRequestType extends ConcreteDataType {}
+
+// ReferenceType
+export interface ReferenceType<T extends ConcreteReferenceType> extends DataType {
+    category: CategoryType.REFERENCE;
+    referenceContextId: string; // ???
+    dataType: T;
+}
+
+export interface ConcreteReferenceType extends ConcreteDataType {}
