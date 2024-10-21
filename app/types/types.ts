@@ -9,7 +9,6 @@ export interface VariableDeclaration<T extends DataType> {
     displayText: DisplayText;
     dataType: T;
 }
-
 export interface DisplayText {
     name: string;
     description?: string;
@@ -22,6 +21,7 @@ enum CategoryType {
     LIST = 'LIST',
     REFERENCE = 'REFERENCE',
     SYNCHRONOUS_REQUEST = 'SYNCHRONOUS_REQUEST',
+    RECORD = 'RECORD',
 }
 
 enum PrimitiveType {
@@ -36,52 +36,42 @@ export interface ParameterizedType extends DataType {
     typeParameterId: string;
 }
 
-export interface ConcreteDataType extends DataType {}
-
-export interface ConcreteStreamType extends ConcreteDataType {}
-
-export interface StreamType<E extends ConcreteStreamType> extends DataType {
+export interface StreamType extends DataType {
     category: CategoryType.STREAM;
-    elementType: E;
+    elementType: DataType;
 }
 
-export interface ConcreteMapType extends ConcreteDataType {}
-
-export interface MapType<K extends ConcreteMapType, V extends ConcreteMapType> extends DataType {
+export interface MapType extends DataType {
     category: CategoryType.MAP;
-    keyType: K; // double check type
-    valueType: V; // double check type
+    keyType: DataType;
+    valueType: DataType;
     constraints: CollectionConstraints;
 }
 
+// Min max verdier for begrensninger
 export interface CollectionConstraints {}
 
-export interface ConcreteListType extends ConcreteDataType {}
-
-export interface ListType<E extends ConcreteListType> extends DataType {
+export interface ListType extends DataType {
     category: CategoryType.LIST;
-    elementType: E; // double check type
+    elementType: DataType;
     constraints: CollectionConstraints;
 }
 
 // SynchronousRequestType
-export interface SynchronousRequestType<
-    T extends ConcreteSynchronousRequestType,
-    R extends ConcreteSynchronousRequestType,
-> extends DataType {
+export interface SynchronousRequestType extends DataType {
     category: CategoryType.SYNCHRONOUS_REQUEST;
-    dataType: T;
-    responseType: R;
+    dataType: DataType;
+    responseType: DataType;
     timeout?: Date;
 }
-
-export interface ConcreteSynchronousRequestType extends ConcreteDataType {}
-
-// ReferenceType
-export interface ReferenceType<T extends ConcreteReferenceType> extends DataType {
+export interface ReferenceType extends DataType {
     category: CategoryType.REFERENCE;
     referenceContextId: string; // ???
-    dataType: T;
+    dataType: DataType;
 }
 
-export interface ConcreteReferenceType extends ConcreteDataType {}
+// RecordType
+export interface RecordType extends DataType {
+    category: CategoryType.RECORD;
+    recordTypeDeclarationId: string; // long - consider using BigInt, postponed, discuss it later, might introduce bigint
+}
