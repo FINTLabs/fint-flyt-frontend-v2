@@ -4,26 +4,22 @@ import { MenuConfig, menuConfigs } from './config';
 import { ChevronRightDoubleCircleFillIcon } from '@navikt/aksel-icons';
 import { DataType } from '~/types/types';
 
-interface MathNodeListProps {
-    configKey: string;
-    isVerticalStack?: boolean;
+interface MenuListDataTypesProps {
+    dataTypes: DataType[];
     onClickHandler: (type: string, data: any) => void;
 }
 
-const TopMenuList: React.FC<MathNodeListProps> = ({
-    configKey,
-    isVerticalStack = false,
-    onClickHandler,
-}) => {
-    const menuConfig = menuConfigs[configKey];
+const MenuListDataTypes: React.FC<MenuListDataTypesProps> = ({ dataTypes, onClickHandler }) => {
+    // const menuConfig = menuConfigs[configKey];
+    console.log(dataTypes);
 
-    const onDragStart = (event: React.DragEvent<HTMLSpanElement>, menuItem: MenuConfig) => {
-        event.dataTransfer.setData('application/node-type', menuItem.nodeType);
-        // const data = { inputType,label,icon };
-        const data = { ...menuItem };
-        event.dataTransfer.setData('application/reactflow', JSON.stringify(data));
-        event.dataTransfer.effectAllowed = 'move';
-    };
+    // const onDragStart = (event: React.DragEvent<HTMLSpanElement>, menuItem: MenuConfig) => {
+    //     event.dataTransfer.setData('application/node-type', menuItem.nodeType);
+    //     // const data = { inputType,label,icon };
+    //     const data = { ...menuItem };
+    //     event.dataTransfer.setData('application/reactflow', JSON.stringify(data));
+    //     event.dataTransfer.effectAllowed = 'move';
+    // };
 
     const renderIcon = (icon: string) => {
         if (icon === 'ChevronRightDoubleCircleFillIcon') {
@@ -35,18 +31,18 @@ const TopMenuList: React.FC<MathNodeListProps> = ({
 
     return (
         <VStack gap="2" align="start">
-            {menuConfig.map((menuItem, index) => (
+            {dataTypes.map((datatype, index) => (
                 <Dropdown.Menu.List.Item key={index} as="div">
                     <Box
                         key={index}
-                        onDragStart={(event) => onDragStart(event, menuItem)}
-                        onClick={() => onClickHandler(menuItem.nodeType, menuItem)}
+                        // onDragStart={(event) => onDragStart(event, menuItem)}
+                        // onClick={() => onClickHandler(menuItem.nodeType, menuItem)}
                         draggable
                         as={'div'}
                         borderRadius="large"
                         className={'w-60 flex items-center my-0.5'}>
-                        <span className="flex items-center pr-2">{renderIcon(menuItem.icon)}</span>
-                        <span className="">{menuItem.label}</span>
+                        {/* <span className="flex items-center pr-2">{renderIcon(menuItem.icon)}</span> */}
+                        <span className="">{datatype.category}</span>
                     </Box>
                 </Dropdown.Menu.List.Item>
             ))}
@@ -54,4 +50,4 @@ const TopMenuList: React.FC<MathNodeListProps> = ({
     );
 };
 
-export default TopMenuList;
+export default MenuListDataTypes;

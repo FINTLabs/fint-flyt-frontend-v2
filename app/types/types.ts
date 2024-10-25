@@ -1,6 +1,7 @@
 export interface DataType {
-    getCategory(): string;
-    getDisplayText(): string;
+    category: Category;
+    // getCategory(): string;
+    // getDisplayText(): string;
 }
 
 export interface VariableDeclaration<T extends DataType> {
@@ -13,6 +14,14 @@ export interface DisplayText {
     name: string;
     description?: string;
 }
+type Category =
+    | 'PARAMETERIZED'
+    | 'STREAM'
+    | 'MAP'
+    | 'LIST'
+    | 'REFERENCE'
+    | 'SYNCHRONOUS_REQUEST'
+    | 'RECORD';
 
 enum CategoryType {
     PARAMETERIZED = 'PARAMETERIZED',
