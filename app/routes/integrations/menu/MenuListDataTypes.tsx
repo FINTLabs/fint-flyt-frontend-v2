@@ -11,9 +11,8 @@ interface MenuListDataTypesProps {
 
 const MenuListDataTypes: React.FC<MenuListDataTypesProps> = ({ dataTypes, onClickHandler }) => {
     // const menuConfig = menuConfigs[configKey];
-    console.log(dataTypes);
-
-    console.log(menuConfigs);
+    // console.log(dataTypes);
+    // console.log(menuConfigs);
     // const onDragStart = (event: React.DragEvent<HTMLSpanElement>, menuItem: MenuConfig) => {
     //     event.dataTransfer.setData('application/node-type', menuItem.nodeType);
     //     // const data = { inputType,label,icon };
@@ -32,18 +31,24 @@ const MenuListDataTypes: React.FC<MenuListDataTypesProps> = ({ dataTypes, onClic
 
     return (
         <VStack gap="2" align="start">
-            {dataTypes.map((datatype, index) => {
-                const dataTypeConfig = menuConfigs.filter(
-                    (config) => datatype.category.toLocaleLowerCase() === config.inputType
+            {dataTypes.map((dataType, index) => {
+                const dataTypeConfig = menuConfigs.find(
+                    (config) => dataType.category.toLocaleLowerCase() === config.categoryType
                 );
-                const icon = dataTypeConfig.length > 0 ? dataTypeConfig[0].icon : '';
+
+                const icon = dataTypeConfig ? dataTypeConfig.icon : '';
 
                 return (
                     <Dropdown.Menu.List.Item key={index} as="div">
                         <Box
                             key={index}
                             // onDragStart={(event) => onDragStart(event, menuItem)}
-                            // onClick={() => onClickHandler(menuItem.nodeType, menuItem)}
+                            onClick={() =>
+                                onClickHandler(
+                                    dataTypeConfig ? dataTypeConfig.nodeType : '',
+                                    dataTypeConfig
+                                )
+                            }
                             draggable
                             as={'div'}
                             borderRadius="large"
@@ -51,7 +56,7 @@ const MenuListDataTypes: React.FC<MenuListDataTypesProps> = ({ dataTypes, onClic
                             <div className="flex w-8 items-center">
                                 <span className="material-symbols-outlined">{icon}</span>
                             </div>
-                            <div className="">{datatype.category}</div>
+                            <div className="">{dataType.category}</div>
                         </Box>
                     </Dropdown.Menu.List.Item>
                 );

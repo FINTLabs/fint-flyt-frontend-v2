@@ -47,8 +47,6 @@ const TopMenu: React.FunctionComponent<TopMenuProps> = ({ onClickHandler }) => {
         );
     };
 
-    console.log(mockDataTypes as DataType[]);
-
     return (
         <div className="grid gap-6 pb-2 pt-2">
             <Box
