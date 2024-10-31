@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Dropdown, VStack } from '@navikt/ds-react';
-import { MenuConfig, menuConfigs } from './config';
+import { MenuConfig, menuConfigs } from './dataTypeConfig';
 import { ChevronRightDoubleCircleFillIcon } from '@navikt/aksel-icons';
 import { DataType } from '~/types/types';
 
@@ -13,6 +13,7 @@ const MenuListDataTypes: React.FC<MenuListDataTypesProps> = ({ dataTypes, onClic
     // const menuConfig = menuConfigs[configKey];
     console.log(dataTypes);
 
+    console.log(menuConfigs);
     // const onDragStart = (event: React.DragEvent<HTMLSpanElement>, menuItem: MenuConfig) => {
     //     event.dataTransfer.setData('application/node-type', menuItem.nodeType);
     //     // const data = { inputType,label,icon };
@@ -31,21 +32,30 @@ const MenuListDataTypes: React.FC<MenuListDataTypesProps> = ({ dataTypes, onClic
 
     return (
         <VStack gap="2" align="start">
-            {dataTypes.map((datatype, index) => (
-                <Dropdown.Menu.List.Item key={index} as="div">
-                    <Box
-                        key={index}
-                        // onDragStart={(event) => onDragStart(event, menuItem)}
-                        // onClick={() => onClickHandler(menuItem.nodeType, menuItem)}
-                        draggable
-                        as={'div'}
-                        borderRadius="large"
-                        className={'w-60 flex items-center my-0.5'}>
-                        {/* <span className="flex items-center pr-2">{renderIcon(menuItem.icon)}</span> */}
-                        <span className="">{datatype.category}</span>
-                    </Box>
-                </Dropdown.Menu.List.Item>
-            ))}
+            {dataTypes.map((datatype, index) => {
+                const dataTypeConfig = menuConfigs.filter(
+                    (config) => datatype.category.toLocaleLowerCase() === config.inputType
+                );
+                const icon = dataTypeConfig.length > 0 ? dataTypeConfig[0].icon : '';
+
+                return (
+                    <Dropdown.Menu.List.Item key={index} as="div">
+                        <Box
+                            key={index}
+                            // onDragStart={(event) => onDragStart(event, menuItem)}
+                            // onClick={() => onClickHandler(menuItem.nodeType, menuItem)}
+                            draggable
+                            as={'div'}
+                            borderRadius="large"
+                            className={'w-60 flex items-center my-0.5'}>
+                            <div className="flex w-8 items-center">
+                                <span className="material-symbols-outlined">{icon}</span>
+                            </div>
+                            <div className="">{datatype.category}</div>
+                        </Box>
+                    </Dropdown.Menu.List.Item>
+                );
+            })}
         </VStack>
     );
 };

@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Dropdown, VStack } from '@navikt/ds-react';
 import { MenuConfig, menuConfigs } from './config';
 import { ChevronRightDoubleCircleFillIcon } from '@navikt/aksel-icons';
-import { DataType } from '~/types/types';
 
 interface MathNodeListProps {
     configKey: string;
