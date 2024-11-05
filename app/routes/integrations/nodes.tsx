@@ -1,21 +1,19 @@
 import { Node } from 'reactflow';
+import DataTypeNode from '~/routes/integrations/nodes/DataTypeNode';
+
+// Register the custom node component as a new node type
+export const nodeTypes = {
+    dataTypeNode: DataTypeNode, // Register 'dataTypeNode' as a type
+};
 
 export default [
-    // {
-    //     id: '1',
-    //     position: { x: 0, y: 100 },
-    //     type: "inputNode"
-    // },
-    // {
-    //     id: '2',
-    //     // type: 'colorChooser',
-    //     data: { color: '#F6E05E' },
-    //     position: { x: 350, y: 125 },
-    //     type: "openObject"
-    // },
-    // {
-    //     id: "3",
-    //     position: { x: 500, y: 170 },
-    //     type: "outputNode"
-    // }
+    {
+        id: '1',
+        type: 'dataTypeNode', // Use your custom node type here
+        position: { x: 120, y: 120 },
+        data: {
+            category: 'STREAM',
+            elementType: { category: 'LIST', elementType: { category: 'STRING' } },
+        },
+    },
 ] as Node[];

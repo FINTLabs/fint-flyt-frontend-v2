@@ -21,9 +21,10 @@ type Category =
     | 'LIST'
     | 'REFERENCE'
     | 'SYNCHRONOUS_REQUEST'
-    | 'RECORD';
+    | 'RECORD'
+    | 'STRING';
 
-enum CategoryType {
+export enum CategoryType {
     PARAMETERIZED = 'PARAMETERIZED',
     STREAM = 'STREAM',
     MAP = 'MAP',
@@ -31,9 +32,10 @@ enum CategoryType {
     REFERENCE = 'REFERENCE',
     SYNCHRONOUS_REQUEST = 'SYNCHRONOUS_REQUEST',
     RECORD = 'RECORD',
+    STRING = 'STRING',
 }
 
-enum PrimitiveType {
+export enum PrimitiveType {
     TEXT = 'Text',
     INTEGER = 'Integer',
     DECIMAL = 'Decimal number',
