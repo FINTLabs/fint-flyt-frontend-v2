@@ -22,7 +22,8 @@ type Category =
     | 'REFERENCE'
     | 'SYNCHRONOUS_REQUEST'
     | 'RECORD'
-    | 'STRING';
+    | 'STRING'
+    | 'INTEGER';
 
 export enum CategoryType {
     PARAMETERIZED = 'PARAMETERIZED',
@@ -33,6 +34,7 @@ export enum CategoryType {
     SYNCHRONOUS_REQUEST = 'SYNCHRONOUS_REQUEST',
     RECORD = 'RECORD',
     STRING = 'STRING',
+    INTEGER = 'INTEGER',
 }
 
 export enum PrimitiveType {

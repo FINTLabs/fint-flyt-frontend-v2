@@ -1,25 +1,50 @@
 import { Handle } from 'reactflow';
-import { CategoryType, DataType, ListType, StreamType } from '~/types/types';
+import { CategoryType, DataType, ListType, MapType, StreamType } from '~/types/types';
 
-// UI component for data type node
-export default function DataTypeNode({ data, isChild }: { data: DataType; isChild?: boolean }) {
-    const ChildElements = () => {
+interface DataTypeNodeProps {
+    data: DataType;
+    isChild?: boolean;
+    isMap?: boolean;
+}
+
+const getMapLabel = (data: MapType): string => {
+    return `${data.keyType.category} -> ${data.valueType.category}`;
+};
+
+const DataTypeNode: React.FC<DataTypeNodeProps> = ({ data, isChild = false, isMap = false }) => {
+    const renderChildElement = () => {
+        if (isMap) return null;
+
         switch (data.category) {
             case CategoryType.STREAM:
                 return <DataTypeNode isChild data={(data as StreamType).elementType} />;
             case CategoryType.LIST:
                 return <DataTypeNode isChild data={(data as ListType).elementType} />;
+            case CategoryType.MAP:
+                return <DataTypeNode isChild isMap data={data as MapType} />;
+            default:
+                return null;
         }
     };
+
+    const label = isMap ? getMapLabel(data as MapType) : data.category;
+
     return (
         <div className="flex inline">
             <div
-                className={`flex p-3 border ${!isChild ? '' : 'border-l-0 relative -left-1'} border-gray-400 rounded-tr-md rounded-br-md last:-left-2 relative`}>
-                <label>{data.category}</label>
-
+                className={`
+                    flex p-3 border border-gray-400 
+                    rounded-tr-md rounded-br-md 
+                    relative last:-left-2
+                    ${isChild ? 'border-l-0 -left-1' : ''}
+                `}
+            >
+                <label>{label}</label>
                 {/* <Handle type="source" /> */}
             </div>
-            <ChildElements />
+            {renderChildElement()}
         </div>
     );
-}
+};
+
+export default DataTypeNode;

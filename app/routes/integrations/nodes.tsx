@@ -19,4 +19,15 @@ export default [
             elementType: { category: 'STRING' },
         },
     },
+
+    {
+        id: '3',
+        type: 'dataTypeNode',
+        position: { x: 120, y: 320 },
+        data: {
+            category: 'MAP',
+            keyType: { category: 'STRING' },
+            valueType: { category: 'INTEGER' },
+        },
+    },
 ] as Node[];
