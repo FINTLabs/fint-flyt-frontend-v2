@@ -31,7 +31,7 @@ const DataTypeNode: React.FC<DataTypeNodeProps> = ({ data, isChild = false, isMa
 
     return (
         <div>
-            {!isChild && <p className="text-sm">DataTypeNode</p>}
+            {!isChild && <p className="text-sm">DataType Node</p>}
             <div className="flex inline">
                 <div
                     className={`

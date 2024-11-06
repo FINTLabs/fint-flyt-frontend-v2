@@ -29,5 +29,13 @@ export default [
             valueType: { category: 'INTEGER' },
         },
     },
-    
+    {
+        id: '4',
+        type: 'variableNode',
+        position: { x: 120, y: 420 },
+        data: {
+            data: { category: 'STRING' },
+            displayName: 'Display name',
+        },
+    },
 ] as Node[];

@@ -27,6 +27,7 @@ import SelectValueNode from '~/routes/integrations/nodes/SelectValueNode';
 import TopMenu from './menu/TopMenu';
 import { DataType } from '~/types/types';
 import DataTypeNode from '~/routes/integrations/nodes/DataTypeNode';
+import VariableNode from './nodes/VariableNode';
 
 const nodeTypes = {
     subflow: CustomParentNode,
@@ -36,6 +37,7 @@ const nodeTypes = {
     static: StaticValueNode,
     select: SelectValueNode,
     dataTypeNode: DataTypeNode,
+    variableNode: VariableNode,
 };
 
 type StoreState = {
