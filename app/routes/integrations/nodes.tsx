@@ -19,7 +19,6 @@ export default [
             elementType: { category: 'STRING' },
         },
     },
-
     {
         id: '3',
         type: 'dataTypeNode',
@@ -30,4 +29,5 @@ export default [
             valueType: { category: 'INTEGER' },
         },
     },
+    
 ] as Node[];

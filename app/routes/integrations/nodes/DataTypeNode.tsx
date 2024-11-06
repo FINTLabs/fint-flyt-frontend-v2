@@ -30,19 +30,21 @@ const DataTypeNode: React.FC<DataTypeNodeProps> = ({ data, isChild = false, isMa
     const label = isMap ? getMapLabel(data as MapType) : data.category;
 
     return (
-        <div className="flex inline">
-            <div
-                className={`
+        <div>
+            {!isChild && <p className="text-sm">DataTypeNode</p>}
+            <div className="flex inline">
+                <div
+                    className={`
                     flex p-3 border border-gray-400 
                     rounded-tr-md rounded-br-md 
                     relative last:-left-2
                     ${isChild ? 'border-l-0 -left-1' : ''}
-                `}
-            >
-                <label>{label}</label>
-                {/* <Handle type="source" /> */}
+                `}>
+                    <label>{label}</label>
+                    {/* <Handle type="source" /> */}
+                </div>
+                {renderChildElement()}
             </div>
-            {renderChildElement()}
         </div>
     );
 };
