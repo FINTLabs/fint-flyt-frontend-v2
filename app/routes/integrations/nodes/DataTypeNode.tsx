@@ -1,4 +1,4 @@
-import { Handle } from 'reactflow';
+import { Handle, Position } from 'reactflow';
 import { CategoryType, DataType, ListType, MapType, StreamType } from '~/types/types';
 
 interface DataTypeNodeProps {
@@ -30,9 +30,10 @@ const DataTypeNode: React.FC<DataTypeNodeProps> = ({ data, isChild = false, isMa
     const label = isMap ? getMapLabel(data as MapType) : data.category;
 
     return (
-        <div>
-            {!isChild && <p className="text-sm">DataType Node</p>}
-            <div className="flex inline">
+        <div className="">
+            <div className="flex">
+                {!isChild && <p className="absolute text-sm top-[-20px]">DataType Node</p>}
+
                 <div
                     className={`
                     flex p-3 border border-gray-400 
@@ -41,10 +42,18 @@ const DataTypeNode: React.FC<DataTypeNodeProps> = ({ data, isChild = false, isMa
                     ${isChild ? 'border-l-0 -left-1' : ''}
                 `}>
                     <label>{label}</label>
-                    {/* <Handle type="source" /> */}
                 </div>
+
                 {renderChildElement()}
             </div>
+            {!isChild && (
+                <Handle
+                    type={'source'}
+                    position={Position.Right}
+                    id={'123'}
+                    className="absolute !right-0.5 !z-10 !w-3 !h-3 !bg-teal-500"
+                />
+            )}
         </div>
     );
 };
