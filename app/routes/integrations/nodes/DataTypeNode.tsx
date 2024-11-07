@@ -4,16 +4,20 @@ import { CategoryType, DataType, ListType, MapType, StreamType } from '~/types/t
 interface DataTypeNodeProps {
     data: DataType;
     isChild?: boolean;
-    isMap?: boolean;
+    parentCategory?: string;
 }
 
 const getMapLabel = (data: MapType): string => {
     return `${data.keyType.category} -> ${data.valueType.category}`;
 };
 
-const DataTypeNode: React.FC<DataTypeNodeProps> = ({ data, isChild = false, isMap = false }) => {
+const DataTypeNode: React.FC<DataTypeNodeProps> = ({
+    data,
+    isChild = false,
+    parentCategory = '',
+}) => {
     const renderChildElement = () => {
-        if (isMap) return null;
+        if (parentCategory === CategoryType.MAP) return null; // otherwise we will get an inifite loop
 
         switch (data.category) {
             case CategoryType.STREAM:
@@ -21,13 +25,20 @@ const DataTypeNode: React.FC<DataTypeNodeProps> = ({ data, isChild = false, isMa
             case CategoryType.LIST:
                 return <DataTypeNode isChild data={(data as ListType).elementType} />;
             case CategoryType.MAP:
-                return <DataTypeNode isChild isMap data={data as MapType} />;
+                return (
+                    <DataTypeNode
+                        isChild
+                        parentCategory={CategoryType.MAP}
+                        data={data as MapType}
+                    />
+                );
             default:
                 return null;
         }
     };
 
-    const label = isMap ? getMapLabel(data as MapType) : data.category;
+    const label =
+        parentCategory === CategoryType.MAP ? getMapLabel(data as MapType) : data.category;
 
     return (
         <div className="">
