@@ -41,7 +41,7 @@ const DataTypeNode: React.FC<DataTypeNodeProps> = ({
         parentCategory === CategoryType.MAP ? getMapLabel(data as MapType) : data.category;
 
     return (
-        <div className="">
+        <div className="flex">
             <div className="flex">
                 {!isChild && <p className="absolute text-sm top-[-20px]">DataType Node</p>}
 
@@ -54,17 +54,14 @@ const DataTypeNode: React.FC<DataTypeNodeProps> = ({
                 `}>
                     <label>{label}</label>
                 </div>
-
                 {renderChildElement()}
             </div>
-            {!isChild && (
-                <Handle
-                    type={'source'}
-                    position={Position.Right}
-                    id={'123'}
-                    className="absolute !right-0.5 !z-10 !w-3 !h-3 !bg-teal-500"
-                />
-            )}
+            <Handle
+                type={'source'}
+                position={Position.Right}
+                id={'123'}
+                className="absolute !right-0.5 !z-10 !w-3 !h-3 !bg-teal-500"
+            />
         </div>
     );
 };
