@@ -38,7 +38,31 @@ export default [
                 category: 'STREAM',
                 elementType: { category: 'LIST', elementType: { category: 'STRING' } },
             },
-            displayName: 'Saksnummer',
+            displayName: 'Arkivansvarlig',
+        },
+    },
+    {
+        id: '2',
+        type: 'variableNode',
+        position: { x: 120, y: 240 },
+        data: {
+            data: {
+                category: 'STREAM',
+                elementType: { category: 'LIST', elementType: { category: 'STRING' } },
+            },
+            displayName: 'saksnummer',
+        },
+    },
+    {
+        id: '3',
+        type: 'variableNode',
+        position: { x: 120, y: 350 },
+        data: {
+            data: {
+                category: 'STREAM',
+                elementType: { category: 'LIST', elementType: { category: 'INTEGER' } },
+            },
+            displayName: 'nummer',
         },
     },
 ] as Node[];
