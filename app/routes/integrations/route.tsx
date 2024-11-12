@@ -25,8 +25,6 @@ import OperationsNode from '~/routes/integrations/nodes/OperationsNode';
 import StaticValueNode from '~/routes/integrations/nodes/StaticValueNode';
 import SelectValueNode from '~/routes/integrations/nodes/SelectValueNode';
 import TopMenu from './menu/TopMenu';
-import { DataType } from '~/types/types';
-import DataTypeNode from '~/routes/integrations/nodes/DataTypeNode';
 import VariableNode from './nodes/VariableNode';
 import VariableInlineNode from './nodes/VariableInlineNode';
 
@@ -37,7 +35,6 @@ const nodeTypes = {
     customNode: OperationsNode,
     static: StaticValueNode,
     select: SelectValueNode,
-    dataTypeNode: DataTypeNode,
     variableNode: VariableNode,
     variableInlineNode: VariableInlineNode,
 };

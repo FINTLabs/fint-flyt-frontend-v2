@@ -11,7 +11,8 @@ const getMapLabel = (data: MapType): string => {
     return `${data.keyType.category} -> ${data.valueType.category}`;
 };
 
-const DataTypeNode: React.FC<DataTypeNodeProps> = ({
+// SKal ligge inn i en handle (er ikke node alene)
+const DataTypeComponent: React.FC<DataTypeNodeProps> = ({
     data,
     isChild = false,
     parentCategory = '',
@@ -21,12 +22,12 @@ const DataTypeNode: React.FC<DataTypeNodeProps> = ({
 
         switch (data.category) {
             case CategoryType.STREAM:
-                return <DataTypeNode isChild data={(data as StreamType).elementType} />;
+                return <DataTypeComponent isChild data={(data as StreamType).elementType} />;
             case CategoryType.LIST:
-                return <DataTypeNode isChild data={(data as ListType).elementType} />;
+                return <DataTypeComponent isChild data={(data as ListType).elementType} />;
             case CategoryType.MAP:
                 return (
-                    <DataTypeNode
+                    <DataTypeComponent
                         isChild
                         parentCategory={CategoryType.MAP}
                         data={data as MapType}
@@ -43,16 +44,14 @@ const DataTypeNode: React.FC<DataTypeNodeProps> = ({
     return (
         <div className="flex">
             <div className="flex">
-                {!isChild && <p className="absolute text-sm top-[-20px]">DataType Node</p>}
-
                 <div
                     className={`
-                    flex p-3 border border-gray-400 
+                    flex p-[4px] border border-gray-400 
                     rounded-tr-md rounded-br-md 
                     relative last:-left-2
                     ${isChild ? 'border-l-0 -left-1' : ''}
                 `}>
-                    <label>{label}</label>
+                    <label className="bg-purple-200 p-3">{label}</label>
                 </div>
                 {renderChildElement()}
             </div>
@@ -66,4 +65,4 @@ const DataTypeNode: React.FC<DataTypeNodeProps> = ({
     );
 };
 
-export default DataTypeNode;
+export default DataTypeComponent;
