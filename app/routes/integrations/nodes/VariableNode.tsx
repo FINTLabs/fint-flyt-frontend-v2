@@ -29,7 +29,7 @@ function Saksnumre({ data }: { data: NodeData }) {
                 `}>
                                 <label className="bg-purple-200 p-3">
                                     {'➡ Mottar en strøm av '}
-                                    <span className="bg-blue-100">saksnumre (tekst)</span>{' '}
+                                    <span className="bg-blue-200">saksnumre (tekst)</span>{' '}
                                 </label>
                             </div>
                         </div>
@@ -45,7 +45,7 @@ function Saksnumre({ data }: { data: NodeData }) {
                 `}>
                                 <label className="bg-purple-200 p-3">
                                     {' 🔄 For hvert '}
-                                    <span className="bg-blue-100">saksnummer (tekst)</span>
+                                    <span className="bg-blue-200">saksnummer (tekst)</span>
                                     {' gjør følgende '}
                                 </label>
                             </div>
@@ -81,7 +81,7 @@ function Nummre({ data }: { data: NodeData }) {
                 `}>
                                 <label className="bg-purple-200 p-3">
                                     {'➡ Mottar en strøm av '}
-                                    <span className="bg-green-200">numre (tall)</span>{' '}
+                                    <span className="bg-yellow-100">numre (tall)</span>{' '}
                                 </label>
                             </div>
                         </div>
@@ -97,7 +97,7 @@ function Nummre({ data }: { data: NodeData }) {
                 `}>
                                 <label className="bg-purple-200 p-3">
                                     {' 🔄 For hvert '}
-                                    <span className="bg-green-200">nummer (tall)</span>
+                                    <span className="bg-yellow-100">nummer (tall)</span>
                                     {' gjør følgende '}
                                 </label>
                             </div>
@@ -117,8 +117,8 @@ function Nummre({ data }: { data: NodeData }) {
 }
 
 const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
-    // if (data.displayName === 'saksnummer') return <Saksnumre data={data}></Saksnumre>;
-    // if (data.displayName === 'nummer') return <Nummre data={data}></Nummre>;
+    if (data.displayName === 'saksnummer') return <Saksnumre data={data}></Saksnumre>;
+    if (data.displayName === 'nummer') return <Nummre data={data}></Nummre>;
     return (
         <>
             <p className="text-sm absolute top-[-16px]">Variable Node</p>
