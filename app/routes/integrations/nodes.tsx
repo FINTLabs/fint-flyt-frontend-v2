@@ -2,24 +2,6 @@ import { Node } from 'reactflow';
 
 export default [
     // {
-    //     id: '1',
-    //     type: 'dataTypeNode',
-    //     position: { x: 120, y: 120 },
-    //     data: {
-    //         category: 'STREAM',
-    //         elementType: { category: 'LIST', elementType: { category: 'STRING' } },
-    //     },
-    // },
-    // {
-    //     id: '2',
-    //     type: 'dataTypeNode',
-    //     position: { x: 120, y: 220 },
-    //     data: {
-    //         category: 'LIST',
-    //         elementType: { category: 'STRING' },
-    //     },
-    // },
-    // {
     //     id: '3',
     //     type: 'dataTypeNode',
     //     position: { x: 120, y: 320 },
@@ -63,6 +45,31 @@ export default [
                 elementType: { category: 'LIST', elementType: { category: 'INTEGER' } },
             },
             displayName: 'nummer',
+        },
+    },
+    {
+        id: '4',
+        type: 'variableNode',
+        position: { x: 120, y: 460 },
+        data: {
+            data: {
+                category: 'LIST',
+                elementType: { category: 'STRING' },
+            },
+            displayName: 'Person X',
+        },
+    },
+    {
+        id: '5',
+        type: 'variableNode',
+        position: { x: 120, y: 570 },
+        data: {
+            data: {
+                category: 'MAP',
+                keyType: { category: 'STRING' },
+                valueType: { category: 'INTEGER (Y)' },
+            },
+            displayName: 'Case Y',
         },
     },
 ] as Node[];
