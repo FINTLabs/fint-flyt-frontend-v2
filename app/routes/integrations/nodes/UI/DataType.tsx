@@ -1,4 +1,3 @@
-import { Handle, Position } from 'reactflow';
 import { CategoryType, DataType, ListType, MapType, StreamType } from '~/types/types';
 
 interface DataTypeNodeProps {
@@ -49,18 +48,12 @@ const DataTypeComponent: React.FC<DataTypeNodeProps> = ({
                     flex p-[5px] border border-gray-400 
                     rounded-tr-md rounded-br-md 
                     bg-white
-                    ${isChild ? 'border-l-0 -left-1' : ''}
+                    ${isChild ? 'border-l-0 -left-1 last:bg-purple-200 last:font-bold' : ''}
                 `}>
                     <label className="bg-purple-200 p-3">{label}</label>
                 </div>
                 {renderChildElement()}
             </div>
-            <Handle
-                type={'source'}
-                position={Position.Right}
-                id={'123'}
-                className="absolute !right-0.5 !z-10 !w-3 !h-3 !bg-teal-500"
-            />
         </div>
     );
 };

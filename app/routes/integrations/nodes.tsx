@@ -38,7 +38,7 @@ export default [
                 category: 'STREAM',
                 elementType: { category: 'LIST', elementType: { category: 'STRING' } },
             },
-            displayName: 'DN: XA302',
+            displayName: 'Saksnummer',
         },
     },
 ] as Node[];
