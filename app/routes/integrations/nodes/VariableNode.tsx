@@ -14,9 +14,11 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
     return (
         <>
             <p className="text-sm">Variable Node</p>
-            <div className="p-4 border rounded border-gray-400 flex flex-row gap-2">
-                <DataTypeComponent data={data.data} />
-                <DisplayNameComponent displayName={data.displayName}></DisplayNameComponent>
+            <div className="bg-blue-200 p-4 rounded border border-gray-400">
+                <div className=" flex flex-row gap-2">
+                    <DataTypeComponent data={data.data} />
+                    <DisplayNameComponent displayName={data.displayName}></DisplayNameComponent>
+                </div>
             </div>
         </>
     );

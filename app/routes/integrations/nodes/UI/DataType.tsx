@@ -46,9 +46,9 @@ const DataTypeComponent: React.FC<DataTypeNodeProps> = ({
             <div className="flex">
                 <div
                     className={`
-                    flex p-[4px] border border-gray-400 
+                    flex p-[5px] border border-gray-400 
                     rounded-tr-md rounded-br-md 
-                    relative last:-left-2
+                    bg-white
                     ${isChild ? 'border-l-0 -left-1' : ''}
                 `}>
                     <label className="bg-purple-200 p-3">{label}</label>
