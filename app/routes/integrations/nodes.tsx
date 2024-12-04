@@ -44,7 +44,7 @@ export default [
                 category: 'STREAM',
                 elementType: { category: 'LIST', elementType: { category: 'INTEGER' } },
             },
-            displayName: 'Nummer',
+            displayName: 'SaksId',
         },
     },
     {

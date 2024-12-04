@@ -81,7 +81,7 @@ function Nummre({ data }: { data: NodeData }) {
                 `}>
                                 <label className="bg-purple-200 p-3">
                                     {'➡ Mottar en strøm av '}
-                                    <span className="bg-yellow-100">numre (tall)</span>{' '}
+                                    <span className="bg-yellow-100">SaksId (tall)</span>{' '}
                                 </label>
                             </div>
                         </div>
@@ -96,8 +96,8 @@ function Nummre({ data }: { data: NodeData }) {
                     border-l-0 -left-1  
                 `}>
                                 <label className="bg-purple-200 p-3">
-                                    {' 🔄 For hvert '}
-                                    <span className="bg-yellow-100">nummer (tall)</span>
+                                    {' 🔄 For hver '}
+                                    <span className="bg-yellow-100">SaksId (tall)</span>
                                     {' gjør følgende '}
                                 </label>
                             </div>
@@ -118,7 +118,7 @@ function Nummre({ data }: { data: NodeData }) {
 
 const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
     // if (data.displayName === 'Saksnummer') return <Saksnumre data={data}></Saksnumre>;
-    // if (data.displayName === 'Nummer') return <Nummre data={data}></Nummre>;
+    // if (data.displayName === 'SaksId') return <Nummre data={data}></Nummre>;
     return (
         <>
             <p className="text-sm absolute top-[-16px]">Variable Node</p>
