@@ -117,8 +117,8 @@ function Nummre({ data }: { data: NodeData }) {
 }
 
 const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
-    if (data.displayName === 'saksnummer') return <Saksnumre data={data}></Saksnumre>;
-    if (data.displayName === 'nummer') return <Nummre data={data}></Nummre>;
+    // if (data.displayName === 'Saksnummer') return <Saksnumre data={data}></Saksnumre>;
+    // if (data.displayName === 'Nummer') return <Nummre data={data}></Nummre>;
     return (
         <>
             <p className="text-sm absolute top-[-16px]">Variable Node</p>

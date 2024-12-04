@@ -32,7 +32,7 @@ export default [
                 category: 'STREAM',
                 elementType: { category: 'LIST', elementType: { category: 'STRING' } },
             },
-            displayName: 'saksnummer',
+            displayName: 'Saksnummer',
         },
     },
     {
@@ -44,7 +44,7 @@ export default [
                 category: 'STREAM',
                 elementType: { category: 'LIST', elementType: { category: 'INTEGER' } },
             },
-            displayName: 'nummer',
+            displayName: 'Nummer',
         },
     },
     {
