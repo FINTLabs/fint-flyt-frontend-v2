@@ -37,6 +37,21 @@ function getTextFieldType(category: string) {
             return 'text';
         case 'INTEGER':
             return 'number';
+        case 'DECIMAL':
+            return 'text';
+        default:
+            return 'text';
+    }
+}
+
+function getPlaceholder(category: string) {
+    switch (category) {
+        case 'STRING':
+            return 'abc...';
+        case 'INTEGER':
+            return '123...';
+        case 'DECIMAL':
+            return '3.14...';
         default:
             return 'text';
     }
@@ -74,6 +89,7 @@ const VariableInlineNode: React.FC<NodeData> = ({ data }) => {
                             className="mr-2"
                             label={''}
                             hideLabel
+                            placeholder={getPlaceholder(data.category)}
                             size="small"
                             title="Please enter a decimal number"
                             onChange={(e) => {}}
