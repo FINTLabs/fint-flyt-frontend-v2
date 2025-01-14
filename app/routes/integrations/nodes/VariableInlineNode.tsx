@@ -1,5 +1,5 @@
-import { TextField } from '@navikt/ds-react';
-import { DataType } from '~/types/types';
+import { Switch, TextField } from '@navikt/ds-react';
+import { CategoryType, DataType } from '~/types/types';
 
 interface NodeData {
     data: DataType;
@@ -24,7 +24,7 @@ function getIcon(inputType: string) {
             return 'calendar_today';
         case 'datetime':
             return 'calendar_clock';
-        case 'boolean':
+        case 'BOOLEAN':
             return 'toggle_on';
         default:
             return 'text_fields';
@@ -84,16 +84,27 @@ const VariableInlineNode: React.FC<NodeData> = ({ data }) => {
                                 </span>
                             </div>
                         </div>
-                        <TextField
-                            type={getTextFieldType(data.category)}
-                            className="mr-2"
-                            label={''}
-                            hideLabel
-                            placeholder={getPlaceholder(data.category)}
-                            size="small"
-                            title="Please enter a decimal number"
-                            onChange={(e) => {}}
-                        />
+
+                        {data.category === 'BOOLEAN' && (
+                            <Switch size="small" position={'right'}>
+                                {data.category}
+                            </Switch>
+                        )}
+
+                        {(data.category === 'STRING' ||
+                            data.category === 'INTEGER' ||
+                            data.category === 'DECIMAL') && (
+                            <TextField
+                                type={getTextFieldType(data.category)}
+                                className="mr-2"
+                                label={''}
+                                hideLabel
+                                placeholder={getPlaceholder(data.category)}
+                                size="small"
+                                title="Please enter a decimal number"
+                                onChange={(e) => {}}
+                            />
+                        )}
                     </div>
                     {/* Input field based on category type, primitive og klokkeslett */}
                 </div>

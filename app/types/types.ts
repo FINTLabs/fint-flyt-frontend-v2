@@ -23,7 +23,9 @@ type Category =
     | 'SYNCHRONOUS_REQUEST'
     | 'RECORD'
     | 'STRING'
-    | 'INTEGER';
+    | 'INTEGER'
+    | 'DECIMAL'
+    | 'BOOLEAN';
 
 export enum CategoryType {
     PARAMETERIZED = 'PARAMETERIZED',
