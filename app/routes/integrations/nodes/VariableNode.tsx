@@ -28,12 +28,12 @@ function Saksnumre({ data }: { data: NodeData }) {
                     bg-white
                 `}>
                                 <label className="bg-purple-200 p-3">
-                                    {'➡ Mottar en strøm av '}
+                                    {'➡ En strøm av '}
                                     <span className="bg-blue-200">saksnumre (tekst)</span>{' '}
                                 </label>
                             </div>
                         </div>
-                        <div className="flex">
+                        {/* <div className="flex">
                             <div className="absolute text-sm top-[0px]">Steg 2</div>
 
                             <div
@@ -49,7 +49,7 @@ function Saksnumre({ data }: { data: NodeData }) {
                                     {' gjør følgende '}
                                 </label>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     {/* <DisplayNameComponent displayName={data.displayName}></DisplayNameComponent> */}
                 </div>
@@ -117,8 +117,8 @@ function Nummre({ data }: { data: NodeData }) {
 }
 
 const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
-    // if (data.displayName === 'Saksnummer') return <Saksnumre data={data}></Saksnumre>;
-    // if (data.displayName === 'SaksId') return <Nummre data={data}></Nummre>;
+    if (data.displayName === 'Saksnummer') return <Saksnumre data={data}></Saksnumre>;
+    if (data.displayName === 'SaksId') return <Nummre data={data}></Nummre>;
     return (
         <>
             <p className="text-sm absolute top-[-16px]">Variable Node</p>
