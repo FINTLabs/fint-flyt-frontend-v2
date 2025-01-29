@@ -133,6 +133,26 @@ const VariableInlineNode: React.FC<NodeData> = ({ data }) => {
                                 </DatePicker>
                             )}
 
+                        {data.category === 'RECORD' &&
+                            (data as RecordType).recordTypeDeclarationId === 'DATETIME' && (
+                                <>
+                                    <DatePicker {...datepickerProps}>
+                                        <DatePicker.Input
+                                            {...inputProps}
+                                            label="Velg dato"
+                                            hideLabel={true}
+                                            size="small"
+                                        />
+                                    </DatePicker>
+                                    <TextField
+                                        type="time"
+                                        className="mr-2"
+                                        label={''}
+                                        hideLabel
+                                        size="small"
+                                    />
+                                </>
+                            )}
                         {(data.category === 'STRING' ||
                             data.category === 'INTEGER' ||
                             data.category === 'DECIMAL') && (
