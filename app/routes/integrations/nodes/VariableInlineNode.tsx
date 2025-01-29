@@ -153,6 +153,19 @@ const VariableInlineNode: React.FC<NodeData> = ({ data }) => {
                                     />
                                 </>
                             )}
+
+                        {data.category === 'RECORD' &&
+                            (data as RecordType).recordTypeDeclarationId === 'TIME' && (
+                                <>
+                                    <TextField
+                                        type="time"
+                                        className="mr-2"
+                                        label={''}
+                                        hideLabel
+                                        size="small"
+                                    />
+                                </>
+                            )}
                         {(data.category === 'STRING' ||
                             data.category === 'INTEGER' ||
                             data.category === 'DECIMAL') && (
