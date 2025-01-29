@@ -1,9 +1,8 @@
-import { Switch, TextField } from '@navikt/ds-react';
-import { CategoryType, DataType } from '~/types/types';
+import { DatePicker, Switch, TextField, useDatepicker } from '@navikt/ds-react';
+import { CategoryType, DataType, RecordType } from '~/types/types';
 
 interface NodeData {
     data: DataType;
-    displayName: string;
 }
 
 // interface VariableInlineNodeProps {
@@ -18,16 +17,29 @@ function getIcon(inputType: string) {
             return 'numbers';
         case 'DECIMAL':
             return 'decimal_increase';
-        case 'time':
+        case 'TIME':
             return 'schedule';
-        case 'date':
+        case 'DATE':
             return 'calendar_today';
-        case 'datetime':
+        case 'DATETIME':
             return 'calendar_clock';
         case 'BOOLEAN':
             return 'toggle_on';
         default:
             return 'text_fields';
+    }
+}
+
+function getTextFieldTypeRecord(recordType: string) {
+    switch (recordType) {
+        case 'TIME':
+            return 'text';
+        case 'INTEGER':
+            return 'number';
+        case 'DECIMAL':
+            return 'text';
+        default:
+            return 'text';
     }
 }
 
@@ -60,6 +72,16 @@ function getPlaceholder(category: string) {
 const VariableInlineNode: React.FC<NodeData> = ({ data }) => {
     console.log(data);
 
+    if (data.category == 'RECORD') {
+        console.log('cast to:');
+        const recordObj = data as RecordType;
+        console.log(recordObj);
+    }
+
+    const { datepickerProps, inputProps } = useDatepicker({
+        fromDate: new Date(),
+        onDateChange: console.log,
+    });
     return (
         <>
             <p className="text-sm">Variable Inline Node</p>
@@ -72,7 +94,11 @@ const VariableInlineNode: React.FC<NodeData> = ({ data }) => {
                     flex p-[5px] border border-gray-400 
                     rounded-tr-md rounded-br-md 
                     bg-white                `}>
-                                <label className="bg-purple-200 p-3">{data.category}</label>
+                                <label className="bg-purple-200 p-3">
+                                    {data.category === 'RECORD'
+                                        ? `${data.category}:${(data as RecordType).recordTypeDeclarationId.toUpperCase()}`
+                                        : data.category}
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -80,7 +106,11 @@ const VariableInlineNode: React.FC<NodeData> = ({ data }) => {
                         <div className="w-6 h-4 justify-center items-center gap-2.5 flex">
                             <div className="w-6 h-7 relative">
                                 <span className="material-symbols-outlined mr-1">
-                                    {getIcon(data.category)}
+                                    {getIcon(
+                                        data.category === 'RECORD'
+                                            ? (data as RecordType).recordTypeDeclarationId
+                                            : data.category
+                                    )}
                                 </span>
                             </div>
                         </div>
@@ -90,6 +120,18 @@ const VariableInlineNode: React.FC<NodeData> = ({ data }) => {
                                 {data.category}
                             </Switch>
                         )}
+
+                        {data.category === 'RECORD' &&
+                            (data as RecordType).recordTypeDeclarationId === 'DATE' && (
+                                <DatePicker {...datepickerProps}>
+                                    <DatePicker.Input
+                                        {...inputProps}
+                                        label="Velg dato"
+                                        hideLabel={true}
+                                        size="small"
+                                    />
+                                </DatePicker>
+                            )}
 
                         {(data.category === 'STRING' ||
                             data.category === 'INTEGER' ||

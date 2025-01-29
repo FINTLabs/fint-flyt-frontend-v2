@@ -94,4 +94,31 @@ export default [
             category: 'BOOLEAN',
         },
     },
+    {
+        id: '10',
+        type: 'variableInlineNode',
+        position: { x: 120, y: 600 },
+        data: {
+            category: 'RECORD',
+            recordTypeDeclarationId: 'TIME',
+        },
+    },
+    {
+        id: '11',
+        type: 'variableInlineNode',
+        position: { x: 120, y: 700 },
+        data: {
+            category: 'RECORD',
+            recordTypeDeclarationId: 'DATE',
+        },
+    },
+    {
+        id: '12',
+        type: 'variableInlineNode',
+        position: { x: 120, y: 800 },
+        data: {
+            category: 'RECORD',
+            recordTypeDeclarationId: 'DATETIME',
+        },
+    },
 ] as Node[];
