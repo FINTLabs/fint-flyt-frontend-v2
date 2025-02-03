@@ -84,7 +84,7 @@ const VariableInlineNode: React.FC<NodeData> = ({ data }) => {
     });
     return (
         <>
-            <p className="text-sm">Variable Inline Node</p>
+            <p className="text-sm">Handle Display</p>
             <div className="bg-blue-200 p-2 rounded border border-gray-400">
                 <div className=" flex flex-row gap-2">
                     <div className="flex">
