@@ -2,33 +2,25 @@ import { Node } from 'reactflow';
 
 export default [
     {
-        id: '1',
-        type: 'variableNode',
-        position: { x: 120, y: 120 },
+        id: '6',
+        type: 'variableInlineNode',
+        position: { x: 120, y: 30 },
         data: {
-            data: {
-                category: 'STREAM',
-                elementType: { category: 'LIST', elementType: { category: 'STRING' } },
-            },
-            displayName: 'Arkivansvarlig',
+            category: 'STRING',
         },
     },
     {
-        id: '2',
-        type: 'variableNode',
-        position: { x: 120, y: 240 },
+        id: '7',
+        type: 'variableInlineNode',
+        position: { x: 120, y: 140 },
         data: {
-            data: {
-                category: 'STREAM',
-                elementType: { category: 'LIST', elementType: { category: 'STRING' } },
-            },
-            displayName: 'Saksnummer',
+            category: 'INTEGER',
         },
     },
     {
         id: '8',
         type: 'variableInlineNode',
-        position: { x: 120, y: 400 },
+        position: { x: 120, y: 250 },
         data: {
             category: 'DECIMAL',
         },
@@ -36,7 +28,7 @@ export default [
     {
         id: '9',
         type: 'variableInlineNode',
-        position: { x: 120, y: 500 },
+        position: { x: 120, y: 360 },
         data: {
             category: 'BOOLEAN',
         },
@@ -44,7 +36,7 @@ export default [
     {
         id: '10',
         type: 'variableInlineNode',
-        position: { x: 120, y: 600 },
+        position: { x: 120, y: 470 },
         data: {
             category: 'RECORD',
             recordTypeDeclarationId: 'TIME',
@@ -53,7 +45,7 @@ export default [
     {
         id: '11',
         type: 'variableInlineNode',
-        position: { x: 120, y: 700 },
+        position: { x: 120, y: 580 },
         data: {
             category: 'RECORD',
             recordTypeDeclarationId: 'DATE',
@@ -62,7 +54,7 @@ export default [
     {
         id: '12',
         type: 'variableInlineNode',
-        position: { x: 120, y: 800 },
+        position: { x: 120, y: 690 },
         data: {
             category: 'RECORD',
             recordTypeDeclarationId: 'DATETIME',
