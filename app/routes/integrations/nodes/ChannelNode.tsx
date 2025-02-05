@@ -2,7 +2,7 @@ import { ChevronRightDoubleCircleFillIcon } from '@navikt/aksel-icons';
 import React from 'react';
 import { Position } from 'reactflow';
 import nodeConfig from '~/routes/integrations/nodes/config';
-import CustomHandle from './customHandle';
+import CustomHandle from './CustomHandle';
 
 interface CustomNodeProps {
     id: string;
@@ -31,10 +31,12 @@ const ChannelNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
         }
     };
 
-    const backgroundColor = data.inputType === 'blueprint' ? 'bg-sky-200' : 'bg-[#FFE6C1]';
+    const backgroundColor =
+        data.inputType === 'blueprint' ? 'bg-sky-200' : selected ? 'bg-[#ffb03b]' : 'bg-[#FFE6C1]';
 
     return (
-        <div className={`flex justify-center ${selected ? 'border-black border' : ''}`}>
+        <div className={`flex justify-center p-3 ${selected ? '' : ''}`}>
+            {/* Left handles */}
             {config.customHandles?.left.map((handle, index) => (
                 <CustomHandle
                     key={index}
@@ -55,6 +57,7 @@ const ChannelNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
                 {renderIcon()}
             </div>
 
+            {/* Right handles */}
             {config.customHandles?.right.map((handle, index) => (
                 <CustomHandle
                     key={index}

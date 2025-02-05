@@ -70,8 +70,6 @@ function getPlaceholder(category: string) {
 }
 
 const VariableInlineNode: React.FC<NodeData> = ({ data }) => {
-    console.log(data);
-
     if (data.category == 'RECORD') {
         console.log('cast to:');
         const recordObj = data as RecordType;
@@ -83,7 +81,7 @@ const VariableInlineNode: React.FC<NodeData> = ({ data }) => {
         onDateChange: console.log,
     });
     return (
-        <>
+        <div className='flex flex-col'>
             <p className="text-sm">Handle Display</p>
             <div className="bg-blue-200 p-2 rounded border border-gray-400">
                 <div className=" flex flex-row gap-2">
@@ -184,7 +182,7 @@ const VariableInlineNode: React.FC<NodeData> = ({ data }) => {
                     {/* Input field based on category type, primitive og klokkeslett */}
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

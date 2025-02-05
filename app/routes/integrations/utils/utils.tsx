@@ -1,4 +1,13 @@
-import { getNodePositionWithOrigin, rectToBox, type Node, type NodeOrigin, type Rect, boxToRect, Box, ReactFlowInstance } from 'reactflow';
+import {
+    getNodePositionWithOrigin,
+    rectToBox,
+    type Node,
+    type NodeOrigin,
+    type Rect,
+    boxToRect,
+    Box,
+    ReactFlowInstance,
+} from 'reactflow';
 
 export const getId = (prefix = 'node') => `${prefix}_${Math.random() * 10000}`;
 
@@ -100,6 +109,8 @@ export const handleDropLogic = (
         newNode.parentId = groupNode?.id;
         newNode.expandParent = true;
     }
+
+    console.log('newNode: ', newNode);
 
     addNewNodeDrop(newNode);
 };

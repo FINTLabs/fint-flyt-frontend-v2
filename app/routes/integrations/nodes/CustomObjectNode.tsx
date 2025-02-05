@@ -1,6 +1,6 @@
 import React from 'react';
 import nodeConfig from '~/routes/integrations/nodes/config';
-import CustomHandle from './customHandle';
+import CustomHandle from './CustomHandle';
 
 interface CustomNodeProps {
     id: string;

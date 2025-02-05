@@ -105,8 +105,9 @@ export default function Index() {
     );
 
     const onClickHandler = (type: string, data: any) => {
-        console.log(type);
-        console.log(data);
+        console.log('Element click handler');
+        console.log('type: ', type);
+        console.log('data', data);
         const position = { x: 0, y: 0 }; // Example position
         handleDropLogic(reactFlowInstance, type, data, position, addNewNodeDrop);
     };

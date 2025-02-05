@@ -32,12 +32,14 @@ const TopMenu: React.FunctionComponent<TopMenuProps> = ({ onClickHandler }) => {
                 </Button>
                 <Dropdown.Menu placement="bottom-start">
                     <Dropdown.Menu.List>
+                        {/* DataTypes list */}
                         {data && (
                             <MenuListDataTypes
                                 dataTypes={mockDataTypes as DataType[]}
                                 onClickHandler={onClickHandler}
                             />
                         )}
+                        {/* The rest of the menu items */}
                         {configKey && (
                             <TopMenuList configKey={configKey} onClickHandler={onClickHandler} />
                         )}
