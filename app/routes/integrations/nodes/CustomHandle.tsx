@@ -47,9 +47,8 @@ export default function CustomHandle({
                 key={id}
             />
 
-            <HandleOptions placement={position === Position.Right ? 'right' : 'left'} />
             {/* Placeholder next to the handle */}
-            {/* <div
+            <div
                 className={`bg-white text-nowrap z-20 justify-center flex flex-row text-xs mx-2 h-7 border rounded-2xl pl-2 px-2 mr-5 absolute ${
                     isOptional ? 'border-dashed border border-black' : null
                 }`}>
@@ -60,13 +59,7 @@ export default function CustomHandle({
                         <p className="text-sm">{labelText}</p>
                     </div>
                 )}
-            </div> */}
-
-            {/* <VariableInlineNode
-                data={{
-                    category: 'STRING',
-                }}
-            /> */}
+            </div>
         </div>
     );
 }
