@@ -1,5 +1,6 @@
 import { DatePicker, Switch, TextField, useDatepicker } from '@navikt/ds-react';
 import { CategoryType, DataType, RecordType } from '~/types/types';
+import { getIcon } from './utils';
 
 interface NodeData {
     data: DataType;
@@ -8,27 +9,6 @@ interface NodeData {
 // interface VariableInlineNodeProps {
 //     data: DataType;
 // }
-
-function getIcon(inputType: string) {
-    switch (inputType) {
-        case 'STRING':
-            return 'text_fields';
-        case 'INTEGER':
-            return 'numbers';
-        case 'DECIMAL':
-            return 'decimal_increase';
-        case 'TIME':
-            return 'schedule';
-        case 'DATE':
-            return 'calendar_today';
-        case 'DATETIME':
-            return 'calendar_clock';
-        case 'BOOLEAN':
-            return 'toggle_on';
-        default:
-            return 'text_fields';
-    }
-}
 
 function getTextFieldTypeRecord(recordType: string) {
     switch (recordType) {
@@ -81,7 +61,7 @@ const VariableInlineNode: React.FC<NodeData> = ({ data }) => {
         onDateChange: console.log,
     });
     return (
-        <div className='flex flex-col'>
+        <div className="flex flex-col">
             <p className="text-sm">Handle Display</p>
             <div className="bg-blue-200 p-2 rounded border border-gray-400">
                 <div className=" flex flex-row gap-2">

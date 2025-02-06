@@ -1,6 +1,6 @@
 import { DataType } from '~/types/types';
 import DataTypeComponent from './UI/DataType';
-import { DisplayNameComponent } from './UI/DisplayName';
+import { DisplayName } from './UI/DisplayName';
 import { Handle, Position } from 'reactflow';
 
 interface NodeData {
@@ -125,7 +125,7 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
             <div className="bg-blue-200 p-2 rounded border border-gray-400">
                 <div className=" flex flex-row gap-2">
                     <DataTypeComponent data={data.data} />
-                    <DisplayNameComponent displayName={data.displayName}></DisplayNameComponent>
+                    <DisplayName displayName={data.displayName}></DisplayName>
                 </div>
             </div>
             <Handle

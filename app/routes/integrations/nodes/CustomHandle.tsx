@@ -1,6 +1,7 @@
 import { Handle, Position } from 'reactflow';
 import VariableInlineNode from './VariableInlineNode';
 import HandleOptions from './HandleOptions';
+import HandleDisplay from './HandleDisplay';
 
 interface HandleProps {
     position: Position;
@@ -31,24 +32,25 @@ export default function CustomHandle({
     }
 
     return (
-        <div className={`flex items-center relative ${labelPlacement()} ${className}`}>
-            <Handle
-                type={position == Position.Right ? 'source' : 'target'}
-                position={position}
-                className={
-                    position == Position.Left
-                        ? // ? 'absolute z-10 w-16 !bg-teal-500'
-                          // : 'absolute z-10 w-16 '
-                          'absolute z-10 !w-4 !h-4 !left-[-8px] !bg-teal-500'
-                        : 'absolute z-10 !w-4 !h-4 !left-[-8px] '
-                    // : 'absolute z-10 !w-4 !h-4'
-                }
-                id={id}
-                key={id}
-            />
-
+        <div className={`flex gap-2 items-center relative ${labelPlacement()} ${className}`}>
+            <div className="relative">
+                <Handle
+                    type={position == Position.Right ? 'source' : 'target'}
+                    position={position}
+                    className={
+                        position == Position.Left
+                            ? // ? 'absolute z-10 w-16 !bg-teal-500'
+                              // : 'absolute z-10 w-16 '
+                              'absolute z-10 !w-4 !h-4 !left-[-8px] !bg-teal-500'
+                            : 'absolute z-10 !w-4 !h-4 !left-[-8px] '
+                        // : 'absolute z-10 !w-4 !h-4'
+                    }
+                    id={id}
+                    key={id}
+                />
+            </div>
             {/* Placeholder next to the handle */}
-            <div
+            {/* <div
                 className={`bg-white text-nowrap z-20 justify-center flex flex-row text-xs mx-2 h-7 border rounded-2xl pl-2 px-2 mr-5 absolute ${
                     isOptional ? 'border-dashed border border-black' : null
                 }`}>
@@ -59,7 +61,8 @@ export default function CustomHandle({
                         <p className="text-sm">{labelText}</p>
                     </div>
                 )}
-            </div>
+            </div> */}
+            <HandleDisplay data={{ category: 'STRING' }} displayName={'Saksnummer'} />
         </div>
     );
 }
