@@ -4,6 +4,7 @@ interface DataTypeNodeProps {
     data: DataType;
     isChild?: boolean;
     parentCategory?: string;
+    zIndex?: number;
 }
 
 const getMapLabel = (data: MapType): string => {
@@ -15,19 +16,39 @@ const DataTypeComponent: React.FC<DataTypeNodeProps> = ({
     data,
     isChild = false,
     parentCategory = '',
+    zIndex = 40,
 }) => {
     const renderChildElement = () => {
         if (parentCategory === CategoryType.MAP) return null; // otherwise we will get an inifite loop
+        zIndex = zIndex - 10;
 
         switch (data.category) {
             case CategoryType.STREAM:
-                return <DataTypeComponent isChild data={(data as StreamType).elementType} />;
-            case CategoryType.LIST:
-                return <DataTypeComponent isChild data={(data as ListType).elementType} />;
-            case CategoryType.MAP:
+                zIndex = zIndex - 10;
+
                 return (
                     <DataTypeComponent
                         isChild
+                        zIndex={zIndex}
+                        data={(data as StreamType).elementType}
+                    />
+                );
+            case CategoryType.LIST:
+                zIndex = zIndex - 10;
+
+                return (
+                    <DataTypeComponent
+                        isChild
+                        zIndex={zIndex}
+                        data={(data as ListType).elementType}
+                    />
+                );
+            case CategoryType.MAP:
+                zIndex = zIndex - 10;
+                return (
+                    <DataTypeComponent
+                        isChild
+                        zIndex={zIndex}
                         parentCategory={CategoryType.MAP}
                         data={data as MapType}
                     />
@@ -41,20 +62,22 @@ const DataTypeComponent: React.FC<DataTypeNodeProps> = ({
         parentCategory === CategoryType.MAP ? getMapLabel(data as MapType) : data.category;
 
     return (
-        <div className="flex">
-            <div className="flex">
-                <div
-                    className={`
-                    flex p-[5px] border border-gray-400 
-                    rounded-tr-md rounded-br-md 
-                    bg-white
-                    ${isChild ? 'border-l-0 -left-1 last:bg-purple-200 last:font-bold' : ''}
+        <>
+            <div
+                className={`
+                    p-[5px] border border-gray-400/50 bg-[#FFE6C1]
+                    rounded-tr-3xl rounded-br-3xl 
+                    first:rounded-tl-3xl first:rounded-bl-3xl 
+                    first:ml-0
+                    relative ml-[-15px]
+                    first:pr-2 first:pl-2 
+                    pl-5 pr-3
+                    ${isChild ? `z-${zIndex} relative pl-4 last:bg-red-500 last:font-bold` : `z-${zIndex}`}
                 `}>
-                    <label className="bg-purple-200 p-3">{label}</label>
-                </div>
-                {renderChildElement()}
+                <label className="">{label}</label>
             </div>
-        </div>
+            {renderChildElement()}
+        </>
     );
 };
 

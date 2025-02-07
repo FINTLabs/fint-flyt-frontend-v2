@@ -32,7 +32,11 @@ const ChannelNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
     };
 
     const backgroundColor =
-        data.inputType === 'blueprint' ? 'bg-sky-200' : selected ? 'bg-[#ffb03b]' : 'bg-[#FFE6C1]';
+        data.inputType === 'blueprint'
+            ? 'bg-sky-200'
+            : selected
+              ? 'bg-orange-300 ring-4 ring-blue-700/40 shadow-md shadow-gray-500'
+              : 'bg-[#FFE6C1]';
 
     return (
         <div className={`flex justify-center p-3 ${selected ? '' : ''}`}>

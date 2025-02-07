@@ -41,14 +41,15 @@ export default function CustomHandle({
                         position == Position.Left
                             ? // ? 'absolute z-10 w-16 !bg-teal-500'
                               // : 'absolute z-10 w-16 '
-                              'absolute z-10 !w-4 !h-4 !left-[-8px] !bg-teal-500'
-                            : 'absolute z-10 !w-4 !h-4 !left-[-8px] '
+                              'absolute z-10 !w-4 !h-4 !left-[-8px] !bg-orange-300 !border !border-black'
+                            : 'absolute z-10 !w-4 !h-4 !left-[-8px] !bg-amber-700 !border !border-black'
                         // : 'absolute z-10 !w-4 !h-4'
                     }
                     id={id}
                     key={id}
                 />
             </div>
+
             {/* Placeholder next to the handle */}
             {/* <div
                 className={`bg-white text-nowrap z-20 justify-center flex flex-row text-xs mx-2 h-7 border rounded-2xl pl-2 px-2 mr-5 absolute ${
