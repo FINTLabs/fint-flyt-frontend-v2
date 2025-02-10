@@ -11,13 +11,17 @@ interface NodeData {
 interface HandleDisplayProps {
     data: DataType;
     displayName: string;
+    position: Position;
 }
 
-const HandleDisplay: React.FC<HandleDisplayProps> = ({ data, displayName }) => {
+const HandleDisplay: React.FC<HandleDisplayProps> = ({ position, data, displayName }) => {
     const icon = getIcon(data.category);
+
+    // ${position === Position.Left ? 'bg-black' : ''}
     return (
         <>
-            <div className="flex bg-[#FFE6C1] items-center text-nowrap z-20 justify-center flex-row text-xs mx-2 h-7 border rounded-2xl pl-2 px-2 mr-2">
+            <div
+                className={`flex bg-[#FFE6C1] items-center text-nowrap z-20 justify-center flex-row text-xs mx-2 h-7 border rounded-2xl pl-2 px-2 mr-2  ${position === Position.Left ? 'mr-4' : ''}`}>
                 {/* {isArray && <span className="material-symbols-outlined">data_array</span>} */}
 
                 <div className="flex items-center justify-center bg-white w-6 h-[calc(1.75rem-2px)] relative rounded-full shrink-0">

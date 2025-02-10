@@ -33,7 +33,7 @@ export default function CustomHandle({
 
     return (
         <div className={`flex gap-2 items-center relative ${labelPlacement()} ${className}`}>
-            <div className="relative">
+            <div className={`relative`}>
                 <Handle
                     type={position == Position.Right ? 'source' : 'target'}
                     position={position}
@@ -63,7 +63,11 @@ export default function CustomHandle({
                     </div>
                 )}
             </div> */}
-            <HandleDisplay data={{ category: 'STRING' }} displayName={'Saksnummer'} />
+            <HandleDisplay
+                position={position}
+                data={{ category: 'STRING' }}
+                displayName={'Saksnummer'}
+            />
         </div>
     );
 }
