@@ -1,0 +1,94 @@
+[
+    {
+        "operationIdUniqueForCategory": "transform_text_001",
+        "displayText": "Transform Text",
+        "iconId": "text_transform_icon",
+        "typeParameters": [
+            {
+                "typeParameterId": "T1",
+                "displayText": "Input Type",
+                "constraints": {}
+            }
+        ],
+        "operationVariables": {
+            "inputVariables": [
+                {
+                    "order": 1,
+                    "key": "input_text",
+                    "displayText": "Input Text",
+                    "dataType": {
+                        "category": "STRING"
+                    }
+                },
+                {
+                    "order": 2,
+                    "key": "transformation_type",
+                    "displayText": "Transformation Type",
+                    "dataType": {
+                        "category": "STREAM",
+                        "elementType": {
+                            "category": "LIST",
+                            "elementType": { "category": "INTEGER" }
+                        }
+                    }
+                }
+            ],
+            "outputVariables": [
+                {
+                    "order": 1,
+                    "key": "transformed_text",
+                    "displayText": "Transformed Text",
+                    "dataType": {
+                        "category": "STRING"
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "operationIdUniqueForCategory": "concat_strings_001",
+        "displayText": "Concatenate Strings",
+        "iconId": "concat_icon",
+        "typeParameters": [
+            {
+                "typeParameterId": "T1",
+                "displayText": "First Type"
+            },
+            {
+                "typeParameterId": "T2",
+                "displayText": "Second Type",
+                "constraints": {}
+            }
+        ],
+        "operationVariables": {
+            "inputVariables": [
+                {
+                    "order": 1,
+                    "key": "first_string",
+                    "displayText": "First String",
+                    "dataType": {
+                        "category": "STRING"
+                    }
+                },
+                {
+                    "order": 2,
+                    "key": "second_string",
+                    "displayText": "Second String",
+                    "dataType": {
+                        "category": "STRING"
+                    }
+                }
+            ],
+            "outputVariables": [
+                {
+                    "order": 1,
+                    "key": "result",
+                    "displayText": "Result",
+                    "dataType": {
+                        "category": "STRING"
+                    }
+                }
+            ]
+        }
+    }
+]

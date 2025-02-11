@@ -4,7 +4,10 @@ import TopMenuList from './TopMenuList';
 import { ChevronDownIcon } from '@navikt/aksel-icons';
 import { DataType } from '~/types/types';
 import mockDataTypes from '../../../api/mock-flyt2-datatypes.json';
+import mockOperationDeclarations from '../../../api/mock-operation-declarations.json';
 import MenuListDataTypes from './MenuListDataTypes';
+import { OperationDeclaration } from '../types/Operation';
+import OperationsList from './OperationsList';
 interface TopMenuProps {
     onClickHandler: (type: string, data: any) => void;
 }
@@ -15,12 +18,16 @@ const TopMenu: React.FunctionComponent<TopMenuProps> = ({ onClickHandler }) => {
     const CustomDropDown = ({
         title,
         configKey,
-        data,
+        dataTypes,
+        operationDeclarations,
     }: {
         title: string;
         configKey?: string;
-        data?: DataType[];
+        dataTypes?: DataType[];
+        operationDeclarations?: OperationDeclaration[];
     }) => {
+        console.log(dataTypes);
+
         return (
             <Dropdown>
                 <Button
@@ -33,9 +40,19 @@ const TopMenu: React.FunctionComponent<TopMenuProps> = ({ onClickHandler }) => {
                 <Dropdown.Menu placement="bottom-start">
                     <Dropdown.Menu.List>
                         {/* DataTypes list */}
-                        {data && (
+                        {dataTypes && (
                             <MenuListDataTypes
                                 dataTypes={mockDataTypes as DataType[]}
+                                onClickHandler={onClickHandler}
+                            />
+                        )}
+
+                        {/* Operations List */}
+                        {operationDeclarations && (
+                            <OperationsList
+                                operationDeclarations={
+                                    mockOperationDeclarations as OperationDeclaration[]
+                                }
                                 onClickHandler={onClickHandler}
                             />
                         )}
@@ -64,7 +81,11 @@ const TopMenu: React.FunctionComponent<TopMenuProps> = ({ onClickHandler }) => {
                     <CustomDropDown title="Collections" configKey="subFlowNodes" />
                     <CustomDropDown title="Conversions" configKey="mathNodes" />
                     <CustomDropDown title="Text Converstions" configKey="textConversionNodes" />
-                    <CustomDropDown title="DataTypes" data={mockDataTypes as DataType[]} />
+                    <CustomDropDown title="DataTypes" dataTypes={mockDataTypes as DataType[]} />
+                    <CustomDropDown
+                        title="Operations"
+                        operationDeclarations={mockOperationDeclarations as OperationDeclaration[]}
+                    />
                     {/* <Dropdown>
                         <Button icon={ChevronDown} iconPosition="right" variant="tertiary" as={Dropdown.Toggle}>Example</Button>
                         <Dropdown.Menu placement="bottom-start">
