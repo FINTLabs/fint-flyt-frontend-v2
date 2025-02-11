@@ -27,11 +27,12 @@ import SelectValueNode from '~/routes/integrations/nodes/SelectValueNode';
 import TopMenu from './menu/TopMenu';
 import VariableNode from './nodes/VariableNode';
 import VariableInlineNode from './nodes/VariableInlineNode';
+import OperationNode from './nodes/OperationNode';
 
 const nodeTypes = {
     subflow: CustomParentNode,
     openObject: CustomObjectNode,
-    // operation: OperationsNode,
+    operation: OperationNode,
     channel: ChannelNode,
     customNode: CustomNode,
     static: StaticValueNode,
@@ -110,12 +111,12 @@ export default function Index() {
     // Position is the position where the Node should be dropped
     // addNewNodeDrop is a function that adds a new Node to the ReactFlow graph
     // addSubNodes is a function that adds a new set of Nodes to the ReactFlow graph
-    const onClickHandler = (type: string, data: any) => {
+    const onClickHandler = (nodeType: string, data: any) => {
         console.log('Element click handler');
-        console.log('type: ', type);
+        console.log('type: ', nodeType);
         console.log('data', data);
         const position = { x: 0, y: 0 }; // Example position
-        handleDropLogic(reactFlowInstance, type, data, position, addNewNodeDrop);
+        handleDropLogic(reactFlowInstance, nodeType, data, position, addNewNodeDrop);
     };
 
     return (

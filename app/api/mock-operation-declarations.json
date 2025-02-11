@@ -1,7 +1,7 @@
 [
     {
         "operationIdUniqueForCategory": "transform_text_001",
-        "displayText": "Transform Text",
+        "displayText": "Operation 1",
         "iconId": "text_transform_icon",
         "typeParameters": [
             {
@@ -47,7 +47,7 @@
     },
     {
         "operationIdUniqueForCategory": "concat_strings_001",
-        "displayText": "Concatenate Strings",
+        "displayText": "Operation Two",
         "iconId": "concat_icon",
         "typeParameters": [
             {

@@ -6,7 +6,7 @@ import { ChevronRightDoubleCircleFillIcon } from '@navikt/aksel-icons';
 interface MathNodeListProps {
     configKey: string;
     isVerticalStack?: boolean;
-    onClickHandler: (type: string, data: any) => void;
+    onClickHandler: (nodeType: string, data: any) => void;
 }
 
 const TopMenuList: React.FC<MathNodeListProps> = ({

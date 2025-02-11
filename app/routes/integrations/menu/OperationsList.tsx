@@ -7,7 +7,7 @@ import { OperationDeclaration } from '../types/Operation';
 
 interface Props {
     operationDeclarations: OperationDeclaration[];
-    onClickHandler: (type: string, data: any) => void;
+    onClickHandler: (nodeType: string, data: any) => void;
 }
 
 const OperationsList: React.FC<Props> = ({ operationDeclarations, onClickHandler }) => {
@@ -18,18 +18,24 @@ const OperationsList: React.FC<Props> = ({ operationDeclarations, onClickHandler
                 //     (config) => dataType.category.toLocaleLowerCase() === config.categoryType
                 // );
 
-
-                // for each operation find out which Node we need to drop 
+                // for each operation find out which Node we need to drop
                 // type:  channel
-                
+
                 const icon = od.iconId;
+                const type = 'operation';
+                // {
+                //     "nodeType": "channel",
+                //     "inputType": "input",
+                //     "icon": "ChevronRightDoubleCircleFillIcon",
+                //     "label": "Input"
+                // }
 
                 return (
                     <Dropdown.Menu.List.Item key={index} as="div">
                         <Box
                             key={index}
                             // onDragStart={(event) => onDragStart(event, menuItem)}
-                            onClick={() => onClickHandler('static', od.operationVariables)}
+                            onClick={() => onClickHandler('operation', od.operationVariables)}
                             draggable
                             as={'div'}
                             borderRadius="large"

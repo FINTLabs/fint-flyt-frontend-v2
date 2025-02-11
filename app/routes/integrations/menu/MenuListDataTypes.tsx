@@ -6,7 +6,7 @@ import { DataType } from '~/types/types';
 
 interface MenuListDataTypesProps {
     dataTypes: DataType[];
-    onClickHandler: (type: string, data: any) => void;
+    onClickHandler: (nodeType: string, data: any) => void;
 }
 
 const MenuListDataTypes: React.FC<MenuListDataTypesProps> = ({ dataTypes, onClickHandler }) => {

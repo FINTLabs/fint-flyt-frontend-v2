@@ -9,7 +9,7 @@ import MenuListDataTypes from './MenuListDataTypes';
 import { OperationDeclaration } from '../types/Operation';
 import OperationsList from './OperationsList';
 interface TopMenuProps {
-    onClickHandler: (type: string, data: any) => void;
+    onClickHandler: (nodeType: string, data: any) => void;
 }
 
 const TopMenu: React.FunctionComponent<TopMenuProps> = ({ onClickHandler }) => {

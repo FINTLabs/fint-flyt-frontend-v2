@@ -35,7 +35,7 @@ const OperationNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
         data.inputType === 'blueprint'
             ? 'bg-sky-200'
             : selected
-              ? 'bg-orange-300 ring-4 ring-blue-700/40 shadow-md shadow-gray-500'
+              ? 'bg-orange-300 ring-4 ring-blue-700/40 shadow-md shadow-red-500'
               : 'bg-[#FFE6C1]';
 
     return (
