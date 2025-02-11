@@ -43,4 +43,11 @@ export const menuConfigs: MenuConfig[] = [
         icon: 'data_object',
         categoryType: 'record',
     },
+    {
+        nodeType: 'operation',
+        inputType: 'record',
+        label: 'Open Object 3',
+        icon: 'data_object',
+        categoryType: 'record',
+    },
 ];

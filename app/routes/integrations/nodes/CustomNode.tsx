@@ -17,7 +17,7 @@ interface CustomNodeProps {
 
 //TODO: use SVG and icons needs to be updated
 
-const OperationsNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
+const CustomNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
     const config = nodeConfig[data.inputType] || {};
 
     return (
@@ -61,4 +61,4 @@ const OperationsNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
     );
 };
 
-export default OperationsNode;
+export default CustomNode;

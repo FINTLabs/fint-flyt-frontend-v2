@@ -18,6 +18,10 @@ const OperationsList: React.FC<Props> = ({ operationDeclarations, onClickHandler
                 //     (config) => dataType.category.toLocaleLowerCase() === config.categoryType
                 // );
 
+
+                // for each operation find out which Node we need to drop 
+                // type:  channel
+                
                 const icon = od.iconId;
 
                 return (
@@ -25,7 +29,7 @@ const OperationsList: React.FC<Props> = ({ operationDeclarations, onClickHandler
                         <Box
                             key={index}
                             // onDragStart={(event) => onDragStart(event, menuItem)}
-                            onClick={() => {}}
+                            onClick={() => onClickHandler('static', od.operationVariables)}
                             draggable
                             as={'div'}
                             borderRadius="large"

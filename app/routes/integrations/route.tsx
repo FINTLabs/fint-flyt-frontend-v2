@@ -21,7 +21,7 @@ import CustomParentNode from '~/routes/integrations/nodes/CustomParentNode';
 import { useShallow } from 'zustand/react/shallow';
 import { handleDropLogic } from '~/routes/integrations/utils/utils';
 import CustomObjectNode from '~/routes/integrations/nodes/CustomObjectNode';
-import OperationsNode from '~/routes/integrations/nodes/OperationsNode';
+import CustomNode from '~/routes/integrations/nodes/CustomNode';
 import StaticValueNode from '~/routes/integrations/nodes/StaticValueNode';
 import SelectValueNode from '~/routes/integrations/nodes/SelectValueNode';
 import TopMenu from './menu/TopMenu';
@@ -31,8 +31,9 @@ import VariableInlineNode from './nodes/VariableInlineNode';
 const nodeTypes = {
     subflow: CustomParentNode,
     openObject: CustomObjectNode,
+    // operation: OperationsNode,
     channel: ChannelNode,
-    customNode: OperationsNode,
+    customNode: CustomNode,
     static: StaticValueNode,
     select: SelectValueNode,
     variableNode: VariableNode,
@@ -104,6 +105,11 @@ export default function Index() {
         [reactFlowInstance, addNewNodeDrop]
     );
 
+    // Type is the type of Node to that has been clicked
+    // Data is the data associated with the clicked Node
+    // Position is the position where the Node should be dropped
+    // addNewNodeDrop is a function that adds a new Node to the ReactFlow graph
+    // addSubNodes is a function that adds a new set of Nodes to the ReactFlow graph
     const onClickHandler = (type: string, data: any) => {
         console.log('Element click handler');
         console.log('type: ', type);
