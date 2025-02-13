@@ -2,12 +2,14 @@ import { Handle, Position } from 'reactflow';
 import VariableInlineNode from './VariableInlineNode';
 import HandleOptions from './HandleOptions';
 import HandleDisplay from './HandleDisplay';
+import { DataType } from '~/types/types';
 
 interface HandleProps {
     position: Position;
     id?: string;
     labelText: string;
     className?: string;
+    dataType?: DataType;
     icon?: string;
     isArray?: boolean;
     isOptional?: boolean; // new prop
@@ -15,6 +17,7 @@ interface HandleProps {
 
 export default function CustomHandle({
     position = Position.Right,
+    dataType,
     id = '',
     labelText = '',
     className = '',
@@ -32,7 +35,7 @@ export default function CustomHandle({
     }
 
     return (
-        <div className={`flex gap-2 items-center relative ${labelPlacement()} ${className}`}>
+        <div className={`flex gap-2 pb-1 items-center relative ${labelPlacement()} ${className}`}>
             <div className={`relative`}>
                 <Handle
                     type={position == Position.Right ? 'source' : 'target'}
@@ -65,8 +68,8 @@ export default function CustomHandle({
             </div> */}
             <HandleDisplay
                 position={position}
-                data={{ category: 'STRING' }}
-                displayName={'Saksnummer'}
+                data={dataType ? dataType : { category: 'STRING' }}
+                displayName={labelText}
             />
         </div>
     );
