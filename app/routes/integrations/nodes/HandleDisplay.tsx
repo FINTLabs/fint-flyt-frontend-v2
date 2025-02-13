@@ -10,16 +10,17 @@ interface NodeData {
 }
 
 interface HandleDisplayProps {
-    data: DataType;
+    dataType: string;
     displayName: string;
     position: Position;
 }
 
 function HandleIcon({ icon }: { icon: string }) {
+    console.log('icon', icon);
     return (
-        <div className="flex items-center justify-center bg-white w-6 h-[calc(1.75rem-2px)] relative rounded-full shrink-0">
+        <div className="flex items-center justify-center bg-white w-6 h-[calc(1.75rem-2px)] relative rounded-full">
             <span
-                className="material-symbols-rounded text-sm leading-none flex items-center justify-center"
+                className={`material-symbols-rounded ${icon === 'text_fields' ? 'text-[1.1rem]' : 'text-[1.3rem]'} leading-none flex items-center justify-center`}
                 style={{
                     lineHeight: 1,
                 }}>
@@ -29,8 +30,9 @@ function HandleIcon({ icon }: { icon: string }) {
     );
 }
 
-const HandleDisplay: React.FC<HandleDisplayProps> = ({ position, data, displayName }) => {
-    const icon = getIcon(data.category);
+const HandleDisplay: React.FC<HandleDisplayProps> = ({ position, dataType, displayName }) => {
+    console.log(dataType);
+    const icon = getIcon(dataType);
 
     const positionClasses = position === Position.Left ? 'mr-4' : '';
     return (

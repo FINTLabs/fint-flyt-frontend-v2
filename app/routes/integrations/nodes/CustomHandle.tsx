@@ -2,7 +2,7 @@ import { Handle, Position } from 'reactflow';
 import VariableInlineNode from './VariableInlineNode';
 import HandleOptions from './HandleOptions';
 import HandleDisplay from './HandleDisplay';
-import { DataType } from '~/types/types';
+import { DataType, RecordType } from '~/types/types';
 
 interface HandleProps {
     position: Position;
@@ -68,7 +68,13 @@ export default function CustomHandle({
             </div> */}
             <HandleDisplay
                 position={position}
-                data={dataType ? dataType : { category: 'STRING' }}
+                dataType={
+                    dataType
+                        ? dataType.category === 'RECORD'
+                            ? (dataType as RecordType).recordTypeDeclarationId
+                            : dataType.category
+                        : 'STRING'
+                }
                 displayName={displayText}
             />
         </div>

@@ -14,6 +14,8 @@ export function getIcon(inputType: string) {
             return 'calendar_clock';
         case 'BOOLEAN':
             return 'toggle_on';
+        case 'LIST':
+            return 'list_alt';
         default:
             return 'text_fields';
     }

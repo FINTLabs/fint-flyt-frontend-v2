@@ -41,13 +41,14 @@ const OperationNode: React.FC<Props> = ({ data, type, selected }) => {
             <div className={`flex justify-center ${selected ? '' : ''}`}>
                 {/* Left handles */}
                 <div className="flex justify-center flex-col">
-                    {leftHandles.map((v, index) => (
+                    {leftHandles.map((handle, index) => (
                         <CustomHandle
                             key={index}
                             position={Position.Left}
-                            id={v.key}
-                            displayText={v.displayText}
+                            id={handle.key}
+                            displayText={handle.displayText}
                             isArray={false}
+                            dataType={handle.dataType}
                         />
                     ))}
                 </div>
@@ -67,13 +68,14 @@ const OperationNode: React.FC<Props> = ({ data, type, selected }) => {
 
                 {/* Right handles */}
                 <div className="flex justify-center flex-col">
-                    {rightHandles.map((v, index) => (
+                    {rightHandles.map((handle, index) => (
                         <CustomHandle
                             key={index}
                             position={Position.Right}
-                            id={v.key}
-                            displayText={v.displayText}
+                            id={handle.key}
+                            displayText={handle.displayText}
                             isArray={false}
+                            dataType={handle.dataType}
                         />
                     ))}
                 </div>
