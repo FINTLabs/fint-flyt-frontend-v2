@@ -30,10 +30,13 @@ const OperationNode: React.FC<Props> = ({ data, type, selected }) => {
     };
 
     const backgroundColor = 'bg-sky-200';
+    const leftHandles = data.operationVariables.inputVariables.sort((a, b) => a.order - b.order);
+    const rightHandles = data.operationVariables.outputVariables.sort((a, b) => a.order - b.order);
+    const maxHandles = leftHandles.length >= rightHandles.length ? leftHandles : rightHandles;
 
-    const leftHandles = data.operationVariables.inputVariables;
-    const rightHandles = data.operationVariables.outputVariables;
-
+    const dynamicHeight = maxHandles.length * 2;
+    console.log('dynamicHeight');
+    console.log(dynamicHeight);
     return (
         <div className="">
             {/* <p className="text-center bg-cl">{data.displayText}</p> */}
@@ -58,7 +61,8 @@ const OperationNode: React.FC<Props> = ({ data, type, selected }) => {
                     </p>
 
                     {/* Rounded box */}
-                    <div className="relative w-20 rounded-2xl flex items-center justify-center border border-black p-4">
+                    <div
+                        className={`relative w-20 rounded-2xl flex flex-col items-center justify-center border border-black p-2 h-[${dynamicHeight}rem]`}>
                         {renderIcon()}
                     </div>
                 </div>

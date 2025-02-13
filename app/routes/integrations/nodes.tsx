@@ -40,6 +40,30 @@ export default [
             operationVariables: {
                 inputVariables: [
                     {
+                        order: 5,
+                        key: '5th_string',
+                        displayText: 'Order 5',
+                        dataType: {
+                            category: 'STRING',
+                        },
+                    },
+                    {
+                        order: 3,
+                        key: '3rd_string',
+                        displayText: 'Order 3',
+                        dataType: {
+                            category: 'STRING',
+                        },
+                    },
+                    {
+                        order: 4,
+                        key: '4th_string',
+                        displayText: 'Fourth String',
+                        dataType: {
+                            category: 'STRING',
+                        },
+                    },
+                    {
                         order: 2,
                         key: 'first_string',
                         displayText: 'First String',
