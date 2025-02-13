@@ -17,6 +17,7 @@ import {
 import initialNodes from './nodes';
 import exampleVariableNodes from './examples/variableNodes';
 import exampleVariableInlineNodes from './examples/variableInlineNodes';
+import exampleOperations from './examples/operationNodes';
 import initialEdges from './edges';
 
 type RFState = {

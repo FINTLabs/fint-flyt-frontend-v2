@@ -1,3 +1,5 @@
+import { DataType } from '~/types/types';
+
 export interface TypeParameterConstraints {
     type: string;
 }
@@ -12,9 +14,7 @@ export interface VariableDeclaration {
     order: number;
     key: string;
     displayText: DisplayText;
-    dataType: {
-        category: string;
-    };
+    dataType: DataType;
 }
 
 export interface OperationVariables {

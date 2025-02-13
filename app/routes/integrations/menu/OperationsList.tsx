@@ -35,7 +35,7 @@ const OperationsList: React.FC<Props> = ({ operationDeclarations, onClickHandler
                         <Box
                             key={index}
                             // onDragStart={(event) => onDragStart(event, menuItem)}
-                            onClick={() => onClickHandler('operation', od.operationVariables)}
+                            onClick={() => onClickHandler('operation', od)}
                             draggable
                             as={'div'}
                             borderRadius="large"

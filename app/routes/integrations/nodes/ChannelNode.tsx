@@ -20,7 +20,7 @@ const ChannelNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
     // const handles: HandleConfig[] = handlesConfig[data.inputType] || null;
     // const handlesRight: HandleConfig[] = handleConfigsRight[data.inputType] || null;
     const config = nodeConfig[data.inputType] || {};
-
+    
     const renderIcon = () => {
         if (data.icon === 'ChevronRightDoubleCircleFillIcon') {
             return <ChevronRightDoubleCircleFillIcon title="a11y-title" fontSize="40px" />;

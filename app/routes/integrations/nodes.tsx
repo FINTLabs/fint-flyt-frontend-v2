@@ -16,27 +16,57 @@ export default [
         },
     },
     {
-        id: '6',
-        type: 'variableNode',
-        position: { x: 120, y: 120 },
-        data: {
-            data: {
-                category: 'STREAM',
-                elementType: { category: 'LIST', elementType: { category: 'STRING' } },
-            },
-            displayName: 'Arkivansvarlig',
-        },
-    },
-    {
         id: '2',
-        type: 'variableNode',
-        position: { x: 120, y: 240 },
+        type: 'operation',
+        position: {
+            x: 0,
+            y: 100,
+        },
         data: {
-            data: {
-                category: 'STREAM',
-                elementType: { category: 'LIST', elementType: { category: 'STRING' } },
+            operationIdUniqueForCategory: 'concat_strings_001',
+            displayText: 'Operation Two',
+            iconId: 'ChevronRightDoubleCircleFillIcon',
+            typeParameters: [
+                {
+                    typeParameterId: 'T1',
+                    displayText: 'First Type',
+                },
+                {
+                    typeParameterId: 'T2',
+                    displayText: 'Second Type',
+                    constraints: {},
+                },
+            ],
+            operationVariables: {
+                inputVariables: [
+                    {
+                        order: 2,
+                        key: 'first_string',
+                        displayText: 'First String',
+                        dataType: {
+                            category: 'STRING',
+                        },
+                    },
+                    {
+                        order: 1,
+                        key: 'second_string',
+                        displayText: 'Second String',
+                        dataType: {
+                            category: 'STRING',
+                        },
+                    },
+                ],
+                outputVariables: [
+                    {
+                        order: 1,
+                        key: 'result',
+                        displayText: 'Result',
+                        dataType: {
+                            category: 'STRING',
+                        },
+                    },
+                ],
             },
-            displayName: 'Saksnummer',
         },
     },
 ] as Node[];
