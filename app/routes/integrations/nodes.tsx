@@ -3,20 +3,6 @@ import { Node } from 'reactflow';
 export default [
     {
         id: '1',
-        type: 'channel',
-        position: {
-            x: 0,
-            y: 0,
-        },
-        data: {
-            nodeType: 'channel',
-            inputType: 'input',
-            icon: 'ChevronRightDoubleCircleFillIcon',
-            label: 'Input',
-        },
-    },
-    {
-        id: '2',
         type: 'operation',
         position: {
             x: 0,
@@ -85,6 +71,42 @@ export default [
                         order: 1,
                         key: 'result',
                         displayText: 'Result',
+                        dataType: {
+                            category: 'STRING',
+                        },
+                    },
+                ],
+            },
+        },
+    },
+
+    {
+        id: '2',
+        type: 'operation',
+        position: {
+            x: 400,
+            y: 100,
+        },
+        data: {
+            operationIdUniqueForCategory: 'xxxx',
+            displayText: 'Til store bokstaver',
+            iconId: 'ChevronRightDoubleCircleFillIcon',
+            operationVariables: {
+                inputVariables: [
+                    {
+                        order: 1,
+                        key: 'xx',
+                        displayText: 'Fullt navn (inngående)',
+                        dataType: {
+                            category: 'STRING',
+                        },
+                    },
+                ],
+                outputVariables: [
+                    {
+                        order: 1,
+                        key: 'xxx',
+                        displayText: 'Fullt navn (utgående',
                         dataType: {
                             category: 'STRING',
                         },

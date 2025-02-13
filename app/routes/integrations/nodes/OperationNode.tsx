@@ -34,12 +34,10 @@ const OperationNode: React.FC<Props> = ({ data, type, selected }) => {
     const rightHandles = data.operationVariables.outputVariables.sort((a, b) => a.order - b.order);
     const maxHandles = leftHandles.length >= rightHandles.length ? leftHandles : rightHandles;
 
-    const dynamicHeight = maxHandles.length * 2;
-    console.log('dynamicHeight');
-    console.log(dynamicHeight);
+    const dynamicHeight = maxHandles.length > 2 ? maxHandles.length * 2 : 5;
+
     return (
         <div className="">
-            {/* <p className="text-center bg-cl">{data.displayText}</p> */}
             <div className={`flex justify-center ${selected ? '' : ''}`}>
                 {/* Left handles */}
                 <div className="flex justify-center flex-col">
@@ -56,7 +54,7 @@ const OperationNode: React.FC<Props> = ({ data, type, selected }) => {
 
                 <div className="relative flex flex-col items-center">
                     {/* Display text centered above the rounded box */}
-                    <p className="absolute top-[-1.5rem] left-1/2 -translate-x-1/2 text-center px-2 whitespace-nowrap">
+                    <p className="absolute top-[-2.5rem] left-1/2 -translate-x-1/2 text-center text-xl px-2 whitespace-nowrap">
                         {data.displayText}
                     </p>
 

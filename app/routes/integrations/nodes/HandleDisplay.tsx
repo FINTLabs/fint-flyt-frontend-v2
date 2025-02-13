@@ -36,7 +36,7 @@ const HandleDisplay: React.FC<HandleDisplayProps> = ({ position, data, displayNa
     return (
         <>
             <div
-                className={`${positionClasses} flex bg-[#FFE6C1] items-center text-nowrap z-20 justify-center flex-row text-xs mx-2 h-7 border rounded-2xl pl-2 px-2 mr-2`}>
+                className={`${positionClasses} flex bg-[#FFE6C1] item-center text-nowrap z-20 justify-center flex-row text-sm mx-2 h-7 border rounded-2xl pl-2 px-2 mr-2`}>
                 {/* {isArray && <span className="material-symbols-outlined">data_array</span>} */}
 
                 <HandleIcon icon={icon}></HandleIcon>
