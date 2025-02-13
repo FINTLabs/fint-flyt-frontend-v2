@@ -20,7 +20,7 @@ export default [
         type: 'operation',
         position: {
             x: 0,
-            y: 100,
+            y: 200,
         },
         data: {
             operationIdUniqueForCategory: 'concat_strings_001',

@@ -68,7 +68,7 @@ const CustomParentNode: React.FC<CustomNodeProps> = ({ id, data, selected }) => 
                 <CustomHandle
                     key={index}
                     position={handle.position}
-                    labelText={handle.labelText}
+                    displayText={handle.labelText}
                     id={handle.id}
                     icon={handle.icon}
                     className={handle.className}
@@ -100,7 +100,7 @@ const CustomParentNode: React.FC<CustomNodeProps> = ({ id, data, selected }) => 
                 <CustomHandle
                     key={index}
                     position={handle.position}
-                    labelText={handle.labelText}
+                    displayText={handle.labelText}
                     id={handle.id}
                     icon={handle.icon}
                     className={handle.className}

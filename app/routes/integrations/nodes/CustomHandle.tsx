@@ -7,7 +7,7 @@ import { DataType } from '~/types/types';
 interface HandleProps {
     position: Position;
     id?: string;
-    labelText: string;
+    displayText: string;
     className?: string;
     dataType?: DataType;
     icon?: string;
@@ -19,7 +19,7 @@ export default function CustomHandle({
     position = Position.Right,
     dataType,
     id = '',
-    labelText = '',
+    displayText = '',
     className = '',
     icon = '',
     isArray,
@@ -69,7 +69,7 @@ export default function CustomHandle({
             <HandleDisplay
                 position={position}
                 data={dataType ? dataType : { category: 'STRING' }}
-                displayName={labelText}
+                displayName={displayText}
             />
         </div>
     );

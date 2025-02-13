@@ -16,11 +16,7 @@ const OperationNode: React.FC<Props> = ({ data, type, selected }) => {
     console.log('OperationNode');
     console.log(data);
     console.log(type);
-    // const handles: HandleConfig[] = handlesConfig[data.inputType] || null;
-    // const handlesRight: HandleConfig[] = handleConfigsRight[data.inputType] || null;
-    const config = nodeConfig[type] || {};
 
-    console.log('config', config);
     const renderIcon = () => {
         if (data.iconId === 'ChevronRightDoubleCircleFillIcon') {
             return <ChevronRightDoubleCircleFillIcon title="a11y-title" fontSize="40px" />;
@@ -35,43 +31,50 @@ const OperationNode: React.FC<Props> = ({ data, type, selected }) => {
 
     const backgroundColor = 'bg-sky-200';
 
+    const leftHandles = data.operationVariables.inputVariables;
+    const rightHandles = data.operationVariables.outputVariables;
+
     return (
         <div className="">
-            <p className="text-center">{data.displayText}</p>
-            <div className={`flex justify-center p-3 ${selected ? '' : ''}`}>
+            {/* <p className="text-center bg-cl">{data.displayText}</p> */}
+            <div className={`flex justify-center ${selected ? '' : ''}`}>
                 {/* Left handles */}
                 <div className="flex justify-center flex-col">
-                    {data.operationVariables.inputVariables.map((v, index) => (
+                    {leftHandles.map((v, index) => (
                         <CustomHandle
                             key={index}
                             position={Position.Left}
                             id={v.key}
-                            labelText={v.displayText}
+                            displayText={v.displayText}
                             isArray={false}
                         />
                     ))}
                 </div>
-                {/*<div className="absolute z-10 bottom-full mb-2 w-[100px] text-center">*/}
-                {/*    Output Node*/}
-                {/*</div>*/}
 
-                <div
-                    className={`relative $ﬁs{backgroundColor} rounded-2xl flex items-center justify-center border border-black p-4`}>
-                    {renderIcon()}
+                <div className="relative flex flex-col items-center">
+                    {/* Display text centered above the rounded box */}
+                    <p className="absolute top-[-1.5rem] left-1/2 -translate-x-1/2 text-center px-2 whitespace-nowrap">
+                        {data.displayText}
+                    </p>
+
+                    {/* Rounded box */}
+                    <div className="relative w-20 rounded-2xl flex items-center justify-center border border-black p-4">
+                        {renderIcon()}
+                    </div>
                 </div>
 
                 {/* Right handles */}
-                {/* {config.customHandles?.right.map((handle, index) => (
-                    <CustomHandle
-                        key={index}
-                        position={Position.Right}
-                        id={handle.id}
-                        icon={handle.icon}
-                        labelText={handle.labelText}
-                        isArray={handle.isArray}
-                        isOptional={handle.isOptional}
-                    />
-                ))} */}
+                <div className="flex justify-center flex-col">
+                    {rightHandles.map((v, index) => (
+                        <CustomHandle
+                            key={index}
+                            position={Position.Right}
+                            id={v.key}
+                            displayText={v.displayText}
+                            isArray={false}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     );

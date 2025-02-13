@@ -30,7 +30,7 @@ const CustomNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
                             position={Position.Left}
                             id={handle.id}
                             icon={handle.icon}
-                            labelText={handle.labelText}
+                            displayText={handle.labelText}
                             isArray={handle.isArray}
                             isOptional={handle.isOptional}
                         />
@@ -51,7 +51,7 @@ const CustomNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
                         position={Position.Right}
                         id={handle.id}
                         icon={handle.icon}
-                        labelText={handle.labelText}
+                        displayText={handle.labelText}
                         isArray={handle.isArray}
                         isOptional={handle.isOptional}
                     />

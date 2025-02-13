@@ -4,7 +4,7 @@ export default [
     {
         id: '1',
         type: 'operationNode',
-        position: { x: 120, y: 120 },
+        position: { x: 220, y: 220 },
         data: {
             data: {
                 category: 'STREAM',
