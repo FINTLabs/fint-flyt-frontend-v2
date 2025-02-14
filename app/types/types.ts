@@ -4,12 +4,12 @@ export interface DataType {
     // getDisplayText(): string;
 }
 
-export interface VariableDeclaration<T extends DataType> {
-    order: number;
-    key: string;
-    displayText: DisplayText;
-    dataType: T;
-}
+// export interface VariableDeclaration<T extends DataType> {
+//     order: number;
+//     key: string;
+//     displayText: DisplayText;
+//     dataType: T;
+// }
 export interface DisplayText {
     name: string;
     description?: string;

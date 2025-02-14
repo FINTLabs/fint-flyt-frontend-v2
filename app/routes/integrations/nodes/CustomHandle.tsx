@@ -1,4 +1,4 @@
-import { Handle, Position } from 'reactflow';
+import { Connection, Handle, Position } from 'reactflow';
 import VariableInlineNode from './VariableInlineNode';
 import HandleOptions from './HandleOptions';
 import HandleDisplay from './HandleDisplay';
@@ -13,6 +13,7 @@ interface HandleProps {
     icon?: string;
     isArray?: boolean;
     isOptional?: boolean; // new prop
+    isValidConnection?: (connection: Connection) => boolean;
 }
 
 export default function CustomHandle({
@@ -24,6 +25,7 @@ export default function CustomHandle({
     icon = '',
     isArray,
     isOptional,
+    isValidConnection,
 }: HandleProps) {
     function labelPlacement() {
         if (position == Position.Right) {
@@ -50,22 +52,10 @@ export default function CustomHandle({
                     }
                     id={id}
                     key={id}
+                    isValidConnection={isValidConnection}
                 />
             </div>
 
-            {/* Placeholder next to the handle */}
-            {/* <div
-                className={`bg-white text-nowrap z-20 justify-center flex flex-row text-xs mx-2 h-7 border rounded-2xl pl-2 px-2 mr-5 absolute ${
-                    isOptional ? 'border-dashed border border-black' : null
-                }`}>
-                {icon && (
-                    <div className="flex items-center">
-                        {isArray && <span className="material-symbols-outlined">data_array</span>}
-                        <span className={`material-symbols-rounded mx-1 }`}>{icon}</span>
-                        <p className="text-sm">{labelText}</p>
-                    </div>
-                )}
-            </div> */}
             <HandleDisplay
                 position={position}
                 dataType={

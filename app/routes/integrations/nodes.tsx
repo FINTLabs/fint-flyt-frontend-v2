@@ -32,7 +32,7 @@ export default [
                     },
                     {
                         order: 5,
-                        key: 'first_tall',
+                        key: 'fifth_tall',
                         displayText: '5 Tall',
                         dataType: {
                             category: 'INTEGER',
@@ -40,7 +40,7 @@ export default [
                     },
                     {
                         order: 3,
-                        key: 'first_tall',
+                        key: 'third_tall',
                         displayText: '3 Tall',
                         dataType: {
                             category: 'INTEGER',
@@ -48,7 +48,7 @@ export default [
                     },
                     {
                         order: 4,
-                        key: 'first_tall',
+                        key: 'fourth_tall',
                         displayText: '4 Tall',
                         dataType: {
                             category: 'INTEGER',
@@ -56,7 +56,7 @@ export default [
                     },
                     {
                         order: 5,
-                        key: 'first_tall',
+                        key: 'fifth_tall_alt',
                         displayText: '4 Tall',
                         dataType: {
                             category: 'INTEGER',
@@ -64,7 +64,7 @@ export default [
                     },
                     {
                         order: 6,
-                        key: 'first_tall',
+                        key: 'sixth_tall',
                         displayText: '4 Tall',
                         dataType: {
                             category: 'INTEGER',

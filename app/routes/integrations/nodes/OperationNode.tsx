@@ -4,11 +4,12 @@ import { Connection, Position } from 'reactflow';
 import nodeConfig from '~/routes/integrations/nodes/config';
 import CustomHandle from './CustomHandle';
 import { OperationDeclaration } from '../types/Operation';
+import { BaseNode } from './BaseNode';
 
 interface Props {
     id: string;
-    selected: boolean;
     type: string;
+    selected: boolean;
     data: OperationDeclaration;
 }
 
@@ -41,53 +42,60 @@ const OperationNode: React.FC<Props> = ({ data, type, selected }) => {
     };
 
     return (
-        <div className="">
-            <div className={`flex justify-center ${selected ? '' : ''}`}>
-                {/* Left handles */}
-                <div className="flex justify-center flex-col">
-                    {leftHandles.map((handle, index) => (
-                        <CustomHandle
-                            key={index}
-                            position={Position.Left}
-                            id={handle.key}
-                            displayText={handle.displayText}
-                            isArray={false}
-                            dataType={handle.dataType}
-                            isValidConnection={isValidConnection}
-                        />
-                    ))}
-                </div>
+        <BaseNode
+            title={data.displayText}
+            leftHandles={leftHandles}
+            rightHandles={rightHandles}
+            selected={selected}
+            iconId={data.iconId}
+            isValidConnection={isValidConnection}></BaseNode>
+        // <div className="">
+        //     <div className={`flex justify-center ${selected ? '' : ''}`}>
+        //         {/* Left handles */}
+        //         <div className="flex justify-center flex-col">
+        //             {leftHandles.map((handle, index) => (
+        //                 <CustomHandle
+        //                     key={index}
+        //                     position={Position.Left}
+        //                     id={handle.key}
+        //                     displayText={handle.displayText}
+        //                     isArray={false}
+        //                     dataType={handle.dataType}
+        //                     isValidConnection={isValidConnection}
+        //                 />
+        //             ))}
+        //         </div>
 
-                <div className="relative flex flex-col items-center">
-                    {/* Display text centered above the rounded box */}
-                    <p className="absolute top-[-2.5rem] left-1/2 -translate-x-1/2 text-center text-xl px-2 whitespace-nowrap">
-                        {data.displayText}
-                    </p>
+        //         <div className="relative flex flex-col items-center">
+        //             {/* Display text centered above the rounded box */}
+        //             <p className="absolute top-[-2.5rem] left-1/2 -translate-x-1/2 text-center text-xl px-2 whitespace-nowrap">
+        //                 {data.displayText}
+        //             </p>
 
-                    {/* Rounded box */}
-                    <div
-                        style={{ height: dynamicHeight }}
-                        className={`relative w-20 rounded-2xl flex flex-col items-center justify-center border border-black p-2`}>
-                        {renderIcon()}
-                    </div>
-                </div>
+        //             {/* Rounded box */}
+        //             <div
+        //                 style={{ height: dynamicHeight }}
+        //                 className={`relative w-20 rounded-2xl flex flex-col items-center justify-center border border-black p-2`}>
+        //                 {renderIcon()}
+        //             </div>
+        //         </div>
 
-                {/* Right handles */}
-                <div className="flex justify-center flex-col">
-                    {rightHandles.map((handle, index) => (
-                        <CustomHandle
-                            key={index}
-                            position={Position.Right}
-                            id={handle.key}
-                            displayText={handle.displayText}
-                            isArray={false}
-                            dataType={handle.dataType}
-                            isValidConnection={isValidConnection}
-                        />
-                    ))}
-                </div>
-            </div>
-        </div>
+        //         {/* Right handles */}
+        //         <div className="flex justify-center flex-col">
+        //             {rightHandles.map((handle, index) => (
+        //                 <CustomHandle
+        //                     key={index}
+        //                     position={Position.Right}
+        //                     id={handle.key}
+        //                     displayText={handle.displayText}
+        //                     isArray={false}
+        //                     dataType={handle.dataType}
+        //                     isValidConnection={isValidConnection}
+        //                 />
+        //             ))}
+        //         </div>
+        //     </div>
+        // </div>
     );
 };
 
