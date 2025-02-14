@@ -1,6 +1,6 @@
 import { ChevronRightDoubleCircleFillIcon } from '@navikt/aksel-icons';
 import React from 'react';
-import { Position } from 'reactflow';
+import { Connection, Position } from 'reactflow';
 import nodeConfig from '~/routes/integrations/nodes/config';
 import CustomHandle from './CustomHandle';
 import { OperationDeclaration } from '../types/Operation';
@@ -13,9 +13,7 @@ interface Props {
 }
 
 const OperationNode: React.FC<Props> = ({ data, type, selected }) => {
-    console.log('OperationNode');
-    console.log(data);
-    console.log(type);
+    // console.log('OperationNode: ', data);
 
     const renderIcon = () => {
         if (data.iconId === 'ChevronRightDoubleCircleFillIcon') {
@@ -32,9 +30,15 @@ const OperationNode: React.FC<Props> = ({ data, type, selected }) => {
     const backgroundColor = 'bg-sky-200';
     const leftHandles = data.operationVariables.inputVariables.sort((a, b) => a.order - b.order);
     const rightHandles = data.operationVariables.outputVariables.sort((a, b) => a.order - b.order);
-    const maxHandles = leftHandles.length >= rightHandles.length ? leftHandles : rightHandles;
+    const maxHandles =
+        leftHandles.length > rightHandles.length ? leftHandles.length : rightHandles.length;
 
-    const dynamicHeight = maxHandles.length > 2 ? maxHandles.length * 2 : 5;
+    const dynamicHeight = `${maxHandles > 2 ? maxHandles * 2 : 5}rem`;
+
+    const isValidConnection = (connection: Connection) => {
+        console.log('Connection Attempt:', connection);
+        return true;
+    };
 
     return (
         <div className="">
@@ -49,6 +53,7 @@ const OperationNode: React.FC<Props> = ({ data, type, selected }) => {
                             displayText={handle.displayText}
                             isArray={false}
                             dataType={handle.dataType}
+                            isValidConnection={isValidConnection}
                         />
                     ))}
                 </div>
@@ -61,7 +66,8 @@ const OperationNode: React.FC<Props> = ({ data, type, selected }) => {
 
                     {/* Rounded box */}
                     <div
-                        className={`relative w-20 rounded-2xl flex flex-col items-center justify-center border border-black p-2 h-[${dynamicHeight}rem]`}>
+                        style={{ height: dynamicHeight }}
+                        className={`relative w-20 rounded-2xl flex flex-col items-center justify-center border border-black p-2`}>
                         {renderIcon()}
                     </div>
                 </div>
@@ -76,6 +82,7 @@ const OperationNode: React.FC<Props> = ({ data, type, selected }) => {
                             displayText={handle.displayText}
                             isArray={false}
                             dataType={handle.dataType}
+                            isValidConnection={isValidConnection}
                         />
                     ))}
                 </div>

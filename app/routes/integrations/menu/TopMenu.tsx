@@ -26,8 +26,6 @@ const TopMenu: React.FunctionComponent<TopMenuProps> = ({ onClickHandler }) => {
         dataTypes?: DataType[];
         operationDeclarations?: OperationDeclaration[];
     }) => {
-        console.log(dataTypes);
-
         return (
             <Dropdown>
                 <Button

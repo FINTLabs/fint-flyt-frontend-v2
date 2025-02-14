@@ -18,6 +18,7 @@ import initialNodes from './nodes';
 import exampleVariableNodes from './examples/variableNodes';
 import exampleVariableInlineNodes from './examples/variableInlineNodes';
 import exampleOperations from './examples/operationNodes';
+import exammpleOperationsPart1 from './examples/operationsNodesPart1';
 import initialEdges from './edges';
 
 type RFState = {
@@ -34,7 +35,6 @@ type RFState = {
 
 // this is our useStore hook that we can use in our components to get parts of the store and call actions
 const useStore = create<RFState>((set, get) => ({
-    // nodes: exampleVariableNodes,
     nodes: initialNodes,
     edges: initialEdges,
     onNodesChange: (changes: NodeChange[]) => {

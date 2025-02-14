@@ -25,7 +25,47 @@ export default [
                     {
                         order: 1,
                         key: 'first_tall',
-                        displayText: 'First Tall',
+                        displayText: '1 Tall',
+                        dataType: {
+                            category: 'INTEGER',
+                        },
+                    },
+                    {
+                        order: 5,
+                        key: 'first_tall',
+                        displayText: '5 Tall',
+                        dataType: {
+                            category: 'INTEGER',
+                        },
+                    },
+                    {
+                        order: 3,
+                        key: 'first_tall',
+                        displayText: '3 Tall',
+                        dataType: {
+                            category: 'INTEGER',
+                        },
+                    },
+                    {
+                        order: 4,
+                        key: 'first_tall',
+                        displayText: '4 Tall',
+                        dataType: {
+                            category: 'INTEGER',
+                        },
+                    },
+                    {
+                        order: 5,
+                        key: 'first_tall',
+                        displayText: '4 Tall',
+                        dataType: {
+                            category: 'INTEGER',
+                        },
+                    },
+                    {
+                        order: 6,
+                        key: 'first_tall',
+                        displayText: '4 Tall',
                         dataType: {
                             category: 'INTEGER',
                         },

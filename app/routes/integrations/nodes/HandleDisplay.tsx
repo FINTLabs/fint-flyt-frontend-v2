@@ -16,7 +16,6 @@ interface HandleDisplayProps {
 }
 
 function HandleIcon({ icon }: { icon: string }) {
-    console.log('icon', icon);
     return (
         <div className="flex items-center justify-center bg-white w-6 h-[calc(1.75rem-2px)] relative rounded-full">
             <span
@@ -31,7 +30,6 @@ function HandleIcon({ icon }: { icon: string }) {
 }
 
 const HandleDisplay: React.FC<HandleDisplayProps> = ({ position, dataType, displayName }) => {
-    console.log(dataType);
     const icon = getIcon(dataType);
 
     const positionClasses = position === Position.Left ? 'mr-4' : '';
