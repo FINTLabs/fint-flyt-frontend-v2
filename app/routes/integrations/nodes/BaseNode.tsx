@@ -25,19 +25,10 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
 
     const dynamicHeight = `${maxHandles > 2 ? maxHandles * 2 : 5}rem`;
 
-    // const backgroundDesign = selected
-    //     ? 'bg-orange-300 ring-2 ring-gray-700/40 shadow-sm shadow-gray-500'
-    //     : 'bg-[#FFE6C1]';
-
-    const tailwindOrange = 'bg-orange-300';
-    const greyShade = 'bg-gray-200';
-    const orange = 'bg-[#FFE6C1]';
-    const greyOrange = 'bg-[#f8ecda]';
-    const lightOrange = 'bg-[#fef2e0]';
-
+    const designProfile = designProfiles[1];
     const backgroundDesign = selected
-        ? `${tailwindOrange} ring-2 ring-gray-700/40 shadow-sm shadow-gray-500`
-        : `${lightOrange}`;
+        ? designProfile.BackgroundColorselected
+        : designProfile.BackgroundColorDefault;
     return (
         <div className="">
             <div className={`flex justify-center ${selected ? '' : ''}`}>
@@ -95,4 +86,45 @@ const renderIcon = (iconId: string) => {
     } else {
         return <span className="material-symbols-outlined text-left text-[40px]">{iconId}</span>;
     }
+};
+
+interface DesignProfile {
+    BackgroundColorDefault: string;
+    BackgroundColorselected: string;
+}
+
+export const designProfiles: Record<string, DesignProfile> = {
+    1: {
+        // Novari Orange Theme
+        BackgroundColorDefault: 'bg-[#FFE6C1]',
+        BackgroundColorselected: 'bg-orange-300 ring-2 ring-gray-700/40 shadow-sm shadow-gray-500',
+    },
+    2: {
+        BackgroundColorDefault: 'bg-gray-200',
+        BackgroundColorselected: 'bg-blue-200 ring-2 ring-blue-700/40 shadow-sm shadow-blue-500',
+    },
+    3: {
+        // Light Orange
+        BackgroundColorDefault: 'bg-[#fef2e0]',
+        BackgroundColorselected:
+            'bg-[#ffb432] ring-2 ring-emerald-700/40 shadow-sm shadow-emerald-500',
+    },
+    4: {
+        // Tailwind Orange Theme
+        BackgroundColorDefault: 'bg-[#f8ecda]',
+        BackgroundColorselected: 'bg-orange-300 ring-2 ring-gray-700/40 shadow-sm shadow-gray-500',
+    },
+    5: {
+        // Rose Theme
+        BackgroundColorDefault: 'bg-teal-300',
+        BackgroundColorselected: 'bg-rose-300 ring-2 ring-rose-700/40 shadow-sm shadow-rose-500',
+    },
+    6: {
+        BackgroundColorDefault: 'bg-red-300',
+        BackgroundColorselected: 'bg-red-400 ring-2 ring-red-700/40 shadow-sm shadow-red-500',
+    },
+    7: {
+        BackgroundColorDefault: 'bg-blue-300',
+        BackgroundColorselected: 'bg-blue-400 ring-2 ring-blue-700/40 shadow-sm shadow-blue-500',
+    },
 };

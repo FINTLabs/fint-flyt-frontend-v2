@@ -137,7 +137,7 @@ export default function Index() {
 
             <TopMenu onClickHandler={onClickHandler} />
 
-            <HGrid columns="w-100" style={{ height: 800 }}>
+            <HGrid columns="w-100" style={{ height: '80vh' }}>
                 <ReactFlowProvider>
                     <Box
                         id={'integration-table-container'}
@@ -167,16 +167,6 @@ export default function Index() {
                     </Box>
                 </ReactFlowProvider>
             </HGrid>
-            <Box
-                id={'flow-buttons'}
-                background={'surface-default'}
-                padding="6"
-                borderRadius={'large'}
-                borderWidth="2"
-                borderColor={'border-subtle'}>
-                <Button onClick={() => console.log(nodes)}>Print nodes</Button>
-                <Button onClick={() => console.log(edges)}>Print edges</Button>
-            </Box>
         </VStack>
     );
 }
