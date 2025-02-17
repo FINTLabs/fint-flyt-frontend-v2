@@ -69,11 +69,11 @@ const TopMenu: React.FunctionComponent<TopMenuProps> = ({ onClickHandler }) => {
             <Box
                 id={'flow-buttons'}
                 background={'surface-default'}
-                padding="4"
+                padding="1"
                 borderRadius={'small'}
                 borderWidth="2"
                 borderColor={'border-subtle'}>
-                <HStack gap="2">
+                <HStack gap="0">
                     <CustomDropDown title="Actions" configKey="channelNodes" />
                     <CustomDropDown title="Constants" configKey="staticValueNodes" />
                     <CustomDropDown title="Collections" configKey="subFlowNodes" />

@@ -115,7 +115,7 @@ export default function Index() {
         console.log('Element click handler');
         console.log('type: ', nodeType);
         console.log('data', data);
-        const position = { x: 0, y: 0 }; // Example position
+        const position = { x: 100, y: 100 }; // Example position
         handleDropLogic(reactFlowInstance, nodeType, data, position, addNewNodeDrop);
     };
 
