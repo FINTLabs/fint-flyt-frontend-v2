@@ -1,6 +1,6 @@
 import React from 'react';
 import nodeConfig from '~/routes/integrations/nodes/config';
-import CustomHandle from './customHandle';
+import CustomHandle from './CustomHandle';
 
 interface CustomNodeProps {
     id: string;
@@ -35,7 +35,7 @@ const CustomObjectNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
                                 position={handle.position}
                                 id={handle.id}
                                 icon={handle.icon}
-                                labelText={handle.labelText}
+                                displayText={handle.labelText}
                                 className={` top-[${index * 30}px] `}
                                 isArray={handle.isArray}
                                 isOptional={handle.isOptional}
@@ -59,7 +59,7 @@ const CustomObjectNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
                                 position={handle.position}
                                 id={handle.id}
                                 icon={handle.icon}
-                                labelText={handle.labelText}
+                                displayText={handle.labelText}
                                 className={` top-[${index * 30}px] `}
                                 isArray={handle.isArray}
                                 isOptional={handle.isOptional}

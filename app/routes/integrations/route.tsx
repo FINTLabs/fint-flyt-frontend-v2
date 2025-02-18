@@ -21,18 +21,24 @@ import CustomParentNode from '~/routes/integrations/nodes/CustomParentNode';
 import { useShallow } from 'zustand/react/shallow';
 import { handleDropLogic } from '~/routes/integrations/utils/utils';
 import CustomObjectNode from '~/routes/integrations/nodes/CustomObjectNode';
-import OperationsNode from '~/routes/integrations/nodes/OperationsNode';
+import CustomNode from '~/routes/integrations/nodes/CustomNode';
 import StaticValueNode from '~/routes/integrations/nodes/StaticValueNode';
 import SelectValueNode from '~/routes/integrations/nodes/SelectValueNode';
 import TopMenu from './menu/TopMenu';
+import VariableNode from './nodes/VariableNode';
+import VariableInlineNode from './nodes/VariableInlineNode';
+import OperationNode from './nodes/OperationNode';
 
 const nodeTypes = {
     subflow: CustomParentNode,
     openObject: CustomObjectNode,
+    operation: OperationNode,
     channel: ChannelNode,
-    customNode: OperationsNode,
+    customNode: CustomNode,
     static: StaticValueNode,
     select: SelectValueNode,
+    variableNode: VariableNode,
+    variableInlineNode: VariableInlineNode,
 };
 
 type StoreState = {
@@ -100,9 +106,17 @@ export default function Index() {
         [reactFlowInstance, addNewNodeDrop]
     );
 
-    const onClickHandler = (type: string, data: never) => {
-        const position = { x: 0, y: 0 }; // Example position
-        handleDropLogic(reactFlowInstance, type, data, position, addNewNodeDrop);
+    // Type is the type of Node to that has been clicked
+    // Data is the data associated with the clicked Node
+    // Position is the position where the Node should be dropped
+    // addNewNodeDrop is a function that adds a new Node to the ReactFlow graph
+    // addSubNodes is a function that adds a new set of Nodes to the ReactFlow graph
+    const onClickHandler = (nodeType: string, data: any) => {
+        console.log('Element click handler');
+        console.log('type: ', nodeType);
+        console.log('data', data);
+        const position = { x: 100, y: 100 }; // Example position
+        handleDropLogic(reactFlowInstance, nodeType, data, position, addNewNodeDrop);
     };
 
     return (
@@ -123,7 +137,7 @@ export default function Index() {
 
             <TopMenu onClickHandler={onClickHandler} />
 
-            <HGrid columns="w-100" style={{ height: 800 }}>
+            <HGrid columns="w-100" style={{ height: '80vh' }}>
                 <ReactFlowProvider>
                     <Box
                         id={'integration-table-container'}
@@ -153,16 +167,6 @@ export default function Index() {
                     </Box>
                 </ReactFlowProvider>
             </HGrid>
-            <Box
-                id={'flow-buttons'}
-                background={'surface-default'}
-                padding="6"
-                borderRadius={'large'}
-                borderWidth="2"
-                borderColor={'border-subtle'}>
-                <Button onClick={() => console.log(nodes)}>Print nodes</Button>
-                <Button onClick={() => console.log(edges)}>Print edges</Button>
-            </Box>
         </VStack>
     );
 }

@@ -1,6 +1,6 @@
 import { Position } from 'reactflow';
 import React from 'react';
-import CustomHandle from './customHandle';
+import CustomHandle from './CustomHandle';
 import nodeConfig from '~/routes/integrations/nodes/config';
 
 interface CustomNodeProps {
@@ -17,7 +17,7 @@ interface CustomNodeProps {
 
 //TODO: use SVG and icons needs to be updated
 
-const OperationsNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
+const CustomNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
     const config = nodeConfig[data.inputType] || {};
 
     return (
@@ -30,7 +30,7 @@ const OperationsNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
                             position={Position.Left}
                             id={handle.id}
                             icon={handle.icon}
-                            labelText={handle.labelText}
+                            displayText={handle.labelText}
                             isArray={handle.isArray}
                             isOptional={handle.isOptional}
                         />
@@ -51,7 +51,7 @@ const OperationsNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
                         position={Position.Right}
                         id={handle.id}
                         icon={handle.icon}
-                        labelText={handle.labelText}
+                        displayText={handle.labelText}
                         isArray={handle.isArray}
                         isOptional={handle.isOptional}
                     />
@@ -61,4 +61,4 @@ const OperationsNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
     );
 };
 
-export default OperationsNode;
+export default CustomNode;

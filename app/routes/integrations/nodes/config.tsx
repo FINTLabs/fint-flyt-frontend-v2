@@ -43,6 +43,30 @@ const nodeConfig: NodeConfig = {
             right: [],
         },
     },
+    operation: {
+        hasToolbar: true,
+        mainIcon: 'ChevronRightDoubleCircleFillIcon',
+        customHandles: {
+            left: [
+                {
+                    position: Position.Left,
+                    labelText: 'Operation',
+                    id: '1',
+                    icon: 'tab_unselected',
+                    isArray: false,
+                },
+            ],
+            right: [
+                {
+                    position: Position.Right,
+                    labelText: 'Placeholder',
+                    id: '1',
+                    icon: 'tab_unselected',
+                    isArray: false,
+                },
+            ],
+        },
+    },
     input: {
         hasToolbar: false,
         mainIcon: 'ChevronRightDoubleCircleFillIcon',

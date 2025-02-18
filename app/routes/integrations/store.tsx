@@ -15,6 +15,10 @@ import {
 } from 'reactflow';
 
 import initialNodes from './nodes';
+import exampleVariableNodes from './examples/variableNodes';
+import exampleVariableInlineNodes from './examples/variableInlineNodes';
+import exampleOperations from './examples/operationNodesSample';
+import exammpleOperationsPart1 from './examples/operationNodesSimple';
 import initialEdges from './edges';
 
 type RFState = {
@@ -31,7 +35,7 @@ type RFState = {
 
 // this is our useStore hook that we can use in our components to get parts of the store and call actions
 const useStore = create<RFState>((set, get) => ({
-    nodes: initialNodes,
+    nodes: exammpleOperationsPart1,
     edges: initialEdges,
     onNodesChange: (changes: NodeChange[]) => {
         set({

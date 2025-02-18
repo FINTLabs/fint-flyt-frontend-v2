@@ -2,7 +2,7 @@ import { ChevronRightDoubleCircleFillIcon } from '@navikt/aksel-icons';
 import React from 'react';
 import { Position } from 'reactflow';
 import nodeConfig from '~/routes/integrations/nodes/config';
-import CustomHandle from './customHandle';
+import CustomHandle from './CustomHandle';
 
 interface CustomNodeProps {
     id: string;
@@ -31,17 +31,23 @@ const ChannelNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
         }
     };
 
-    const backgroundColor = data.inputType === 'blueprint' ? 'bg-sky-200' : 'bg-[#FFE6C1]';
+    const backgroundColor =
+        data.inputType === 'blueprint'
+            ? 'bg-sky-200'
+            : selected
+              ? 'bg-orange-300 ring-4 ring-blue-700/40 shadow-md shadow-gray-500'
+              : 'bg-[#FFE6C1]';
 
     return (
-        <div className={`flex justify-center ${selected ? 'border-black border' : ''}`}>
+        <div className={`flex justify-center p-3 ${selected ? '' : ''}`}>
+            {/* Left handles */}
             {config.customHandles?.left.map((handle, index) => (
                 <CustomHandle
                     key={index}
                     position={Position.Left}
                     id={handle.id}
                     icon={handle.icon}
-                    labelText={handle.labelText}
+                    displayText={handle.labelText}
                     isArray={handle.isArray}
                     isOptional={handle.isOptional}
                 />
@@ -55,13 +61,14 @@ const ChannelNode: React.FC<CustomNodeProps> = ({ data, selected }) => {
                 {renderIcon()}
             </div>
 
+            {/* Right handles */}
             {config.customHandles?.right.map((handle, index) => (
                 <CustomHandle
                     key={index}
                     position={Position.Right}
                     id={handle.id}
                     icon={handle.icon}
-                    labelText={handle.labelText}
+                    displayText={handle.labelText}
                     isArray={handle.isArray}
                     isOptional={handle.isOptional}
                 />

@@ -3,7 +3,7 @@ import { NodeResizer, useStore } from 'reactflow';
 import { getRelativeNodesBounds } from '~/routes/integrations/utils/utils';
 import { HStack } from '@navikt/ds-react';
 import nodeConfig from '~/routes/integrations/nodes/config';
-import CustomHandle from './customHandle';
+import CustomHandle from './CustomHandle';
 import React from 'react';
 
 interface CustomNodeProps {
@@ -68,7 +68,7 @@ const CustomParentNode: React.FC<CustomNodeProps> = ({ id, data, selected }) => 
                 <CustomHandle
                     key={index}
                     position={handle.position}
-                    labelText={handle.labelText}
+                    displayText={handle.labelText}
                     id={handle.id}
                     icon={handle.icon}
                     className={handle.className}
@@ -100,7 +100,7 @@ const CustomParentNode: React.FC<CustomNodeProps> = ({ id, data, selected }) => 
                 <CustomHandle
                     key={index}
                     position={handle.position}
-                    labelText={handle.labelText}
+                    displayText={handle.labelText}
                     id={handle.id}
                     icon={handle.icon}
                     className={handle.className}

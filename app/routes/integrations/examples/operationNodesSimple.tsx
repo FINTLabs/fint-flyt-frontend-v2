@@ -2,94 +2,135 @@ import { Node } from 'reactflow';
 
 export default [
     {
-        id: '1',
+        id: '2',
         type: 'operation',
         position: {
-            x: 0,
-            y: 200,
+            x: 30,
+            y: 100,
         },
         data: {
-            operationIdUniqueForCategory: 'adder tall',
-            displayText: 'Adder tall',
+            operationIdUniqueForCategory: 'xxxx',
+            displayText: 'Til store bokstaver',
             iconId: 'ChevronRightDoubleCircleFillIcon',
             operationVariables: {
                 inputVariables: [
                     {
-                        order: 2,
-                        key: 'second_tall',
-                        displayText: 'Second tall',
-                        dataType: {
-                            category: 'INTEGER',
-                        },
-                    },
-                    {
                         order: 1,
-                        key: 'first_tall',
-                        displayText: '1 Tall',
+                        key: 'xx',
+                        displayText: 'Fullt navn (inngående)',
                         dataType: {
-                            category: 'INTEGER',
-                        },
-                    },
-                    {
-                        order: 5,
-                        key: 'fifth_tall',
-                        displayText: '5 Tall',
-                        dataType: {
-                            category: 'INTEGER',
-                        },
-                    },
-                    {
-                        order: 3,
-                        key: 'third_tall',
-                        displayText: '3 Tall',
-                        dataType: {
-                            category: 'INTEGER',
-                        },
-                    },
-                    {
-                        order: 4,
-                        key: 'fourth_tall',
-                        displayText: '4 Tall',
-                        dataType: {
-                            category: 'INTEGER',
-                        },
-                    },
-                    {
-                        order: 5,
-                        key: 'fifth_tall_alt',
-                        displayText: '4 Tall',
-                        dataType: {
-                            category: 'INTEGER',
-                        },
-                    },
-                    {
-                        order: 6,
-                        key: 'sixth_tall',
-                        displayText: '4 Tall',
-                        dataType: {
-                            category: 'INTEGER',
+                            category: 'STRING',
                         },
                     },
                 ],
                 outputVariables: [
                     {
                         order: 1,
-                        key: 'result',
-                        displayText: 'Result',
+                        key: 'xxx',
+                        displayText: 'Fullt navn (utgående)',
                         dataType: {
-                            category: 'INTEGER',
+                            category: 'STRING',
                         },
                     },
                 ],
             },
         },
     },
-
     {
-        id: '2',
+        id: '3',
         type: 'operation',
         position: {
-            x: 400,
+            x: 100,
+            y: 500,
+        },
+        data: {
+            operationIdUniqueForCategory: 'xxxx',
+            displayText: 'Dato + klokkeslett ➡️ Tidspunkt',
+            iconId: 'ChevronRightDoubleCircleFillIcon',
+            operationVariables: {
+                inputVariables: [
+                    {
+                        order: 1,
+                        key: 'xx',
+                        displayText: 'Dato',
+                        dataType: {
+                            category: 'RECORD',
+                            recordTypeDeclarationId: 'DATE',
+                        },
+                    },
+                    {
+                        order: 2,
+                        key: 'xx',
+                        displayText: 'Klokkeslett',
+                        dataType: {
+                            category: 'RECORD',
+                            recordTypeDeclarationId: 'TIME',
+                        },
+                    },
+                ],
+                outputVariables: [
+                    {
+                        order: 1,
+                        key: 'xxx',
+                        displayText: 'Sammenslått',
+                        dataType: {
+                            category: 'RECORD',
+                            recordTypeDeclarationId: 'DATETIME',
+                        },
+                    },
+                ],
+            },
+        },
+    },
+    {
+        id: '4',
+        type: 'operation',
+        position: {
+            x: 100,
+            y: 280,
+        },
+        data: {
+            operationIdUniqueForCategory: 'xxxx',
+            displayText: 'Splitt tekst',
+            iconId: 'ChevronRightDoubleCircleFillIcon',
+            operationVariables: {
+                inputVariables: [
+                    {
+                        order: 1,
+                        key: 'xx',
+                        displayText: 'Lang tekst',
+                        dataType: {
+                            category: 'STRING',
+                        },
+                    },
+                ],
+                outputVariables: [
+                    {
+                        order: 1,
+                        key: 'xxx',
+                        displayText: '1️⃣ Del 1',
+                        dataType: {
+                            category: 'STRING',
+                        },
+                    },
+
+                    {
+                        order: 2,
+                        key: 'xx',
+                        displayText: '2️⃣ Del 2',
+                        dataType: {
+                            category: 'STRING',
+                        },
+                    },
+                ],
+            },
+        },
+    },
+    {
+        id: '5',
+        type: 'operation',
+        position: {
+            x: 650,
             y: 100,
         },
         data: {
@@ -129,10 +170,10 @@ export default [
         },
     },
     {
-        id: '3',
+        id: '6',
         type: 'operation',
         position: {
-            x: 400,
+            x: 600,
             y: 500,
         },
         data: {
@@ -172,10 +213,10 @@ export default [
         },
     },
     {
-        id: '4',
+        id: '7',
         type: 'operation',
         position: {
-            x: 850,
+            x: 670,
             y: 280,
         },
         data: {
