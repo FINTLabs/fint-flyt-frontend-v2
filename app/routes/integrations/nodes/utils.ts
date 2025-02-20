@@ -33,14 +33,19 @@ export function getHandles(
 ) {
     let leftHandles: VariableDeclaration[] = [];
     let rightHandles: VariableDeclaration[] = [];
+    let innerFlowLeftHandles: VariableDeclaration[] = [];
+    let innerFlowRightHandles: VariableDeclaration[] = [];
 
     console.log(type);
     if (type === 'innerflow') {
         leftHandles = (data as InnerFlowOperationDeclaration).outerOperation.operationVariables
             .inputVariables;
-        console.log('leftHandles');
-        console.log(leftHandles);
         rightHandles = (data as InnerFlowOperationDeclaration).outerOperation.operationVariables
+            .outputVariables;
+
+        innerFlowLeftHandles = (data as InnerFlowOperationDeclaration).innerFlowVariables
+            .inputVariables;
+        innerFlowRightHandles = (data as InnerFlowOperationDeclaration).innerFlowVariables
             .outputVariables;
     }
 
@@ -51,7 +56,14 @@ export function getHandles(
     // sort handles
     leftHandles = leftHandles ? leftHandles.sort((a, b) => a.order - b.order) : leftHandles;
     rightHandles = rightHandles ? rightHandles.sort((a, b) => a.order - b.order) : rightHandles;
-    return { leftHandles, rightHandles };
+
+    innerFlowLeftHandles = innerFlowLeftHandles
+        ? innerFlowLeftHandles.sort((a, b) => a.order - b.order)
+        : innerFlowLeftHandles;
+    innerFlowRightHandles = innerFlowRightHandles
+        ? innerFlowRightHandles.sort((a, b) => a.order - b.order)
+        : innerFlowRightHandles;
+    return { leftHandles, rightHandles, innerFlowLeftHandles, innerFlowRightHandles };
 }
 
 export function getDisplayText(

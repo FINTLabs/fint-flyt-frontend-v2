@@ -53,7 +53,7 @@ export default function CustomHandle({
                 />
             </div>
 
-            <HandleDisplay
+            {/* <HandleDisplay
                 position={position}
                 dataType={
                     dataType
@@ -63,7 +63,7 @@ export default function CustomHandle({
                         : 'STRING'
                 }
                 displayName={displayText}
-            />
+            /> */}
         </div>
     );
 }

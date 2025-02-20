@@ -3,11 +3,14 @@ import { VariableDeclaration } from '../types/Operation';
 import CustomHandle from './CustomHandle';
 import { ChevronRightDoubleCircleFillIcon } from '@navikt/aksel-icons';
 import { ColorThemes } from './ColorThemes';
+import InnerHandle from './InnerHandle';
 
 interface BaseNodeProps {
     title: string;
     leftHandles?: VariableDeclaration[];
     rightHandles?: VariableDeclaration[];
+    innerFlowLeftHandles?: VariableDeclaration[];
+    innerFlowRightHandles?: VariableDeclaration[];
     selected: boolean;
     iconId: string;
     type: string;
@@ -18,6 +21,8 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
     title,
     leftHandles,
     rightHandles,
+    innerFlowLeftHandles,
+    innerFlowRightHandles,
     selected,
     iconId,
     type,
@@ -28,7 +33,7 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
 
     const dynamicHeight = `${maxHandles > 2 ? maxHandles * 2 : 5}rem`;
 
-    const colorPalette = ColorThemes[1];
+    const colorPalette = ColorThemes[5];
     const isInnerFlow = type === 'innerflow';
 
     const operationBgColor = selected
@@ -79,9 +84,25 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
                         {isInnerFlow && (
                             // side bars
                             <>
+                                {/* Left Side Bar */}
                                 <div
                                     style={{ height: '100%' }}
-                                    className={`${sidebarColor} w-10 absolute left-0 top-0 border-r border-black rounded-l-2xl`}></div>
+                                    className={`${sidebarColor} w-10 absolute left-0 top-0 border-r border-black rounded-l-2xl flex items-center`}>
+                                    <div className="absolute right-0">
+                                        {innerFlowLeftHandles?.map((handle, index) => (
+                                            <InnerHandle
+                                                key={index}
+                                                position={Position.Right}
+                                                id={handle.key}
+                                                displayText={handle.displayText}
+                                                isArray={false}
+                                                dataType={handle.dataType}
+                                                isValidConnection={isValidConnection}
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
+                                {/* Right side */}
                                 <div
                                     style={{ height: '100%' }}
                                     className={`${sidebarColor} w-10 absolute right-0 top-0 border-l border-black rounded-r-2xl`}></div>

@@ -18,7 +18,10 @@ const InnerFlowNode: React.FC<Props> = ({ data, type, selected }) => {
     console.log(data);
     const displayText = getDisplayText(type, data);
     const iconId = getIconId(type, data);
-    const { leftHandles, rightHandles } = getHandles(type, data);
+    const { leftHandles, rightHandles, innerFlowLeftHandles, innerFlowRightHandles } = getHandles(
+        type,
+        data
+    );
 
     const isValidConnection = (connection: Connection) => {
         console.log('Connection Attempt:', connection);
@@ -30,6 +33,8 @@ const InnerFlowNode: React.FC<Props> = ({ data, type, selected }) => {
             title={displayText}
             leftHandles={leftHandles}
             rightHandles={rightHandles}
+            innerFlowLeftHandles={innerFlowLeftHandles}
+            innerFlowRightHandles={innerFlowRightHandles}
             selected={selected}
             iconId={iconId}
             type={type}
