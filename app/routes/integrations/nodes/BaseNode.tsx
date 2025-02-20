@@ -5,10 +5,11 @@ import { ChevronRightDoubleCircleFillIcon } from '@navikt/aksel-icons';
 
 interface BaseNodeProps {
     title: string;
-    leftHandles: VariableDeclaration[];
-    rightHandles: VariableDeclaration[];
+    leftHandles?: VariableDeclaration[];
+    rightHandles?: VariableDeclaration[];
     selected: boolean;
     iconId: string;
+    type: string;
     isValidConnection: (connection: Connection) => boolean;
 }
 
@@ -18,10 +19,11 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
     rightHandles,
     selected,
     iconId,
+    type,
     isValidConnection,
 }) => {
     const maxHandles =
-        leftHandles.length > rightHandles.length ? leftHandles.length : rightHandles.length;
+        !leftHandles || !rightHandles ? 0 : Math.max(leftHandles.length, rightHandles.length);
 
     const dynamicHeight = `${maxHandles > 2 ? maxHandles * 2 : 5}rem`;
 
@@ -29,12 +31,16 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
     const backgroundDesign = selected
         ? designProfile.BackgroundColorselected
         : designProfile.BackgroundColorDefault;
+
+    const isInnerFlow = type === 'innerflow';
+
+    const innerFlowDesign = 'w-80 min-h-40 bg-white';
     return (
         <div className="">
             <div className={`flex justify-center ${selected ? '' : ''}`}>
                 {/* Left handles */}
                 <div className="flex justify-center flex-col">
-                    {leftHandles.map((handle, index) => (
+                    {leftHandles?.map((handle, index) => (
                         <CustomHandle
                             key={index}
                             position={Position.Left}
@@ -49,21 +55,35 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
 
                 <div className="relative flex flex-col items-center">
                     {/* Display text centered above the rounded box */}
-                    <p className="absolute top-[-2.5rem] left-1/2 -translate-x-1/2 text-center text-xl px-2 whitespace-nowrap">
+                    <p
+                        className={`absolute top-[-2.5rem] left-1/2 -translate-x-1/2 text-center text-xl px-2 whitespace-nowrap`}>
                         {title}
                     </p>
 
-                    {/* Rounded box */}
+                    {/* Operation box */}
                     <div
                         style={{ height: dynamicHeight }}
-                        className={`relative ${backgroundDesign} w-20 rounded-2xl flex flex-col items-center justify-center border border-black p-2`}>
+                        className={`relative ${backgroundDesign} ${isInnerFlow ? innerFlowDesign : 'w-20'} rounded-2xl flex flex-col items-center justify-center border border-black p-2`}>
                         {renderIcon(iconId)}
+
+                        {/* Innerflow custom styles */}
+                        {isInnerFlow && (
+                            // left panel
+                            <>
+                                <div
+                                    style={{ height: '100%' }}
+                                    className={`bg-sand w-10 absolute left-0 top-0 border-r border-black rounded-l-2xl`}></div>
+                                <div
+                                    style={{ height: '100%' }}
+                                    className={`bg-sand w-10 absolute right-0 top-0 border-l border-black rounded-r-2xl `}></div>
+                            </>
+                        )}
                     </div>
                 </div>
 
                 {/* Right handles */}
                 <div className="flex justify-center flex-col">
-                    {rightHandles.map((handle, index) => (
+                    {rightHandles?.map((handle, index) => (
                         <CustomHandle
                             key={index}
                             position={Position.Right}

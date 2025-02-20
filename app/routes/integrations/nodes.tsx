@@ -3,216 +3,44 @@ import { Node } from 'reactflow';
 export default [
     {
         id: '1',
-        type: 'operation',
+        type: 'innerflow',
         position: {
             x: 0,
             y: 200,
         },
         data: {
-            operationIdUniqueForCategory: 'adder tall',
-            displayText: 'Adder tall',
-            iconId: 'ChevronRightDoubleCircleFillIcon',
-            operationVariables: {
-                inputVariables: [
-                    {
-                        order: 2,
-                        key: 'second_tall',
-                        displayText: 'Second tall',
-                        dataType: {
-                            category: 'INTEGER',
+            outerOperation: {
+                operationIdUniqueForCategory: 'inner_flow_for_each',
+                displayText: 'Handling for hvert element i samling',
+                iconId: 'ChevronRightDoubleCircleFillIcon',
+                typeParameters: [],
+                operationVariables: {
+                    inputVariables: [
+                        {
+                            order: 1,
+                            key: 'input_1',
+                            displayText: 'Samling',
+                            dataType: {
+                                category: 'LIST',
+                                elementType: { category: 'STRING' },
+                            },
                         },
-                    },
-                    {
-                        order: 1,
-                        key: 'first_tall',
-                        displayText: '1 Tall',
-                        dataType: {
-                            category: 'INTEGER',
-                        },
-                    },
-                    {
-                        order: 5,
-                        key: 'fifth_tall',
-                        displayText: '5 Tall',
-                        dataType: {
-                            category: 'INTEGER',
-                        },
-                    },
-                    {
-                        order: 3,
-                        key: 'third_tall',
-                        displayText: '3 Tall',
-                        dataType: {
-                            category: 'INTEGER',
-                        },
-                    },
-                    {
-                        order: 4,
-                        key: 'fourth_tall',
-                        displayText: '4 Tall',
-                        dataType: {
-                            category: 'INTEGER',
-                        },
-                    },
-                    {
-                        order: 5,
-                        key: 'fifth_tall_alt',
-                        displayText: '4 Tall',
-                        dataType: {
-                            category: 'INTEGER',
-                        },
-                    },
-                    {
-                        order: 6,
-                        key: 'sixth_tall',
-                        displayText: '4 Tall',
-                        dataType: {
-                            category: 'INTEGER',
-                        },
-                    },
-                ],
-                outputVariables: [
-                    {
-                        order: 1,
-                        key: 'result',
-                        displayText: 'Result',
-                        dataType: {
-                            category: 'INTEGER',
-                        },
-                    },
-                ],
+                    ],
+                    outputVariables: null,
+                },
             },
-        },
-    },
-
-    {
-        id: '2',
-        type: 'operation',
-        position: {
-            x: 400,
-            y: 100,
-        },
-        data: {
-            operationIdUniqueForCategory: 'adder tall',
-            displayText: 'Multipliser Double tall',
-            iconId: 'ChevronRightDoubleCircleFillIcon',
-            operationVariables: {
-                inputVariables: [
-                    {
-                        order: 2,
-                        key: 'second_tall',
-                        displayText: 'Second tall',
-                        dataType: {
-                            category: 'DECIMAL',
-                        },
-                    },
-                    {
-                        order: 1,
-                        key: 'first_tall',
-                        displayText: 'First Tall',
-                        dataType: {
-                            category: 'DECIMAL',
-                        },
-                    },
-                ],
-                outputVariables: [
-                    {
-                        order: 1,
-                        key: 'result',
-                        displayText: 'Result',
-                        dataType: {
-                            category: 'DECIMAL',
-                        },
-                    },
-                ],
-            },
-        },
-    },
-    {
-        id: '3',
-        type: 'operation',
-        position: {
-            x: 400,
-            y: 500,
-        },
-        data: {
-            operationIdUniqueForCategory: 'fsfsdlfl',
-            displayText: 'Og (Boolean)',
-            iconId: 'ChevronRightDoubleCircleFillIcon',
-            operationVariables: {
-                inputVariables: [
-                    {
-                        order: 2,
-                        key: 'second_tall',
-                        displayText: 'Second condition',
-                        dataType: {
-                            category: 'BOOLEAN',
-                        },
-                    },
-                    {
-                        order: 1,
-                        key: 'first_tall',
-                        displayText: 'First condition',
-                        dataType: {
-                            category: 'BOOLEAN',
-                        },
-                    },
-                ],
-                outputVariables: [
-                    {
-                        order: 1,
-                        key: 'result',
-                        displayText: 'Result condition',
-                        dataType: {
-                            category: 'BOOLEAN',
-                        },
-                    },
-                ],
-            },
-        },
-    },
-    {
-        id: '4',
-        type: 'operation',
-        position: {
-            x: 850,
-            y: 280,
-        },
-        data: {
-            operationIdUniqueForCategory: 'xxxx',
-            displayText: 'Opprett Samling',
-            iconId: 'ChevronRightDoubleCircleFillIcon',
-            operationVariables: {
+            innerFlowVariables: {
                 inputVariables: [
                     {
                         order: 1,
-                        key: 'xx',
-                        displayText: 'Item 1',
-                        dataType: {
-                            category: 'STRING',
-                        },
-                    },
-                    {
-                        order: 2,
-                        key: 'xx',
-                        displayText: 'Item 2',
-                        dataType: {
-                            category: 'STRING',
-                        },
+                        key: 'inner_input_1',
+                        displayText: 'Inner Input 1',
+                        dataType: { category: 'INTEGER' },
                     },
                 ],
-                outputVariables: [
-                    {
-                        order: 1,
-                        key: 'xxx',
-                        displayText: 'Samlet',
-                        dataType: {
-                            category: 'LIST',
-                            elementType: { category: 'STRING' },
-                        },
-                    },
-                ],
+                outputVariables: null,
             },
+            locked: false,
         },
     },
 ] as Node[];
