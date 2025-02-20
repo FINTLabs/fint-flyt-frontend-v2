@@ -25,7 +25,7 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
 
     const dynamicHeight = `${maxHandles > 2 ? maxHandles * 2 : 5}rem`;
 
-    const designProfile = designProfiles[1];
+    const designProfile = designProfiles[7];
     const backgroundDesign = selected
         ? designProfile.BackgroundColorselected
         : designProfile.BackgroundColorDefault;
@@ -112,7 +112,7 @@ export const designProfiles: Record<string, DesignProfile> = {
     4: {
         // Tailwind Orange Theme
         BackgroundColorDefault: 'bg-[#f8ecda]',
-        BackgroundColorselected: 'bg-orange-300 ring-2 ring-gray-700/40 shadow-sm shadow-gray-500',
+        BackgroundColorselected: 'bg-orange-400 ring-2 ring-gray-700/40 shadow-sm shadow-gray-500',
     },
     5: {
         // Rose Theme
@@ -125,6 +125,6 @@ export const designProfiles: Record<string, DesignProfile> = {
     },
     7: {
         BackgroundColorDefault: 'bg-blue-300',
-        BackgroundColorselected: 'bg-blue-400 ring-2 ring-blue-700/40 shadow-sm shadow-blue-500',
+        BackgroundColorselected: 'bg-blue-500 ring-2 ring-blue-700/40 shadow-sm shadow-blue-500',
     },
 };
