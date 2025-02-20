@@ -33,7 +33,7 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
 
     const dynamicHeight = `${maxHandles > 2 ? maxHandles * 2 : 5}rem`;
 
-    const colorPalette = ColorThemes[5];
+    const colorPalette = ColorThemes[1];
     const isInnerFlow = type === 'innerflow';
 
     const operationBgColor = selected
@@ -44,7 +44,7 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
     const innerFlowBgColor = selected
         ? colorPalette.InnerFlowBgColorSelected
         : colorPalette.InnerFlowBgColorDefault;
-    const innerFlowDesign = `w-80 min-h-40 ${innerFlowBgColor}`;
+    const innerFlowDesign = `w-96 min-h-40 ${innerFlowBgColor}`;
 
     const sidebarColor = selected
         ? colorPalette.InnerFlowBgColorSideBarsSelected
@@ -78,7 +78,12 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
                     <div
                         style={{ height: dynamicHeight }}
                         className={`relative ${isInnerFlow ? innerFlowDesign : operationDesign} rounded-2xl flex flex-col items-center justify-center border border-black p-2`}>
-                        {renderIcon(iconId, colorPalette.iconColor, colorPalette.iconStrokeColor)}
+                        {renderIcon(
+                            iconId,
+                            colorPalette.iconColor,
+                            colorPalette.iconStrokeColor,
+                            isInnerFlow
+                        )}
 
                         {/* Innerflow custom styles */}
                         {isInnerFlow && (
@@ -87,22 +92,35 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
                                 {/* Left Side Bar */}
                                 <div
                                     style={{ height: '100%' }}
-                                    className={`${sidebarColor} w-10 absolute left-0 top-0 border-r border-black rounded-l-2xl flex items-center`}>
-                                    <div className="absolute right-0">
-                                        {innerFlowLeftHandles?.map((handle, index) => (
-                                            <InnerHandle
-                                                key={index}
-                                                position={Position.Right}
-                                                id={handle.key}
-                                                displayText={handle.displayText}
-                                                isArray={false}
-                                                dataType={handle.dataType}
-                                                isValidConnection={isValidConnection}
-                                            />
-                                        ))}
-                                    </div>
+                                    className={`${sidebarColor} w-10 absolute left-0 top-0 border-r border-black rounded-l-2xl flex items-center`}></div>
+
+                                <div className="absolute left-10">
+                                    {innerFlowLeftHandles?.map((handle, index) => (
+                                        <InnerHandle
+                                            key={index}
+                                            position={Position.Right}
+                                            id={handle.key}
+                                            displayText={handle.displayText}
+                                            isArray={false}
+                                            dataType={handle.dataType}
+                                            isValidConnection={isValidConnection}
+                                        />
+                                    ))}
                                 </div>
                                 {/* Right side */}
+                                <div className="absolute right-10">
+                                    {innerFlowRightHandles?.map((handle, index) => (
+                                        <InnerHandle
+                                            key={index}
+                                            position={Position.Left}
+                                            id={handle.key}
+                                            displayText={handle.displayText}
+                                            isArray={false}
+                                            dataType={handle.dataType}
+                                            isValidConnection={isValidConnection}
+                                        />
+                                    ))}
+                                </div>
                                 <div
                                     style={{ height: '100%' }}
                                     className={`${sidebarColor} w-10 absolute right-0 top-0 border-l border-black rounded-r-2xl`}></div>
@@ -130,25 +148,34 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
     );
 };
 
-const renderIcon = (iconId: string, iconColor: string, iconStrokeColor: string) => {
+const renderIcon = (
+    iconId: string,
+    iconColor: string,
+    iconStrokeColor: string,
+    placeOnTop = true,
+    isHidden = false
+) => {
     const outlineWidth = '0.5px';
 
+    const placeOnTopDesign = placeOnTop ? 'absolute top-4' : '';
     if (iconId === 'ChevronRightDoubleCircleFillIcon') {
         return <ChevronRightDoubleCircleFillIcon title="a11y-title" fontSize="40px" />;
     } else {
         return (
-            <span
-                className={`material-symbols-outlined text-left text-[40px] ${iconColor}`}
-                style={{
-                    textShadow: `
+            <div className={placeOnTopDesign}>
+                <span
+                    className={`material-symbols-outlined text-left text-[30px] ${iconColor} ${isHidden ? 'hidden' : ''}`}
+                    style={{
+                        textShadow: `
                     -${outlineWidth} -${outlineWidth} 0 ${iconStrokeColor},
                     ${outlineWidth} -${outlineWidth} 0 ${iconStrokeColor},
                     -${outlineWidth} ${outlineWidth} 0 ${iconStrokeColor},
                     ${outlineWidth} ${outlineWidth} 0 ${iconStrokeColor}
                 `,
-                }}>
-                {iconId}
-            </span>
+                    }}>
+                    {iconId}
+                </span>
+            </div>
         );
     }
 };

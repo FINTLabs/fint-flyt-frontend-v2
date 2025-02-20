@@ -43,4 +43,61 @@ export default [
             locked: false,
         },
     },
+
+    {
+        id: '2',
+        type: 'innerflow',
+        position: {
+            x: 240,
+            y: 550,
+        },
+        data: {
+            outerOperation: {
+                operationIdUniqueForCategory: 'inner_flow_map',
+                displayText: 'Handling med utdata for hvert element i samling',
+                iconId: 'dataset',
+                typeParameters: [],
+                operationVariables: {
+                    inputVariables: [
+                        {
+                            order: 1,
+                            key: 'input_2',
+                            displayText: 'Samling',
+                            dataType: { category: 'STRING' },
+                        },
+                    ],
+                    outputVariables: [
+                        {
+                            order: 1,
+                            key: 'output_2',
+                            displayText: 'Ny Samling',
+                            dataType: {
+                                category: 'LIST',
+                                elementType: { category: 'STRING' },
+                            },
+                        },
+                    ],
+                },
+            },
+            innerFlowVariables: {
+                inputVariables: [
+                    {
+                        order: 1,
+                        key: 'inner_input_2',
+                        displayText: 'Element A',
+                        dataType: { category: 'STRING' },
+                    },
+                ],
+                outputVariables: [
+                    {
+                        order: 1,
+                        key: 'inner_output_2',
+                        displayText: 'Element B',
+                        dataType: { category: 'STRING' },
+                    },
+                ],
+            },
+            locked: false,
+        },
+    },
 ] as Node[];

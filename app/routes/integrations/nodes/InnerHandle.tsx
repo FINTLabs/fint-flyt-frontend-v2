@@ -38,7 +38,7 @@ export default function CustomHandle({
 
     return (
         <div className={`flex gap-2 pb-1 items-center relative ${labelPlacement()} ${className}`}>
-            <div className={`relative`}>
+            <div className={`relative bg-black`}>
                 <Handle
                     type={position == Position.Right ? 'source' : 'target'}
                     position={position}
@@ -53,7 +53,7 @@ export default function CustomHandle({
                 />
             </div>
 
-            {/* <HandleDisplay
+            <HandleDisplay
                 position={position}
                 dataType={
                     dataType
@@ -63,7 +63,7 @@ export default function CustomHandle({
                         : 'STRING'
                 }
                 displayName={displayText}
-            /> */}
+            />
         </div>
     );
 }
