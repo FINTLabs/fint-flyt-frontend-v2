@@ -12,14 +12,14 @@ export default [
             outerOperation: {
                 operationIdUniqueForCategory: 'inner_flow_for_each',
                 displayText: 'Handling for hvert element i samling',
-                iconId: 'ChevronRightDoubleCircleFillIcon',
+                iconId: 'directory_sync',
                 typeParameters: [],
                 operationVariables: {
                     inputVariables: [
                         {
                             order: 1,
                             key: 'input_1',
-                            displayText: 'Samling',
+                            displayText: 'Inkommende Samling',
                             dataType: {
                                 category: 'LIST',
                                 elementType: { category: 'STRING' },

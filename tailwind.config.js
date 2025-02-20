@@ -5,6 +5,7 @@ module.exports = {
             colors: {
                 cl: '#3498db', // Replace with your desired color
                 sand: '#FFE6C1',
+                icon: '#ffdaa4',
             },
         },
     },
