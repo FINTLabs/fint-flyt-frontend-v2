@@ -69,10 +69,18 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
 
                 <div className="relative flex flex-col items-center">
                     {/* Display text centered above the rounded box */}
-                    <p
-                        className={`absolute top-[-2.5rem] left-1/2 -translate-x-1/2 text-center text-xl px-2 whitespace-nowrap`}>
-                        {title}
-                    </p>
+
+                    <div className="absolute top-[-2.5rem] left-1/2 -translate-x-1/2 text-center text-xl px-2 whitespace-nowrap">
+                        <span className="relative flex flex-row">
+                            {/* {renderIcon(
+                                iconId,
+                                colorPalette.iconColor,
+                                colorPalette.iconStrokeColor,
+                                false
+                            )} */}
+                            <p className={``}>{title}</p>
+                        </span>
+                    </div>
 
                     {/* Operation box */}
                     <div
@@ -152,7 +160,7 @@ const renderIcon = (
     iconId: string,
     iconColor: string,
     iconStrokeColor: string,
-    placeOnTop = true,
+    placeOnTop = false,
     isHidden = false
 ) => {
     const outlineWidth = '0.5px';
@@ -162,20 +170,18 @@ const renderIcon = (
         return <ChevronRightDoubleCircleFillIcon title="a11y-title" fontSize="40px" />;
     } else {
         return (
-            <div className={placeOnTopDesign}>
-                <span
-                    className={`material-symbols-outlined text-left text-[30px] ${iconColor} ${isHidden ? 'hidden' : ''}`}
-                    style={{
-                        textShadow: `
+            <span
+                className={`${placeOnTopDesign} material-symbols-outlined text-left text-[30px] ${iconColor} ${isHidden ? 'hidden' : ''}`}
+                style={{
+                    textShadow: `
                     -${outlineWidth} -${outlineWidth} 0 ${iconStrokeColor},
                     ${outlineWidth} -${outlineWidth} 0 ${iconStrokeColor},
                     -${outlineWidth} ${outlineWidth} 0 ${iconStrokeColor},
                     ${outlineWidth} ${outlineWidth} 0 ${iconStrokeColor}
                 `,
-                    }}>
-                    {iconId}
-                </span>
-            </div>
+                }}>
+                {iconId}
+            </span>
         );
     }
 };
