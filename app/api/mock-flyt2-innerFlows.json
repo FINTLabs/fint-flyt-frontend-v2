@@ -4,7 +4,7 @@
             "outerOperation": {
                 "operationIdUniqueForCategory": "inner_flow_for_each",
                 "displayText": "Handling for hvert element i samling",
-                "iconId": "inner_flow_icon",
+                "iconId": "directory_sync",
                 "typeParameters": [],
                 "operationVariables": {
                     "inputVariables": [
@@ -38,7 +38,7 @@
             "outerOperation": {
                 "operationIdUniqueForCategory": "inner_flow_map",
                 "displayText": "Handling med utdata for hvert element i samling",
-                "iconId": "inner_flow_icon_2",
+                "iconId": "dataset",
                 "typeParameters": [],
                 "operationVariables": {
                     "inputVariables": [
@@ -87,7 +87,7 @@
             "outerOperation": {
                 "operationIdUniqueForCategory": "inner_flow_filter",
                 "displayText": "Filtrer samling",
-                "iconId": "inner_flow_icon_2",
+                "iconId": "filter_alt",
                 "typeParameters": [],
                 "operationVariables": {
                     "inputVariables": [

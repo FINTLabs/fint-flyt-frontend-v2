@@ -33,7 +33,7 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
 
     const dynamicHeight = `${maxHandles > 2 ? maxHandles * 2 : 5}rem`;
 
-    const colorPalette = ColorThemes[1];
+    const colorPalette = ColorThemes[5];
     const isInnerFlow = type === 'innerflow';
 
     const operationBgColor = selected
@@ -68,8 +68,7 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
                 </div>
 
                 <div className="relative flex flex-col items-center">
-                    {/* Display text centered above the rounded box */}
-
+                    {/* Title centered above the rounded box */}
                     <div className="absolute top-[-2.5rem] left-1/2 -translate-x-1/2 text-center text-xl px-2 whitespace-nowrap">
                         <span className="relative flex flex-row">
                             {/* {renderIcon(
@@ -115,7 +114,7 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
                                         />
                                     ))}
                                 </div>
-                                {/* Right side */}
+                                {/* Right side bar */}
                                 <div className="absolute right-10">
                                     {innerFlowRightHandles?.map((handle, index) => (
                                         <InnerHandle

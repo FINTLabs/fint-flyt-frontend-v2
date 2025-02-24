@@ -100,4 +100,60 @@ export default [
             locked: false,
         },
     },
+    {
+        id: '3',
+        type: 'innerflow',
+        position: {
+            x: 240,
+            y: 850,
+        },
+        data: {
+            outerOperation: {
+                operationIdUniqueForCategory: 'inner_flow_filter',
+                displayText: 'Filtrer samling',
+                iconId: 'filter_alt',
+                typeParameters: [],
+                operationVariables: {
+                    inputVariables: [
+                        {
+                            order: 1,
+                            key: 'input_2',
+                            displayText: 'Samling',
+                            dataType: { category: 'STRING' },
+                        },
+                    ],
+                    outputVariables: [
+                        {
+                            order: 1,
+                            key: 'output_2',
+                            displayText: 'Filtrert Samling',
+                            dataType: {
+                                category: 'LIST',
+                                elementType: { category: 'STRING' },
+                            },
+                        },
+                    ],
+                },
+            },
+            innerFlowVariables: {
+                inputVariables: [
+                    {
+                        order: 1,
+                        key: 'inner_input_2',
+                        displayText: 'Element A',
+                        dataType: { category: 'STRING' },
+                    },
+                ],
+                outputVariables: [
+                    {
+                        order: 1,
+                        key: 'inner_output_2',
+                        displayText: 'Element B',
+                        dataType: { category: 'BOOLEAN' },
+                    },
+                ],
+            },
+            locked: false,
+        },
+    },
 ] as Node[];
