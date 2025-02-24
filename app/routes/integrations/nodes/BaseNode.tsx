@@ -2,7 +2,7 @@ import { Connection, Handle, Position } from 'reactflow';
 import { VariableDeclaration } from '../types/Operation';
 import CustomHandle from './CustomHandle';
 import { ChevronRightDoubleCircleFillIcon } from '@navikt/aksel-icons';
-import { ColorThemes } from './ColorThemes';
+import { ColorThemes, getColorTheme as getColorTheme } from './ColorThemes';
 import InnerHandle from './InnerHandle';
 
 interface BaseNodeProps {
@@ -33,22 +33,15 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
 
     const dynamicHeight = `${maxHandles > 2 ? maxHandles * 2 : 5}rem`;
 
-    const colorPalette = ColorThemes[1];
     const isInnerFlow = type === 'innerflow';
 
-    const operationBgColor = selected
-        ? colorPalette.OperationBgColorselected
-        : colorPalette.OperationBgColorDefault;
+    const operationBgColor = getOperationColor(selected);
     const operationDesign = `${operationBgColor} w-20`;
 
-    const innerFlowBgColor = selected
-        ? colorPalette.InnerFlowBgColorSelected
-        : colorPalette.InnerFlowBgColorDefault;
+    const innerFlowBgColor = getInnerFlowBgColor(selected);
     const innerFlowDesign = `w-96 min-h-40 ${innerFlowBgColor}`;
 
-    const sidebarColor = selected
-        ? colorPalette.InnerFlowBgColorSideBarsSelected
-        : colorPalette.InnerFlowBgColorSideBarsDefault;
+    const sidebarColor = getSideBarColor(selected);
     return (
         <div className="">
             <div className={`flex justify-center ${selected ? '' : ''}`}>
@@ -85,12 +78,7 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
                     <div
                         style={{ height: dynamicHeight }}
                         className={`relative ${isInnerFlow ? innerFlowDesign : operationDesign} rounded-2xl flex flex-col items-center justify-center border border-black p-2`}>
-                        {renderIcon(
-                            iconId,
-                            colorPalette.iconColor,
-                            colorPalette.iconStrokeColor,
-                            isInnerFlow
-                        )}
+                        {renderIcon(iconId, isInnerFlow)}
 
                         {/* Innerflow custom styles */}
                         {isInnerFlow && (
@@ -155,14 +143,12 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
     );
 };
 
-const renderIcon = (
-    iconId: string,
-    iconColor: string,
-    iconStrokeColor: string,
-    placeOnTop = false,
-    isHidden = false
-) => {
+const renderIcon = (iconId: string, placeOnTop = false, isHidden = false) => {
     const outlineWidth = '0.5px';
+
+    const colorPalette = getColorTheme();
+    const iconColor = colorPalette.iconColor;
+    const iconStrokeColor = colorPalette.iconStrokeColor;
 
     const placeOnTopDesign = placeOnTop ? 'absolute top-4' : '';
     if (iconId === 'ChevronRightDoubleCircleFillIcon') {
@@ -184,3 +170,19 @@ const renderIcon = (
         );
     }
 };
+function getSideBarColor(selected: boolean) {
+    const colorPalette = getColorTheme();
+    return selected
+        ? colorPalette.InnerFlowBgColorSideBarsSelected
+        : colorPalette.InnerFlowBgColorSideBarsDefault;
+}
+
+function getInnerFlowBgColor(selected: boolean) {
+    const colorPalette = getColorTheme();
+    return selected ? colorPalette.InnerFlowBgColorSelected : colorPalette.InnerFlowBgColorDefault;
+}
+
+function getOperationColor(selected: boolean) {
+    const colorPalette = getColorTheme();
+    return selected ? colorPalette.OperationBgColorselected : colorPalette.OperationBgColorDefault;
+}

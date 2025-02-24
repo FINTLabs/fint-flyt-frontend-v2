@@ -9,7 +9,11 @@ interface ColorProfile {
     iconStrokeColor: string;
 }
 
-export const ColorThemes: Record<string, ColorProfile> = {
+export function getColorTheme() {
+    return ColorThemes[2];
+}
+
+const ColorThemes: Record<string, ColorProfile> = {
     1: {
         // Novari Orange Theme
         OperationBgColorDefault: 'bg-[#FFE6C1]',
