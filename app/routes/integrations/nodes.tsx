@@ -156,4 +156,86 @@ export default [
             locked: false,
         },
     },
+    {
+        id: '4',
+        type: 'innerflow',
+        position: {
+            x: 640,
+            y: 200,
+        },
+        data: {
+            outerOperation: {
+                operationIdUniqueForCategory: 'inner_flow_parameterized',
+                displayText: 'MAP: Parameterized XXX',
+                iconId: 'dataset',
+                typeParameters: [
+                    {
+                        typeParameterId: 'InputElement',
+                        displayText: 'Elementer i input samling',
+                        constraints: null,
+                    },
+                    {
+                        typeParameterId: 'OutputElement',
+                        displayText: 'Elementer i output samling',
+                        constraints: null,
+                    },
+                ],
+                operationVariables: {
+                    inputVariables: [
+                        {
+                            order: 1,
+                            key: 'input_2',
+                            displayText: 'Samling',
+                            dataType: {
+                                category: 'LIST',
+                                elementType: {
+                                    category: 'PARAMETERIZED',
+                                    typeParameterId: 'InputElement',
+                                },
+                            },
+                        },
+                    ],
+                    outputVariables: [
+                        {
+                            order: 1,
+                            key: 'output_2',
+                            displayText: 'Filtrert Samling',
+                            dataType: {
+                                category: 'LIST',
+                                elementType: {
+                                    category: 'PARAMETERIZED',
+                                    typeParameterId: 'OutputElement',
+                                },
+                            },
+                        },
+                    ],
+                },
+            },
+            innerFlowVariables: {
+                inputVariables: [
+                    {
+                        order: 1,
+                        key: 'inner_input_2',
+                        displayText: 'Element A',
+                        dataType: {
+                            category: 'PARAMETERIZED',
+                            typeParameterId: 'InputElement',
+                        },
+                    },
+                ],
+                outputVariables: [
+                    {
+                        order: 1,
+                        key: 'inner_output_2',
+                        displayText: 'Element B',
+                        dataType: {
+                            category: 'PARAMETERIZED',
+                            typeParameterId: 'OutputElement',
+                        },
+                    },
+                ],
+            },
+            locked: false,
+        },
+    },
 ] as Node[];
