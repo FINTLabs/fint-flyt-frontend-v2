@@ -3,6 +3,7 @@ import VariableInlineNode from './VariableInlineNode';
 import HandleOptions from './HandleOptions';
 import HandleDisplay from './HandleDisplay';
 import { CategoryType, DataType, ListType, ParameterizedType, RecordType } from '~/types/types';
+import { getColorTheme } from './ColorThemes';
 
 interface HandleProps {
     position: Position;
@@ -47,17 +48,23 @@ export default function CustomHandle({
         }
     }
 
+    const colorTheme = getColorTheme();
+    const handleBgColor =
+        position == Position.Left
+            ? `${colorTheme.InputHandleBgColor}`
+            : `${colorTheme.OutputHandleBgColor}`;
+
+    const handleDesign = `absolute z-10 !w-4 !h-4 !left-[-8px] !border !border-black`;
+
+    const design = `${handleDesign} !${handleBgColor}`;
+    console.log(design);
     return (
         <div className={`flex gap-2 pb-1 items-center relative ${labelPlacement()} ${className}`}>
-            <div className={`relative`}>
+            <div className={`relative bg-red-200`}>
                 <Handle
                     type={position == Position.Right ? 'source' : 'target'}
                     position={position}
-                    className={
-                        position == Position.Left
-                            ? 'absolute z-10 !w-4 !h-4 !left-[-8px] !bg-orange-300 !border !border-black'
-                            : 'absolute z-10 !w-4 !h-4 !left-[-8px] !bg-amber-700 !border !border-black'
-                    }
+                    className={design}
                     id={id}
                     key={id}
                     isValidConnection={isValidConnection}

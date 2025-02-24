@@ -7,6 +7,8 @@ interface ColorProfile {
     InnerFlowBgColorSideBarsSelected: string;
     iconColor: string;
     iconStrokeColor: string;
+    InputHandleBgColor: string;
+    OutputHandleBgColor: string;
 }
 
 export function getColorTheme() {
@@ -24,6 +26,8 @@ const ColorThemes: Record<string, ColorProfile> = {
         InnerFlowBgColorSideBarsSelected: 'bg-orange-300',
         iconColor: 'text-[#b95b1b]',
         iconStrokeColor: 'stroke-orange-900',
+        InputHandleBgColor: 'bg-orange-500',
+        OutputHandleBgColor: 'bg-amber-700',
     },
     2: {
         OperationBgColorDefault: 'bg-gray-200',
@@ -34,6 +38,8 @@ const ColorThemes: Record<string, ColorProfile> = {
         InnerFlowBgColorSideBarsSelected: 'bg-blue-200',
         iconColor: 'text-blue-600',
         iconStrokeColor: 'stroke-blue-900',
+        InputHandleBgColor: 'bg-orange-300',
+        OutputHandleBgColor: 'bg-amber-700',
     },
     3: {
         // Light Orange
@@ -47,6 +53,8 @@ const ColorThemes: Record<string, ColorProfile> = {
         InnerFlowBgColorSideBarsSelected: 'bg-[#ffefcc]',
         iconColor: 'text-[#ff9900]',
         iconStrokeColor: 'stroke-[#cc7a00]',
+        InputHandleBgColor: 'bg-orange-500',
+        OutputHandleBgColor: 'bg-[#ff9900]',
     },
     4: {
         // Tailwind Orange Theme
@@ -58,6 +66,8 @@ const ColorThemes: Record<string, ColorProfile> = {
         InnerFlowBgColorSideBarsSelected: 'bg-orange-200',
         iconColor: 'text-orange-500',
         iconStrokeColor: 'stroke-orange-800',
+        InputHandleBgColor: 'bg-orange-300',
+        OutputHandleBgColor: 'bg-orange-600',
     },
     5: {
         // Rose Theme
@@ -69,6 +79,8 @@ const ColorThemes: Record<string, ColorProfile> = {
         InnerFlowBgColorSideBarsSelected: 'bg-teal-300',
         iconColor: 'text-teal-600',
         iconStrokeColor: 'stroke-teal-900',
+        InputHandleBgColor: 'bg-teal-300',
+        OutputHandleBgColor: 'bg-teal-700',
     },
     6: {
         OperationBgColorDefault: 'bg-red-300',
@@ -79,6 +91,8 @@ const ColorThemes: Record<string, ColorProfile> = {
         InnerFlowBgColorSideBarsSelected: 'bg-red-300',
         iconColor: 'text-red-600',
         iconStrokeColor: 'stroke-red-900',
+        InputHandleBgColor: 'bg-red-300',
+        OutputHandleBgColor: 'bg-red-700',
     },
     7: {
         OperationBgColorDefault: 'bg-blue-300',
@@ -89,5 +103,7 @@ const ColorThemes: Record<string, ColorProfile> = {
         InnerFlowBgColorSideBarsSelected: 'bg-blue-300',
         iconColor: 'text-blue-600',
         iconStrokeColor: 'stroke-blue-900',
+        InputHandleBgColor: 'bg-blue-300',
+        OutputHandleBgColor: 'bg-blue-700',
     },
 };
