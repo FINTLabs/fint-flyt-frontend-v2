@@ -55,7 +55,7 @@ export default function CustomHandle({
 
             <HandleDisplay
                 position={position}
-                dataType={
+                category={
                     dataType
                         ? dataType.category === 'RECORD'
                             ? (dataType as RecordType).recordTypeDeclarationId

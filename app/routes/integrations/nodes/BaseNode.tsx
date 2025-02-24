@@ -33,7 +33,7 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
 
     const dynamicHeight = `${maxHandles > 2 ? maxHandles * 2 : 5}rem`;
 
-    const colorPalette = ColorThemes[5];
+    const colorPalette = ColorThemes[1];
     const isInnerFlow = type === 'innerflow';
 
     const operationBgColor = selected

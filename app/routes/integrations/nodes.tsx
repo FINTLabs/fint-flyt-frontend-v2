@@ -166,7 +166,7 @@ export default [
         data: {
             outerOperation: {
                 operationIdUniqueForCategory: 'inner_flow_parameterized',
-                displayText: 'MAP: Parameterized XXX',
+                displayText: 'MAP: Parameterized',
                 iconId: 'dataset',
                 typeParameters: [
                     {

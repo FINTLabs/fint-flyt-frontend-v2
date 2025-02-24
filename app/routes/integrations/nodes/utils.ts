@@ -36,7 +36,6 @@ export function getHandles(
     let innerFlowLeftHandles: VariableDeclaration[] = [];
     let innerFlowRightHandles: VariableDeclaration[] = [];
 
-    console.log(type);
     if (type === 'innerflow') {
         leftHandles = (data as InnerFlowOperationDeclaration).outerOperation.operationVariables
             .inputVariables;

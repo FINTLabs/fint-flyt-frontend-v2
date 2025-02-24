@@ -2,7 +2,7 @@ import { Connection, Handle, Position } from 'reactflow';
 import VariableInlineNode from './VariableInlineNode';
 import HandleOptions from './HandleOptions';
 import HandleDisplay from './HandleDisplay';
-import { DataType, RecordType } from '~/types/types';
+import { CategoryType, DataType, ListType, ParameterizedType, RecordType } from '~/types/types';
 
 interface HandleProps {
     position: Position;
@@ -36,6 +36,17 @@ export default function CustomHandle({
         }
     }
 
+    let typeParameterId = '';
+    if (dataType?.category === CategoryType.LIST) {
+        const listType = dataType as ListType;
+
+        if (listType.elementType.category === CategoryType.PARAMETERIZED) {
+            const parameterizedType = listType.elementType as ParameterizedType;
+            console.log(parameterizedType.typeParameterId);
+            typeParameterId = parameterizedType.typeParameterId;
+        }
+    }
+
     return (
         <div className={`flex gap-2 pb-1 items-center relative ${labelPlacement()} ${className}`}>
             <div className={`relative`}>
@@ -55,7 +66,7 @@ export default function CustomHandle({
 
             <HandleDisplay
                 position={position}
-                dataType={
+                category={
                     dataType
                         ? dataType.category === 'RECORD'
                             ? (dataType as RecordType).recordTypeDeclarationId
@@ -63,6 +74,7 @@ export default function CustomHandle({
                         : 'STRING'
                 }
                 displayName={displayText}
+                typeParameterId={typeParameterId}
             />
         </div>
     );

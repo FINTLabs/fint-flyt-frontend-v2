@@ -15,7 +15,6 @@ interface Props {
 }
 
 const InnerFlowNode: React.FC<Props> = ({ data, type, selected }) => {
-    console.log(data);
     const displayText = getDisplayText(type, data);
     const iconId = getIconId(type, data);
     const { leftHandles, rightHandles, innerFlowLeftHandles, innerFlowRightHandles } = getHandles(
