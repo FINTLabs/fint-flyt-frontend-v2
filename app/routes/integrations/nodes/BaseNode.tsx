@@ -2,7 +2,7 @@ import { Connection, Handle, Position } from 'reactflow';
 import { VariableDeclaration } from '../types/Operation';
 import CustomHandle from './CustomHandle';
 import { ChevronRightDoubleCircleFillIcon } from '@navikt/aksel-icons';
-import { ColorThemes, getColorTheme as getColorTheme } from './ColorThemes';
+import { getColorTheme } from './ColorThemes';
 import InnerHandle from './InnerHandle';
 
 interface BaseNodeProps {
@@ -35,13 +35,11 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
 
     const isInnerFlow = type === 'innerflow';
 
-    const operationBgColor = getOperationColor(selected);
-    const operationDesign = `${operationBgColor} w-20`;
+    const operationDesign = `${getOperationBgColors(selected)} w-20`;
 
-    const innerFlowBgColor = getInnerFlowBgColor(selected);
-    const innerFlowDesign = `w-96 min-h-40 ${innerFlowBgColor}`;
+    const innerFlowDesign = `w-96 min-h-40 ${getInnerFlowBgColors(selected)}`;
 
-    const sidebarColor = getSideBarColor(selected);
+    const sidebarColors = getSideBarColor(selected);
     return (
         <div className="">
             <div className={`flex justify-center ${selected ? '' : ''}`}>
@@ -87,7 +85,7 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
                                 {/* Left Side Bar */}
                                 <div
                                     style={{ height: '100%' }}
-                                    className={`${sidebarColor} w-10 absolute left-0 top-0 border-r border-black rounded-l-2xl flex items-center`}></div>
+                                    className={`${sidebarColors} w-10 absolute left-0 top-0 border-r border-black rounded-l-2xl flex items-center`}></div>
 
                                 <div className="absolute left-10">
                                     {innerFlowLeftHandles?.map((handle, index) => (
@@ -118,7 +116,7 @@ export const BaseNode: React.FC<BaseNodeProps> = ({
                                 </div>
                                 <div
                                     style={{ height: '100%' }}
-                                    className={`${sidebarColor} w-10 absolute right-0 top-0 border-l border-black rounded-r-2xl`}></div>
+                                    className={`${sidebarColors} w-10 absolute right-0 top-0 border-l border-black rounded-r-2xl`}></div>
                             </>
                         )}
                     </div>
@@ -177,12 +175,12 @@ function getSideBarColor(selected: boolean) {
         : colorPalette.InnerFlowBgColorSideBarsDefault;
 }
 
-function getInnerFlowBgColor(selected: boolean) {
+function getInnerFlowBgColors(selected: boolean) {
     const colorPalette = getColorTheme();
     return selected ? colorPalette.InnerFlowBgColorSelected : colorPalette.InnerFlowBgColorDefault;
 }
 
-function getOperationColor(selected: boolean) {
+function getOperationBgColors(selected: boolean) {
     const colorPalette = getColorTheme();
     return selected ? colorPalette.OperationBgColorselected : colorPalette.OperationBgColorDefault;
 }

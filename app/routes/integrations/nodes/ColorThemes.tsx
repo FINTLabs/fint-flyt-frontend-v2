@@ -10,7 +10,7 @@ interface ColorProfile {
 }
 
 export function getColorTheme() {
-    return ColorThemes[2];
+    return ColorThemes[7];
 }
 
 const ColorThemes: Record<string, ColorProfile> = {
