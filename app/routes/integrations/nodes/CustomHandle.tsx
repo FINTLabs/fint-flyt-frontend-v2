@@ -57,7 +57,9 @@ export default function CustomHandle({
     const handleDesign = `absolute z-10 !w-4 !h-4 !left-[-8px] !border !border-black`;
 
     const design = `${handleDesign} !${handleBgColor}`;
-    console.log(design);
+    console.log('2: ', handleBgColor);
+    // const design = 'absolute z-10 !w-4 !h-4 !left-[-8px] !border !border-black !bg-blue-300';
+    // console.log(design);
     return (
         <div className={`flex gap-2 pb-1 items-center relative ${labelPlacement()} ${className}`}>
             <div className={`relative bg-red-200`}>

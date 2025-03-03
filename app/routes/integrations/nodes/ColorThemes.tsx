@@ -12,7 +12,7 @@ interface ColorProfile {
 }
 
 export function getColorTheme() {
-    return ColorThemes[7];
+    return ColorThemes[1];
 }
 
 const ColorThemes: Record<string, ColorProfile> = {
@@ -26,7 +26,7 @@ const ColorThemes: Record<string, ColorProfile> = {
         InnerFlowBgColorSideBarsSelected: 'bg-orange-300',
         iconColor: 'text-[#b95b1b]',
         iconStrokeColor: 'stroke-orange-900',
-        InputHandleBgColor: 'bg-orange-500',
+        InputHandleBgColor: 'bg-orange-300',
         OutputHandleBgColor: 'bg-amber-700',
     },
     2: {
