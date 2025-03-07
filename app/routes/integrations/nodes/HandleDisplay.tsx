@@ -58,7 +58,7 @@ const HandleDisplay: React.FC<HandleDisplayProps> = ({
                 <div
                     className={`flex bg-[#FFE6C1] item-center z-20 justify-center flex-row text-sm mx-2 h-8 border rounded-2xl pl-2 px-2 mr-2 ${positioning} ${parameterizedClasses}`}>
                     <HandleIcon icon={icon}></HandleIcon>
-                    <DisplayName displayName={displayName}></DisplayName>
+                    <DisplayName title={displayName}></DisplayName>
                 </div>
             )}
         </>
