@@ -120,8 +120,8 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
     if (data.displayName === 'Saksnummer') return <Saksnumre data={data}></Saksnumre>;
     if (data.displayName === 'SaksId') return <Nummre data={data}></Nummre>;
     return (
-        <>
-            <p className="text-sm absolute top-[-18px]">Variable Node</p>
+        <div className="bg-blue-100 p-4 rounded-lg -z-1000">
+            {/* <p className="text-sm absolute top-[-18px]">Variable Node</p> */}
             <div className="border rounded-3xl">
                 <div className="flex items-center pr-2">
                     <DataTypeComponent data={data.data} />
@@ -134,7 +134,7 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
                 id={'123'}
                 className="absolute !right-[-8px] !z-10 !w-4 !h-4 !bg-teal-500"
             />
-        </>
+        </div>
     );
 };
 
