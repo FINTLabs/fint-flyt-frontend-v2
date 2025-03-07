@@ -123,13 +123,31 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
     if (data.displayName === 'Saksnummer') return <Saksnumre data={data}></Saksnumre>;
     if (data.displayName === 'SaksId') return <Nummre data={data}></Nummre>;
 
+    const [isComponentEditing, setIsComponentEditing] = useState(false);
     return (
-        <div className="bg-blue-100 p-4 rounded-lg -z-1000 border border-blue-500">
+        <div className="bg-blue-100 p-4 rounded-lg border border-blue-500">
+            {/* Element on hover only */}
+            <div className="absolute top-[-32px] -z-10 p-2 right-0 bg-blue-100 border border-blue-500">
+                <PencilIcon
+                    title="Rediger"
+                    className=""
+                    onClick={() => {
+                        setIsComponentEditing((prev) => !prev);
+                    }}
+                />
+                {/* <Button
+                    variant="tertiary"
+                    icon={<PencilIcon title="Rediger" onClick={() => {}} />}
+                /> */}
+            </div>
             <div className="border rounded-3xl">
                 <div className="flex items-center pr-2">
                     <DataTypeComponent data={data.data} />
 
-                    <VariableName initialName={data.displayName} />
+                    <VariableName
+                        initialName={data.displayName}
+                        isComponentEditing={isComponentEditing}
+                    />
                 </div>
             </div>
             <Handle
@@ -146,26 +164,29 @@ export default VariableNode;
 
 interface VariableNameProps {
     initialName: string;
+    isComponentEditing: boolean;
 }
 
-function VariableName({ initialName }: VariableNameProps) {
+function VariableName({ initialName, isComponentEditing }: VariableNameProps) {
     const [isEditing, setIsEditing] = useState(false);
 
     const [name, setName] = useState(initialName);
     return (
-        <>
+        <div className="ml-3 flex flex-row items-center">
             {!isEditing && (
                 <>
                     <DisplayName title={name}></DisplayName>
-                    <Button
-                        variant="tertiary"
-                        icon={
-                            <PencilIcon
-                                title="Rediger"
-                                onClick={() => setIsEditing((prev) => !prev)}
-                            />
-                        }
-                    />
+                    {isComponentEditing && (
+                        <Button
+                            variant="tertiary"
+                            icon={
+                                <PencilIcon
+                                    title="Rediger"
+                                    onClick={() => setIsEditing((prev) => !prev)}
+                                />
+                            }
+                        />
+                    )}
                 </>
             )}
             {isEditing && (
@@ -198,6 +219,6 @@ function VariableName({ initialName }: VariableNameProps) {
                     />
                 </div>
             )}
-        </>
+        </div>
     );
 }
