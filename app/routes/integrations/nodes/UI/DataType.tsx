@@ -36,7 +36,6 @@ function Label({ title, zIndex }: LabelProps) {
             className={`
                     p-[5px] border border-gray-500/50 bg-[#FFE6C1]
                     rounded-tr-3xl rounded-br-3xl 
-                    first:rounded-tl-3xl first:rounded-bl-3xl 
                     first:ml-0
                     relative ml-[-15px]
                     first:pr-5 first:pl-5

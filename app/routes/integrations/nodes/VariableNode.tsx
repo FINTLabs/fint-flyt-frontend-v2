@@ -2,6 +2,8 @@ import { DataType } from '~/types/types';
 import DataTypeComponent from './UI/DataType';
 import { DisplayName } from './UI/DisplayName';
 import { Handle, Position } from 'reactflow';
+import { Button } from '@navikt/ds-react';
+import { PencilIcon } from '@navikt/aksel-icons';
 
 interface NodeData {
     data: DataType;
@@ -120,12 +122,12 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
     if (data.displayName === 'Saksnummer') return <Saksnumre data={data}></Saksnumre>;
     if (data.displayName === 'SaksId') return <Nummre data={data}></Nummre>;
     return (
-        <div className="bg-blue-100 p-4 rounded-lg -z-1000">
-            {/* <p className="text-sm absolute top-[-18px]">Variable Node</p> */}
+        <div className="bg-blue-100 p-4 rounded-lg -z-1000 border border-blue-500">
             <div className="border rounded-3xl">
                 <div className="flex items-center pr-2">
                     <DataTypeComponent data={data.data} />
                     <DisplayName displayName={data.displayName}></DisplayName>
+                    <Button variant="tertiary" icon={<PencilIcon title="Rediger" />} />
                 </div>
             </div>
             <Handle
