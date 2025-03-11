@@ -23,7 +23,9 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
 
     const [selectedUIType, setSelectedUIType] = useState(1);
     return (
-        <div className="bg-blue-100 h-20 pl-4 pr-4 flex justify-content items-center rounded-lg border border-blue-500">
+        <div
+            className={`bg-blue-100 h-20 pl-4 pr-4 flex justify-content items-center rounded-lg border border-blue-500
+            ${isComponentEditing ? 'border-red-500' : ''}`}>
             <UISwitchButtons
                 selectedUIType={selectedUIType}
                 setSelectedUIType={setSelectedUIType}
@@ -57,7 +59,7 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
                 <>
                     <div className="border rounded-3xl">
                         <div className="flex items-center pr-2">
-                            <DataTypeComponent data={data.data} />
+                            <DataTypeComponent data={data.data} isEditing={isComponentEditing} />
                             <VariableNameVersion2
                                 initialName={data.displayName}
                                 isComponentEditing={isComponentEditing}
@@ -225,16 +227,14 @@ function VariableNameVersion2({
     isComponentEditing,
     setIsComponentEditing,
 }: VariableNameProps) {
-    const [isEditing, setIsEditing] = useState(false);
-
     const [name, setName] = useState(initialName);
     return (
         <div className="ml-3 flex flex-row items-center">
-            {!isEditing && (
+            {!isComponentEditing && (
                 <>
                     <DisplayName
                         onClick={() => {
-                            setIsEditing((prev) => !prev);
+                            setIsComponentEditing((prev) => !prev);
                         }}
                         title={name}></DisplayName>
                     <Button
@@ -242,13 +242,13 @@ function VariableNameVersion2({
                         icon={
                             <PencilIcon
                                 title="Rediger"
-                                onClick={() => setIsEditing((prev) => !prev)}
+                                onClick={() => setIsComponentEditing((prev) => !prev)}
                             />
                         }
                     />
                 </>
             )}
-            {isEditing && (
+            {isComponentEditing && (
                 <div className="ml-1 pl-1 flex flex-row">
                     <TextField
                         hideLabel

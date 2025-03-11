@@ -1,5 +1,6 @@
 import { ChevronDownIcon } from '@navikt/aksel-icons';
-import { Button } from '@navikt/ds-react';
+import { Button, Select } from '@navikt/ds-react';
+import { useState } from 'react';
 import { CategoryType, DataType, ListType, MapType, StreamType } from '~/types/types';
 
 interface DataTypeNodeProps {
@@ -27,6 +28,24 @@ const DataTypeComponent: React.FC<DataTypeNodeProps> = ({ data, zIndex = 40, isE
 
 export default DataTypeComponent;
 
+interface SelectDataTypeProps {
+    defaultValue?: string;
+    onSelect?: (value: string) => void;
+}
+
+function SelectDataType({ defaultValue = '', onSelect }: SelectDataTypeProps) {
+    return (
+        <select
+            className={`bg-white ring-0 focus:outline-none focus:ring-2 focus:ring-blue-500 mr-2 rounded-3xl px-2 hover:bg-orange-100`}
+            defaultValue={defaultValue}
+            onChange={(e) => onSelect?.(e.target.value)}>
+            <option value="LIST">LIST</option>
+            <option value="STRING">STRING</option>
+            <option value="STREAM">STREAM</option>
+        </select>
+    );
+}
+
 interface LabelProps {
     title?: string;
     isEditing?: boolean;
@@ -35,24 +54,24 @@ interface LabelProps {
 
 function Label({ title, zIndex, isEditing }: LabelProps) {
     return (
-        <div
-            style={{ zIndex: zIndex }}
-            className={`
-                    p-[5px] border border-gray-500/50 bg-[#FFE6C1]
-                    rounded-tr-3xl rounded-br-3xl 
-                    first:ml-0
-                    relative ml-[-15px]
-                    flex gap-1.5
-                    ${isEditing ? 'first:pr-1 first:pl-5 pl-6 pr-1' : 'first:pr-5 first:pl-5 pl-7 pr-5'}
-                    
-                `}>
-            <label className="">{title}</label>
-            {isEditing && (
-                <button className="hover:bg-orange-200 rounded transition-colors">
-                    <ChevronDownIcon title="Endre Datatype" onClick={() => {}} />
-                </button>
-            )}
-        </div>
+        <>
+            <div
+                style={{ zIndex: zIndex }}
+                className={`
+              p-[5px] border border-gray-500/50 bg-[#FFE6C1]
+              rounded-tr-3xl rounded-br-3xl 
+              first:ml-0
+              relative ml-[-15px]
+              flex gap-1.5
+              ${isEditing ? 'first:pr-1 first:pl-2 pl-6 pr-1 bg-orange-200' : 'first:pr-5 first:pl-5 pl-7 pr-5'}
+              
+          `}>
+                {!isEditing && (
+                    <label className={`${isEditing ? 'cursor:pointer' : ''}`}>{title}</label>
+                )}
+                {isEditing && <SelectDataType defaultValue={title} onSelect={() => {}} />}
+            </div>
+        </>
     );
 }
 
