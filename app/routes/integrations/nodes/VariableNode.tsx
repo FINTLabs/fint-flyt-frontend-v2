@@ -29,6 +29,12 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
                 setSelectedUIType={setSelectedUIType}
             />
 
+            <Handle
+                type={'target'}
+                position={Position.Left}
+                id={'123'}
+                className="absolute !left-[-8px] !z-10 !w-4 !h-4 !bg-teal-500"
+            />
             {selectedUIType === 1 && (
                 <div
                     className={`bg-blue-100 h-20 pl-4 pr-4 flex justify-content items-center rounded-lg border border-blue-500
@@ -367,12 +373,14 @@ function UISwitchButtons({ selectedUIType, setSelectedUIType }: UISwitchButtonsP
     const buttonNumbers = [1, 2, 3]; // Just add numbers here
 
     return (
-        <div className="absolute top-[-50px] -z-10 p-2 left-0 flex gap-2">
+        <div className="absolute top-[-50px] -z-10 left-0 flex gap-2 opacity-40 ">
             {buttonNumbers.map((number) => (
                 <button
                     key={number}
-                    className={`p-2 border ${
-                        selectedUIType === number ? 'bg-blue-500 text-white' : 'bg-gray-200'
+                    className={`p-2 border rounded-lg ${
+                        selectedUIType === number
+                            ? 'bg-gray-700 text-white border border-gray-400'
+                            : 'bg-gray-200'
                     }`}
                     onClick={() => setSelectedUIType(number)}>
                     {number}

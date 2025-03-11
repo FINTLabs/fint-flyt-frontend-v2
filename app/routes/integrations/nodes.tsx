@@ -17,9 +17,9 @@ export default [
         },
     },
     {
-        id: '5',
+        id: '2',
         type: 'variableNode',
-        position: { x: 120, y: 570 },
+        position: { x: 700, y: 300 },
         data: {
             data: {
                 category: 'MAP',
