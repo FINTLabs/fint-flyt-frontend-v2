@@ -200,7 +200,7 @@ function VariableNameVersion3({
                             <CheckmarkIcon
                                 color="var(--a-icon-success)"
                                 title="Godkjenn"
-                                onClick={() => setIsComponentEditing((prev) => !prev)}
+                                onClick={() => setIsEditing((prev) => !prev)}
                             />
                         }
                     />
@@ -210,7 +210,7 @@ function VariableNameVersion3({
                             <XMarkIcon
                                 color="var(--a-icon-danger)"
                                 title="Avbryt"
-                                onClick={() => setIsComponentEditing((prev) => !prev)}
+                                onClick={() => setIsEditing((prev) => !prev)}
                             />
                         }
                     />
