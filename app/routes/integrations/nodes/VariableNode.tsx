@@ -124,32 +124,69 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
     if (data.displayName === 'SaksId') return <Nummre data={data}></Nummre>;
 
     const [isComponentEditing, setIsComponentEditing] = useState(false);
+
+    const [selectedUIType, setSelectedUIType] = useState(1);
     return (
         <div className="bg-blue-100 p-4 rounded-lg border border-blue-500">
-            {/* Element on hover only */}
-            <div className="absolute top-[-32px] -z-10 p-2 right-0 bg-blue-100 border border-blue-500">
-                <PencilIcon
-                    title="Rediger"
-                    className=""
-                    onClick={() => {
-                        setIsComponentEditing((prev) => !prev);
-                    }}
-                />
-                {/* <Button
-                    variant="tertiary"
-                    icon={<PencilIcon title="Rediger" onClick={() => {}} />}
-                /> */}
-            </div>
-            <div className="border rounded-3xl">
-                <div className="flex items-center pr-2">
-                    <DataTypeComponent data={data.data} />
+            <UISwitchButtons
+                selectedUIType={selectedUIType}
+                setSelectedUIType={setSelectedUIType}
+            />
 
-                    <VariableName
-                        initialName={data.displayName}
-                        isComponentEditing={isComponentEditing}
-                    />
-                </div>
-            </div>
+            {selectedUIType === 1 && (
+                <>
+                    <div className="absolute top-[-32px] -z-10 p-2 right-0 bg-blue-100 border border-blue-500">
+                        <PencilIcon
+                            title="Rediger"
+                            className=""
+                            onClick={() => {
+                                setIsComponentEditing((prev) => !prev);
+                            }}
+                        />
+                    </div>
+                    <div className="border rounded-3xl">
+                        <div className="flex items-center pr-2">
+                            <DataTypeComponent data={data.data} />
+                            <VariableNameVersion1
+                                initialName={data.displayName}
+                                isComponentEditing={isComponentEditing}
+                                setIsComponentEditing={setIsComponentEditing}
+                            />
+                        </div>
+                    </div>
+                </>
+            )}
+
+            {selectedUIType === 2 && (
+                <>
+                    <div className="border rounded-3xl">
+                        <div className="flex items-center pr-2">
+                            <DataTypeComponent data={data.data} />
+                            <VariableNameVersion2
+                                initialName={data.displayName}
+                                isComponentEditing={isComponentEditing}
+                                setIsComponentEditing={setIsComponentEditing}
+                            />
+                        </div>
+                    </div>
+                </>
+            )}
+
+            {selectedUIType === 3 && (
+                <>
+                    <div className="border rounded-3xl">
+                        <div className="flex items-center pr-2">
+                            <DataTypeComponent data={data.data} />
+                            <VariableNameVersion3
+                                initialName={data.displayName}
+                                isComponentEditing={isComponentEditing}
+                                setIsComponentEditing={setIsComponentEditing}
+                            />
+                        </div>
+                    </div>
+                </>
+            )}
+
             <Handle
                 type={'source'}
                 position={Position.Right}
@@ -165,9 +202,14 @@ export default VariableNode;
 interface VariableNameProps {
     initialName: string;
     isComponentEditing: boolean;
+    setIsComponentEditing: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function VariableName({ initialName, isComponentEditing }: VariableNameProps) {
+function VariableName({
+    initialName,
+    isComponentEditing,
+    setIsComponentEditing,
+}: VariableNameProps) {
     const [isEditing, setIsEditing] = useState(false);
 
     const [name, setName] = useState(initialName);
@@ -175,8 +217,12 @@ function VariableName({ initialName, isComponentEditing }: VariableNameProps) {
         <div className="ml-3 flex flex-row items-center">
             {!isEditing && (
                 <>
-                    <DisplayName title={name}></DisplayName>
-                    {isComponentEditing && (
+                    <DisplayName
+                        onClick={() => {
+                            setIsEditing((prev) => !prev);
+                        }}
+                        title={name}></DisplayName>
+                    {/* {isComponentEditing && (
                         <Button
                             variant="tertiary"
                             icon={
@@ -186,7 +232,7 @@ function VariableName({ initialName, isComponentEditing }: VariableNameProps) {
                                 />
                             }
                         />
-                    )}
+                    )} */}
                 </>
             )}
             {isEditing && (
@@ -219,6 +265,199 @@ function VariableName({ initialName, isComponentEditing }: VariableNameProps) {
                     />
                 </div>
             )}
+        </div>
+    );
+}
+
+function VariableNameVersion3({
+    initialName,
+    isComponentEditing,
+    setIsComponentEditing,
+}: VariableNameProps) {
+    const [isEditing, setIsEditing] = useState(false);
+
+    const [name, setName] = useState(initialName);
+    return (
+        <div className="ml-3 flex flex-row items-center">
+            {!isEditing && (
+                <>
+                    <DisplayName
+                        onClick={() => {
+                            setIsEditing((prev) => !prev);
+                        }}
+                        title={name}></DisplayName>
+                </>
+            )}
+            {isEditing && (
+                <div className="ml-1 pl-1 flex flex-row">
+                    <TextField
+                        hideLabel
+                        value={name}
+                        label={'VariabelNavn'}
+                        onChange={(e) => {
+                            setName(e.target.value);
+                        }}
+                    />
+                    <Button
+                        variant="tertiary"
+                        icon={
+                            <CheckmarkIcon
+                                title="Godkjenn"
+                                onClick={() => setIsEditing((prev) => !prev)}
+                            />
+                        }
+                    />
+                    <Button
+                        variant="tertiary"
+                        icon={
+                            <XMarkIcon
+                                title="Avbryt"
+                                onClick={() => setIsEditing((prev) => !prev)}
+                            />
+                        }
+                    />
+                </div>
+            )}
+        </div>
+    );
+}
+
+function VariableNameVersion2({
+    initialName,
+    isComponentEditing,
+    setIsComponentEditing,
+}: VariableNameProps) {
+    const [isEditing, setIsEditing] = useState(false);
+
+    const [name, setName] = useState(initialName);
+    return (
+        <div className="ml-3 flex flex-row items-center">
+            {!isEditing && (
+                <>
+                    <DisplayName
+                        onClick={() => {
+                            setIsEditing((prev) => !prev);
+                        }}
+                        title={name}></DisplayName>
+                    <Button
+                        variant="tertiary"
+                        icon={
+                            <PencilIcon
+                                title="Rediger"
+                                onClick={() => setIsEditing((prev) => !prev)}
+                            />
+                        }
+                    />
+                </>
+            )}
+            {isEditing && (
+                <div className="ml-1 pl-1 flex flex-row">
+                    <TextField
+                        hideLabel
+                        value={name}
+                        label={'VariabelNavn'}
+                        onChange={(e) => {
+                            setName(e.target.value);
+                        }}
+                    />
+                    <Button
+                        variant="tertiary"
+                        icon={
+                            <CheckmarkIcon
+                                title="Godkjenn"
+                                onClick={() => setIsEditing((prev) => !prev)}
+                            />
+                        }
+                    />
+                    <Button
+                        variant="tertiary"
+                        icon={
+                            <XMarkIcon
+                                title="Avbryt"
+                                onClick={() => setIsEditing((prev) => !prev)}
+                            />
+                        }
+                    />
+                </div>
+            )}
+        </div>
+    );
+}
+
+function VariableNameVersion1({
+    initialName,
+    isComponentEditing,
+    setIsComponentEditing,
+}: VariableNameProps) {
+    // const [isEditing, setIsEditing] = useState(false);
+
+    const isEditing = isComponentEditing;
+
+    const [name, setName] = useState(initialName);
+    return (
+        <div className="ml-3 flex flex-row items-center">
+            {!isEditing && (
+                <>
+                    <DisplayName
+                        onClick={() => {
+                            setIsComponentEditing((prev) => !prev);
+                        }}
+                        title={name}></DisplayName>
+                </>
+            )}
+            {isEditing && (
+                <div className="ml-1 pl-1 flex flex-row">
+                    <TextField
+                        hideLabel
+                        value={name}
+                        label={'VariabelNavn'}
+                        onChange={(e) => {
+                            setName(e.target.value);
+                        }}
+                    />
+                    <Button
+                        variant="tertiary"
+                        icon={
+                            <CheckmarkIcon
+                                title="Godkjenn"
+                                onClick={() => setIsComponentEditing((prev) => !prev)}
+                            />
+                        }
+                    />
+                    <Button
+                        variant="tertiary"
+                        icon={
+                            <XMarkIcon
+                                title="Avbryt"
+                                onClick={() => setIsComponentEditing((prev) => !prev)}
+                            />
+                        }
+                    />
+                </div>
+            )}
+        </div>
+    );
+}
+interface UISwitchButtonsProps {
+    selectedUIType: number;
+    setSelectedUIType: React.Dispatch<React.SetStateAction<number>>;
+}
+
+function UISwitchButtons({ selectedUIType, setSelectedUIType }: UISwitchButtonsProps) {
+    const buttonNumbers = [1, 2, 3]; // Just add numbers here
+
+    return (
+        <div className="absolute top-[-50px] -z-10 p-2 left-0 flex gap-2">
+            {buttonNumbers.map((number) => (
+                <button
+                    key={number}
+                    className={`p-2 border ${
+                        selectedUIType === number ? 'bg-blue-500 text-white' : 'bg-gray-200'
+                    }`}
+                    onClick={() => setSelectedUIType(number)}>
+                    {number}
+                </button>
+            ))}
         </div>
     );
 }

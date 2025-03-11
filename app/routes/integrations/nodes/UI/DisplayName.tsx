@@ -1,8 +1,8 @@
 // alltid bare være en handle
-export function DisplayName({ title: title }: { title: string }) {
+export function DisplayName({ title: title, onClick }: { title: string; onClick?: () => void }) {
     return (
-        <div className="ml-1 pl-1 mr-1 flex items-center h-full">
-            <span className="relative top-[1px]">{title}</span>
+        <div className="text-sm font-medium text-gray-900 truncate" onClick={onClick}>
+            {title}
         </div>
     );
 }
