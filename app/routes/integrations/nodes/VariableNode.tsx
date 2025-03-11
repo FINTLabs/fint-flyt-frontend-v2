@@ -42,7 +42,7 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
                     </div>
                     <div className="border rounded-3xl">
                         <div className="flex items-center pr-2">
-                            <DataTypeComponent data={data.data} />
+                            <DataTypeComponent data={data.data} isEditing={isComponentEditing} />
                             <VariableNameVersion1
                                 initialName={data.displayName}
                                 isComponentEditing={isComponentEditing}
@@ -289,10 +289,7 @@ function VariableNameVersion1({
     isComponentEditing,
     setIsComponentEditing,
 }: VariableNameProps) {
-    // const [isEditing, setIsEditing] = useState(false);
-
     const isEditing = isComponentEditing;
-
     const [name, setName] = useState(initialName);
     return (
         <div className="ml-3 flex flex-row items-center">
