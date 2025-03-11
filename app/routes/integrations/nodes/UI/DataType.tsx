@@ -7,7 +7,7 @@ interface DataTypeNodeProps {
     data: DataType;
     isChild?: boolean;
     isEditing?: boolean;
-    parentCategory?: string;
+    setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
     zIndex?: number;
 }
 
@@ -16,12 +16,27 @@ const getMapLabel = (data: MapType): string => {
 };
 
 // SKal ligge inn i en handle (er ikke node alene)
-const DataTypeComponent: React.FC<DataTypeNodeProps> = ({ data, zIndex = 40, isEditing }) => {
+const DataTypeComponent: React.FC<DataTypeNodeProps> = ({
+    data,
+    zIndex = 40,
+    isEditing,
+    setIsEditing,
+}) => {
     return (
         <>
-            <Label title={data.category} zIndex={zIndex} isEditing={isEditing} />
+            <Label
+                title={data.category}
+                zIndex={zIndex}
+                isEditing={isEditing}
+                onClick={() => setIsEditing((prev) => !prev)}
+            />
             {/* {unWrapDataType(data)} */}
-            <UnwrapDatatype dataType={data} zIndex={zIndex} isEditing={isEditing} />
+            <UnwrapDatatype
+                dataType={data}
+                zIndex={zIndex}
+                isEditing={isEditing}
+                onClick={() => setIsEditing((prev) => !prev)}
+            />
         </>
     );
 };
@@ -49,10 +64,11 @@ function SelectDataType({ defaultValue = '', onSelect }: SelectDataTypeProps) {
 interface LabelProps {
     title?: string;
     isEditing?: boolean;
+    onClick: () => void;
     zIndex: number;
 }
 
-function Label({ title, zIndex, isEditing }: LabelProps) {
+function Label({ title, zIndex, isEditing, onClick }: LabelProps) {
     return (
         <>
             <div
@@ -67,7 +83,14 @@ function Label({ title, zIndex, isEditing }: LabelProps) {
               
           `}>
                 {!isEditing && (
-                    <label className={`${isEditing ? 'cursor:pointer' : ''}`}>{title}</label>
+                    <label
+                        onClick={() => {
+                            console.log('teest');
+                            onClick();
+                        }}
+                        className={`${isEditing ? 'cursor:pointer' : ''}`}>
+                        {title}
+                    </label>
                 )}
                 {isEditing && <SelectDataType defaultValue={title} onSelect={() => {}} />}
             </div>
@@ -79,8 +102,14 @@ interface UnwrapDatatypeProps {
     dataType: DataType;
     zIndex: number;
     isEditing?: boolean;
+    onClick: () => void;
 }
-const UnwrapDatatype: React.FC<UnwrapDatatypeProps> = ({ dataType, zIndex, isEditing }) => {
+const UnwrapDatatype: React.FC<UnwrapDatatypeProps> = ({
+    dataType,
+    zIndex,
+    isEditing,
+    onClick,
+}) => {
     let elementType = null;
 
     switch (dataType.category) {
@@ -89,8 +118,18 @@ const UnwrapDatatype: React.FC<UnwrapDatatypeProps> = ({ dataType, zIndex, isEdi
             elementType = (dataType as StreamType).elementType;
             return (
                 <>
-                    <Label title={elementType.category} zIndex={zIndex} isEditing={isEditing} />
-                    <UnwrapDatatype dataType={elementType} zIndex={zIndex} isEditing={isEditing} />
+                    <Label
+                        title={elementType.category}
+                        zIndex={zIndex}
+                        isEditing={isEditing}
+                        onClick={onClick}
+                    />
+                    <UnwrapDatatype
+                        dataType={elementType}
+                        zIndex={zIndex}
+                        isEditing={isEditing}
+                        onClick={onClick}
+                    />
                 </>
             );
         case CategoryType.LIST:
@@ -98,8 +137,18 @@ const UnwrapDatatype: React.FC<UnwrapDatatypeProps> = ({ dataType, zIndex, isEdi
             elementType = (dataType as ListType).elementType;
             return (
                 <>
-                    <Label title={elementType.category} zIndex={zIndex} isEditing={isEditing} />
-                    <UnwrapDatatype dataType={elementType} zIndex={zIndex} isEditing={isEditing} />
+                    <Label
+                        title={elementType.category}
+                        zIndex={zIndex}
+                        isEditing={isEditing}
+                        onClick={onClick}
+                    />
+                    <UnwrapDatatype
+                        dataType={elementType}
+                        zIndex={zIndex}
+                        isEditing={isEditing}
+                        onClick={onClick}
+                    />
                 </>
             );
 
@@ -110,7 +159,7 @@ const UnwrapDatatype: React.FC<UnwrapDatatypeProps> = ({ dataType, zIndex, isEdi
             console.log(mapType);
             return (
                 <>
-                    <Label title={title} zIndex={zIndex} isEditing={isEditing} />
+                    <Label title={title} zIndex={zIndex} isEditing={isEditing} onClick={onClick} />
                     {/* <UnwrapDatatype dataType={elementType} zIndex={zIndex} /> */}
                 </>
             );
