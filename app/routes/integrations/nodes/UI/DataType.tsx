@@ -1,7 +1,7 @@
 import { ChevronDownIcon } from '@navikt/aksel-icons';
 import { Button, Select } from '@navikt/ds-react';
 import { useState } from 'react';
-import { CategoryType, DataType, ListType, MapType, StreamType } from '~/types/types';
+import { Category, CategoryType, DataType, ListType, MapType, StreamType } from '~/types/types';
 
 interface DataTypeNodeProps {
     data: DataType;
@@ -15,6 +15,85 @@ const getMapLabel = (data: MapType): string => {
     return `${data.keyType.category} -> ${data.valueType.category}`;
 };
 
+type DataTypeLabel = {
+    position: number;
+    dataType: DataType;
+};
+
+const addDataTypeToList = (data: DataType, list: DataTypeLabel[], position: number) => {
+    const onStream = (dataType: DataType, elementType: DataType) => {
+        const newPosition = position + 1;
+        list.push({
+            position: newPosition,
+            dataType: dataType,
+        });
+
+        return addDataTypeToList(elementType, list, newPosition);
+    };
+
+    const onList = (dataType: DataType, elementType: DataType) => {
+        const newPosition = position + 1;
+        list.push({
+            position: newPosition,
+            dataType: dataType,
+        });
+
+        return addDataTypeToList(elementType, list, newPosition);
+    };
+
+    const onMap = (dataType: DataType, title: string) => {
+        const newPosition = position + 1;
+        list.push({
+            position: newPosition,
+            dataType: dataType,
+        });
+        return list;
+    };
+
+    const onDefault = (dataType: DataType) => {
+        const newPosition = position + 1;
+        list.push({
+            position: newPosition,
+            dataType: dataType,
+        });
+
+        return list;
+    };
+
+    onCategoryType(data, onStream, onList, onMap, onDefault);
+};
+
+const onCategoryType = (
+    dataType: DataType,
+    onStream: (dataType: DataType, elementType: DataType) => void,
+    onList: (dataType: DataType, elementType: DataType) => void,
+    onMap: (dataType: DataType, title: string) => void,
+    onDefault: (dataType: DataType) => void
+) => {
+    let elementType = null;
+
+    switch (dataType.category) {
+        case CategoryType.STREAM:
+            elementType = (dataType as StreamType).elementType;
+            return onStream(dataType, elementType);
+        case CategoryType.LIST:
+            elementType = (dataType as ListType).elementType;
+            return onList(dataType, elementType);
+        case CategoryType.MAP:
+            const mapType = dataType as MapType;
+            const title = `${mapType.keyType.category}, ${mapType.valueType.category}`;
+            return onMap(dataType, title);
+        default:
+            return onDefault(dataType);
+    }
+};
+
+const destructDataType = (data: DataType) => {
+    const list: DataTypeLabel[] = [];
+    let position = 0;
+    addDataTypeToList(data, list, position);
+    return list;
+};
 // SKal ligge inn i en handle (er ikke node alene)
 const DataTypeComponent: React.FC<DataTypeNodeProps> = ({
     data,
@@ -22,20 +101,22 @@ const DataTypeComponent: React.FC<DataTypeNodeProps> = ({
     isEditing,
     setIsEditing,
 }) => {
+    const list = destructDataType(data);
+
     return (
         <>
-            <Label
-                title={data.category}
-                zIndex={zIndex}
-                isEditing={isEditing}
-                onClick={() => setIsEditing((prev) => !prev)}
-            />
-            <UnwrapDatatype
-                dataType={data}
-                zIndex={zIndex}
-                isEditing={isEditing}
-                onClick={() => setIsEditing((prev) => !prev)}
-            />
+            {list.map((item) => {
+                zIndex = zIndex - 10;
+                return (
+                    <Label
+                        key={item.position}
+                        title={item.dataType.category}
+                        zIndex={zIndex}
+                        isEditing={isEditing}
+                        onClick={() => setIsEditing((prev) => !prev)}
+                    />
+                );
+            })}
         </>
     );
 };
@@ -100,73 +181,3 @@ function Label({ title, zIndex, isEditing, onClick }: LabelProps) {
         </>
     );
 }
-
-interface UnwrapDatatypeProps {
-    dataType: DataType;
-    zIndex: number;
-    isEditing?: boolean;
-    onClick: () => void;
-}
-const UnwrapDatatype: React.FC<UnwrapDatatypeProps> = ({
-    dataType,
-    zIndex,
-    isEditing,
-    onClick,
-}) => {
-    let elementType = null;
-
-    switch (dataType.category) {
-        case CategoryType.STREAM:
-            zIndex = zIndex - 10;
-            elementType = (dataType as StreamType).elementType;
-            return (
-                <>
-                    <Label
-                        title={elementType.category}
-                        zIndex={zIndex}
-                        isEditing={isEditing}
-                        onClick={onClick}
-                    />
-                    <UnwrapDatatype
-                        dataType={elementType}
-                        zIndex={zIndex}
-                        isEditing={isEditing}
-                        onClick={onClick}
-                    />
-                </>
-            );
-        case CategoryType.LIST:
-            zIndex = zIndex - 10;
-            elementType = (dataType as ListType).elementType;
-            return (
-                <>
-                    <Label
-                        title={elementType.category}
-                        zIndex={zIndex}
-                        isEditing={isEditing}
-                        onClick={onClick}
-                    />
-                    <UnwrapDatatype
-                        dataType={elementType}
-                        zIndex={zIndex}
-                        isEditing={isEditing}
-                        onClick={onClick}
-                    />
-                </>
-            );
-
-        case CategoryType.MAP:
-            zIndex = zIndex - 10;
-            const mapType = dataType as MapType;
-            const title = `${mapType.keyType.category}, ${mapType.valueType.category}`;
-            console.log(mapType);
-            return (
-                <>
-                    <Label title={title} zIndex={zIndex} isEditing={isEditing} onClick={onClick} />
-                    {/* <UnwrapDatatype dataType={elementType} zIndex={zIndex} /> */}
-                </>
-            );
-        default:
-            return <></>;
-    }
-};
