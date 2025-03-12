@@ -18,7 +18,7 @@ const getMapLabel = (data: MapType): string => {
 // SKal ligge inn i en handle (er ikke node alene)
 const DataTypeComponent: React.FC<DataTypeNodeProps> = ({
     data,
-    zIndex = 40,
+    zIndex = 100,
     isEditing,
     setIsEditing,
 }) => {
@@ -30,7 +30,6 @@ const DataTypeComponent: React.FC<DataTypeNodeProps> = ({
                 isEditing={isEditing}
                 onClick={() => setIsEditing((prev) => !prev)}
             />
-            {/* {unWrapDataType(data)} */}
             <UnwrapDatatype
                 dataType={data}
                 zIndex={zIndex}
@@ -57,6 +56,10 @@ function SelectDataType({ defaultValue = '', onSelect }: SelectDataTypeProps) {
             <option value="LIST">LIST</option>
             <option value="STRING">STRING</option>
             <option value="STREAM">STREAM</option>
+            <option value="MAP">MAP</option>
+            <option value="DECIMAL">DECIMAL</option>
+            <option value="BOOLEAN">BOOLEAN</option>
+            <option value="RECORD">RECORD</option>
         </select>
     );
 }

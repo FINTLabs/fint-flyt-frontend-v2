@@ -23,8 +23,14 @@ export default [
         data: {
             data: {
                 category: 'MAP',
-                keyType: { category: 'STRING' },
-                valueType: { category: 'INTEGER (Y)' },
+                keyType: {
+                    category: 'LIST',
+                    elementType: { category: 'LIST', elementType: { category: 'STRING' } },
+                },
+                valueType: {
+                    category: 'LIST',
+                    elementType: { category: 'LIST', elementType: { category: 'STRING' } },
+                },
             },
             displayName: 'Case Y',
         },

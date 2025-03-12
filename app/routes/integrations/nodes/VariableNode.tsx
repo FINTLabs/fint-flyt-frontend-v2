@@ -49,7 +49,6 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
                                         color="var(--a-icon-success)"
                                         title="Godkjenn"
                                         fontSize="1.4rem"
-                                        // onClick={() => setIsComponentEditing((prev) => !prev)}
                                     />
                                 </button>
                                 <button
