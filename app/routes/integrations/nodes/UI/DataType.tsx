@@ -101,19 +101,36 @@ const DataTypeComponent: React.FC<DataTypeNodeProps> = ({
     isEditing,
     setIsEditing,
 }) => {
-    const list = destructDataType(data);
+    const [labels, setLabels] = useState(destructDataType(data));
 
     return (
         <>
-            {list.map((item) => {
+            {labels.map((item) => {
                 zIndex = zIndex - 10;
+
                 return (
                     <Label
                         key={item.position}
+                        position={item.position}
                         title={item.dataType.category}
                         zIndex={zIndex}
                         isEditing={isEditing}
                         onClick={() => setIsEditing((prev) => !prev)}
+                        onSelect={(value, position) => {
+                            const newDataType: DataTypeLabel = {
+                                position: position,
+                                dataType: {
+                                    category: value,
+                                },
+                            };
+
+                            const newList = [
+                                ...labels.slice(0, position - 1), // Take elements before the insert position
+                                newDataType, // Insert the new item
+                            ];
+                            console.log(newList);
+                            setLabels(newList);
+                        }}
                     />
                 );
             })}
@@ -125,22 +142,31 @@ export default DataTypeComponent;
 
 interface SelectDataTypeProps {
     defaultValue?: string;
-    onSelect?: (value: string) => void;
+    onSelect: (value: Category) => void;
 }
 
 function SelectDataType({ defaultValue = '', onSelect }: SelectDataTypeProps) {
+    const categories: Category[] = [
+        'STREAM',
+        'MAP',
+        'LIST',
+        'RECORD',
+        'STRING',
+        'INTEGER',
+        'DECIMAL',
+        'BOOLEAN',
+    ];
+
     return (
         <select
-            className={`bg-white ring-0 focus:outline-none focus:ring-2 focus:ring-blue-500 mr-2 rounded-3xl px-2 hover:bg-orange-100`}
+            className="bg-white ring-0 focus:outline-none focus:ring-2 focus:ring-blue-500 mr-2 rounded-3xl px-2 hover:bg-orange-100"
             defaultValue={defaultValue}
-            onChange={(e) => onSelect?.(e.target.value)}>
-            <option value="LIST">LIST</option>
-            <option value="STRING">STRING</option>
-            <option value="STREAM">STREAM</option>
-            <option value="MAP">MAP</option>
-            <option value="DECIMAL">DECIMAL</option>
-            <option value="BOOLEAN">BOOLEAN</option>
-            <option value="RECORD">RECORD</option>
+            onChange={(e) => onSelect(e.target.value as Category)}>
+            {categories.map((category) => (
+                <option key={category} value={category}>
+                    {category}
+                </option>
+            ))}
         </select>
     );
 }
@@ -150,9 +176,11 @@ interface LabelProps {
     isEditing?: boolean;
     onClick: () => void;
     zIndex: number;
+    position: number;
+    onSelect: (value: Category, position: number) => void;
 }
 
-function Label({ title, zIndex, isEditing, onClick }: LabelProps) {
+function Label({ title, zIndex, isEditing, onClick, position, onSelect }: LabelProps) {
     return (
         <>
             <div
@@ -167,16 +195,18 @@ function Label({ title, zIndex, isEditing, onClick }: LabelProps) {
               
           `}>
                 {!isEditing && (
-                    <label
-                        onClick={() => {
-                            console.log('teest');
-                            onClick();
-                        }}
-                        className={`${isEditing ? 'cursor:pointer' : ''}`}>
+                    <label onClick={onClick} className={`${isEditing ? 'cursor:pointer' : ''}`}>
                         {title}
                     </label>
                 )}
-                {isEditing && <SelectDataType defaultValue={title} onSelect={() => {}} />}
+                {isEditing && (
+                    <SelectDataType
+                        defaultValue={title}
+                        onSelect={(value) => {
+                            onSelect(value, position);
+                        }}
+                    />
+                )}
             </div>
         </>
     );
