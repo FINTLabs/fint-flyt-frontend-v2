@@ -1,5 +1,5 @@
 import { DataType } from '~/types/types';
-import DataTypeComponent from './UI/DataType';
+import DataTypeComponent from './UI/DataTypeComponent';
 import { DisplayName } from './UI/DisplayName';
 import { Handle, Position } from 'reactflow';
 import { Button, TextField, Tooltip } from '@navikt/ds-react';
@@ -16,8 +16,8 @@ interface VariableNodeProps {
 }
 
 const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
-    if (data.displayName === 'Saksnummer') return <Saksnumre data={data}></Saksnumre>;
-    if (data.displayName === 'SaksId') return <Nummre data={data}></Nummre>;
+    // if (data.displayName === 'Saksnummer') return <Saksnumre data={data}></Saksnumre>;
+    // if (data.displayName === 'SaksId') return <Nummre data={data}></Nummre>;
     const [isComponentEditing, setIsComponentEditing] = useState(false);
     const [selectedUIType, setSelectedUIType] = useState(3);
 
@@ -45,8 +45,6 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
                                 <button
                                     className="hover:bg-blue-300 p-2 bg-blue-50 border border-blue-500"
                                     onClick={() => {
-                                        // validateSelectedDatatype();
-
                                         setIsComponentEditing((prev) => !prev);
                                     }}>
                                     <CheckmarkIcon

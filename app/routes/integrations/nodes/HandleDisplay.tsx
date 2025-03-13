@@ -1,5 +1,5 @@
 import { CategoryType, DataType } from '~/types/types';
-import DataTypeComponent from './UI/DataType';
+import DataTypeComponent from './UI/DataTypeComponent';
 import { DisplayName } from './UI/DisplayName';
 import { Handle, Position } from 'reactflow';
 import { getIcon } from './utils';
