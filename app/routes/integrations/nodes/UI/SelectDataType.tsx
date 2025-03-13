@@ -3,7 +3,7 @@ import { Category } from '~/types/types';
 export const SelectDataTypeOption = 'Velg DataType';
 interface SelectDataTypeProps {
     defaultValue?: string;
-    onSelect: (value: Category) => void;
+    onSelect: (value: Category | typeof SelectDataTypeOption) => void;
 }
 export function SelectDataType({ defaultValue = '', onSelect }: SelectDataTypeProps) {
     const categories: Category[] = [
@@ -21,7 +21,7 @@ export function SelectDataType({ defaultValue = '', onSelect }: SelectDataTypePr
         <select
             className="bg-white ring-0 focus:outline-none focus:ring-2 focus:ring-blue-500 mr-2 rounded-3xl px-2 hover:bg-orange-100"
             defaultValue={defaultValue}
-            onChange={(e) => onSelect(e.target.value as Category)}>
+            onChange={(e) => onSelect(e.target.value as Category | typeof SelectDataTypeOption)}>
             <option key={SelectDataTypeOption} value={SelectDataTypeOption}>
                 {SelectDataTypeOption}
             </option>

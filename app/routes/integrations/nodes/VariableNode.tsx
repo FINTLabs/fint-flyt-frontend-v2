@@ -19,7 +19,20 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
     // if (data.displayName === 'Saksnummer') return <Saksnumre data={data}></Saksnumre>;
     // if (data.displayName === 'SaksId') return <Nummre data={data}></Nummre>;
     const [isComponentEditing, setIsComponentEditing] = useState(false);
-    const [selectedUIType, setSelectedUIType] = useState(3);
+    const [selectedUIType, setSelectedUIType] = useState(1);
+
+    const [triggerValidation, setTriggerValidation] = useState(false); // New state to trigger validation
+    const [triggerReset, setTriggerReset] = useState(false); // New state to trigger validation
+
+    const handleSave = () => {
+        console.log('Handle Save VariableNode...');
+        setTriggerValidation((prev) => !prev); // Toggle to trigger validation
+    };
+
+    const handleCancel = () => {
+        console.log('Handle Cancel VariableNode...');
+        setTriggerReset((prev) => !prev); // Toggle to trigger validation
+    };
 
     return (
         <div>
@@ -45,7 +58,8 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
                                 <button
                                     className="hover:bg-blue-300 p-2 bg-blue-50 border border-blue-500"
                                     onClick={() => {
-                                        setIsComponentEditing((prev) => !prev);
+                                        handleSave();
+                                        // setIsComponentEditing((prev) => !prev);
                                     }}>
                                     <CheckmarkIcon
                                         color="var(--a-icon-success)"
@@ -55,7 +69,7 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
                                 </button>
                                 <button
                                     className="hover:bg-blue-300 p-2 bg-blue-50 border border-blue-500"
-                                    onClick={() => setIsComponentEditing((prev) => !prev)}>
+                                    onClick={handleCancel}>
                                     <XMarkIcon
                                         color="var(--a-icon-danger)"
                                         title="Avbryt"
@@ -81,6 +95,8 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
                                 data={data.data}
                                 isEditing={isComponentEditing}
                                 setIsEditing={setIsComponentEditing}
+                                triggerValidation={triggerValidation}
+                                triggerReset={triggerReset}
                             />
                             <VariableNameVersion1
                                 initialName={data.displayName}

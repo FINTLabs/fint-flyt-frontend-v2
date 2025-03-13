@@ -1,5 +1,5 @@
 import { Category } from '~/types/types';
-import { SelectDataType } from './SelectDataType';
+import { SelectDataType, SelectDataTypeOption } from './SelectDataType';
 
 interface LabelProps {
     title?: string;
@@ -7,7 +7,7 @@ interface LabelProps {
     onClick: () => void;
     zIndex: number;
     position: number;
-    onSelect: (value: Category, position: number) => void;
+    onSelect: (value: Category | undefined, position: number) => void;
 }
 export function Label({ title, zIndex, isEditing, onClick, position, onSelect }: LabelProps) {
     return (
@@ -32,7 +32,7 @@ export function Label({ title, zIndex, isEditing, onClick, position, onSelect }:
                     <SelectDataType
                         defaultValue={title}
                         onSelect={(value) => {
-                            onSelect(value, position);
+                            onSelect(value === SelectDataTypeOption ? undefined : value, position);
                         }}
                     />
                 )}
