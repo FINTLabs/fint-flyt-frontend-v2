@@ -18,10 +18,9 @@ interface VariableNodeProps {
 const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
     if (data.displayName === 'Saksnummer') return <Saksnumre data={data}></Saksnumre>;
     if (data.displayName === 'SaksId') return <Nummre data={data}></Nummre>;
-
     const [isComponentEditing, setIsComponentEditing] = useState(false);
-
     const [selectedUIType, setSelectedUIType] = useState(3);
+
     return (
         <div>
             <UISwitchButtons
@@ -42,9 +41,14 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
                     <div className="absolute top-[-38px] h-24 -z-10 right-0">
                         {isComponentEditing ? (
                             <div className="flex gap-2">
+                                {/* Save button */}
                                 <button
                                     className="hover:bg-blue-300 p-2 bg-blue-50 border border-blue-500"
-                                    onClick={() => setIsComponentEditing((prev) => !prev)}>
+                                    onClick={() => {
+                                        // validateSelectedDatatype();
+
+                                        setIsComponentEditing((prev) => !prev);
+                                    }}>
                                     <CheckmarkIcon
                                         color="var(--a-icon-success)"
                                         title="Godkjenn"

@@ -15,12 +15,12 @@ const getMapLabel = (data: MapType): string => {
     return `${data.keyType.category} -> ${data.valueType.category}`;
 };
 
-type DataTypeLabel = {
+type DataTypeChip = {
     position: number;
-    dataType: DataType;
+    dataType?: DataType;
 };
 
-const addDataTypeToList = (data: DataType, list: DataTypeLabel[], position: number) => {
+const addDataTypeToList = (data: DataType, list: DataTypeChip[], position: number) => {
     const onStream = (dataType: DataType, elementType: DataType) => {
         const newPosition = position + 1;
         list.push({
@@ -89,11 +89,14 @@ const onCategoryType = (
 };
 
 const destructDataType = (data: DataType) => {
-    const list: DataTypeLabel[] = [];
+    const list: DataTypeChip[] = [];
     let position = 0;
     addDataTypeToList(data, list, position);
     return list;
 };
+
+const SelectDataTypeOption = 'Velg DataType';
+
 // SKal ligge inn i en handle (er ikke node alene)
 const DataTypeComponent: React.FC<DataTypeNodeProps> = ({
     data,
@@ -112,22 +115,31 @@ const DataTypeComponent: React.FC<DataTypeNodeProps> = ({
                     <Label
                         key={item.position}
                         position={item.position}
-                        title={item.dataType.category}
+                        title={item.dataType ? item.dataType.category : SelectDataTypeOption}
                         zIndex={zIndex}
                         isEditing={isEditing}
                         onClick={() => setIsEditing((prev) => !prev)}
                         onSelect={(value, position) => {
-                            const newDataType: DataTypeLabel = {
+                            console.log(value);
+                            const newDataType: DataTypeChip = {
                                 position: position,
                                 dataType: {
                                     category: value,
                                 },
                             };
 
-                            const newList = [
+                            let newList = [
                                 ...labels.slice(0, position - 1), // Take elements before the insert position
                                 newDataType, // Insert the new item
                             ];
+
+                            if (value === CategoryType.LIST || value === CategoryType.STREAM) {
+                                const newSelectableDataType: DataTypeChip = {
+                                    position: newList.length + 1,
+                                };
+                                newList = [...newList, newSelectableDataType];
+                            }
+
                             console.log(newList);
                             setLabels(newList);
                         }}
@@ -162,6 +174,9 @@ function SelectDataType({ defaultValue = '', onSelect }: SelectDataTypeProps) {
             className="bg-white ring-0 focus:outline-none focus:ring-2 focus:ring-blue-500 mr-2 rounded-3xl px-2 hover:bg-orange-100"
             defaultValue={defaultValue}
             onChange={(e) => onSelect(e.target.value as Category)}>
+            <option key={SelectDataTypeOption} value={SelectDataTypeOption}>
+                {SelectDataTypeOption}
+            </option>
             {categories.map((category) => (
                 <option key={category} value={category}>
                     {category}
