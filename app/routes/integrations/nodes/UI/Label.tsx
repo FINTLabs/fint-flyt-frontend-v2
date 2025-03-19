@@ -2,7 +2,7 @@ import { Category } from '~/types/types';
 import { SelectDataType, SelectDataTypeOption } from './SelectDataType';
 
 interface LabelProps {
-    title?: string;
+    title: string;
     isEditing?: boolean;
     onClick: () => void;
     zIndex: number;
@@ -24,7 +24,7 @@ export function Label({ title, zIndex, isEditing, onClick, position, onSelect }:
               
           `}>
                 {!isEditing && (
-                    <label onClick={onClick} className={`${isEditing ? 'cursor:pointer' : ''}`}>
+                    <label onClick={onClick} className={`${isEditing ? '' : ''}`}>
                         {title}
                     </label>
                 )}

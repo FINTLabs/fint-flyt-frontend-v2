@@ -33,7 +33,7 @@ const DataTypeComponent: React.FC<DataTypeNodeProps> = ({
         const hasMissingDataType = chips.some((chip) => chip.dataType === undefined);
         console.log(hasMissingDataType);
         if (hasMissingDataType) {
-            alert('Kan ikke lagre! Velg datatype eller fjern den');
+            alert('Kan ikke lagre! Velg datatype');
         } else {
             setIsEditing((prev) => !prev);
         }
@@ -72,9 +72,6 @@ const DataTypeComponent: React.FC<DataTypeNodeProps> = ({
                             };
 
                             if (value) {
-                                console.log('value');
-                                console.log(value);
-
                                 newChip.dataType = {
                                     category: value,
                                 };
