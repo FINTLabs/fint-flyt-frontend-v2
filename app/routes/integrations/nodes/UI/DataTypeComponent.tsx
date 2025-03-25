@@ -36,24 +36,21 @@ const DataTypeComponent: React.FC<DataTypeNodeProps> = ({
     const [chips, setChips] = useState(convertDataTypeToChips(data));
 
     const validate = () => {
-        console.log('Validating DataType...');
+        // console.log('Validating DataType...');
         const hasMissingDataType = chips.some((chip) => chip.dataType === undefined);
         if (hasMissingDataType) {
             alert('Kan ikke lagre! Velg datatype');
         } else {
             // save new data type
             console.log(chips);
-            console.log('Saving ...');
             const newDataType = reconstructDataType(chips);
-            console.log('newDataType');
-            console.log(newDataType);
-
+            console.log('newDataType: ', newDataType);
+            // TODO: set newDataType to as data in Variable Node
             setIsEditing((prev) => !prev);
         }
     };
 
     const reset = () => {
-        console.log('Resetting inside DataTypeComponent...');
         setChips(convertDataTypeToChips(data));
         setIsEditing((prev) => !prev);
     };
