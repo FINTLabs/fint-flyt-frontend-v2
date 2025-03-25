@@ -4,6 +4,7 @@ import '@navikt/ds-css/dist/index.css';
 import '../app/util/locale/i18n';
 import { Box, Page, VStack } from '@navikt/ds-react';
 import { Appbar } from '~/components/Appbar';
+import { GlobalProvider } from './contexts/globalContext';
 
 export function Layout() {
     return (
@@ -47,7 +48,9 @@ export function Layout() {
                         as="main">
                         <Page.Block>
                             <VStack id={'content-stack'} gap={'6'}>
-                                <Outlet />
+                                <GlobalProvider>
+                                    <Outlet />
+                                </GlobalProvider>
                             </VStack>
                         </Page.Block>
                     </Box>

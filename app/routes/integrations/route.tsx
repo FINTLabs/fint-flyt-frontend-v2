@@ -29,6 +29,7 @@ import VariableNode from './nodes/VariableNode';
 import VariableInlineNode from './nodes/VariableInlineNode';
 import OperationNode from './nodes/OperationNode';
 import InnerFlowNode from './nodes/InnerFlowNode';
+import { useGlobalContext } from '~/contexts/globalContext';
 
 const nodeTypes = {
     subflow: CustomParentNode,
@@ -121,6 +122,8 @@ export default function Index() {
         handleDropLogic(reactFlowInstance, nodeType, data, position, addNewNodeDrop);
     };
 
+    const { iconMode, setIconMode } = useGlobalContext();
+    console.log('iconMode: ', iconMode);
     return (
         <VStack>
             <HStack
@@ -148,6 +151,17 @@ export default function Index() {
                         borderRadius={'large'}
                         borderWidth="2"
                         borderColor={'border-subtle'}>
+                        {/* Toolbar div with buttons */}
+                        <div className="bg-white flex flex-col w-10 gap-2 z-10">
+                            <button
+                                className={`rounded border pt-1 ${iconMode ? 'bg-gray-200 hover:bg-gray-300' : 'bg-gray-600 '} `}
+                                onClick={() => setIconMode((prev) => !prev)}>
+                                <span
+                                    className={`material-symbols-outlined ${iconMode ? '' : 'text-white'} `}>
+                                    font_download
+                                </span>
+                            </button>
+                        </div>
                         <ReactFlow
                             nodes={nodes}
                             onNodesChange={onNodesChange}
