@@ -3,7 +3,10 @@ import { Button, Select } from '@navikt/ds-react';
 import { useEffect, useState } from 'react';
 import { Category, CategoryType, DataType, MapType } from '~/types/types';
 import { Label } from './Label';
-import { destructDataType as convertDataTypeToChips } from './destructDataType';
+import {
+    destructDataTypeToChips as convertDataTypeToChips,
+    reconstructDataType,
+} from '../actions/dataTypeActions';
 import { DataTypeChip } from './types/DataTypeChip';
 import { SelectDataTypeOption } from './SelectDataType';
 
@@ -15,6 +18,8 @@ interface DataTypeNodeProps {
     zIndex?: number;
     triggerValidation?: boolean;
     triggerReset?: boolean;
+    setTriggerValidation: React.Dispatch<React.SetStateAction<boolean>>;
+    setTriggerReset: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // SKal ligge inn i en handle (er ikke node alene)
@@ -25,16 +30,24 @@ const DataTypeComponent: React.FC<DataTypeNodeProps> = ({
     setIsEditing,
     triggerValidation,
     triggerReset,
+    setTriggerValidation,
+    setTriggerReset,
 }) => {
     const [chips, setChips] = useState(convertDataTypeToChips(data));
 
     const validate = () => {
-        console.log('Validating inside DataTypeComponent...');
+        console.log('Validating DataType...');
         const hasMissingDataType = chips.some((chip) => chip.dataType === undefined);
-        console.log(hasMissingDataType);
         if (hasMissingDataType) {
             alert('Kan ikke lagre! Velg datatype');
         } else {
+            // save new data type
+            console.log(chips);
+            console.log('Saving ...');
+            const newDataType = reconstructDataType(chips);
+            console.log('newDataType');
+            console.log(newDataType);
+
             setIsEditing((prev) => !prev);
         }
     };
@@ -45,13 +58,18 @@ const DataTypeComponent: React.FC<DataTypeNodeProps> = ({
         setIsEditing((prev) => !prev);
     };
 
-    // Run validation whenever `triggerValidation` changes
     useEffect(() => {
-        validate();
+        if (triggerValidation) {
+            validate();
+            setTriggerValidation(false);
+        }
     }, [triggerValidation]);
 
     useEffect(() => {
-        reset();
+        if (triggerReset) {
+            reset();
+            setTriggerReset(false);
+        }
     }, [triggerReset]);
 
     return (
@@ -89,6 +107,7 @@ const DataTypeComponent: React.FC<DataTypeNodeProps> = ({
                                 newChips = [...newChips, newSelectableDataType];
                             }
 
+                            console.log('newChips');
                             console.log(newChips);
                             setChips(newChips);
                         }}

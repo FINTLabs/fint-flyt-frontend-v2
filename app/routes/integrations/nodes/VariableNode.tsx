@@ -2,7 +2,7 @@ import { DataType } from '~/types/types';
 import DataTypeComponent from './UI/DataTypeComponent';
 import { DisplayName } from './UI/DisplayName';
 import { Handle, Position } from 'reactflow';
-import { Button, TextField, Tooltip } from '@navikt/ds-react';
+import { Button, Switch, TextField, Tooltip } from '@navikt/ds-react';
 import { CheckmarkIcon, ChevronDownIcon, PencilIcon, XMarkIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 
@@ -26,12 +26,12 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
 
     const handleSave = () => {
         console.log('Handle Save VariableNode...');
-        setTriggerValidation((prev) => !prev); // Toggle to trigger validation
+        setTriggerValidation(true); // Toggle to trigger validation
     };
 
     const handleCancel = () => {
         console.log('Handle Cancel VariableNode...');
-        setTriggerReset((prev) => !prev); // Toggle to trigger validation
+        setTriggerReset(true); // Toggle to trigger validation
     };
 
     return (
@@ -40,7 +40,6 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
                 selectedUIType={selectedUIType}
                 setSelectedUIType={setSelectedUIType}
             />
-
             <Handle
                 type={'target'}
                 position={Position.Left}
@@ -49,7 +48,7 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
             />
             {selectedUIType === 1 && (
                 <div
-                    className={`bg-blue-100 h-20 pl-4 pr-4 flex justify-content items-center rounded-lg border border-blue-500
+                    className={`bg-blue-100 pt-2 pb-2 pl-4 pr-4 flex justify-content items-center rounded-lg border border-blue-500
                     ${isComponentEditing ? 'border-red-500' : ''}`}>
                     <div className="absolute top-[-38px] h-24 -z-10 right-0">
                         {isComponentEditing ? (
@@ -96,7 +95,9 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
                                 isEditing={isComponentEditing}
                                 setIsEditing={setIsComponentEditing}
                                 triggerValidation={triggerValidation}
+                                setTriggerValidation={setTriggerValidation}
                                 triggerReset={triggerReset}
+                                setTriggerReset={setTriggerReset}
                             />
                             <VariableNameVersion1
                                 initialName={data.displayName}
@@ -107,7 +108,6 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
                     </div>
                 </div>
             )}
-
             {selectedUIType === 2 && (
                 <div
                     className={`bg-blue-100 h-20 pl-4 pr-4 flex justify-content items-center rounded-lg border border-blue-500
@@ -118,6 +118,8 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
                                 data={data.data}
                                 isEditing={isComponentEditing}
                                 setIsEditing={setIsComponentEditing}
+                                setTriggerValidation={setTriggerValidation}
+                                setTriggerReset={setTriggerReset}
                             />
                             <VariableNameVersion2
                                 initialName={data.displayName}
@@ -128,7 +130,6 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
                     </div>
                 </div>
             )}
-
             {selectedUIType === 3 && (
                 <div
                     className={`bg-blue-100 h-20 pl-4 pr-4 flex justify-content items-center rounded-lg border border-blue-500
@@ -139,6 +140,8 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
                                 data={data.data}
                                 isEditing={isComponentEditing}
                                 setIsEditing={setIsComponentEditing}
+                                setTriggerValidation={setTriggerValidation}
+                                setTriggerReset={setTriggerReset}
                             />
 
                             <VariableNameVersion3
