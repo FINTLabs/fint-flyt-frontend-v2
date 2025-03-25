@@ -2,8 +2,8 @@ import { DataType } from '~/types/types';
 import DataTypeComponent from './UI/DataTypeComponent';
 import { DisplayName } from './UI/DisplayName';
 import { Handle, Position } from 'reactflow';
-import { Button, Switch, TextField, Tooltip } from '@navikt/ds-react';
-import { CheckmarkIcon, ChevronDownIcon, PencilIcon, XMarkIcon } from '@navikt/aksel-icons';
+import { Button, TextField } from '@navikt/ds-react';
+import { CheckmarkIcon, PencilIcon, XMarkIcon } from '@navikt/aksel-icons';
 import { useState } from 'react';
 
 interface NodeData {
@@ -21,17 +21,15 @@ const VariableNode: React.FC<VariableNodeProps> = ({ data }) => {
     const [isComponentEditing, setIsComponentEditing] = useState(false);
     const [selectedUIType, setSelectedUIType] = useState(1);
 
-    const [triggerValidation, setTriggerValidation] = useState(false); // New state to trigger validation
-    const [triggerReset, setTriggerReset] = useState(false); // New state to trigger validation
+    const [triggerValidation, setTriggerValidation] = useState(false);
+    const [triggerReset, setTriggerReset] = useState(false);
 
     const handleSave = () => {
-        console.log('Handle Save VariableNode...');
-        setTriggerValidation(true); // Toggle to trigger validation
+        setTriggerValidation(true);
     };
 
     const handleCancel = () => {
-        console.log('Handle Cancel VariableNode...');
-        setTriggerReset(true); // Toggle to trigger validation
+        setTriggerReset(true);
     };
 
     return (
