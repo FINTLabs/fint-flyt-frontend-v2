@@ -14,7 +14,7 @@ export interface DisplayText {
     name: string;
     description?: string;
 }
-type Category =
+export type Category =
     | 'PARAMETERIZED'
     | 'STREAM'
     | 'MAP'

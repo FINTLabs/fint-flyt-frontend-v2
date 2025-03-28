@@ -22,6 +22,14 @@ export function getIcon(inputType: string) {
             return 'toggle_on';
         case 'LIST':
             return 'list_alt';
+        case 'STREAM':
+            return 'dynamic_feed';
+        case 'SYNCHRONOUS_REQUEST':
+            return 'double_arrow';
+        case 'MAP':
+            return 'token';
+        case 'REFERENCE':
+            return 'token';
         default:
             return 'text_fields';
     }
