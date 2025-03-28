@@ -1,5 +1,7 @@
 import { Category } from '~/types/types';
 import { SelectDataType, SelectDataTypeOption } from './SelectDataType';
+import { useGlobalContext } from '~/contexts/globalContext';
+import { getIcon } from '../utils';
 
 interface LabelProps {
     title: string;
@@ -10,6 +12,8 @@ interface LabelProps {
     onSelect: (value: Category | undefined, position: number) => void;
 }
 export function Label({ title, zIndex, isEditing, onClick, position, onSelect }: LabelProps) {
+    const { iconMode } = useGlobalContext();
+
     return (
         <>
             <div
@@ -23,9 +27,33 @@ export function Label({ title, zIndex, isEditing, onClick, position, onSelect }:
               ${isEditing ? 'first:pr-1 first:pl-2 pl-6 pr-1 bg-orange-200' : 'first:pr-5 first:pl-5 pl-7 pr-5'}
               
           `}>
+                {/*           ${iconMode ? 'animate-slideOut' : 'animate-slideIn'} */}
                 {!isEditing && (
-                    <label onClick={onClick} className={`${isEditing ? '' : ''}`}>
-                        {title}
+                    <label onClick={onClick} className={`flex ${isEditing ? '' : ''}`}>
+                        <div className={`flex gap-2`}>
+                            <span
+                                key="text"
+                                className={`material-symbols-outlined ${iconMode ? '' : ''} `}>
+                                {getIcon(title)}
+                            </span>
+                            <p className={` ${iconMode ? 'hidden' : ''}`}>{title}</p>
+                        </div>
+                        {/* {iconMode ? (
+                            <span
+                                key="icon"
+                                className={`material-symbols-outlined ${iconMode ? '' : 'text-white'} `}>
+                                {getIcon(title)}
+                            </span>
+                        ) : (
+                            <div className="flex gap-2">
+                                <span
+                                    key="text"
+                                    className={`material-symbols-outlined ${iconMode ? '' : ''} `}>
+                                    {getIcon(title)}
+                                </span>
+                                <p>{title}</p>
+                            </div>
+                        )} */}
                     </label>
                 )}
                 {isEditing && (

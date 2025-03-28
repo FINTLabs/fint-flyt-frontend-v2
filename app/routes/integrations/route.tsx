@@ -145,7 +145,7 @@ export default function Index() {
                     <Box
                         id={'integration-table-container'}
                         background={'surface-default'}
-                        padding="6"
+                        padding="3"
                         borderRadius={'large'}
                         borderWidth="2"
                         borderColor={'border-subtle'}>
