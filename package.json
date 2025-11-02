@@ -16,7 +16,7 @@
         "@navikt/aksel-icons": "^6.8.0",
         "@navikt/ds-css": "^6.3.3",
         "@navikt/ds-react": "^6.8.0",
-        "@remix-run/node": "^2.8.1",
+        "@remix-run/node": "^2.17.1",
         "@remix-run/react": "^2.8.1",
         "@remix-run/serve": "^2.8.1",
         "dayjs": "^1.11.11",
